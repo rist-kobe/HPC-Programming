@@ -1,2 +1,8 @@
 # HPC-Programming
-HPC Programming Seminar Materials
+HPCプログラミングセミナーの資料です。
+
+【注意】
+
+　・資料の内容は不定期に加筆修正されます。
+
+　・PDFファイルの資料の閲覧には、Adobe Acrobat Readerのご使用を推奨しています。
