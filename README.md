@@ -2,7 +2,7 @@
 このリポジトリでは、一般財団法人 高度情報科学技術研究機構（RIST）が実施している、HPCプログラミングセミナーで使用された資料を公開しています。 / This repository contains materials used in the HPC Programming Seminar organized by the Research Organization for Information Science and Technology (RIST).
 
 セミナーでは、以下の4つの講義を実施しており、各講義に対応する資料はそれぞれ専用のディレクトリに格納しております。
-1. チューニング技法入門（ディレクトリ名: tuning）
+1. チューニング技法入門（ディレクトリ名: Tuning）
 2. アクセラレータ入門（ディレクトリ名: OpenACC）
 3. 並列プログラミング入門（OpenMP編）（ディレクトリ名: OpenMP）
 4. 並列プログラミング入門（MPI編）（ディレクトリ名: MPI）
