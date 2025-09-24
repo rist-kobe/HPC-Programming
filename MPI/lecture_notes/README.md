@@ -5,4 +5,4 @@
 
 　・資料の内容は不定期に加筆修正されます。
 
-　・PDFファイルの資料の閲覧には、Adobe Acrobat Readerのご使用を推奨しています。
+　・PDFファイルをご覧いただくには、Adobe Acrobat Readerのご利用をおすすめします。
