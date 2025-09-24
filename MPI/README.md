@@ -3,7 +3,7 @@
 
 ・lecture_notes: 講義資料
 
-・sample_coude: サンプルプログラムのソースコード
+・sample_code: サンプルプログラムのソースコード
 
 【注意】
 
