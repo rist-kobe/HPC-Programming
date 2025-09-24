@@ -1,9 +1,9 @@
 # HPCプログラミングセミナー
 並列プログラミング入門（MPI編）の資料です。
-　
- lecture_notes: 講義資料
-　
- sample_coude: サンプルプログラムのソースコード
+
+・lecture_notes: 講義資料
+
+・sample_coude: サンプルプログラムのソースコード
 
 【注意】
 
