@@ -3,6 +3,8 @@
 
 All resources in this repository are licensed under the terms specified in the [LICENSE](./LICENSE) file.
 
+**We are temporarily not accepting issues or pull requests.**
+
 ---
 
 ## 概要 / Overview
