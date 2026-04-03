@@ -1,0 +1,50 @@
+# Xeon(IceLake)+A100 with Nvidia HPC SDK 23.11
+CC=nvc
+ARCHOPT=-gpu=cc80,cuda12.3 -tp=native  
+COPT=-O3 -acc=gpu $(ARCHOPT) -Minfo=accel
+#CUDA_ROOT=
+LIB=  #-L$(CUDA_ROOT)/lib64 -lcudart
+INC=-cuda #-I$(CUDA_ROOT)/include
+CFLAGS=-g -c11 $(COPT) $(INC) 
+LINKOPT=-g -c11 -acc=gpu $(ARCHOPT) -cuda -cudalib=cublas
+
+CFLAGS_O0=-g -O0 -c11 $(INC)
+
+CUDA_CC=nvcc
+CUDA_CFLAGS=-O2 -arch=sm_80 
+
+SRC = \
+	main.c     \
+	mykernel.c
+
+OBJ  = $(SRC:.c=.o)
+
+.SUFFIXES: .o .c .cu
+
+all: run.x 
+
+run.x: timer.o mykernel_cuda.o $(OBJ)
+	$(CC) $(LINKOPT) timer.o mykernel_cuda.o $(OBJ) $(LIB) -o $@	
+
+main.o: mykernel.o main.c
+
+mykernel.o: mykernel.c
+
+mykernel_cuda.o: mykernel_cuda.cu
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.cu.o:
+	$(CUDA_CC) $(CUDA_CFLAGS) -c $< -o $@
+
+timer.o:
+	$(CC) $(CFLAGS_O0) -c timer.c -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.lst *.yaml
+
+.PHONY:
+veryclean: clean
+	rm -f *.x

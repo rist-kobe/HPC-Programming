@@ -1,0 +1,39 @@
+CC=fccpx
+COPT=-O3 -msve-vector-bits=scalable -fvectorize -ffj-interleave-loop-insns -ffj-lst=t #-fsave-optimization-record -Rpass=".*"
+LIB=-lfjlapacksve
+INC=
+CFLAGS=-Nclang -v -g -std=gnu11 $(COPT) $(INC)
+LINKOPT=-Nclang -v -g -std=gnu11 -SSL2
+
+CFLAGS_O0=-Nclang -g -O0 -std=gnu11 $(INC)
+
+SRC = \
+	main.c     \
+	mykernel.c
+
+OBJ  = $(SRC:.c=.o)
+
+.SUFFIXES: .o .c
+
+all: run.x 
+
+run.x: timer.o $(OBJ)
+	$(CC) $(LINKOPT) timer.o $(OBJ) $(LIB) -o $@	
+
+main.o: mykernel.o main.c
+
+mykernel.o: mykernel.c
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+timer.o:
+	$(CC) $(CFLAGS_O0) -c timer.c -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o 
+
+.PHONY:
+veryclean: clean
+	rm -f *.x

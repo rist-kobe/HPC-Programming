@@ -1,0 +1,43 @@
+FC=frtpx
+FOPT=-O3 -SSL2 -Nlst=t -Koptmsg=2
+LIB=
+INC=
+FFLAGS=-g $(FOPT) $(INC) 
+LINKOPT=-g $(FOPT) 
+
+CC=fccpx
+CFLAGS=-Nclang -g -O0
+
+SRC = \
+	main.F90     \
+	mykernel.F90 \
+	mytype.F90 
+
+OBJ  = $(SRC:.F90=.o)
+
+.SUFFIXES: .o .F90 .c
+
+all: run.x 
+
+run.x: timer.o $(OBJ)
+	$(FC) $(LINKOPT) timer.o $(OBJ) $(LIB) -o $@	
+
+main.o: mytype.o mykernel.o main.F90
+
+mykernel.o: mytype.o mykernel.F90
+
+mytype.o: mytype.F90
+
+.F90.o:
+	$(FC) $(FFLAGS) -c $< -o $@
+
+timer.o:
+	$(CC) $(CFLAGS) -c timer.c -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.mod *.lst
+
+.PHONY:
+veryclean: clean
+	rm -f *.x

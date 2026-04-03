@@ -1,0 +1,32 @@
+# NVIDIA HPC SDK 23.11 in Xeon(IceLake) and A100
+FC=nvfortran
+FCFLAGS=-g -mp=gpu -O0 -tp=native -Minfo=accel,mp
+INC=-gpu=cc80,sm_80,cuda12.3 
+LIB=
+
+FCFLAGS += $(INC)
+LINKOPT = $(FCFLAGS) #-cudalib=
+
+EXE = run.x
+
+SRC = main.F90
+OBJ = $(SRC:.F90=.o)
+
+.SUFFIXES: .F90 .o
+
+$(EXE): $(OBJ)
+	$(FC) $(LINKOPT) -o $(EXE) $(OBJ) $(LIB)
+
+.F90.o:
+	$(FC) $(FCFLAGS) -c -o $@ $<
+
+main.o: main.F90
+
+.PHONY:
+clean:
+	rm -rf *.o
+
+.PHONY:
+veryclean: clean
+	rm -rf $(EXE)
+

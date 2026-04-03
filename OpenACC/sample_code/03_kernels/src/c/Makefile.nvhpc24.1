@@ -1,0 +1,24 @@
+# NVIDIA HPC SDK 24.1 in AMD EPYC and H100
+CC=nvc
+CFLAGS=-g -Wall -c99 -O3 -mp=multicore -acc=gpu -tp=zen3 -Minfo=accel,mp,vect
+LIB=
+INC=
+CFLAGS += $(INC) -gpu=cc90,sm_90,cuda12.3,ptxinfo
+
+.SUFFIXES: .o .c
+
+all: run.x
+
+run.x: mykernel.o main.o
+	$(CC) $(CFLAGS) mykernel.o main.o $(LIB) -o $@	
+
+main.o: main.c
+
+mykernel.o: mykernel.c
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.x

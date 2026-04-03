@@ -1,0 +1,27 @@
+# Xeon(IceLake)+A100, Nvidia HPC SDK 23.11
+FC=nvfortran
+FFLAGS=-g -Wall -O3 -mp=multicore -acc=gpu -tp=icelake -Minfo=accel
+LIB=
+INC=
+FFLAGS += $(INC) -gpu=cc80,cuda12.3,ptxinfo
+#
+
+.SUFFIXES: .o .F90 .c
+
+all: run.x
+
+run.x: mytype.o mykernel.o main.o
+	$(FC) $(FFLAGS) -O0 mytype.o mykernel.o main.o $(LIB) -o $@	
+
+main.o: mytype.o main.F90
+
+mykernel.o: mytype.o mykernel.F90
+
+mytype.o: mytype.F90
+
+.F90.o:
+	$(FC) $(FFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.mod *.x

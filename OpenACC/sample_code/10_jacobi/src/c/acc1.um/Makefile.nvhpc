@@ -1,0 +1,26 @@
+# Xeon(IceLake)+A100 with Nvidia HPC SDK 23.11
+CC=nvc
+CCFLAGS=-g -c11 -fast -mp=multicore -tp=icelake -acc=gpu -gpu=cc80,cuda12.3,managed -Minfo=accel
+LIB=-lm
+
+.SUFFIXES: .c .o
+
+EXE=run.x
+
+OBJS= main.o memory.o timer.o
+
+$(EXE): $(OBJS)
+	$(CC) $(CCFLAGS) $(OBJS) $(LIB) -o $(EXE)
+
+main.o: memory.o main.c
+
+memory.o: memory.c
+
+timer.o: timer.c
+
+.c.o:
+	$(CC) $(CCFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *.o $(EXE)

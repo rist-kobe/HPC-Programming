@@ -1,0 +1,50 @@
+# NVIDIA HPC SDK 24.1 in AMD EPYC and H100
+FC=nvfortran
+ARCHOPT=-gpu=cc90,sm_90,cuda12.3 -tp=zen3
+FOPT=-fast -acc=gpu -Minfo=accel
+LIB=
+INC=-cuda 
+FFLAGS=-g $(FOPT) $(ARCHOPT) $(INC)
+LINKOPT=-g -O0 -acc=gpu $(ARCHOPT) -cuda -cudalib=cublas
+
+FFLAGS_CUDA=-O2 -cuda 
+
+CC=nvc
+CFLAGS=-g -O0
+
+SRC = \
+	main.F90     \
+	mykernel.F90 \
+	mytype.F90 
+
+OBJ  = $(SRC:.F90=.o)
+
+.SUFFIXES: .o .F90 .c .cuf
+
+all: run.x 
+
+run.x: timer.o mykernel_cuda.o $(OBJ)
+	$(FC) $(LINKOPT) timer.o mykernel_cuda.o $(OBJ) $(LIB) -o $@	
+
+main.o: mytype.o mykernel.o mykernel_cuda.o main.F90
+
+mykernel.o: mytype.o mykernel.F90
+
+mytype.o: mytype.F90
+
+.F90.o:
+	$(FC) $(FFLAGS) -c $< -o $@
+
+mykernel_cuda.o: mytype.o mykernel_cuda.cuf
+	$(FC) $(FFLAGS_CUDA) -c -o $@ mykernel_cuda.cuf
+
+timer.o:
+	$(CC) $(CFLAGS) -c -o $@ timer.c
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.mod *.lst
+
+.PHONY:
+veryclean: clean
+	rm -f *.x

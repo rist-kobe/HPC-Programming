@@ -1,0 +1,31 @@
+## Nvidia HPC SDK
+FC=nvfortran
+FCFLAGS=-g -Wall -O3 -mp=gpu -Minfo=accel,mp
+LIB=
+INC=
+## 23.11, Xeon(Icelake) + NVIDIA A100
+FCFLAGS += $(INC) -tp=icelake -gpu=cc80,cuda12.3,ptxinfo,pinned 
+## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
+#FCFLAGS += $(INC) -tp=zen2 -gpu=cc80,cuda11.6,ptxinfo,pinned 
+
+.SUFFIXES: .o .F90 .c
+
+all: run.x
+
+run.x: mytype.o mykernel.o timer.o main.o
+	$(FC) $(FCFLAGS) -O0 mytype.o mykernel.o timer.o main.o $(LIB) -o $@	
+
+main.o: timer.o mytype.o mykernel.o main.F90
+
+mykernel.o: mytype.o mykernel.F90
+
+mytype.o: mytype.F90
+
+timer.o: mytype.o timer.F90
+
+.F90.o:
+	$(FC) $(FCFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.mod *.x

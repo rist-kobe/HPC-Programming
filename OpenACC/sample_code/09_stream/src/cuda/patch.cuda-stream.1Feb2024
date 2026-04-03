@@ -1,0 +1,94 @@
+diff -urpN a/Makefile b/Makefile
+--- a/Makefile	2025-03-26 08:58:42.000000000 +0900
++++ b/Makefile	2025-03-26 08:59:29.000000000 +0900
+@@ -1,5 +1,5 @@
+-CC = g++
+-ARCH=sm_35
++CC = nvc++
++ARCH=sm_90
+ 
+ stream : stream.cu Makefile
+ 	nvcc -std=c++11 -ccbin=$(CC) stream.cu -arch=$(ARCH) -o stream
+diff -urpN a/stream.cu b/stream.cu
+--- a/stream.cu	2025-03-26 08:56:04.000000000 +0900
++++ b/stream.cu	2025-03-26 08:59:29.000000000 +0900
+@@ -26,9 +26,15 @@
+ #include <float.h>
+ #include <limits.h>
+ #include <unistd.h>
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-start-
++#if 0
+ #include <sys/time.h>
+ 
+ #include <sys/time.h>
++#else
++#include <time.h>
++#endif
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-end-
+ 
+ # ifndef MIN
+ # define MIN(x,y) ((x)<(y)?(x):(y))
+@@ -93,6 +99,8 @@ void parse_options(int argc, char** argv
+    clock timer on most UNIX-like systems.  */
+ 
+ 
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-start-
++#if 0
+ double mysecond()
+ {
+     struct timeval tp;
+@@ -100,6 +108,15 @@ double mysecond()
+     int i = gettimeofday(&tp,&tzp);
+     return ( (double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
+ }
++#else
++double mysecond()
++{
++    struct timespec tp;
++    clock_gettime( CLOCK_MONOTONIC, &tp);
++    return tp.tv_sec + (double)tp.tv_nsec*1.0e-9;
++}
++#endif
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-end-
+ 
+ 
+ template <typename T>
+@@ -187,22 +204,34 @@ int main(int argc, char** argv)
+     {
+         times[0][k]= mysecond();
+         STREAM_Copy<real><<<dimGrid,dimBlock>>>(d_a, d_c, N);
+-        cudaThreadSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-start-
++        //cudaThreadSynchronize(); deprecated
++        cudaDeviceSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-end-
+         times[0][k]= mysecond() -  times[0][k];
+ 
+         times[1][k]= mysecond();
+         STREAM_Scale<real><<<dimGrid,dimBlock>>>(d_b, d_c, scalar,  N);
+-        cudaThreadSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-start-
++        //cudaThreadSynchronize(); deprecated
++        cudaDeviceSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-end-
+         times[1][k]= mysecond() -  times[1][k];
+ 
+         times[2][k]= mysecond();
+         STREAM_Add<real><<<dimGrid,dimBlock>>>(d_a, d_b, d_c,  N);
+-        cudaThreadSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-start-
++        //cudaThreadSynchronize(); deprecated
++        cudaDeviceSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-end-
+         times[2][k]= mysecond() -  times[2][k];
+ 
+         times[3][k]= mysecond();
+         STREAM_Triad<real><<<dimGrid,dimBlock>>>(d_b, d_c, d_a, scalar,  N);
+-        cudaThreadSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-start-
++        //cudaThreadSynchronize(); deprecated
++        cudaDeviceSynchronize();
++//---Modified-by-YukihiroOta-in-RIST-on-1Feb2024-end-
+         times[3][k]= mysecond() -  times[3][k];
+     }
+ 

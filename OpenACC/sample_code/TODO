@@ -1,0 +1,8 @@
+* memory-access: miss aligned access (CUDA C textbook)
+* stream-gpu: STREAM for GPU with OpenACC, OpenMP, and KOKKOS
+* omptarget-cuda: OpenMP Target + CUDA
+* p2p-gpus: peer-to-peer access between GPUs in a node.
+* tensorcore: examples of using tensorcore
+* spmv/mm: sparse matrix
+* mlpack: some benchmark using mlpack (https://github.com/mlpack/mlpack)
+* mini-apps: miniture applications (MD, FFT part of plane-wave DFT, etc.)

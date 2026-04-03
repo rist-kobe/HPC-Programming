@@ -1,0 +1,32 @@
+# NVIDIA HPC SDK 23.11 in Xeon(IceLake) and A100
+CC=nvc++
+CCFLAGS=-g --c++17 -O0 -mp=gpu -tp=native
+INC=-gpu=cc80,sm_80,cuda12.3 
+LIB=
+
+CCFLAGS += $(INC)
+LINKOPT = $(CCFLAGS) #-cudalib=
+
+EXE = run.x
+
+SRC = main.cpp
+OBJ = $(SRC:.cpp=.o)
+
+.SUFFIXES: .cpp .o
+
+$(EXE): $(OBJ)
+	$(CC) $(LINKOPT) -o $(EXE) $(OBJ) $(LIB)
+
+.cpp.o:
+	$(CC) $(CCFLAGS) -c -o $@ $<
+
+main.o: main.cpp
+
+.PHONY:
+clean:
+	rm -rf *.o
+
+.PHONY:
+veryclean: clean
+	rm -rf $(EXE)
+

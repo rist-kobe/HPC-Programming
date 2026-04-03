@@ -1,0 +1,51 @@
+! Copyright 2024 Research Organization for Information Science and Technology
+module mykernel_cuda
+   use mytype, only: DP
+   use cudafor
+   implicit none
+
+contains
+!======================================================================
+!  mmp_cuda_kernel
+!======================================================================
+   attributes(global) subroutine mmp_cuda_kernel(MC, MA, MB, ns)
+      integer,value,intent(in) :: ns
+      real(kind=DP),device,contiguous,intent(in) :: MA(:,:), MB(:,:)
+      real(kind=DP),device,contiguous,intent(out) :: MC(:,:)
+  
+      integer :: i, j, k
+      real(kind=DP) :: tmp
+
+      i = threadIdx%x + (blockIdx%x-1)*blockDim%x
+      j = threadIdx%y + (blockIdx%y-1)*blockDim%y
+
+      if ( ( i .le. ns) .and. (j .le. ns) ) then
+         tmp = 0.0_DP
+	 do k = 1, ns
+            tmp = tmp + MA(i,k)*MB(k,j)
+	 end do
+         MC(i,j) = tmp
+      end if
+   end subroutine mmp_cuda_kernel
+!======================================================================
+!  mmp_cuda_wrapper
+!======================================================================
+   subroutine mmp_cuda_wrapper(MC, MA, MB, ns)
+      integer,intent(in) :: ns
+      real(kind=DP),device,contiguous,intent(in) :: MA(:,:), MB(:,:)
+      real(kind=DP),device,contiguous,intent(out) :: MC(:,:)
+
+      integer :: ierr
+      type(dim3) :: blocks, threads
+
+      threads = dim3(16,16,1)
+      blocks = dim3((ns+threads%x-1)/threads%x,(ns+threads%y-1)/threads%y,1)
+
+      call mmp_cuda_kernel<<<blocks, threads>>>(MC, MA, MB, ns)
+      
+      ierr = cudaDeviceSynchronize()
+      if ( ierr .ne. 0 ) then
+         error stop
+      end if
+   end subroutine mmp_cuda_wrapper
+end module mykernel_cuda

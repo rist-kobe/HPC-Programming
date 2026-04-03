@@ -1,0 +1,22 @@
+diff -urpN a/bin/nvcc_wrapper b/bin/nvcc_wrapper
+--- a/bin/nvcc_wrapper	2025-03-25 15:06:31.000000000 +0900
++++ b/bin/nvcc_wrapper	2025-03-25 15:09:10.000000000 +0900
+@@ -14,8 +14,9 @@
+ # sm_70 is supported by every CUDA version from 9-12 and is thus
+ # chosen as default
+ 
+-default_arch="sm_70"
++#default_arch="sm_70"
+ #default_arch="sm_80"
++default_arch="sm_90"
+ 
+ #
+ # The default C++ compiler.
+@@ -31,6 +32,7 @@ fi
+ #host_compiler="icpc"
+ #host_compiler="/usr/local/gcc/4.8.3/bin/g++"
+ #host_compiler="/usr/local/gcc/4.9.1/bin/g++"
++host_compiler="nvc++"
+ 
+ #
+ # Internal variables

@@ -1,0 +1,32 @@
+# NVIDIA HPC SDK 24.1 in AMD EPYC and H100
+CC=nvc
+CCFLAGS=-g -c99 -O0 -acc=gpu -gpu=cc90,sm_90,cuda12.3 -tp=zen3 -Minfo=accel
+INC=
+LIB=
+
+CCFLAGS += $(INC)
+LINKOPT = $(CCFLAGS) #-cudalib=
+
+EXE = run.x
+
+SRC = main.c
+OBJ = $(SRC:.c=.o)
+
+.SUFFIXES: .c .o
+
+$(EXE): $(OBJ)
+	$(CC) $(LINKOPT) -o $(EXE) $(OBJ) $(LIB)
+
+.c.o:
+	$(CC) $(CCFLAGS) -c -o $@ $<
+
+main.o: main.c
+
+.PHONY:
+clean:
+	rm -rf *.o
+
+.PHONY:
+veryclean: clean
+	rm -rf $(EXE)
+

@@ -1,0 +1,22 @@
+# Xeon(IceLake)+A100, Nvidia HPC SDK 23.11
+CC=nvc
+CFLAGS=-g -Wall -c99 -O3 -acc=gpu -tp=icelake -Minfo=accel
+LIB=
+INC=
+CFLAGS += $(INC) -gpu=cc80,cuda12.3,pinned #,ptxinfo
+
+.SUFFIXES: .o .c
+
+all: run.x
+
+run.x:  main.o
+	$(CC) $(CFLAGS) main.o $(LIB) -o $@	
+
+main.o: main.c
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.x

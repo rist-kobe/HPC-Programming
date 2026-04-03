@@ -1,0 +1,29 @@
+# Xeon(IceLake)+A100 with Nvidia HPC SDK 23.11
+CUDA_ROOT= # specify the path if necessary.
+FC=nvfortran
+INC=-DUSE_NVTX
+FCFLAGS=-g -fast -mp=multicore -tp=icelake -acc=gpu -gpu=cc80,cuda12.3,pinned -Minfo=accel -cudalib=nvtx
+LIB= #-lnvhpcwrapnvtx
+
+FCFLAGS += $(INC)
+
+.SUFFIXES: .F90 .o
+
+EXE=run.x
+
+OBJS= main.o mytype.o
+
+
+$(EXE): main.o mytype.o
+	$(FC) $(FCFLAGS) $(OBJS) $(LIB) -o $(EXE)
+
+main.o: mytype.o main.F90
+
+mytype.o: mytype.F90
+
+.F90.o:
+	$(FC) $(FCFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *.o *.mod $(EXE)
