@@ -1,0 +1,31 @@
+## Nvidia HPC SDK 
+FC=nvfortran
+FCFLAGS=-g -Wall -O3 -Minfo
+LIB=
+INC=
+## 23.11, Xeon(Icelake)
+FCFLAGS += $(INC) -tp=icelake  
+## 22.2,  AMD EPYC Zen2
+#FCFLAGS += $(INC) -tp=zen2 
+
+.SUFFIXES: .o .F90 .c
+
+all: run.x
+
+run.x: mytype.o mykernel.o timer.o main.o
+	$(FC) $(FCFLAGS) -O0 mytype.o mykernel.o timer.o main.o $(LIB) -o $@	
+
+main.o: timer.o mytype.o mykernel.o main.F90
+
+mykernel.o: mytype.o mykernel.F90
+
+mytype.o: mytype.F90
+
+timer.o: mytype.o timer.F90
+
+.F90.o:
+	$(FC) $(FCFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.mod *.x

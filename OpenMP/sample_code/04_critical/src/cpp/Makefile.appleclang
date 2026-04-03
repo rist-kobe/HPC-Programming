@@ -1,0 +1,27 @@
+## Apple clang 15.0.0
+CXX=clang++
+CXXFLAGS=-g -O2 #-DWO_CRITICAL
+
+OMP_ROOT = /Users/yota/projects/libomp/16.0.4-darwin20/usr/local
+INC = -I$(OMP_ROOT)/include
+LIB = -L$(OMP_ROOT)/lib -lomp
+CXXFLAGS += -Xclang -fopenmp $(INC)
+
+EXE=run.x
+OBJS=myclass.o main.o
+
+.SUFFIXES: .cpp .o
+
+$(EXE): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) $(LIB) -o $@
+
+.cpp.o:
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+main.o: myclass.o main.cpp
+
+myclass.o: myclass.cpp
+
+.PHONY:
+clean:
+	rm -f *.o $(EXE)

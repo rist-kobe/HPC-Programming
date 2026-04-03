@@ -1,0 +1,46 @@
+#! /bin/bash 
+function ntlst () {
+cat <<EOF
+4
+EOF
+}
+
+
+echo -n "START: " 
+date
+ulimit -s unlimited
+
+COMPILER=gcc
+${COMPILER} --version
+uname -a
+lscpu
+
+### Load module
+BINDIR=../../src/c
+EXE=${BINDIR}/run.x
+
+### Run
+export OMP_DYNAMIC=FALSE
+export OMP_WAIT_POLICY=ACTIVE
+export OMP_STACKSIZE=1G
+export OMP_SCHEDULE="DYNAMIC"
+export OMP_DISPLAY_ENV=TRUE
+export OMP_PLACES=cores
+export OMP_PROC_BIND=close
+for nt in `ntlst` ; do
+  export OMP_NUM_THREADS=${nt}
+  echo "Round 1, Threads: ${nt}"
+  ${EXE} 
+
+  sleep 15s
+  echo "Round 2, Threads: ${nt}"
+  ${EXE}
+
+  sleep 15s
+  echo "Round 3, Threads: ${nt}"
+  ${EXE}
+done
+
+echo -n "END: " 
+date
+### End of script

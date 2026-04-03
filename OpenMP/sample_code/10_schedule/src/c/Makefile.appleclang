@@ -1,0 +1,20 @@
+## Apple clang 15.0.0
+CC=clang
+CCFLAGS=-g -O2  
+
+OMP_ROOT = # Specify the location of your installed libomp.
+INC = -I$(OMP_ROOT)/include
+LIB = -lm -L$(OMP_ROOT)/lib -lomp
+CCFLAGS += -Xclang -fopenmp $(INC)
+
+.SUFFIXES: .c .o
+
+run.x: main.o
+	$(CC) $(CCFLAGS) main.o $(LIB) -o run.x
+
+.c.o:
+	$(CC) $(CCFLAGS) -c $< -o $@ 
+
+.PHONY:
+clean:
+	rm -f *.o  *.x

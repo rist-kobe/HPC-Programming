@@ -1,0 +1,29 @@
+## Nvidia HPC SDK
+CC=nvc
+CFLAGS=-g -Wall -c99 -O3 -Minfo
+LIB=
+INC=
+## 23.11, Xeon (Icelake)
+CFLAGS += $(INC) -tp=icelake 
+## 22.2,  AMD EPYC Zen2
+#CFLAGS += $(INC) -tp=zen2
+
+.SUFFIXES: .o .c
+
+all: run.x
+
+run.x: mykernel.o main.o timer.o
+	$(CC) $(CFLAGS) mykernel.o main.o timer.o $(LIB) -o $@	
+
+main.o: main.c
+
+mykernel.o: mykernel.c
+
+timer.o: timer.c
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.x
