@@ -1,0 +1,41 @@
+# Intel Fortran (oneAPI 2022.3.1)
+FC=ifx
+#FC=ifort ## traditional
+
+## Please choose one of the following flag settings
+## Use of timer for CPU time
+FFLAGS=-g -warn all -fpp -O0 -DUSE_CPU_TIMER
+## Use of timer (elapsed time)
+#FFLAGS=-g -warn all -fpp -O0 -DUSE_ELP_TIMER
+## Use of gprof: Available only for ifort(?)
+##  * An issue on ifx: Yukihiro Ota, RIST on 17th Jan. 2024 
+##    When ifx -pg, I obtain an error message, 
+##    "xfortcom: Unknown command line argument '-pg'."
+##    The version of Intel oneAPI is 2022.3.1. I'm not quite sure
+##    why such a behavior occurs, but please use ifort when using 
+##    -pg option, instead of ifx.
+#FFLAGS=-pg -warn all -fpp -O0
+
+#######################################################################
+SRC = \
+	main.f90
+
+OBJS = $(SRC:.f90=.o)
+
+.SUFFIXES: .o .f90
+
+run.x: main.o 
+	$(FC) $(FFLAGS) $(OBJS) -o $@
+
+.f90.o:
+	$(FC) $(FFLAGS) -c $< -o $@
+
+main.o: main.f90
+
+.PHONY: clean
+clean:
+	rm -f *.o *.mod *genmod.f90 *~ 
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f run.x

@@ -1,0 +1,37 @@
+## GNU 8.5.0, 9.3.1
+CC=gcc
+COPT=-O1
+LIB=
+INC=
+CFLAGS=-g -std=gnu11 $(COPT) $(INC) 
+CFLAGS_TIMER=-g -std=gnu11 -O0 $(INC) 
+
+SRC = \
+	main.c \
+	memory.c
+
+OBJ  = $(SRC:.c=.o)
+
+EXE=run.x
+
+.SUFFIXES: .o .c
+
+$(EXE): timer.o $(OBJ)
+	$(CC) $(CFLAGS) timer.o $(OBJ) $(LIB) -o $@	
+
+main.o: timer.o main.c
+memory.o: memory.c
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+timer.o:
+	$(CC) $(CFLAGS_TIMER) -c timer.c -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o 
+
+.PHONY:
+veryclean: clean
+	rm -f *.x

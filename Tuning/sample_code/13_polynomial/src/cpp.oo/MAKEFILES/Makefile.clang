@@ -1,0 +1,34 @@
+## LLVM (13.0.0), Apple clang 15.0.0
+CC=clang++
+ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
+#ARCHFLAGS=-arch arm64 -mcpu=apple-m1 # MacM1 (Arm64)
+CFLAGS=-g -std=gnu++11 $(ARCHFLAGS) -O3 -fstrict-aliasing -ffast-math -funroll-loops -fvectorize -fslp-vectorize \
+	-fsave-optimization-record -Rpass=".*loop.*" -Rpass-missed=".*loop.*" #-Rpass-analysis=".*loop.*"
+###################################################################################
+SRC= \
+     main.cc \
+     mykernel.cc
+
+OBJS = \
+       $(SRC:.cc=.o)
+
+.SUFFIXES: .cc .o
+
+run.x: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
+
+.cc.o:
+	$(CC) $(CFLAGS) -c $< $(LIB) -o $@
+
+main.o: mykernel.o main.cc vector_oo.h
+
+mykernel.o: mykernel.cc vector_oo.h
+
+.PHONY: clean
+clean:
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f *.x
+

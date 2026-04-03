@@ -1,0 +1,31 @@
+## Apple clang 15.0.0
+CC=clang
+CFLAGS=-g -Wall -O0 -std=c11 
+INCPATH= 
+LIBPATH=
+LIB= 
+###########################################################################
+SRC= \
+     main.c
+
+OBJS = \
+       $(SRC:.c=.o)
+
+.SUFFIXES: .o .c
+
+run.x: main.o
+	$(CC) $(CFLAGS) $(INCPATH) $(LIBPATH) $(OBJS) $(LIB) -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+main.o: main.c		
+
+.PHONY: clean
+clean:
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f *.x
+

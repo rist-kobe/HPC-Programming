@@ -1,0 +1,51 @@
+# armflang 19.3.0 
+FC=armflang
+FFLAGS=-g -Wall -O2 -fopenmp -fopenmp-simd -mcpu=thunderx2t99 -D__USE_F08__
+FVEC=-fvectorize -fslp-vectorize \
+	-Rpass=".*vectorize.*" -Rpass-missed=".*vectorize.*" \
+	-Rpass-analysis=".*vectorize.*|regalloc" \
+	-fsave-optimization-record
+FNVEC=-fno-vectorize -fno-slp-vectorize
+LIB=
+INC=
+#
+CC=armclang
+CFLAGS=-g -O0 -std=gnu99
+
+.SUFFIXES: .o .F90 .c
+
+all: run_v.x run_nv.x
+
+run_v.x: timer.o mytype.o mykernel_v.o dummy.o main.o
+	$(FC) $(FFLAGS) -O0 $(INC) timer.o mytype.o mykernel_v.o dummy.o main.o $(LIB) -o $@	
+
+run_nv.x: timer.o mytype.o mykernel_nv.o dummy.o main.o
+	$(FC) $(FFLAGS) -O0 $(INC) timer.o mytype.o mykernel_nv.o dummy.o main.o $(LIB) -o $@	
+
+dummy.o: mytype.o dummy.F90
+
+main.o: mytype.o main.F90
+
+mykernel_v.o: mytype.o mykernel.F90
+	$(FC) $(FFLAGS) $(INC) $(FVEC) -c mykernel.F90 -o mykernel_v.o 
+
+mykernel_v.s: mytype.o mykernel.F90
+	$(FC) $(FFLAGS) $(INC) $(FVEC) -S -c mykernel.F90 -o mykernel_v.s 
+
+mykernel_nv.o: mytype.o mykernel.F90
+	$(FC) $(FFLAGS) $(INC) $(FNVEC) -c mykernel.F90 -o mykernel_nv.o 
+
+mykernel_nv.s: mytype.o mykernel.F90
+	$(FC) $(FFLAGS) $(INC) $(FNVEC) -S -c mykernel.F90 -o mykernel_nv.s 
+
+mytype.o: mytype.F90
+
+.F90.o:
+	$(FC) $(FFLAGS) -c $< -o $@
+
+timer.o:
+	$(CC) $(CFLAGS) -c timer.c -o $@
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.mod *.x

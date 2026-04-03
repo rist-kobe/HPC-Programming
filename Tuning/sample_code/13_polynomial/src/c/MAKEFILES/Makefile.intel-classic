@@ -1,0 +1,32 @@
+## Intel oneAPI 2022.3.1
+CC=icc
+ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
+CFLAGS=-g -std=gnu99 $(ARCHFLAGS) -O3 -fstrict-aliasing -restrict -diag-disable=10441 \
+	-qopt-report=5 -qopt-report-phase=vec
+##########################################################################
+SRC= \
+     main.c mykernel.c
+
+OBJS = \
+       $(SRC:.c=.o)
+
+.SUFFIXES: .c .o
+
+run.x: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+main.o: mykernel.o main.c
+
+main.o: mykernel.c
+
+.PHONY: clean
+clean:
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f *.x
+

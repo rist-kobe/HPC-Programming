@@ -1,0 +1,40 @@
+# Fujitsu Clang (4.10.0)
+CC=FCCpx 
+#CC=FCC # for native compiler
+ARCHFLAGFS=-march=armv8.3-a+sve -mcpu=a64fx -msve-vector-bits=512  # aarch64 (arm64), SVE (fixed 512-bit)
+CFLAGS=-Nclang -g -std=gnu++11 -stdlib=libstdc++ $(ARCHFLAGS) -Ofast -fno-omit-frame-pointer -fvectorize -fslp-vectorize \
+	-ffj-no-interleave-loop-insns -ffj-swp -fstrict-aliasing -ffj-lst=t -ffj-line \
+	-Rpass=".*vectorize.*|.*pipeline.*" -Rpass-missed=".*vectorize.*|.*pipeline.*" #\
+	-Rpass-analysis=".*vectorize.*|.*pipeline.*"
+#ARCHFLAGFS=-march=armv8.3-a+sve -mcpu=a64fx -msve-vector-bits=scalable  # aarch64 (arm64), SVE (vector-length Agnostic)
+#CFLAGS=-Nclang -g -std=gnu++11 -stdlib=libstdc++ $(ARCHFLAGS) -Ofast -fno-omit-frame-pointer -fvectorize -fslp-vectorize \
+	-ffj-interleave-loop-insns -ffj-no-swp -fstrict-aliasing -ffj-lst=t -ffj-line \
+	-Rpass=".*vectorize.*|.*pipeline.*" -Rpass-missed=".*vectorize.*|.*pipeline.*" #\
+	-Rpass-analysis=".*vectorize.*|.*pipeline.*"
+###################################################################################
+SRC= \
+     main.cc \
+     mykernel.cc
+
+OBJS = \
+       $(SRC:.cc=.o)
+
+.SUFFIXES: .cc .o
+
+run.x: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
+
+.cc.o:
+	$(CC) $(CFLAGS) -c $< $(LIB) -o $@
+
+main.o: mykernel.o main.cc vector_oo.h
+
+mykernel.o: mykernel.cc vector_oo.h
+
+.PHONY: clean
+clean:
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f *.x

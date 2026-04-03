@@ -1,0 +1,35 @@
+## Intel C/C++ Classic (oneAPI 2022.3.1)
+CC=icc
+CFLAGS=-g -Wall -std=gnu11 -O1
+# To increase optimization level 
+#  I think compiler-based optimization would be much better than
+#  an application of manually stripmining. :(
+#ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
+#ARCHFLAGS=-xCORE-AVX512 # xeon (with CORE-AVX512)
+#CFLAGS=-g -Wall -std=gnu11 $(ARCHFLAGS) -O2 -qopt-report=5
+#######################################################################
+SRC = \
+	main.c \
+	timer.c
+
+OBJS = $(SRC:.c=.o)
+
+.SUFFIXES: .c .o
+
+run.x: $(OBJS)  
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+main.o: main.c
+
+timer.o: timer.h timer.c
+
+.PHONY: clean
+clean:
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f run.x

@@ -1,0 +1,39 @@
+<num_partot>
+90 
+
+<num_parA>
+60
+
+<num_parB>
+30
+
+<nstep>
+65000
+
+<nobs>
+325
+
+<iflag_test>
+1
+
+<mamu_parA>
+1.0000
+
+<mamu_parB>
+16.0000
+
+<len_cell>
+34.0 #Ang
+
+<tempt>
+300.0 #K
+
+<epsLJ>
+0.99363 #kJ/mol
+
+<sigLJ>
+3.400 #Ang
+
+<dt>
+100.0 #fs
+

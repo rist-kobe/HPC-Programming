@@ -1,0 +1,6 @@
+* simd_add: Do experiments on aligned clause in omp simd
+* simd_nsimple: Add examples with a loop with if statments
+* io-format: Check fmt library (https://github.com/fmtlib/fmt)
+* Write an example of using CProfile in python code
+* Write an example of a wrapper routine of C called from python. The candidates are cython, numba, and pybind11.
+* Write an example of more operation/arithmetic-bound kernels, such as CNN.

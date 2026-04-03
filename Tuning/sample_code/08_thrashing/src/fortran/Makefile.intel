@@ -1,0 +1,27 @@
+# Intel Fortran (oneAPI 2022.3.1)
+FC=ifx
+#FC=ifort ## classic
+FFLAGS=-warn all -O0 #-DNOT_USE_GNULOC
+#######################################################################
+SRC = \
+	main.F90
+
+OBJS = $(SRC:.F90=.o)
+
+.SUFFIXES: .o .F90
+
+run.x: main.o 
+	$(FC) $(FFLAGS) $(OBJS) -o $@
+
+.F90.o:
+	$(FC) $(FFLAGS) -c $< -o $@
+
+main.o: main.F90
+
+.PHONY: clean
+clean:
+	rm -f *.o *~ *.mod *genmod*
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f run.x

@@ -1,0 +1,46 @@
+# icc 18.0.3
+CC=icc
+#CFLAGS=-g -std=gnu99 -Wall -O2 -qopenmp -qno-openmp-simd -xCORE_AVX512 -fstrict-aliasing -restrict
+CFLAGS=-g -std=gnu99 -Wall -O2 -qopenmp -qno-openmp-simd -xCORE_AVX512 -fstrict-aliasing -restrict -D__USE_DIRECTIVES__
+FVEC=-vec -simd -qopt-report=5 -qopt-report-phase=vec
+FNVEC=-no-vec -no-simd
+LIB=
+INC=
+CFLAGS0=-g -std=gnu99 -O0
+
+.SUFFIXES: .o .c
+
+all: run_v.x run_nv.x
+
+run_v.x: timer.o mykernel_v.o dummy.o main.o
+	$(CC) $(CFLAGS) -O0 $(INC) timer.o mykernel_v.o dummy.o main.o $(LIB) -o $@	
+
+run_nv.x: timer.o mykernel_nv.o dummy.o main.o
+	$(CC) $(CFLAGS) -O0 $(INC) timer.o mykernel_nv.o dummy.o main.o $(LIB) -o $@	
+
+dummy.o: dummy.c
+
+main.o: mykernel.h dummy.h timer.h main.c
+
+mykernel_v.o: mykernel.c
+	$(CC) $(CFLAGS) $(INC) $(FVEC) -c mykernel.c -o mykernel_v.o 
+
+mykernel_v.s: mykernel.c
+	$(CC) $(CFLAGS) $(INC) $(FVEC) -S -c mykernel.c -o mykernel_v.s 
+
+mykernel_nv.o: mykernel.c
+	$(CC) $(CFLAGS) $(INC) $(FNVEC) -c mykernel.c -o mykernel_nv.o 
+
+mykernel_nv.s: mykernel.c
+	$(CC) $(CFLAGS) $(INC) $(FNVEC) -S -c mykernel.c -o mykernel_nv.s 
+
+timer.o:
+	$(CC) $(CFLAGS0) -c timer.c -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
+.PHONY:
+clean:
+	rm -f *~ *.o *.x

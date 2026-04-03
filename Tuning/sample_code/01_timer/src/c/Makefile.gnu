@@ -1,0 +1,39 @@
+## GNU 8.5.0, 9.3.1
+CC=gcc
+
+## Please choose one of the following flag settings
+## Use of timer for CPU time
+CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_CPU_TIMER
+## Use of timer for Elapsed time
+#CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_ELP_TIMER
+## Use of gprof
+#CFLAGS=-pg -g -Wall -O0 -std=gnu99
+
+LIB=-lm
+#LIB=-lm -lrt # if linking is failed
+#######################################################################
+SRC = \
+	timer.c \
+	main.c
+
+OBJS = $(SRC:.c=.o)
+
+.SUFFIXES: .o .c
+
+run.x: timer.o main.o
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+main.o: main.c
+
+timer.o: timer.c timer.h
+
+.PHONY: clean
+clean:
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f run.x

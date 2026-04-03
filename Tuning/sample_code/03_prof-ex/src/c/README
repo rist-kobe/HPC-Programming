@@ -1,0 +1,36 @@
+======================================================
+ diffuse
+MOLECULAR DYNAMICS METHOD FOR MOLECULAR DIFFUSION PROBLEM
+
+Author: Yukihiro Ota (yota@rist.or.jp)
+Last update: 28 July 2017
+
+The original code is taken from a textbook,
+A. Sato, Introduction to Molecular simulation with sample
+simulation programs (in Japanese) (Kyouritsu, 2004) 3.1.6
+
+======================================================
+-------------------------------------------------------
+[usage] diffuse.x <arg1>
+  <arg1>: any integer (e.g. 0)
+          This argument is never used in the program.
+-------------------------------------------------------
+<input parameters>
+num_partot: Total number of particles (NTOT=NA+NB)
+num_parA: Number of particle A
+num_parB: Number of particle B
+nstep: Total number of time steps
+nobs: Observation step
+
+iflag_test: Flag for test mode (0/1)
+  0: test mode (no real calculation is performed)
+  1: simulation mode
+
+mamu_parA: Mass of particle A (atomic mass unit)
+mamu_parB: Mass of particle B (atomic mass unit)
+len_cel: Unit-cell length (square box) (Angstrom)
+tempt: Temperature (K)
+epsLJ: epsilon of LJ pot (kJ/mol)
+sigLJ: sigma of LJ pot (Angstrom)
+dt: Increment of time step (femto second)
+

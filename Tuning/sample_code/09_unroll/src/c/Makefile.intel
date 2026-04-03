@@ -1,0 +1,37 @@
+# Intel DPC++/C++ (oneAPI 2022.3.1)
+CC=icx
+
+## Please choose one of the following flag settings
+## No timer
+#CFLAGS=-g -Wall -std=gnu99 -O0 
+## Use of timer (cpu time)
+CFLAGS=-g -Wall -std=gnu11 -D__USE_CPU_TIMER__ -O0
+
+LIB=-lm
+#LIB=-lm -lrt # if linking is failed
+#######################################################################
+SRC = \
+	timer.c \
+	main.c
+
+OBJS = $(SRC:.c=.o)
+
+.SUFFIXES: .o .c
+
+run.x: timer.o main.o
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+main.o: main.c
+
+timer.o: timer.c timer.h
+
+.PHONY: clean
+clean:
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f run.x
