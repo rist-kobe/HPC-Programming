@@ -19,7 +19,6 @@ The code is successfully compiled by GNU 8.5.0 and later.
 4. Run
 ```
 $ export OMP_NUM_THREADS=4
-$ export OMP_DYNAMIC=FALSE
 $ ./run.x 100
 ```
 The sample scripts are located in `tests/c` (for C) and `tests/fortran` (for Fortran). You can use them.
@@ -31,7 +30,6 @@ $ bash task.sh 1> out.log 2> err.log
 ## Exercise
 1. Check the output (i.e., the value of count) on each of threads. In particular, compare the results between round 1 and round 2.
 2. In the intermediate stage between rounds 1 and 2, the value of count can be equal to the one on the master thread (thread ID=0). Explain the reason.
-3. Consider why `OMP_DYNAMIC` is set as `FALSE`.
 
 ## Output (examples)
 ```
