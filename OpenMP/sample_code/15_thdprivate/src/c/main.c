@@ -30,6 +30,8 @@ int main (int argc, char** argv)
   int v;
   int *a;
 
+  omp_set_dynamic(0);
+  
   if ( argc != 2 ) {
     printf("[usage] run.x (arg1)\n  arg1: arary size (int)\n");
     return EXIT_SUCCESS;

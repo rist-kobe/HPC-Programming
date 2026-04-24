@@ -23,7 +23,6 @@ BINDIR=../../src/fortran
 EXE=${BINDIR}/run.x
 
 ### Run
-export OMP_DYNAMIC=FALSE
 export OMP_STACKSIZE=1G
 export OMP_SCHEDULE="STATIC"
 export OMP_DISPLAY_ENV=TRUE

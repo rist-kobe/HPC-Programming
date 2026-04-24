@@ -23,7 +23,6 @@ BINDIR=../../src/c
 EXE=${BINDIR}/run.x
 
 ### Run
-export OMP_DYNAMIC=FALSE
 export OMP_WAIT_POLICY=ACTIVE
 export OMP_STACKSIZE=1G
 export OMP_SCHEDULE="STATIC"
