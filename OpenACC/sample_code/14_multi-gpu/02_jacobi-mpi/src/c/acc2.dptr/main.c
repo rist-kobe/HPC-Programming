@@ -1,8 +1,8 @@
-/* Copyright 2025 Research Organization for Information Science and Technology */
+/* Copyright 2026 Research Organization for Information Science and Technology */
 /*----------------------------------------------------------------------
   Title:       Jacobi method (2-dim. model, dynamical memory allocation, OpenACC)
   Author:      Yukihiro Ota (yota@rist.or.jp)
-  Last update: May 12nd, 2025
+  Last update: May 14th, 2026
   Reference:   
     [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
     Algebra" (Iwanami,2009) [in Japanese].
@@ -426,7 +426,7 @@ int main (int argc, char **argv)
     } /* acc host_data */
 
     /* unpacking */
-    #pragma acc data present(phio[0:nx_loc*ny_loc],recv_buff[0:max_buffer_size])
+    #pragma acc data present(phie[0:nx_loc*ny_loc],recv_buff[0:max_buffer_size])
     #pragma acc kernels 
     #pragma acc loop independent
     for (int ix = 1; ix < nx_loc-1; ++ix) {
