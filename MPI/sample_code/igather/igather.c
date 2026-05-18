@@ -33,7 +33,7 @@ int main(int argc,char *argv[]){
   sendbuf=(int *)malloc(sizeof(int)*nd);
   recvbuf=(int *)malloc(sizeof(int)*nd*3);
   sendbuf[0]=rankW*10;
-  for(int i=0;i<3;i++){
+  for(int i=0;i<3*nd;i++){
     recvbuf[i]=-1;
   }
   fprintf(fp0,"\n");
@@ -52,17 +52,25 @@ int main(int argc,char *argv[]){
   for(int i=0;i<sizeW;i++){
     MPI_Group_incl(mpi_group_world,3,&(ranks_tmp[i][0]),&mpi_group_sub);
     MPI_Comm_create(MPI_COMM_WORLD,mpi_group_sub,&(mpi_comm_sub[i]));
+    MPI_Group_free(&mpi_group_sub);
   }
   MPI_Request requests[3];
-  MPI_Igather(sendbuf,nd,MPI_INT,recvbuf,nd,MPI_INT,1,mpi_comm_sub[ranks[0]],&(requests[0]));
+  MPI_Igather(sendbuf,nd,MPI_INT,NULL   ,nd,MPI_INT,1,mpi_comm_sub[ranks[0]],&(requests[0]));
   MPI_Igather(sendbuf,nd,MPI_INT,recvbuf,nd,MPI_INT,1,mpi_comm_sub[ranks[1]],&(requests[1]));
-  MPI_Igather(sendbuf,nd,MPI_INT,recvbuf,nd,MPI_INT,1,mpi_comm_sub[ranks[2]],&(requests[2]));
+  MPI_Igather(sendbuf,nd,MPI_INT,NULL   ,nd,MPI_INT,1,mpi_comm_sub[ranks[2]],&(requests[2]));
   MPI_Waitall(3,requests,MPI_STATUSES_IGNORE);
   fprintf(fp0,"\n");
   for(int i=0;i<nd*3;i++){
     fprintf(fp0," index=%2d  recv=%02d\n",i,recvbuf[i]);
   }
+  for(int i=0;i<sizeW;i++){
+    if(mpi_comm_sub[i]!=MPI_COMM_NULL){
+      MPI_Comm_free(&mpi_comm_sub[i]);
+    }
+  }
   free(mpi_comm_sub);
+  MPI_Group_free(&mpi_group_world);
+  MPI_Comm_free(&mpi_comm_cart);
   free(ranks_tmp);
   free(recvbuf);
   free(sendbuf);

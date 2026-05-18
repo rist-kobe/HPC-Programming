@@ -39,14 +39,17 @@ int main(int argc,char *argv[]){
   {
     int tn=omp_get_thread_num();
     if(tn==0){
-      MPI_Recv(recvbuf,nd,MPI_INT,rank_src,tag,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
+      MPI_Recv(recvbuf,nd,MPI_INT,rank_src,tag,mpi_comm_cart,MPI_STATUS_IGNORE);
     }else if(tn==1){
-      MPI_Send(sendbuf,nd,MPI_INT,rank_dst,tag,MPI_COMM_WORLD);
+      MPI_Send(sendbuf,nd,MPI_INT,rank_dst,tag,mpi_comm_cart);
     }
   }
   fprintf(fp0," recvW=%02d sendW=%02d\n",recvbuf[0],sendbuf[0]);
   free(recvbuf);
   free(sendbuf);
+  MPI_Comm_free(&mpi_comm_cart);
+  free(prds);
+  free(dims);
   fclose(fp0);
   MPI_Finalize();
   return 0;

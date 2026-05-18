@@ -65,6 +65,13 @@ int main(int argc,char *argv[]){
   for(i=0;i<sizeW;i++){
     fprintf(fp0," index=%2d  recv=%02d\n",i,recvbuf[i]);
   }
+  MPI_Barrier(MPI_COMM_WORLD);
+  MPI_Comm_free(&mpi_comm_inter);
+  MPI_Comm_free(&mpi_comm_group1);
+  MPI_Comm_free(&mpi_comm_group2);
+  MPI_Group_free(&group1);
+  MPI_Group_free(&group2);
+  MPI_Group_free(&mpi_group_world);
   free(recvbuf);
   free(sendbuf);
   fclose(fp0);

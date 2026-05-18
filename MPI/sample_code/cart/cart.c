@@ -36,12 +36,13 @@ int main(int argc,char *argv[]){
   recvbuf[0]=-1; 
   MPI_Request request[2];
   int tag=32767;
-  MPI_Irecv(recvbuf,nd,MPI_INT,rank_src,tag,MPI_COMM_WORLD,&(request[0]));
-  MPI_Isend(sendbuf,nd,MPI_INT,rank_dst,tag,MPI_COMM_WORLD,&(request[1]));
+  MPI_Irecv(recvbuf,nd,MPI_INT,rank_src,tag,mpi_comm_cart,&(request[0]));
+  MPI_Isend(sendbuf,nd,MPI_INT,rank_dst,tag,mpi_comm_cart,&(request[1]));
   MPI_Waitall(2,request,MPI_STATUSES_IGNORE);
   fprintf(fp0," recvW=%02d sendW=%02d\n",recvbuf[0],sendbuf[0]);
   free(recvbuf);
   free(sendbuf);
+  MPI_Comm_free(&mpi_comm_cart);
   free(prds);
   free(dims);
   fclose(fp0);

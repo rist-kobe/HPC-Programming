@@ -42,11 +42,11 @@ int main(int argc,char *argv[]){
   if(rankW==sizeW-1){
     MPI_Recv(&(recvbuf[1]),1,newtype,0,tag,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
   }
-  MPI_Type_free(&newtype);
   fprintf(fp0,"\n");
-  for(i=0;i<sizeW;i++){
+  for(i=0;i<nd;i++){
     fprintf(fp0," index=%2d  recv=%02d\n",i,recvbuf[i]);
   }
+  MPI_Type_free(&newtype);
   free(recvbuf);
   free(sendbuf);
   fclose(fp0);

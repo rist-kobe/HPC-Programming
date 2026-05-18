@@ -37,12 +37,13 @@ int main(int argc,char *argv[]){
     MPI_Put(&(sendbuf[0]),nd,MPI_INT,rootW,nd*sizeof(int)*rankW,nd,MPI_INT,winobj);
   }
   MPI_Win_fence(0,winobj);
-  MPI_Win_free(&winobj);
   fprintf(fp0,"\n");
   for(i=0;i<sizeW;i++){
     fprintf(fp0," index=%2d  wnbf=%02d\n",i,winbuf[i]);
   }
+  MPI_Win_free(&winobj);
   free(winbuf);
+  free(sendbuf);
   fclose(fp0);
   MPI_Finalize();
   return 0;
