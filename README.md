@@ -18,7 +18,7 @@ This repository contains the resources for the HPC Programming Seminar organized
 
 ## 講義一覧 / Seminar Contents
 * [GPUプログラミング入門(OpenACC編)](./OpenACC) - GPU Programming Basics with OpenACC
-* [チューニング技法入門](./Tuning) - Introduction to CPU-tuning techniques
+* [チューニング技法入門](./Tuning) - Introduction to CPU Tuning Techniques
 * [並列プログラミング入門（OpenMP編）](./OpenMP) - Parallel Programming Basics with OpenMP
 * [並列プログラミング入門（MPI編）](./MPI) - Parallel Programming Basics with MPI
 
