@@ -79,7 +79,7 @@ int main (int argc, char **argv)
   iconv = 0;
   for ( itr = 1; itr <= MAXITR; ++itr) {
 
-    /* Update phio except for bounraries */
+    /* Update phio except for boundaries */
     nrmsq = 0.0;
 #if 0
     #pragma acc data copyin(phie[0:NX*NY],rho[0:NX*NY]) copyout(phio[0:NX*NY])
