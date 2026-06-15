@@ -2,7 +2,7 @@
 ! /*--------------------------------------------------------------------
 !  Title:       Jacobi method (2-dim. model, dynamical memory allocation)
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
-!  Last update: May 18th, 2926
+!  Last update: May 18th, 2026
 !  Reference:   
 !    [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
 !    Algebra" (Iwanami,2009) [in Japanese].
