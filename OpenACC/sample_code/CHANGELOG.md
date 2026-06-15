@@ -6,10 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - 2026-6-15
 ### Add
-* Add the contributions of the bounrary condition to `jacobi/src/c` and `jacobi/src/fortran`.
+* Add the contributions of the boundary condition to `10_jacobi/src/c`, `10_jacobi/src/fortran`, `11_jacobi-nvtx/src/c`, and `11_jacobi-nvtx/src/fortran`.
 
 ### Modify
-* Correct the script file to execute the program in `jacobi-nvtx/tests/fortran/acc2`.
+* Correct the script file to execute the program in `11_jacobi-nvtx/tests/fortran/acc2`.
 
 ## [1.0.0] - 2026-3-7
 ### Changed
