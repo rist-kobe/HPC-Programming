@@ -1,4 +1,4 @@
-! Copyright 2026 Research Organization for Information Science and Technology
+! Copyright (c)2024-2026 Research Organization for Information Science and Technology
 ! /*--------------------------------------------------------------------
 !  Title:       Jacobi method (2-dim. model, dynamical memory allocation)
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
@@ -97,7 +97,7 @@ program main
 #if defined(USE_NVTX)
     call nvtxStartRange("update")
 #endif
-    ! Update phio except for bounraries
+    ! Update phio except for boundaries
     nrmsq = 0.0_DP
     !$ACC data present(PHIE(1:NX,1:NY),RHO(1:NX,1:NY)) 
     !$ACC kernels
@@ -117,7 +117,7 @@ program main
     call nvtxEndRange()
 #endif
 
-    ! Bounrary condition  
+    ! Boundary condition  
     !   Note: This procedure seems to be redundant whenever using 
     !   Dirichlet boundary condition with the values of zero.
     !   We keep this implementation so that one can change it to
