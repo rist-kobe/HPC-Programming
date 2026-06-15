@@ -1,4 +1,4 @@
-/* Copyright 2026 Research Organization for Information Science and Technology */
+/* Copyright (c) 2024-2026 Research Organization for Information Science and Technology */
 /*----------------------------------------------------------------------
   Title:       Jacobi method (2-dim. model, dynamical memory allocation, OpenACC)
   Author:      Yukihiro Ota (yota@rist.or.jp)
@@ -79,7 +79,7 @@ int main (int argc, char **argv)
   iconv = 0;
   for ( itr = 1; itr <= MAXITR; ++itr) {
 
-    /* Update phio except for bounraries */
+    /* Update phio except for boundaries */
     nrmsq = 0.0;
 #if 0
     #pragma acc data copyin(phie[0:NX*NY],rho[0:NX*NY]) copyout(phio[0:NX*NY])
@@ -95,7 +95,7 @@ int main (int argc, char **argv)
       }
     }
 
-    /* Bounrary condition 
+    /* Boundary condition 
        Note: This procedure seems to be redundant whenever using 
        Dirichlet boundary condition with the values of zero.
        We keep this implementation so that one can change it to
