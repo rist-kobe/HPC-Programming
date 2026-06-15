@@ -1,8 +1,8 @@
-! Copyright 2024 Research Organization for Information Science and Technology
+! Copyright (c)2024-2026 Research Organization for Information Science and Technology
 ! /*--------------------------------------------------------------------
 !  Title:       Jacobi method (2-dim. model, dynamical memory allocation)
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
-!  Last update: 31st Jan. 2024
+!  Last update: May 18th, 2026
 !  Reference:   
 !    [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
 !    Algebra" (Iwanami,2009) [in Japanese].
@@ -97,6 +97,7 @@ program main
 #if defined(USE_NVTX)
     call nvtxStartRange("update")
 #endif
+    ! Update phio except for boundaries
     nrmsq = 0.0_DP
     !$ACC data present(PHIE(1:NX,1:NY),RHO(1:NX,1:NY)) 
     !$ACC kernels
@@ -115,21 +116,36 @@ program main
 #if defined(USE_NVTX)
     call nvtxEndRange()
 #endif
-#if 0
+
+    ! Boundary condition  
+    !   Note: This procedure seems to be redundant whenever using 
+    !   Dirichlet boundary condition with the values of zero.
+    !   We keep this implementation so that one can change it to
+    !   more general cases.
+    !$ACC data present(PHIO(1:NX,1:NY))
+    !$ACC kernels
+    !$ACC loop independent
     do ix = 1, NX
       PHIO(ix,1) = 0.0_DP
       PHIO(ix,NY) = 0.0_DP
     end do
+    !$ACC end kernels
+    !$ACC end data
 
+    !$ACC data present(PHIO(1:NX,1:NY))
+    !$ACC kernels
+    !$ACC loop independent
     do iy = 1, NY
       PHIO(1,iy) = 0.0_DP
       PHIO(NX,iy) = 0.0_DP
     end do
-#endif
+    !$ACC end kernels
+    !$ACC end data
 
 #if defined(USE_NVTX)
     call nvtxStartRange("swap")
 #endif
+    ! Copy for the next step 
     !$ACC data present(PHIO(1:NX,1:NY),PHIE(1:NX,1:NY))
     !$ACC kernels
     !$ACC loop independent

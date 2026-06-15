@@ -1,8 +1,8 @@
-/* Copyright 2024 Research Organization for Information Science and Technology */
+/* Copyright (c) 2024-2026 Research Organization for Information Science and Technology */
 /*----------------------------------------------------------------------
   Title:       Jacobi method (2-dim. model, dynamical memory allocation, OpenACC)
   Author:      Yukihiro Ota (yota@rist.or.jp)
-  Last update: 2nd Feb. 2024
+  Last update: June 15th, 2026
   Reference:   
     [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
     Algebra" (Iwanami,2009) [in Japanese].
@@ -90,8 +90,9 @@ int main (int argc, char **argv)
   iconv = 0;
   for ( itr = 1; itr <= MAXITR; ++itr) {
 
+    /* Update phio except for boundaries */
     nrmsq = 0.0;
-    #pragma acc data present(phie[0:NX*NY],rho[0:NX*NY])
+    #pragma acc data present(phie[0:NX*NY],rho[0:NX*NY],phio[0:NX*NY])
     #pragma acc kernels
     #pragma acc loop independent collapse(2) reduction(max:nrmsq)
     for (int ix = 1; ix < NX-1; ++ix ) {
@@ -102,18 +103,30 @@ int main (int argc, char **argv)
         nrmsq = fmax(nrmsq, fabs(phio[IDX(ix,iy)] - phie[IDX(ix,iy)]));
       }
     }
-#if 0
+
+    /* Boundary condition 
+       Note: This procedure seems to be redundant whenever using 
+       Dirichlet boundary condition with the values of zero.
+       We keep this implementation so that one can change it to
+       more general cases. */
+    #pragma acc data present(phio[0:NX*NY])
+    #pragma acc kernels
+    #pragma acc loop independent 
     for (int ix = 0; ix < NX; ++ix ) {
       phio[IDX(ix,0)] = 0.0;
       phio[IDX(ix,NY-1)] = 0.0;
     }
 
+    #pragma acc data present(phio[0:NX*NY])
+    #pragma acc kernels
+    #pragma acc loop independent 
     for (int iy = 0; iy < NY; ++iy ) {
       phio[IDX(0,iy)] = 0.0;
       phio[IDX(NX-1,iy)] = 0.0;
     }
-#endif
-    #pragma acc data present(phie[0:NX*NY])
+
+    /* Copy for the next step */
+    #pragma acc data present(phie[0:NX*NY],phio[0:NX*NY])
     #pragma acc kernels
     #pragma acc loop independent collapse(2)
     for ( int ix = 0; ix < NX; ++ix ) {

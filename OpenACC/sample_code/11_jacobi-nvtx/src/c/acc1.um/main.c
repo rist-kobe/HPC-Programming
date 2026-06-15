@@ -1,8 +1,8 @@
-/* Copyright 2024 Research Organization for Information Science and Technology */
+/* Copyright (c)2024-2026 Research Organization for Information Science and Technology */
 /*----------------------------------------------------------------------
   Title:       Jacobi method (2-dim. model, dynamical memory allocation, OpenACC)
   Author:      Yukihiro Ota (yota@rist.or.jp)
-  Last update: 2nd Feb. 2024
+  Last update: June 15th, 2026
   Reference:   
     [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
     Algebra" (Iwanami,2009) [in Japanese].
@@ -89,6 +89,7 @@ int main (int argc, char **argv)
 #if defined(USE_NVTX)
   nvtxRangeId_t id2 = nvtxRangeStartA("update");
 #endif
+    /* Update phio except for boundaries */
     nrmsq = 0.0;
 #if 0
     #pragma acc data copyin(phie[0:NX*NY],rho[0:NX*NY]) copyout(phio[0:NX*NY])
@@ -106,20 +107,30 @@ int main (int argc, char **argv)
 #if defined(USE_NVTX)
   nvtxRangeEnd(id2); 
 #endif
-#if 0
+
+    /* Boundary condition 
+       Note: This procedure seems to be redundant whenever using 
+       Dirichlet boundary condition with the values of zero.
+       We keep this implementation so that one can change it to
+       more general cases. */
+    #pragma acc kernels
+    #pragma acc loop independent 
     for (int ix = 0; ix < NX; ++ix ) {
       phio[IDX(ix,0)] = 0.0;
       phio[IDX(ix,NY-1)] = 0.0;
     }
 
+    #pragma acc kernels
+    #pragma acc loop independent 
     for (int iy = 0; iy < NY; ++iy ) {
       phio[IDX(0,iy)] = 0.0;
       phio[IDX(NX-1,iy)] = 0.0;
     }
-#endif
+
 #if defined(USE_NVTX)
   nvtxRangeId_t id3 = nvtxRangeStartA("swap");
 #endif
+    /* Copy for the next step */
 #if 0
     #pragma acc data copyin(phio[0:NX*NY]) copyout(phie[0:NX*NY])
 #endif

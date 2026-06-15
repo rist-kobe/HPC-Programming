@@ -1,8 +1,8 @@
-! Copyright 2024 Research Organization for Information Science and Technology
+! Copyright (c)2024-2026 Research Organization for Information Science and Technology
 ! /*--------------------------------------------------------------------
 !  Title:       Jacobi method (2-dim. model, dynamical memory allocation)
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
-!  Last update: 31st Jan. 2024
+!  Last update: May 18th, 2026
 !  Reference:   
 !    [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
 !    Algebra" (Iwanami,2009) [in Japanese].
@@ -81,8 +81,8 @@ program main
 #if defined(USE_NVTX)
     call nvtxStartRange("update")
 #endif
+    ! Update phio except for boundaries
     nrmsq = 0.0_DP
-
     !$ACC data copyin(PHIE(1:NX,1:NY),RHO(1:NX,1:NY)) copyout(PHIO(1:NX,1:NY))
     !$ACC kernels
     !$ACC loop independent collapse(2) reduction(max:nrmsq)
@@ -100,7 +100,12 @@ program main
 #if defined(USE_NVTX)
     call nvtxEndRange()
 #endif
-#if 0
+
+    ! Boundary condition  
+    !   Note: This procedure seems to be redundant whenever using 
+    !   Dirichlet boundary condition with the values of zero.
+    !   We keep this implementation so that one can change it to
+    !   more general cases.
     do ix = 1, NX
       PHIO(ix,1) = 0.0_DP
       PHIO(ix,NY) = 0.0_DP
@@ -110,11 +115,11 @@ program main
       PHIO(1,iy) = 0.0_DP
       PHIO(NX,iy) = 0.0_DP
     end do
-#endif
 
 #if defined(USE_NVTX)
     call nvtxStartRange("swap")
 #endif
+    ! Copy for the next step 
     !$ACC data copyin(PHIO(1:NX,1:NY)) copyout(PHIE(1:NX,1:NY))
     !$ACC kernels
     !$ACC loop 

@@ -31,7 +31,7 @@ PERFOPT=$(echo "--stats=true --trace=cuda,openacc,nvtx")
 #PERFOPT=$(echo "--stats=true --trace=cuda,openacc,nvtx --cuda-um-cpu-page-faults=true --cuda-um-gpu-page-faults=true")
 
 ${PERF} ${PERFOPT} \
-${EXE} 1> log.out 2> log.err 
+${EXE} 1> out.log 2> err.log
 
 echo -n "END: " 
 date
