@@ -1,6 +1,6 @@
 # Elementary matrix-free iterative solver: Jacobi method
 * Author:   Yukihiro Ota (yota@rist.or.jp)
-* Last update: March 26th 2025
+* Last update: June 15th, 2026
 
 ## Instruction: Compile and Run
 1. Source codes are in `src`. Choose either `src/c` (C) or `src/fortran`. 
