@@ -93,7 +93,7 @@ int main (int argc, char **argv)
       }
     }
 
-    /* Bounrary condition  
+    /* Boundary condition  
        Note: This procedure seems to be redundant whenever using 
        Dirichlet boundary condition with the values of zero.
        We keep this implementation so that one can change it to
