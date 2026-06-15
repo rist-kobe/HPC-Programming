@@ -1,4 +1,4 @@
-/* Copyright (C) 2024-2026 Research Organization for Information Science and Technology */
+/* Copyright (c) 2024-2026 Research Organization for Information Science and Technology */
 /*----------------------------------------------------------------------
   Title:       Jacobi method (2-dim. model, dynamical memory allocation, OpenACC)
   Author:      Yukihiro Ota (yota@rist.or.jp)
