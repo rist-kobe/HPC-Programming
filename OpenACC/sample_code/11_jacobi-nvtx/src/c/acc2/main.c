@@ -145,7 +145,7 @@ int main (int argc, char **argv)
   nvtxRangeId_t id3 = nvtxRangeStartA("swap");
 #endif
     /* Copy for the next step */
-    #pragma acc data present(phie[0:NX*NY])
+    #pragma acc data present(phie[0:NX*NY],phio[0:NX*NY])
     #pragma acc kernels
     #pragma acc loop independent collapse(2)
     for ( int ix = 0; ix < NX; ++ix ) {
