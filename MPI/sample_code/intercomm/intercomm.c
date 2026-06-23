@@ -67,8 +67,8 @@ int main(int argc,char *argv[]){
   }
   MPI_Barrier(MPI_COMM_WORLD);
   MPI_Comm_free(&mpi_comm_inter);
-  MPI_Comm_free(&mpi_comm_group1);
-  MPI_Comm_free(&mpi_comm_group2);
+  if(mpi_comm_group1!=MPI_COMM_NULL) MPI_Comm_free(&mpi_comm_group1);
+  if(mpi_comm_group2!=MPI_COMM_NULL) MPI_Comm_free(&mpi_comm_group2);
   MPI_Group_free(&group1);
   MPI_Group_free(&group2);
   MPI_Group_free(&mpi_group_world);
