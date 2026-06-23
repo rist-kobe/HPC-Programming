@@ -16,7 +16,7 @@ int main(int argc,char *argv[]){
   sprintf(nameF0,"%s_%d.txt",argv[0],rankW);
   fp0=fopen(nameF0,"w");
   fprintf(fp0," rankW=%2d sizeW=%2d\n",rankW,sizeW);
-  int ndims,reorder,idim,shft,rank_src,rank_dst,nd;
+  int ndims,reorder,idim,shft,rank_src,rank_slf,rank_dst,nd;
   int *dims,*prds,*sendbuf,*recvbuf;
   ndims=1;
   dims=(int *)malloc(sizeof(int)*ndims);
@@ -42,7 +42,7 @@ int main(int argc,char *argv[]){
   }
   int ranks[3];
   ranks[0]=rank_src;
-  ranks[1]=rankW;
+  MPI_Comm_rank(mpi_comm_cart,&rank_slf); ranks[1]=rank_slf;
   ranks[2]=rank_dst;
   int (*ranks_tmp)[3]=(int (*)[3])malloc(sizeof(int[3])*sizeW);
   MPI_Allgather(ranks,3,MPI_INT,ranks_tmp,3,MPI_INT,MPI_COMM_WORLD);
@@ -54,11 +54,17 @@ int main(int argc,char *argv[]){
     MPI_Comm_create(MPI_COMM_WORLD,mpi_group_sub,&(mpi_comm_sub[i]));
     MPI_Group_free(&mpi_group_sub);
   }
-  MPI_Request requests[3];
-  MPI_Igather(sendbuf,nd,MPI_INT,NULL   ,nd,MPI_INT,1,mpi_comm_sub[ranks[0]],&(requests[0]));
-  MPI_Igather(sendbuf,nd,MPI_INT,recvbuf,nd,MPI_INT,1,mpi_comm_sub[ranks[1]],&(requests[1]));
-  MPI_Igather(sendbuf,nd,MPI_INT,NULL   ,nd,MPI_INT,1,mpi_comm_sub[ranks[2]],&(requests[2]));
-  MPI_Waitall(3,requests,MPI_STATUSES_IGNORE);
+  MPI_Request *requests=(MPI_Request *)malloc(sizeof(MPI_Request)*sizeW);
+  for(int i=0;i<sizeW;i++){
+    requests[i]=MPI_REQUEST_NULL;
+    if(mpi_comm_sub[i]!=MPI_COMM_NULL){
+      int rank_sub;
+      MPI_Comm_rank(mpi_comm_sub[i],&rank_sub);
+      int *rbuf=(rank_sub==1)?recvbuf:NULL;
+      MPI_Igather(sendbuf,nd,MPI_INT,rbuf,nd,MPI_INT,1,mpi_comm_sub[i],&(requests[i]));
+    }
+  }
+  MPI_Waitall(sizeW,requests,MPI_STATUSES_IGNORE);
   fprintf(fp0,"\n");
   for(int i=0;i<nd*3;i++){
     fprintf(fp0," index=%2d  recv=%02d\n",i,recvbuf[i]);
@@ -68,12 +74,13 @@ int main(int argc,char *argv[]){
       MPI_Comm_free(&mpi_comm_sub[i]);
     }
   }
-  free(mpi_comm_sub);
+  free(requests);
   MPI_Group_free(&mpi_group_world);
-  MPI_Comm_free(&mpi_comm_cart);
+  free(mpi_comm_sub);
   free(ranks_tmp);
   free(recvbuf);
   free(sendbuf);
+  MPI_Comm_free(&mpi_comm_cart);
   free(prds);
   free(dims);
   fclose(fp0);
