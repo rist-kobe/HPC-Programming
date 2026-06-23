@@ -22,7 +22,7 @@ int main(int argc,char *argv[]){
   sendbuf=(int *)malloc(sizeof(int)*nd);
   recvbuf=(int *)malloc(sizeof(int)*nd*sizeW);
   sendbuf[0]=rankW*10;
-  for(i=0;i<sizeW;i++){
+  for(i=0;i<nd*sizeW;i++){
     recvbuf[i]=-1;
   }
   fprintf(fp0,"\n");
