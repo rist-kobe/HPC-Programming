@@ -22,7 +22,7 @@ int main(int argc,char *argv[]){
   sendbuf=(int *)malloc(sizeof(int)*nd);
   winbuf=(int *)malloc(sizeof(int)*nd*sizeW);
   sendbuf[0]=rankW*10;
-  for(i=0;i<sizeW;i++){
+  for(i=0;i<nd*sizeW;i++){
     winbuf[i]=-1;
   }
   fprintf(fp0,"\n");
@@ -30,11 +30,11 @@ int main(int argc,char *argv[]){
     fprintf(fp0," index=%2d  send=%02d\n",i,sendbuf[i]);
   }
   MPI_Win winobj;
-  MPI_Win_create(winbuf,sizeof(int)*nd*sizeW,1,MPI_INFO_NULL,MPI_COMM_WORLD,&winobj);
+  MPI_Win_create(winbuf,sizeof(int)*nd*sizeW,sizeof(int),MPI_INFO_NULL,MPI_COMM_WORLD,&winobj);
   MPI_Win_fence(0,winobj);
   rootW=sizeW-1;
   if(rankW!=rootW){
-    MPI_Put(&(sendbuf[0]),nd,MPI_INT,rootW,nd*sizeof(int)*rankW,nd,MPI_INT,winobj);
+    MPI_Put(&(sendbuf[0]),nd,MPI_INT,rootW,nd*rankW,nd,MPI_INT,winobj);
   }
   MPI_Win_fence(0,winobj);
   fprintf(fp0,"\n");

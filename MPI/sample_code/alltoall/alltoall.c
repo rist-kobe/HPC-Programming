@@ -21,7 +21,7 @@ int main(int argc,char *argv[]){
   nd=1;
   sendbuf=(int *)malloc(sizeof(int)*nd*sizeW);
   recvbuf=(int *)malloc(sizeof(int)*nd*sizeW);
-  for(i=0;i<sizeW;i++){
+  for(i=0;i<nd*sizeW;i++){
     sendbuf[i]=rankW*10+i;
     recvbuf[i]=-1;
   }
