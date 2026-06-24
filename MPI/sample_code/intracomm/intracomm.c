@@ -57,8 +57,8 @@ int main(int argc,char *argv[]){
   for(i=0;i<sizeW;i++){
     fprintf(fp0," index=%2d  recv=%02d\n",i,recvbuf[i]);
   }
-  MPI_Comm_free(&mpi_comm_group1);
-  MPI_Comm_free(&mpi_comm_group2);
+  if(mpi_comm_group1!=MPI_COMM_NULL) MPI_Comm_free(&mpi_comm_group1);
+  if(mpi_comm_group2!=MPI_COMM_NULL) MPI_Comm_free(&mpi_comm_group2);
   MPI_Group_free(&group1);
   MPI_Group_free(&group2);
   MPI_Group_free(&mpi_group_world);
