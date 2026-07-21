@@ -35,7 +35,7 @@ program main
 
   ! initialize 
   RHO(:,:) = 0.0_DP
-  RHO((NX-1)/2,(NY-1)/2) =  chg 
+  RHO(NX/2+1,NY/2+1) =  chg 
 
   nrmbsq = 0.0_DP
   do iy = 1, NY

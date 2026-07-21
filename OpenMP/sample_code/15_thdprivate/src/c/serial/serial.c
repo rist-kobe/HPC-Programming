@@ -43,5 +43,8 @@ int main (int argc, char** argv)
   }
 
   printf("Number of negative v:%d\n",count);
+
+  free ( a );
+
   return EXIT_SUCCESS;
 }

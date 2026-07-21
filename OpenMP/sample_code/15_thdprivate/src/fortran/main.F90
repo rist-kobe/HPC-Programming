@@ -90,5 +90,8 @@ program main
 &        tid, icount
   !$omp end critical
   !$omp end parallel
+
+  deallocate ( a )
+
   stop
 end program
