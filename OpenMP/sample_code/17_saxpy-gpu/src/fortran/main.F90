@@ -46,6 +46,7 @@ program main
     x(i) = 0.0001_SP
   end do
 
+  y(:) = 0.0_SP
   call saxpy_1(NSIZE,3.0_SP,x,y) ! warm-up
 
   call get_elp_time(ielp0)
