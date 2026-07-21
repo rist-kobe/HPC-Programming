@@ -2,7 +2,7 @@
 /*----------------------------------------------------------------------
   Title:       Jacobi method (2-dim. model)
   Author:      Yukihiro Ota (yota@rist.or.jp)
-  Last update: 30th Mar. 2021
+  Last update: 31st Jan. 2024
   Reference:   
     [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
     Algebra" (Iwanami,2009) [in Japanese].
