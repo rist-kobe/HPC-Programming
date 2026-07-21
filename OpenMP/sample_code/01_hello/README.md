@@ -17,7 +17,7 @@ The code is successfully compiled by:
   * GNU 8.5.1 in AMD EPYC 7643
   * GNU 9.3.1 in Xeon Gold 6126
   * Apple clang 15.0.0 in Mac M1 (Arm64) with libomp (LLVM 16.0.4) (only for c)
-     * Please read `on-macos.md`.
+     * Please read [`misc/memo_omp_in_macos.md`](../misc/memo_omp_in_macos.md).
 4. Run
 ```
 $ env OMP_NUM_THREADS=2 ./run.x
