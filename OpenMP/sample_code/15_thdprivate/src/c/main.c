@@ -77,7 +77,5 @@ int main (int argc, char** argv)
     { printf("Round 2: thread ID=%d,  # of negative v: %d\n",tid,count); }
   }
 
-  free ( a );
-
   return EXIT_SUCCESS;
 }

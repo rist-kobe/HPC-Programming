@@ -25,11 +25,6 @@ program main
      a(i) = 0
   end do
 
-  ![Note] Whole-array reduction
-  ! The reduction clause on the whole array a below corresponds to
-  ! the C version's "For OpenMP version 5.0" variant
-  ! (reduction(+:a)). The C version uses the array-section form
-  ! reduction(+:a[0:ns]) for OpenMP version 4.5.
   !$omp parallel do schedule(static) reduction(+:a)
   do j = 1, NSIZE
     do i = 1, NSIZE

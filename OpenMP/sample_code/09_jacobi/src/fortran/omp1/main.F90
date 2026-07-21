@@ -42,7 +42,7 @@ program main
 
   ! initialize
   RHO(:,:) = 0.0_DP
-  RHO(NX/2+1,NY/2+1) =  chg 
+  RHO((NX-1)/2,(NY-1)/2) =  chg 
 
   nrmbsq = 0.0_DP
 !$OMP parallel do schedule(static) shared(RHO) private(ix,iy) &

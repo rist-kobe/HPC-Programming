@@ -53,8 +53,5 @@ program main
   end do
 
   write (6,'("Number of negative v:",1I10)') icount
-
-  deallocate ( a )
-
   stop
 end program

@@ -68,7 +68,7 @@ program main
 !$OMP end do
 
 !$OMP single
-  RHO(NX/2+1,NY/2+1) =  chg 
+  RHO((NX-1)/2,(NY-1)/2) =  chg 
   nrmbsq=0.0_DP
 !$OMP end single
 
