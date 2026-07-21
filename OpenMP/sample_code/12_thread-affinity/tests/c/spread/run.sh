@@ -15,7 +15,7 @@ export OMP_NUM_THREADS=${NTHREADS}
 export OMP_STACKSIZE=512M
 
 # Thread affinity and memory bind
-if [ "${TAFF}" = "close" ] ; then
+if [ ${TAFF} = "close" ] ; then
    export OMP_PLACES=cores 
    #export OMP_PLACES=threads # if hardware threads are active
    export OMP_PROC_BIND=close

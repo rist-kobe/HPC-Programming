@@ -12,7 +12,7 @@ $(EXE): $(OBJS)
 
 main.o: memory.o main.c
 
-memory.o: memory.c
+main.o: memory.c
 
 .c.o:
 	$(CC) $(CCFLAGS) -c $< -o $@
