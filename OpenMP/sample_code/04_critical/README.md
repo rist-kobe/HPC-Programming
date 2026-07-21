@@ -15,8 +15,8 @@ $ make
 ```
 The code is successfully compiled by GNU 8.5.0.
   * GNU 8.5.1 in AMD EPYC 7643
-  * Apple clang 15.0.0 in Mac M1 (Arm64) with libomp (LLVM 16.0.4) (only for c)
-     * Please read `on-macos.md`.
+  * Apple clang 15.0.0 in Mac M1 (Arm64) with libomp (LLVM 16.0.4) (only for c++)
+     * Please read [`misc/memo_omp_in_macos.md`](../misc/memo_omp_in_macos.md).
 4. Run
 ```
 $ env OMP_NUM_THREADS=4 ./run.x
@@ -24,7 +24,7 @@ $ env OMP_NUM_THREADS=4 ./run.x
 $ export OMP_NUM_THREADS=4
 $ ./run.x
 ```
-The sample scripts are located in `tests/c` (for C) and `tests/fortran` (for Fortran). You can use them.
+The sample scripts are located in `tests/cpp` (for C++) and `tests/fortran` (for Fortran). You can use them.
 ```
 $ cd tests/cpp
 $ bash task.sh 1> out.log 2> err.log

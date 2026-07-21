@@ -15,3 +15,5 @@ This directory contains the source code of the sample programs for a lecture cou
 ## Instruction
 
 Please read **README.md** in each of the sub-directories.
+
+Note: The sample directories are numbered with prefixes `00_` to `17_`; the number `16_` is not used, so the numbering skips from `15_thdprivate` to `17_saxpy-gpu`.
