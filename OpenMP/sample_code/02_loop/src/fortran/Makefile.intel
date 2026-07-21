@@ -10,7 +10,7 @@ INC=
 all: run.x
 
 run.x: mytype.o mykernel.o main.o
-	$(FC) $(FFLAGS) -O0 $(INC) mytype.o mykernel.o main.o $(LIB) -o $@	
+	$(FC) $(FFLAGS) $(INC) mytype.o mykernel.o main.o $(LIB) -o $@	
 
 main.o: mytype.o main.F90
 
