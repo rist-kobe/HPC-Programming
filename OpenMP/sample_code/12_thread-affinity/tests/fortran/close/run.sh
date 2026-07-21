@@ -51,7 +51,7 @@ fi
 
 # Obtain affinity setting. (>= OpenMP v5.0)
 export OMP_DISPLAY_AFFINITY=TRUE
-export OMP_AFFINITY_FORMAT= "thread_num=%5n thread_affinity=%5A"
+export OMP_AFFINITY_FORMAT="thread_num=%5n thread_affinity=%5A"
 
 ulimit -s unlimited
 
