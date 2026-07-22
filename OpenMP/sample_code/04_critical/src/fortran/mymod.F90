@@ -38,12 +38,12 @@ contains
        ifrom2 = ifrom
     end if
 
-    u(1) = 0;
+    u(1) = 0
     do i = ifrom1, ito, 2
        u(1) = u(1) + a(i)
     end do
 
-    u(2) = 0;
+    u(2) = 0
     do i = ifrom2, ito, 2
        u(2) = u(2) - a(i)
     end do
@@ -70,12 +70,12 @@ contains
        ifrom2 = ifrom
     end if
 
-    u(1) = 0;
+    u(1) = 0
     do i = ifrom1, ito, 2
        u(1) = u(1) + a(i)
     end do
 
-    u(2) = 0;
+    u(2) = 0
     do i = ifrom2, ito, 2
        u(2) = u(2) - a(i)
     end do
