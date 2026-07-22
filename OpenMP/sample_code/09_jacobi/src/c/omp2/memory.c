@@ -17,14 +17,13 @@
  *--------------------------------------------------------------------*/
 int *create_int_1d_array( const int n )
 {  
-   int nbytes = sizeof(int)*n;
+   size_t nbytes = sizeof(int)*n;
    int *array = (int *)malloc(nbytes); 
    return array;
 }
 void release_int_1d_array( int *array)
 {  
    free(array);
-   array = NULL;
 }
 /*---------------------------------------------------------------------
  * 1D DP array (vector)
@@ -36,14 +35,13 @@ void release_int_1d_array( int *array)
  *--------------------------------------------------------------------*/
 double *create_dp_1d_array( const int n )
 {  
-   int nbytes = sizeof(double)*n;
+   size_t nbytes = sizeof(double)*n;
    double *array = (double *)malloc(nbytes); 
    return array;
 }
 void release_dp_1d_array( double *array)
 {  
    free(array);
-   array = NULL;
 }
 /*---------------------------------------------------------------------
  * 2D integer array (matrix)
@@ -55,7 +53,7 @@ void release_dp_1d_array( double *array)
  *--------------------------------------------------------------------*/
 int **create_int_2d_array( const int n1, const int n2)
 {
-   int nbytes = sizeof(int)*n1*n2; 
+   size_t nbytes = sizeof(int)*n1*n2; 
    int *data = (int *)malloc(nbytes);
    nbytes = sizeof(int *)*n1;
    int **array = (int **)malloc(nbytes);
@@ -73,7 +71,6 @@ void release_int_2d_array( int **array)
    if ( array == NULL ) return;
    free(array[0]);
    free(array);
-   array = NULL;
 }
 /*---------------------------------------------------------------------
  * 2D DP array (matrix)
@@ -85,7 +82,7 @@ void release_int_2d_array( int **array)
  *--------------------------------------------------------------------*/
 double **create_dp_2d_array( const int n1, const int n2)
 {
-   int nbytes = sizeof(double)*n1*n2; 
+   size_t nbytes = sizeof(double)*n1*n2; 
    double *data = (double *)malloc(nbytes);
    nbytes = sizeof(double *)*n1;
    double **array = (double **)malloc(nbytes);
@@ -103,7 +100,6 @@ void release_dp_2d_array( double **array)
    if ( array == NULL ) return;
    free(array[0]);
    free(array);
-   array = NULL;
 }
 /*---------------------------------------------------------------------
  * 3D integer array 
@@ -115,7 +111,7 @@ void release_dp_2d_array( double **array)
  *--------------------------------------------------------------------*/
 int ***create_int_3d_array( const int n1, const int n2, const int n3)
 {
-   int nbytes = sizeof(int)*n1*n2*n3; /* 64-bit unsigned int should be used */ 
+   size_t nbytes = sizeof(int)*n1*n2*n3;
    int *data = (int *)malloc(nbytes);
    nbytes = sizeof(int *)*n1*n2;
    int **array2 = (int **)malloc(nbytes);
@@ -143,7 +139,6 @@ void release_int_3d_array( int ***array)
    free(array[0][0]);
    free(array[0]);
    free(array);
-   array = NULL;
 }
 /*---------------------------------------------------------------------
  * 3D DP array 
@@ -155,7 +150,7 @@ void release_int_3d_array( int ***array)
  *--------------------------------------------------------------------*/
 double ***create_dp_3d_array( const int n1, const int n2, const int n3)
 {
-   int nbytes = sizeof(double)*n1*n2*n3; /* 64-bit unsigned int should be used */ 
+   size_t nbytes = sizeof(double)*n1*n2*n3;
    double *data = (double *)malloc(nbytes);
    nbytes = sizeof(double *)*n1*n2;
    double **array2 = (double **)malloc(nbytes);
@@ -183,5 +178,4 @@ void release_dp_3d_array( double ***array)
    free(array[0][0]);
    free(array[0]);
    free(array);
-   array = NULL;
 }

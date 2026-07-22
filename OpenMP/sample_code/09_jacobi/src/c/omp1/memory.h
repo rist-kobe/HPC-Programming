@@ -1,6 +1,6 @@
 /* Copyright 2024 Research Organization for Information Science and Technology */
-#ifndef __MEMORY_H__
-#define __MEMORY_H__
+#ifndef MEMORY_H_INCLUDED
+#define MEMORY_H_INCLUDED
 
 int *create_int_1d_array( const int );
 void release_int_1d_array( int *);
@@ -15,4 +15,4 @@ void release_int_3d_array( int ***);
 double ***create_dp_3d_array( const int, const int, const int);
 void release_dp_3d_array( double ***);
 
-#endif /* __MEMORY_H__ */
+#endif /* MEMORY_H_INCLUDED */

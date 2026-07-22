@@ -2,7 +2,7 @@
 /*----------------------------------------------------------------------
   Title:       Jacobi method (2-dim. model)
   Author:      Yukihiro Ota (yota@rist.or.jp)
-  Last update: March 16th, 2026
+  Last update: July 22nd, 2026
   Reference:   
     [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
     Algebra" (Iwanami,2009) [in Japanese].
@@ -17,7 +17,7 @@
 #define NY 1024
 #define MAXITR 1000
 
-int main (int argc, char **argv)
+int main (void)
 {
   int itr;
   int iconv;
@@ -29,7 +29,8 @@ int main (int argc, char **argv)
   double elp0;
   double elp[3];
 #if defined(USE_STATICMEM)
-  /* For static memory */
+  /* For static memory. NOTE: about 24 MiB is placed on the stack;
+   * run "ulimit -s unlimited" beforehand.                          */
   double phie[NX][NY];
   double phio[NX][NY];
   double rho[NX][NY];
@@ -48,6 +49,9 @@ int main (int argc, char **argv)
       rho[ix][iy] = 0.0;
     }
   }
+  /* A point charge at the grid-center cell (NX/2, NY/2 in 0-based
+   * indexing; the same cell as NX/2+1, NY/2+1 in the 1-based Fortran
+   * version).                                                       */
   rho[NX/2][NY/2] = chg;
 
   nrmbsq = 0.0;
@@ -88,6 +92,10 @@ reduction(+:nrmbsq)
   iconv = 0;
   for ( itr = 1; itr <= MAXITR; ++itr) {
 
+    /* ANTI-PATTERN: the parallel directive is on the INNER loop, so
+     * a parallel region is created (and joined) NX-2 times in every
+     * iteration, and each thread gets only a short chunk of work.
+     * Compare with omp1/omp2, which parallelize the outer loop.    */
     for (int ix = 1; ix < NX-1; ++ix ) {
 #pragma omp parallel for schedule(static) shared(phio,phie,rho) 
       for (int iy = 1; iy < NY-1; ++iy ) {
@@ -134,12 +142,13 @@ reduction(+:nrmsq)
 
   elp[1] = omp_get_wtime () - elp0;
 
+  --itr;
   if ( iconv ) {
     printf ("Convergence\n");
-    printf ("Itr. count=%d\n", --itr);
+    printf ("Itr. count=%d\n", itr);
   } else {
     printf ("Not Convergence\n");
-    printf ("Itr. count=%d\n", --itr);
+    printf ("Itr. count=%d\n", itr);
   }
 
   elp0 = omp_get_wtime ();
