@@ -13,6 +13,6 @@ run.x: main.o
 
 main.o: main.c
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o run.x

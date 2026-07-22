@@ -9,6 +9,6 @@ run.x: serial.o
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o *.x

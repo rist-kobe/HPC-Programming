@@ -13,7 +13,7 @@ program main
   tid = 0
 #endif
 
-  write(6,'("Hello")') 
+  write(6,'("Hello.")') 
   !$omp parallel private(tid)
 #if defined(_OPENMP)
   tid = omp_get_thread_num()
@@ -21,11 +21,11 @@ program main
 ! Use of omp critical is correct. Why?
   !$omp critical
   write (6,'("Hello. I am thread-ID ",1I3," of ",1I3,&
-&        " threads.")') tid, nthreads
+&        " threads")') tid, nthreads
   !$omp end critical
 ! Naive implementation
 !  write (6,'("Hello. I am thread-ID ",1I3," of ",1I3,&
-! &        " threads.")') tid, nthreads
+! &        " threads")') tid, nthreads
   !$omp end parallel
 
   stop

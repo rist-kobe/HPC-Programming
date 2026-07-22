@@ -85,7 +85,9 @@ subroutine saxpy_2 (ns, a, x, y)
   !$ACC loop
 #endif
 #if _OPENMP
-  !$OMP target map(tofrom:y(1:ns)) map(to:x(1:ns))
+  ! x is not mapped here: the enclosing target data region keeps it
+  ! device-resident, so the implicit reference reuses that copy.
+  !$OMP target map(tofrom:y(1:ns))
   !$OMP loop
 #endif
   do i = 1, ns

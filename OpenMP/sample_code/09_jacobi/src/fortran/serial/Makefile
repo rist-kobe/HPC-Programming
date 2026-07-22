@@ -18,6 +18,6 @@ mytype.o: mytype.F90
 .F90.o:
 	$(FC) $(FCFLAGS) -c $< -o $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o *.mod $(EXE)
