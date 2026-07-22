@@ -1,6 +1,6 @@
 # reduction clause 
 * Author:   Yukihiro Ota (yota@rist.or.jp)
-* Last update: January 24th 2024
+* Last update: July 22nd 2026
 
 ## Instruction: Compile and Run
 1. Source code is in `src/`. Choose either fortran or c.
@@ -31,6 +31,7 @@ $ bash task.sh 1> out.log 2> err.log
 
 ## Exercise
 1. Write the reduction calculation without using `reduction` clause. 
+2. Consider why `amax` is initialized with the smallest representable integer (`INT_MIN` in C, `-huge(amax)` in Fortran) rather than 0. What would happen with an initial value of 0 if the array contained only negative values?
 
 ## Output (examples)
 ```
