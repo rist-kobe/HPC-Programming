@@ -47,10 +47,6 @@ int main (int argc, char **argv)
           * element could share a cache line with unrelated data.      */ 
          a = (int *) aligned_alloc ( sizeof(int)*CACHE_LINE_INT,
                                      sizeof(int)*nt*CACHE_LINE_INT );
-         if ( a == NULL ) {
-            fprintf(stderr,"Error: memory allocation failed\n");
-            exit(EXIT_FAILURE);
-         }
       }
 #else
       if ( tid == 0 ) {
@@ -61,10 +57,6 @@ int main (int argc, char **argv)
           * element could share a cache line with unrelated data.      */ 
          a = (int *) aligned_alloc ( sizeof(int)*CACHE_LINE_INT,
                                      sizeof(int)*nt*CACHE_LINE_INT );
-         if ( a == NULL ) {
-            fprintf(stderr,"Error: memory allocation failed\n");
-            exit(EXIT_FAILURE);
-         }
       }
 #endif
 

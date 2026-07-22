@@ -30,30 +30,21 @@ program main
 
   integer,allocatable,dimension(:) :: a
   integer :: nt, tid, id
-  integer :: istat
 
   nt = omp_get_max_threads()
 
-!$omp parallel shared(a) private(tid, id, istat)
+!$omp parallel shared(a) private(tid, id)
   tid = omp_get_thread_num()
 
 #if ! defined(NOT_USE_MASKED)
   !$omp masked
      ! To avoid false sharing: each thread works on its own cache line
-     allocate( a(1:nt*CACHE_LINE_INT), stat=istat )
-     if ( istat .ne. 0 ) then
-        write(0,'("Error: memory allocation failed")')
-        stop 1
-     end if
+     allocate( a(1:nt*CACHE_LINE_INT) )
   !$omp end masked
 #else
   if ( tid .eq. 0 ) then
      ! To avoid false sharing: each thread works on its own cache line
-     allocate( a(1:nt*CACHE_LINE_INT), stat=istat )
-     if ( istat .ne. 0 ) then
-        write(0,'("Error: memory allocation failed")')
-        stop 1
-     end if
+     allocate( a(1:nt*CACHE_LINE_INT) )
   end if
 #endif
 
