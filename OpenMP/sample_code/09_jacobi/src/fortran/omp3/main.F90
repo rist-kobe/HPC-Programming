@@ -2,7 +2,7 @@
 ! /*--------------------------------------------------------------------
 !  Title:       Jacobi method (2-dim. model)
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
-!  Last update: March 16th, 2026
+!  Last update: July 22nd, 2026
 !  Reference:   
 !    [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
 !    Algebra" (Iwanami,2009) [in Japanese].
@@ -10,14 +10,14 @@
 ! --------------------------------------------------------------------*/
 program main
   use mytype,only:DP
+  use omp_lib
   implicit none
-
-  include 'omp_lib.h'
 
   integer,parameter :: NX = 1024 
   integer,parameter :: NY = 1024 
   integer,parameter :: MAXITR = 1000
   integer :: itr, ix, iy
+  integer :: iunit
 
   logical :: lconv
 
@@ -28,6 +28,8 @@ program main
   real(kind=DP) :: elp0
   real(kind=DP) :: elp(1:3)
 #if defined(USE_STATICMEM)
+  ! For static memory. NOTE: about 24 MiB is placed on the stack;
+  ! run "ulimit -s unlimited" beforehand.
   real(kind=DP) :: PHIE(1:NX,1:NY)
   real(kind=DP) :: PHIO(1:NX,1:NY)
   real(kind=DP) :: RHO(1:NX,1:NY)
@@ -43,7 +45,9 @@ program main
 
   ! set RHO
   RHO(:,:) = 0.0_DP
-  RHO((NX-1)/2,(NY-1)/2) =  chg 
+  ! A point charge at the grid-center cell (NX/2+1, NY/2+1 in 1-based
+  ! indexing; the same cell as NX/2, NY/2 in the 0-based C version).
+  RHO(NX/2+1,NY/2+1) =  chg
 
   nrmbsq = 0.0_DP
 !$OMP parallel do schedule(static) shared(RHO) private(ix,iy) &
@@ -87,6 +91,10 @@ program main
   lconv = .false.
   do itr =  1, MAXITR
 
+    ! ANTI-PATTERN: the parallel directive is on the INNER loop, so
+    ! a parallel region is created (and joined) NY-2 times in every
+    ! iteration, and each thread gets only a short chunk of work.
+    ! Compare with omp1/omp2, which parallelize the outer loop.
       do iy = 2, NY-1
 !$OMP parallel do schedule(static) shared(PHIE,PHIO,RHO) private(ix) 
       do ix = 2, NX-1
@@ -149,12 +157,15 @@ program main
 
   elp0 = omp_get_wtime()
 
+  ! finalize
+  open (newunit=iunit, file='phi.dat', status='replace', action='write')
   do iy = 1, NY
   do ix = 1, NX
-    write (99, '(2I10,1F13.4)') ix,iy,PHIE(ix,iy)
+    write (iunit, '(2I10,1F13.4)') ix,iy,PHIE(ix,iy)
   end do
-    write (99, *) 
+    write (iunit, *) 
   end do
+  close (iunit)
 
   elp(3) = omp_get_wtime() - elp0
 
@@ -167,6 +178,4 @@ program main
   deallocate( PHIO )
   deallocate( RHO  )
 #endif
-
-  stop
 end program main
