@@ -1,6 +1,8 @@
 # sections construct: Hello world
 * Author:   Yukihiro Ota (yota@rist.or.jp)
-* Last update: January 24th 2024
+* Last update: July 22nd 2025
+
+Each `section` inside a `sections` construct is executed exactly once, by some thread of the team. When there are more threads than sections, the extra threads wait at the implied barrier at the end of the `sections` construct; with fewer threads, some threads execute multiple sections.
 
 ## Instruction: Compile and Run
 1. Source code is in `src/`. Choose either fortran or c.
@@ -31,6 +33,8 @@ $ bash task.sh 1> out.log 2> err.log
 
 ## Exercise
 1. Check the output changing the number of threads.
+2. Add a `nowait` clause to the `sections` construct (`!$omp end sections nowait` in Fortran) and observe/explain the difference.
+3. Rewrite the example using `task` constructs inside a `single` region, the more flexible modern alternative to `sections`.
 
 ## Output (examples)
 Only 4 threads are used except for `Threads: 1` since there are 4 `section` directives.

@@ -2,7 +2,7 @@
 ! /*--------------------------------------------------------------------
 !  Title:       Jacobi method (2-dim. model)
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
-!  Last update: March 16th, 2026
+!  Last update: July 22nd, 2026
 !  Reference:   
 !    [1] M. Sugihara and K. Murota, "Theoretical Numerical Linear 
 !    Algebra" (Iwanami,2009) [in Japanese].
@@ -10,14 +10,14 @@
 ! --------------------------------------------------------------------*/
 program main
   use mytype,only:DP
+  use omp_lib
   implicit none
-
-  include 'omp_lib.h'
 
   integer,parameter :: NX = 1024
   integer,parameter :: NY = 1024
   integer,parameter :: MAXITR = 1000
   integer :: itr, ix, iy
+  integer :: iunit
 
   logical :: lconv
 
@@ -27,7 +27,12 @@ program main
   real(kind=DP) :: nrmbsq
   real(kind=DP) :: elp0
   real(kind=DP) :: elp(1:3)
+  ! Double buffering: PHIE holds the current iterate and PHIO the
+  ! next one; after each sweep the new solution is copied back to
+  ! PHIE.
 #if defined(USE_STATICMEM)
+  ! For static memory. NOTE: about 24 MiB is placed on the stack;
+  ! run "ulimit -s unlimited" beforehand.
   real(kind=DP) :: PHIE(1:NX,1:NY)
   real(kind=DP) :: PHIO(1:NX,1:NY)
   real(kind=DP) :: RHO(1:NX,1:NY)
@@ -41,8 +46,11 @@ program main
 
   elp0 = omp_get_wtime()
 
-  ! initialization 
-!$OMP parallel shared(RHO,PHIE,PHIO) private(ix,iy) 
+  ! initialization
+  ! Unlike omp1, a single parallel region encloses all the work-
+  ! sharing loops (OMP do) below: the team of threads is forked
+  ! only once, which reduces the fork-join overhead.
+!$OMP parallel default(none) shared(RHO,PHIE,PHIO,nrmbsq) private(ix,iy)
 !$OMP do schedule(static)
   do iy = 1, NY
   do ix = 1, NX
@@ -53,10 +61,15 @@ program main
   end do
 !$OMP end do
 
+  ! Dirichlet boundary condition: phi = 0 on the whole boundary.
+  ! Both buffers get zero boundaries here, so the boundary never
+  ! needs to be touched again inside the iteration loop.
 !$OMP do schedule(static)
   do ix = 1, NX
     PHIE(ix,1) = 0.0_DP
     PHIE(ix,NY) = 0.0_DP
+    PHIO(ix,1) = 0.0_DP
+    PHIO(ix,NY) = 0.0_DP
   end do
 !$OMP end do
 
@@ -64,11 +77,15 @@ program main
   do iy = 1, NY
     PHIE(1,iy) = 0.0_DP
     PHIE(NX,iy) = 0.0_DP
+    PHIO(1,iy) = 0.0_DP
+    PHIO(NX,iy) = 0.0_DP
   end do
 !$OMP end do
 
 !$OMP single
-  RHO((NX-1)/2,(NY-1)/2) =  chg 
+  ! A point charge at the grid-center cell (NX/2+1, NY/2+1 in 1-based
+  ! indexing; the same cell as NX/2, NY/2 in the 0-based C version).
+  RHO(NX/2+1,NY/2+1) =  chg
   nrmbsq=0.0_DP
 !$OMP end single
 
@@ -89,7 +106,9 @@ program main
   lconv = .false.
   do itr =  1, MAXITR
 
-!$OMP parallel shared(PHIE,PHIO,RHO) private(ix,iy) 
+  ! Again a single parallel region per iteration instead of one
+  ! parallel region per loop (compare with omp1).
+!$OMP parallel default(none) shared(PHIE,PHIO,RHO,nrmsq) private(ix,iy)
 !$OMP do schedule(static)
     do iy = 2, NY-1
     do ix = 2, NX-1
@@ -100,37 +119,24 @@ program main
     end do
     end do
 !$OMP end do
-      
-!$OMP do schedule(static)
-    do ix = 1, NX
-      PHIO(ix,1) = 0.0_DP
-      PHIO(ix,NY) = 0.0_DP
-    end do
-!$OMP end do
-
-!$OMP do schedule(static)
-    do iy = 1, NY
-      PHIO(1,iy) = 0.0_DP
-      PHIO(NX,iy) = 0.0_DP
-    end do
-!$OMP end do
+    ! The interior sweep never writes boundary cells and the copy
+    ! below preserves them, so the zero boundary set during the
+    ! initialization remains valid throughout the iteration.
 
 !$OMP single
     nrmsq=0.0_DP
 !$OMP end single
 
+    ! Residual test: || A x - b ||^2 <= tol * || b ||^2. The factor
+    ! 16 = 4^2 rescales the difference of the two iterates by the
+    ! diagonal entry of the discrete Laplacian. The copy back to
+    ! PHIE is fused into the same loop: both statements traverse
+    ! the same data, so the fusion halves the memory traffic.
 !$OMP do schedule(static) reduction(+:nrmsq)
     do iy = 1, NY
     do ix = 1, NX
       nrmsq = nrmsq + 16.0_DP * ( PHIO(ix,iy) - PHIE (ix,iy) ) &
 &                             * ( PHIO(ix,iy) - PHIE (ix,iy) )
-    end do
-    end do
-!$OMP end do
-
-!$OMP do schedule(static)
-    do iy = 1, NY
-    do ix = 1, NX
       PHIE(ix,iy) = PHIO(ix,iy)
     end do
     end do
@@ -156,12 +162,14 @@ program main
   elp0 = omp_get_wtime()
 
   ! finalize
+  open (newunit=iunit, file='phi.dat', status='replace', action='write')
   do iy = 1, NY
   do ix = 1, NX
-    write (99, '(2I10,1F13.4)') ix,iy,PHIE(ix,iy)
+    write (iunit, '(2I10,1F13.4)') ix,iy,PHIE(ix,iy)
   end do
-    write (99, *) 
+    write (iunit, *) 
   end do
+  close (iunit)
 
   elp(3) = omp_get_wtime() - elp0
 
@@ -174,6 +182,4 @@ program main
   deallocate( PHIO )
   deallocate( RHO  )
 #endif
-
-  stop
 end program main

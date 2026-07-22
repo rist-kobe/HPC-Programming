@@ -40,9 +40,21 @@ for nt in `ntlst` ; do
   ${EXE} 
 done
 
-# Comment out the following 10 lines if you create the executable file without critical construct.
+# Uncomment the following 10 lines if you create the executable file without critical construct (-DWO_CRITICAL).
 #EXE=${BINDIR}/run_wo_critical.x
 #echo "Without critical construct"
+#for nt in `ntlst` ; do
+#  if echo ${nt} |grep -E -s -q "^#.*" ; then
+#      continue
+#  fi
+#  export OMP_NUM_THREADS=${nt}
+#  echo "Threads: ${nt}"
+#  ${EXE} 
+#done
+
+# Uncomment the following 10 lines if you create the executable file with the better implementation (-DBETTER_IMPL).
+#EXE=${BINDIR}/run_better.x
+#echo "Better implementation (no shared work array)"
 #for nt in `ntlst` ; do
 #  if echo ${nt} |grep -E -s -q "^#.*" ; then
 #      continue

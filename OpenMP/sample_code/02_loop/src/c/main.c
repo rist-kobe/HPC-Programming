@@ -13,6 +13,7 @@ int main (int argc, char ** argv)
   double tmp;
   double a[NSIZE],b[NSIZE],c[NSIZE];
 
+  #pragma omp parallel for
   for (int i=0; i<NSIZE; ++i) {
     a[i] = 0.0;
     b[i] = 1.0;
