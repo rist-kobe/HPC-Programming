@@ -31,8 +31,27 @@ void saxpy_1(const int ns, float a, float * restrict x,
   }
 }
 
-int dummy(const int ns, float *a)
+/* x is expected to be device-resident already (enclosing data region),
+   so only y is mapped per call.                                        */
+void saxpy_2(const int ns, float a, float * restrict x, 
+           float * restrict y)
 {
-  return 0;
+#if _OPENACC
+  #pragma acc kernels copy(y[0:ns]) present(x[0:ns])
+  #pragma acc loop
+#endif
+#if _OPENMP
+  #pragma omp target map(tofrom:y[0:ns]) map(to:x[0:ns])
+  #pragma omp loop
+#endif
+  for (int i =0; i<ns; ++i) {
+    y[i] += a*x[i];
+  }
 }
 
+int dummy(const int ns, float *a)
+{
+  (void)ns;
+  (void)a;
+  return 0;
+}
