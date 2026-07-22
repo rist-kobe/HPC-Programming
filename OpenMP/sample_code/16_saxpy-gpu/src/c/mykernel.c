@@ -41,9 +41,7 @@ void saxpy_2(const int ns, float a, float * restrict x,
   #pragma acc loop
 #endif
 #if _OPENMP
-  /* x is not mapped here: the enclosing target data region keeps it
-     device-resident, so the implicit reference reuses that copy.     */
-  #pragma omp target map(tofrom:y[0:ns])
+  #pragma omp target map(tofrom:y[0:ns]) map(to:x[0:ns])
   #pragma omp loop
 #endif
   for (int i =0; i<ns; ++i) {
