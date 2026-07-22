@@ -22,14 +22,18 @@ int main (int argc, char ** argv)
      a[i] = 0;
   }
 
-  /* For OpenMP version 5.0 
-  #pragma omp parallel for schedule(static) reduction(+:a)
+  /* Each thread gets a private copy of the whole array a, initialized
+     to 0; OpenMP combines the private copies element-wise into the
+     original array at the end of the loop. The parallel loop runs over
+     the second index j, so every thread accumulates into every a[i]
+     and the array reduction is essential.                             */
+  /* The whole-array form reduction(+:a) requires OpenMP 5.0.
+     For OpenMP 4.5, use the array-section form instead:
+     #pragma omp parallel for schedule(static) reduction(+:a[0:NSIZE])
   */
-  /* For OpenMP version 4.5 */
-  int ns = NSIZE;
-  #pragma omp parallel for schedule(static) reduction(+:a[0:ns])
-  for ( int i=0; i<NSIZE; ++i ) {
-    for (int j=0; j<NSIZE; ++j ) {
+  #pragma omp parallel for schedule(static) reduction(+:a)
+  for ( int j=0; j<NSIZE; ++j ) {
+    for (int i=0; i<NSIZE; ++i ) {
        a[i] += f[i][j]; 
     }
   }

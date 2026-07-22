@@ -1,6 +1,8 @@
 # reduction clause: On array
 * Author:   Yukihiro Ota (yota@rist.or.jp)
-* Last update: January 24th 2024
+* Last update: July 22nd 2026
+
+The reduction loop is parallelized over the *second* index (`j`), so every thread accumulates into every element of the array `a`. This is precisely why an array reduction is required: each thread works on a private copy of the whole array, and OpenMP combines the private copies element-wise at the end of the loop.
 
 ## Instruction: Compile and Run
 1. Source code is in `src/`. Choose either fortran or c.
@@ -31,6 +33,7 @@ $ bash task.sh 1> out.log 2> err.log
 
 ## Exercise
 1. Write the reduction calculation without using `reduction` clause. 
+2. Parallelize the outer `i` loop instead of the `j` loop. Is the reduction clause still necessary? Why or why not?
 
 ## Output (examples)
 ```
