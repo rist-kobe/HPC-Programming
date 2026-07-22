@@ -15,39 +15,38 @@ module myvar
   subroutine inc ()
     icount = icount + 1
   end subroutine inc
-end module myvar
 
-integer function func ( x ) result(ret)
-  integer,intent(in) :: x
-  ret = x
-  return
-end function func
+  integer function func ( x ) result(ret)
+    integer,intent(in) :: x
+    ret = x
+  end function func
+end module myvar
 
 program main
   use omp_lib
-  use myvar,only: icount, inc
+  use myvar,only: icount, inc, func
   implicit none
   integer :: i
   integer :: tid
   integer :: nargc
   integer :: nsize
   integer :: v
-  integer :: func
   integer,allocatable,dimension(:) :: a
   character(len=16) :: cbuf
 
   nargc = command_argument_count ()
 
   if ( nargc .ne. 1 ) then
-    write (6,'("[usage] run.x (arg1) \n",&
+    write (6,'("[usage] run.x (arg1)",/,&
 &          "   arg1: array size (integer)")')
-    stop
+    stop 1
   end if
 
   call get_command_argument (1, cbuf)
-  read (cbuf,'(1I10)') nsize
-  if ( nsize < 0 ) then
-    stop
+  read (cbuf,*) nsize
+  if ( nsize <= 0 ) then
+    write (6,'("Error: array size must be a positive integer.")')
+    stop 1
   end if
 
   allocate ( a(1:nsize) )
@@ -56,9 +55,13 @@ program main
     a(i) = i-1 - nsize/2
   end do
 
+  ! Disable dynamic thread adjustment: the threadprivate values
+  ! persist between the two parallel regions only when dynamic
+  ! adjustment is off and the number of threads is unchanged.
   call omp_set_dynamic ( .false. )
 
   icount = 0
+  ! 1st round
   !$omp parallel private(v,tid) copyin(icount)
   tid = omp_get_thread_num () 
   !$omp do schedule(static) 
@@ -69,13 +72,16 @@ program main
   !$omp end do
 
   !$omp critical
-  write (6,'("Round 1: thread-ID=",1I4,", # of negative v: ",1I4)') &
+  write (6,'("Round 1: thread ID=",1I0,",  # of negative v: ",1I4)') &
 &        tid, icount
   !$omp end critical
   !$omp end parallel
 
+  ! dump icount on thread ID=0
   write (6,'("b/w Rounds 1 and 2: primary thread, # of negative v: ",1I4)') icount
 
+  ! 2nd round: copyin is deliberately omitted, so each thread's
+  ! icount retains its value from Round 1 and keeps accumulating.
   !$omp parallel private(v,tid)
   tid = omp_get_thread_num () 
   !$omp do schedule(static) 
@@ -86,9 +92,12 @@ program main
   !$omp end do
 
   !$omp critical
-  write (6,'("Round 2:thread-ID=",1I4,", # of negative v: ",1I4)') &
+  write (6,'("Round 2: thread ID=",1I0,",  # of negative v: ",1I4)') &
 &        tid, icount
   !$omp end critical
   !$omp end parallel
-  stop
-end program
+
+  ! Reference: number of negatives per round for a self-check
+  write (6,'("Expected # of negative v per round: ",1I4)') nsize/2
+
+end program main

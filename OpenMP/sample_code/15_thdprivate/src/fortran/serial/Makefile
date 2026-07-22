@@ -1,10 +1,10 @@
 FC=gfortran
-FCFLAGS=-g -O0 -fopenmp
+FCFLAGS=-g -O0
 
 .SUFFIXES: .F90 .o
 
-run.x: main.o
-	$(FC) $(FCFLAGS) main.o -o run.x
+run.x: serial.o
+	$(FC) $(FCFLAGS) serial.o -o run.x
 
 .F90.o:
 	$(FC) $(FCFLAGS) -c $< -o $@ 

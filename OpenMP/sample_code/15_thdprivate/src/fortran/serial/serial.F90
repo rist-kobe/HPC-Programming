@@ -6,37 +6,36 @@ module myvar
   subroutine inc ()
     icount = icount + 1
   end subroutine inc
+
+  integer function func ( x ) result(ret)
+    integer,intent(in) :: x
+    ret = x
+  end function func
 end module myvar
 
-integer function func ( x ) result(ret)
-  integer,intent(in) :: x
-  ret = x
-  return
-end function func
-
 program main
-  use myvar,only: icount, inc
+  use myvar,only: icount, inc, func
   implicit none
   integer :: i
   integer :: nargc
   integer :: nsize
   integer :: v
-  integer :: func
   integer,allocatable,dimension(:) :: a
   character(len=16) :: cbuf
 
   nargc = command_argument_count ()
 
   if ( nargc .ne. 1 ) then
-    write (6,'("[usage] run.x (arg1) \n",&
+    write (6,'("[usage] run.x (arg1)",/,&
 &          "   arg1: array size (integer)")')
-    stop
+    stop 1
   end if
 
   call get_command_argument (1, cbuf)
-  read (cbuf,'(1I10)') nsize
-  if ( nsize < 0 ) then
-    stop
+  read (cbuf,*) nsize
+  if ( nsize <= 0 ) then
+    write (6,'("Error: array size must be a positive integer.")')
+    stop 1
   end if
 
   allocate ( a(1:nsize) )
@@ -53,5 +52,5 @@ program main
   end do
 
   write (6,'("Number of negative v:",1I10)') icount
-  stop
-end program
+
+end program main

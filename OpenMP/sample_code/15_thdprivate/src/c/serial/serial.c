@@ -21,11 +21,12 @@ int main (int argc, char** argv)
   int *a;
 
   if ( argc != 2 ) {
-    printf("[usage] run.x (arg1)\n  arg1: arary size (int)\n");
-    return EXIT_SUCCESS;
+    fprintf(stderr, "[usage] run.x (arg1)\n  arg1: array size (int)\n");
+    return EXIT_FAILURE;
   }
   nsize = atoi (argv[1]);
   if ( nsize <= 0 ) {
+     fprintf(stderr, "Error: array size must be a positive integer.\n");
      return EXIT_FAILURE;
   }
 
@@ -43,5 +44,7 @@ int main (int argc, char** argv)
   }
 
   printf("Number of negative v:%d\n",count);
+
+  free(a);
   return EXIT_SUCCESS;
 }
