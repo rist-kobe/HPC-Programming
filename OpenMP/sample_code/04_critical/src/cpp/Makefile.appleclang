@@ -1,8 +1,8 @@
 ## Apple clang 15.0.0
 CXX=clang++
-CXXFLAGS=-g -O2 #-DWO_CRITICAL
+CXXFLAGS=-g -O2 #-DWO_CRITICAL or -DBETTER_IMPL
 
-OMP_ROOT = /Users/yota/projects/libomp/16.0.4-darwin20/usr/local
+OMP_ROOT = # Please specify the location of your installed libomp.
 INC = -I$(OMP_ROOT)/include
 LIB = -L$(OMP_ROOT)/lib -lomp
 CXXFLAGS += -Xclang -fopenmp $(INC)
