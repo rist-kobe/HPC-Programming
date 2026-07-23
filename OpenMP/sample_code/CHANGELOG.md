@@ -41,9 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2024-01-31
 ### Added
 - Add a remark on sample scripts for program execution in Mac M1.
-- Add an instruction to use OpenMP in MacOS.
+- Add an instruction to use OpenMP in macOS.
 - Add Makefile for Mac M1 and Apple clang with LLVM OpenMP runtime in `hello`, `loop`, `schedule`, `jacobi`, `critical`, and `ompversion`.
-- Add the dynamical-memory-allocation version of part of the codes in `jacobi`.
+- Add the dynamic-memory-allocation version of part of the code in `jacobi`.
 ### Fixed
 - Fix a writing mistake of OpenMP directive and the sample scripts in `critical`.
 
@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.1] - 2024-01-24
 ### Added
 - Add `critical` as an example.
-- Add typical results of the sample codes to `readme.md`.
+- Add typical results of the sample code to `readme.md`.
 ### Changed
 - Rewrite README in the markdown format.
 - Re-measure the performance of `loop`, `schedule`, and `jacobi`.
