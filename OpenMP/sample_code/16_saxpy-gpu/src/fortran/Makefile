@@ -3,7 +3,7 @@ FC=nvfortran
 ## Offload mode: omp (OpenMP target offload), acc (OpenACC), nogpu (host only)
 OFFLOAD ?= omp
 ## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
-TP ?= icelake
+TP ?= native
 FCFLAGS=-g -Wall -O3
 LIB=
 INC=
