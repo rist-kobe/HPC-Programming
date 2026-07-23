@@ -17,7 +17,7 @@ $cd src/fortran # Fortran
 3. Make 
 ```
 # If using masked construct:
-$ make  # Note: Makefile is equivalent to Makefile.gnu.
+$ make
 # If not using masked construct:
 $ make DFLAGS=-DNOT_USE_MASKED
 ```

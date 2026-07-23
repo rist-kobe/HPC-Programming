@@ -11,7 +11,7 @@ $cd src/fortran # Fortran
 ```
 3. Make
 ```
-$ make  # Note: Makefile is equivalent to Makefile.gnu.
+$ make
 ```
 The code is successfully compiled by:
   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642/7643 (x86)
