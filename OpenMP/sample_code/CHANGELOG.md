@@ -6,10 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2026-07-23
 ### Removed
-- Remove Apple Clang-specific Makefiles (`Makefile.appleclang*`) from all sample directories.
-- Remove Intel compiler-specific Makefiles (`Makefile.intel*`) from all sample directories.
+- Removed Apple Clang-specific Makefiles (`Makefile.appleclang*`) from all sample directories.
+- Removed Intel compiler-specific Makefiles (`Makefile.intel*`) from all sample directories.
+- Removed LLVM Clang-specific Makefiles (`Makefile.clang*`) from all sample directories.
+- Removed redundant GNU wrapper Makefiles (`Makefile.gnu`) now covered by the default `Makefile`.
+- Removed macOS-specific memo docs (`misc/memo_omp_in_macos.md`, `misc/memo_run-samples_macos.md`).
+- Consolidated `16_saxpy-gpu` NVHPC variant Makefiles (`Makefile.nvhpc.*`) into a single `Makefile` (selectable via `OFFLOAD`).
 ### Changed
-- Update `04_critical/README.md` to remove the stale reference to `Makefile.intel`.
+- Updated `04_critical/README.md` to remove the stale reference to `Makefile.intel`.
+- Updated `16_saxpy-gpu/README.md` to match the consolidated Makefile.
 
 ## [1.0.0] - 2026-03-16
 ### Changed
