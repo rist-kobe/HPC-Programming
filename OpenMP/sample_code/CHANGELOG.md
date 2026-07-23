@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - MIT license is adopted.
 - The directory structure is rearranged.
-- Dynamical memory allocation is used in `jacobi` as the primary choice of memory allocation, rather than static memory.
+- Dynamic memory allocation is used in `jacobi` as the primary memory-allocation approach, rather than static allocation.
 
 ## [0.2.3] - 2024-10-01
 ### Added
