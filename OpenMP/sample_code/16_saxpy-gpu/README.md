@@ -19,7 +19,7 @@ $cd src/fortran # Fortran
     # OpenACC offloading (`-acc=gpu -Minfo=accel`)
     $ make clean && make OFFLOAD=acc && mv run.x acc/
 
-    # Host only, no GPU offloading (`-mp -Minfo=mp`)
+    # CPU OpenMP only (no GPU offloading) (`-mp -Minfo=mp`)
     $ make clean && make OFFLOAD=nogpu && mv run.x nogpu/
 The code is successfully compiled by:
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
