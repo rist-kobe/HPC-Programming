@@ -11,16 +11,16 @@ $cd src/fortran # Fortran
 ```
 3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). The run scripts under `tests/**` expect three executables to exist under `src/{c,fortran}/{omp,acc,nogpu}/run.x`. Build them by editing `Makefile` to select the desired offloading mode, then repeating `make` and saving each output:
 
-   $ mkdir -p omp acc nogpu
+    $ mkdir -p omp acc nogpu
 
-   # OpenMP offloading: set `-mp=gpu -Minfo=mp,accel`
-   $ make clean && make && mv run.x omp/
+    # OpenMP offloading: set `-mp=gpu -Minfo=mp,accel`
+    $ make clean && make && mv run.x omp/
 
-   # OpenACC offloading: set `-acc=gpu -Minfo=accel`
-   $ make clean && make && mv run.x acc/
+    # OpenACC offloading: set `-acc=gpu -Minfo=accel`
+    $ make clean && make && mv run.x acc/
 
-   # Host only: set `-mp -Minfo=mp` and comment out the `-gpu=...` line
-   $ make clean && make && mv run.x nogpu/
+    # Host only: set `-mp -Minfo=mp` and comment out the `-gpu=...` line
+    $ make clean && make && mv run.x nogpu/
 The code is successfully compiled by:
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
 If you use a different kind of machine, set `-tp=native` and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). For CC 8.0, use `-gpu=cc80`.
