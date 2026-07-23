@@ -6,8 +6,8 @@
 1. Source code is in `src/`. Choose either fortran or c.
 2. Change directory
 ```
-$cd src/c/      # C
-$cd src/fortran # Fortran
+$ cd src/c/      # C
+$ cd src/fortran # Fortran
 ```
 3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). The Makefile selects the build variant via the `OFFLOAD` variable (`omp`, `acc`, or `nogpu`; default is `omp`). The run script expects one executable per variant, so build each variant into its own directory:
 
