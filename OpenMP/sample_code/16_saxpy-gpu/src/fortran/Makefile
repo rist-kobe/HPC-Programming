@@ -24,8 +24,8 @@ else ifeq ($(OFFLOAD),acc)
   ## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
   #FCFLAGS += -gpu=cc86,cuda11.6,ptxinfo,pinned
 else ifeq ($(OFFLOAD),nogpu)
-  ## Host-only build (no GPU offloading)
-  FCFLAGS += -Minfo
+  ## Host-only build (no GPU offloading; keep OpenMP enabled)
+  FCFLAGS += -mp -Minfo=mp
 else
   $(error Unknown OFFLOAD=$(OFFLOAD) (expected omp, acc, or nogpu))
 endif
