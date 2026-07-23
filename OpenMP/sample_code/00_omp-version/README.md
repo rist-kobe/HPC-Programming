@@ -33,4 +33,4 @@
 
 ## Exercise
 1. Check the version number of OpenMP in the output file. Then, compare the value to the issued date of the OpenMP standard, as seen in [https://www.openmp.org/](https://www.openmp.org/).
-2. On Fortran: Examine the role of `!$` in the head of the statements. Checking whether the program is successfully compiled without an OpenMP activate flag (e.g., `-fopenmp`) will be helpful for understanding compilation of codes with OpenMP.
+2. On Fortran: Examine the role of `!$` at the start of statements. Checking whether the program compiles without an OpenMP activation flag (e.g., `-fopenmp`) will be helpful for understanding compiling code with OpenMP.
