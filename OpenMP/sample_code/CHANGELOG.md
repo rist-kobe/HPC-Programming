@@ -42,14 +42,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add a remark on sample scripts for program execution in Mac M1.
 - Add an instruction to use OpenMP in macOS.
-- Add Makefile for Mac M1 and Apple clang with LLVM OpenMP runtime in `hello`, `loop`, `schedule`, `jacobi`, `critical`, and `ompversion`.
+- Add Makefile for Mac M1 and Apple clang with LLVM OpenMP runtime in `hello`, `loop`, `schedule`, `jacobi`, `critical`, and `omp-version`.
 - Add the dynamic-memory-allocation version of part of the code in `jacobi`.
 ### Fixed
 - Fix a writing mistake of OpenMP directive and the sample scripts in `critical`.
 
 ## [0.1.2] - 2024-01-25
 ### Added
-- Add sample `ompversion` to check the version of OpenMP.
+- Add sample `omp-version` to check the version of OpenMP.
 - Add sample `masked` for a program code with `masked` construct.
 
 ## [0.1.1] - 2024-01-24
