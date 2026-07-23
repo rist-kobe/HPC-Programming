@@ -9,28 +9,15 @@
 $cd src/c/      # C
 $cd src/fortran # Fortran
 ```
-3. Make. You can find three kinds of Makefile, with OpenMP offloading, with OpenACC offloading, and without any offloading. You can create three kinds of executable files by the following procedure.
-```
-$ mkdir omp
-$ make -f Makefile.nvhpc.omp &> make.log # OpenMP offloading
-$ mv run.x ./omp
-$ mv make.log ./omp
-$ make -f Makefile.nvhpc.omp clean
-$ mkdir acc
-$ make -f Makefile.nvhpc.acc &> make.log # OpenACC offloading
-$ mv run.x ./acc
-$ mv make.log ./acc
-$ make -f Makefile.nvhpc.acc clean
-$ mkdir nogpu
-$ make -f Makefile.nvhpc.nogpu &> make.log # not using GPU
-$ mv run.x ./nogpu
-$ mv make.log ./nogpu
-$ make -f Makefile.nvhpc.nogpu clean
-```
+3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). Edit the compiler flags in `Makefile` to match your machine (adjust `-tp` and `-gpu` options), then run `make`. Three build variants are available by editing `Makefile`:
+   * OpenMP offloading: `-mp=gpu -Minfo=mp,accel`
+   * OpenACC offloading: `-acc=gpu -Minfo=accel`
+   * No GPU (host only): `-mp -Minfo=mp`
+
 The code is successfully compiled by:
   * NVIDIA HPC SDK 23.11 in Intel Xeon Platinum 8360Y with NVIDIA A100.
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
-If you use a different kind of machine, we suggest that you change `-tp` and `-gpu` options in Makefile. As for `-tp`, we suggest that you simply set `-tp=native`. As for `-gpu`, you need to check the Compute Capability (CC) of your NVIDIA GPU. See [You GPU Compute Capability](https://developer.nvidia.com/cuda-gpus) for details. If you find that CC is 8.0, for example, you can set `-gpu=cc80`. 
+If you use a different kind of machine, set `-tp=native` and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). For CC 8.0, use `-gpu=cc80`.
 4. Run
 ```
 $ ./run.x 
