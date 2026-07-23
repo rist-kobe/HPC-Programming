@@ -16,7 +16,7 @@
    The code has been successfully compiled with the following configurations:
      * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
 
-   To use a different compiler, override `CC` (C) or `FC` (Fortran) when running `make`, e.g., `make CC=icx` or `make FC=ifx`.
+    To use a different compiler, override `CC` (C) or `FC` (Fortran) when running `make`, and adjust `CCFLAGS`/`FCFLAGS` as needed for that compiler.
 4. Run
    ```
    $ env OMP_NUM_THREADS=1 ./run.x
