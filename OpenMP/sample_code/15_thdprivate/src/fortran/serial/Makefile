@@ -9,6 +9,6 @@ run.x: serial.o
 .F90.o:
 	$(FC) $(FCFLAGS) -c $< -o $@ 
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o *.mod *.x

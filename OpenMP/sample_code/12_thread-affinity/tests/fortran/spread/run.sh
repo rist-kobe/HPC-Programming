@@ -15,17 +15,17 @@ export OMP_NUM_THREADS=${NTHREADS}
 export OMP_STACKSIZE=512M
 
 # Thread affinity and memory bind
-if [ ${TAFF} = "close" ] ; then
+if [ "${TAFF}" = "close" ] ; then
    export OMP_PLACES=cores 
    #export OMP_PLACES=threads # if hardware threads are active
    export OMP_PROC_BIND=close
    #NMAC=$(echo "numactl --localalloc ") 
-elif [ ${TAFF} = "spread" ] ; then
+elif [ "${TAFF}" = "spread" ] ; then
    export OMP_PLACES=cores 
    #export OMP_PLACES=threads # if hardware threads are active
    export OMP_PROC_BIND=spread
    #NMAC=$(echo "numactl --interleave=all ")
-elif [ ${TAFF} = "customize" ] ; then
+elif [ "${TAFF}" = "customize" ] ; then
    # Example: We consider the following CPU.
    # * 2 NUMA nodes
    # * The number of physical cores per NUMA node is 3.
@@ -51,7 +51,7 @@ fi
 
 # Obtain affinity setting. (>= OpenMP v5.0)
 export OMP_DISPLAY_AFFINITY=TRUE
-export OMP_AFFINITY_FORMAT= "thread_num=%5n thread_affinity=%5A"
+export OMP_AFFINITY_FORMAT="thread_num=%5n thread_affinity=%5A"
 
 ulimit -s unlimited
 

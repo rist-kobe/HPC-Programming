@@ -15,6 +15,6 @@ main.o: main.c
 .c.o:
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o run.x

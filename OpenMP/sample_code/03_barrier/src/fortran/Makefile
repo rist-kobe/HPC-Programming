@@ -13,7 +13,7 @@ run.x: main.o
 
 main.o: main.F90
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o *.mod run.x
 

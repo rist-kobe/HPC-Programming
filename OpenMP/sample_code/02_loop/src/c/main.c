@@ -34,7 +34,7 @@ int main (int argc, char ** argv)
   for ( int i = 0; i<NSIZE; ++i) 
     tmp += a[i];
 
-  printf("elpase_sec: %10.3f check: %15.8E\n",elp,tmp);
+  printf("elp_sec: %10.3f check: %15.8E\n",elp,tmp);
 
   return 0;
 }

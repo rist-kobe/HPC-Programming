@@ -17,6 +17,6 @@ main.o: mymod.o main.F90
 
 mymod.o: mymod.F90
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o *.mod $(EXE)

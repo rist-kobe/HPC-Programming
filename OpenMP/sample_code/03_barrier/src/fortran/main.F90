@@ -56,7 +56,7 @@ program main
   write(6,'("[With omp_barrier]")')
   do i = 1, NSIZE
     write(6,'("a(",1I2,")= ",1I4,1x,&
-&        "b(",1I2,")=,"1I4)') i,a(i),i,b(i)
+&        "b(",1I2,")= ",1I4)') i,a(i),i,b(i)
   end do
 
   ! w/o omp_barrier 
@@ -75,7 +75,7 @@ program main
   write(6,'("[Without omp_barrier]")')
   do i = 1, NSIZE
     write(6,'("a(",1I2,")= ",1I4,1x,&
-&        "b(",1I2,")=,"1I4)') i,a(i),i,b(i)
+&        "b(",1I2,")= ",1I4)') i,a(i),i,b(i)
   end do
 
   stop

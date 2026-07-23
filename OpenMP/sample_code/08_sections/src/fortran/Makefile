@@ -15,6 +15,6 @@ main.o: main.F90
 .F90.o:
 	$(FC) $(FCFLAGS) -c $< -o $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o *.mod run.x

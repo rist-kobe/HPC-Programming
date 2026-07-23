@@ -18,6 +18,6 @@ main.o: myclass.o main.cpp
 
 myclass.o: myclass.cpp
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.o $(EXE)
