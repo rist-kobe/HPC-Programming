@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.3] - 2024-10-01
 ### Added
-- Add the default settings for Makefile in `ompversion` and `masked` as `gnu`.
+- Add the default settings for Makefile in `omp-version` and `masked` as `gnu`.
 ### Changed
 - Modify Makefile in `omp-version`, `masked`, and `saxpy-gpu`.
 - Correct misspelling.
