@@ -6,8 +6,8 @@
 1. Source files are in `src/`. Choose C or Fortran. 
 2. Change directory
    ```
-   $cd src/c/      # C
-   $cd src/fortran # Fortran
+   $ cd src/c/      # C
+   $ cd src/fortran # Fortran
    ```
 3. Make
    ```
