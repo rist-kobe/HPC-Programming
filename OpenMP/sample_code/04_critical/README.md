@@ -15,7 +15,7 @@ $ make
 ```
 The code is successfully compiled by GNU 8.5.0.
   * GNU 8.5.1 in AMD EPYC 7643
-  * Intel oneAPI 2022.3.1 (`Makefile.intel`)
+  * Intel oneAPI 2022.3.1
   * Apple clang 15.0.0 in Mac M1 (Arm64) with libomp (LLVM 16.0.4) (only for c++)
      * Please read [`misc/memo_omp_in_macos.md`](../misc/memo_omp_in_macos.md).
 
