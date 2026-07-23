@@ -24,11 +24,13 @@ $cd src/fortran # Fortran
 The code is successfully compiled by:
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
 If you use a different kind of machine, set `-tp=native` and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). For CC 8.0, use `-gpu=cc80`.
-4. Run
+4. Run. Each variant built in step 3 has its own executable, so run the one you want to measure:
 ```
-$ ./run.x 
+$ ./omp/run.x   # OpenMP offloading
+$ ./acc/run.x   # OpenACC offloading
+$ ./nogpu/run.x # Host only
 ```
-The sample scripts are located in `tests/c` (for C) and `tests/fortran` (for Fortran). You can use them.
+The sample scripts are located in `tests/c` (for C) and `tests/fortran` (for Fortran), with one subdirectory per variant (`omp`, `acc`, `nogpu`). You can use them.
 ```
 $ cd tests/c/omp
 $ bash task.sh 1> out.log 2> err.log
