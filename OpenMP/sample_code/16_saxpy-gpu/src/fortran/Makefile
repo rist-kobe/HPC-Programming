@@ -35,7 +35,7 @@ endif
 all: run.x
 
 run.x: mytype.o mykernel.o timer.o main.o
-	$(FC) $(FCFLAGS) -O0 mytype.o mykernel.o timer.o main.o $(LIB) -o $@	
+	$(FC) $(FCFLAGS) mytype.o mykernel.o timer.o main.o $(LIB) -o $@
 
 main.o: timer.o mytype.o mykernel.o main.F90
 
