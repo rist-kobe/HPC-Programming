@@ -11,7 +11,7 @@ FCFLAGS += $(INC) -tp=$(TP)
 
 ifeq ($(OFFLOAD),omp)
   ## OpenMP GPU offload build
-  FCFLAGS += -mp=gpu -Minfo=accel,mp
+  FCFLAGS += -mp=gpu -Minfo=mp,accel
   ## 23.11, Xeon(Icelake) + NVIDIA A100
   FCFLAGS += -gpu=cc80,cuda12.3,ptxinfo,pinned
   ## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
