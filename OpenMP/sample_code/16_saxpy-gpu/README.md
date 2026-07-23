@@ -9,21 +9,21 @@
 $cd src/c/      # C
 $cd src/fortran # Fortran
 ```
-3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). The run scripts under `tests/**` expect three executables to exist under `src/{c,fortran}/{omp,acc,nogpu}/run.x`. Build them by editing `Makefile` to select the desired offloading mode, then repeating `make` and saving each output:
+3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). The Makefile selects the build variant via the `OFFLOAD` variable (`omp`, `acc`, or `nogpu`; default is `omp`). The run scripts under `tests/**` expect three executables to exist under `src/{c,fortran}/{omp,acc,nogpu}/run.x`. Build them by:
 
     $ mkdir -p omp acc nogpu
 
-    # OpenMP offloading: set `-mp=gpu -Minfo=mp,accel`
-    $ make clean && make && mv run.x omp/
+    # OpenMP offloading (`-mp=gpu -Minfo=mp,accel`)
+    $ make clean && make OFFLOAD=omp && mv run.x omp/
 
-    # OpenACC offloading: set `-acc=gpu -Minfo=accel`
-    $ make clean && make && mv run.x acc/
+    # OpenACC offloading (`-acc=gpu -Minfo=accel`)
+    $ make clean && make OFFLOAD=acc && mv run.x acc/
 
-    # Host only: set `-mp -Minfo=mp` and comment out the `-gpu=...` line
-    $ make clean && make && mv run.x nogpu/
+    # Host only, no GPU offloading (`-mp -Minfo=mp`)
+    $ make clean && make OFFLOAD=nogpu && mv run.x nogpu/
 The code is successfully compiled by:
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
-If you use a different kind of machine, set `-tp=native` and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). For CC 8.0, use `-gpu=cc80`.
+If you use a different kind of machine, pass `TP=native` (the default) or your target CPU type, and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). For CC 8.0, for example, set `-gpu=cc80` in the Makefile.
 4. Run. Each variant built in step 3 has its own executable, so run the one you want to measure:
 ```
 $ ./omp/run.x   # OpenMP offloading
