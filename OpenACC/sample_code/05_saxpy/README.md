@@ -29,7 +29,7 @@ $ make -f Makefile.nvhpc.nogpu clean
 ```
 The code is successfully compiled by:
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
-If you use a different kind of machine, we suggest that you change `-tp` and `-gpu` options in Makefile. As for `-tp`, we suggest that you simply set `-tp=native`. As for `-gpu`, you need to check the Compute Capability (CC) of your NVIDIA GPU. See [You GPU Compute Capability](https://developer.nvidia.com/cuda-gpus) for details. If you find that CC is 8.0, for example, you can set `-gpu=cc80`. 
+If you use a different kind of machine, we suggest that you change `-tp` and `-gpu` options in Makefile. As for `-tp`, we suggest that you simply set `-tp=native`. As for `-gpu`, you need to check the Compute Capability (CC) of your NVIDIA GPU. See [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus) for details. If you find that CC is 8.0, for example, you can set `-gpu=cc80`.
 4. Run
 ```
 $ ./run.x 
