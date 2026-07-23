@@ -12,7 +12,7 @@ $cd src/fortran # Fortran
 3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). Edit the compiler flags in `Makefile` to match your machine (adjust `-tp` and `-gpu` options), then run `make`. Three build variants are available by editing `Makefile`:
    * OpenMP offloading: `-mp=gpu -Minfo=mp,accel`
    * OpenACC offloading: `-acc=gpu -Minfo=accel`
-   * No GPU (host only): `-mp -Minfo=mp`
+   * No GPU (host only): `-mp -Minfo=mp` (also comment out the `-gpu=...` option lines)
 
 The code is successfully compiled by:
   * NVIDIA HPC SDK 23.11 in Intel Xeon Platinum 8360Y with NVIDIA A100.
