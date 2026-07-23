@@ -5,7 +5,7 @@ OFFLOAD ?= omp
 ## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
 TP ?= native
 ## GPU code generation flags (override, e.g. GPUFLAGS='-gpu=cc86,cuda11.6,ptxinfo,pinned')
-GPUFLAGS ?= -gpu=cc80,cuda12.3,ptxinfo,pinned
+GPUFLAGS ?= -gpu=cc80,ptxinfo,pinned
 FCFLAGS=-g -Wall -O3
 LIB=
 INC=
