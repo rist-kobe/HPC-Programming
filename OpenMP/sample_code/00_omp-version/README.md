@@ -14,7 +14,6 @@ $cd src/fortran # Fortran
 $ make
 ```
 The code is successfully compiled by (built by overriding `CC`/`FC` when running `make`):
-  * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642/7643 (x86)
   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
 4. Run
 ```
