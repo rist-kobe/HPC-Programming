@@ -9,7 +9,7 @@
 $cd src/c/      # C
 $cd src/fortran # Fortran
 ```
-3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). The Makefile selects the build variant via the `OFFLOAD` variable (`omp`, `acc`, or `nogpu`; default is `omp`). The run scripts under `tests/**` expect three executables to exist under `src/{c,fortran}/{omp,acc,nogpu}/run.x`. Build them by:
+3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). The Makefile selects the build variant via the `OFFLOAD` variable (`omp`, `acc`, or `nogpu`; default is `omp`). The run script expects one executable per variant, so build each variant into its own directory:
 
     $ mkdir -p omp acc nogpu
 
@@ -23,7 +23,7 @@ $cd src/fortran # Fortran
     $ make clean && make OFFLOAD=nogpu && mv run.x nogpu/
 The code is successfully compiled by:
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
-If you use a different kind of machine, pass `TP=native` (the default) or your target CPU type, and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). For CC 8.0, for example, set `-gpu=cc80` in the Makefile.
+If you use a different kind of machine, pass `TP=native` (the default) or your target CPU type, and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). Then set the `GPUFLAGS` variable accordingly on the `make` command line — for example, for CC 8.6 with CUDA 11.6: `make OFFLOAD=omp GPUFLAGS='-gpu=cc86,cuda11.6,ptxinfo,pinned'`. The default is `GPUFLAGS='-gpu=cc80,cuda12.3,ptxinfo,pinned'` (CC 8.0).
 4. Run. Each variant built in step 3 has its own executable, so run the one you want to measure:
 ```
 $ ./omp/run.x   # OpenMP offloading
