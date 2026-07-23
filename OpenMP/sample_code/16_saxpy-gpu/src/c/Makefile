@@ -4,6 +4,8 @@ CC=nvc
 OFFLOAD ?= omp
 ## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
 TP ?= native
+## GPU code generation flags (override, e.g. GPUFLAGS='-gpu=cc86,cuda11.6,ptxinfo,pinned')
+GPUFLAGS ?= -gpu=cc80,cuda12.3,ptxinfo,pinned
 CFLAGS=-g -Wall -c99 -O3
 LIB=
 INC=
@@ -12,17 +14,15 @@ CFLAGS += $(INC) -tp=$(TP)
 ifeq ($(OFFLOAD),omp)
   ## OpenMP GPU offload build
   CFLAGS += -mp=gpu -Minfo=mp,accel
-  ## 23.11, Xeon(Icelake) + NVIDIA A100
-  CFLAGS += -gpu=cc80,cuda12.3,ptxinfo,pinned
-  ## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
-  #CFLAGS += -gpu=cc86,cuda11.6,ptxinfo,pinned
+  CFLAGS += $(GPUFLAGS)
+  ## Example (NVIDIA RTX A5000 / CC 8.6)
+  #GPUFLAGS = -gpu=cc86,cuda11.6,ptxinfo,pinned
 else ifeq ($(OFFLOAD),acc)
   ## OpenACC GPU offload build
   CFLAGS += -acc=gpu -Minfo=accel
-  ## 23.11, Xeon(Icelake) + NVIDIA A100
-  CFLAGS += -gpu=cc80,cuda12.3,ptxinfo,pinned
-  ## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
-  #CFLAGS += -gpu=cc86,cuda11.6,ptxinfo,pinned
+  CFLAGS += $(GPUFLAGS)
+  ## Example (NVIDIA RTX A5000 / CC 8.6)
+  #GPUFLAGS = -gpu=cc86,cuda11.6,ptxinfo,pinned
 else ifeq ($(OFFLOAD),nogpu)
   ## Host-only build (no GPU offloading; keep OpenMP enabled)
   CFLAGS += -mp -Minfo=mp
