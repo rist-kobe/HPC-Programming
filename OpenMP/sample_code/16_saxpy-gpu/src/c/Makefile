@@ -1,12 +1,25 @@
 ## Nvidia HPC SDK 
 CC=nvc
-CFLAGS=-g -Wall -c99 -O3 -mp=gpu -Minfo=mp,accel
+## Set GPU=0 for a CPU-only build (OpenMP threading stays enabled)
+GPU ?= 1
+## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
+TP ?= icelake
+CFLAGS=-g -Wall -c99 -O3
 LIB=
 INC=
-## 23.11, Xeon(Icelake) + NVIDIA A100
-CFLAGS += $(INC) -tp=icelake -gpu=cc80,cuda12.3,ptxinfo,pinned 
-## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
-#CFLAGS += $(INC) -tp=zen2 -gpu=cc86,cuda11.6,ptxinfo,pinned
+CFLAGS += $(INC) -tp=$(TP)
+
+ifeq ($(GPU),1)
+  ## GPU offload build
+  CFLAGS += -mp=gpu -Minfo=mp,accel
+  ## 23.11, Xeon(Icelake) + NVIDIA A100
+  CFLAGS += -gpu=cc80,cuda12.3,ptxinfo,pinned
+  ## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
+  #CFLAGS += -gpu=cc86,cuda11.6,ptxinfo,pinned
+else
+  ## CPU-only build: OpenMP remains enabled, no GPU offloading
+  CFLAGS += -mp -Minfo=mp
+endif
 
 .SUFFIXES: .o .c
 
