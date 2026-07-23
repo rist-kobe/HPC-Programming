@@ -19,6 +19,9 @@ $ make -f Makefile.intel # if using Intel compiler
 The code is successfully compiled by
   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642/7643 (x86)
   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
+  * GNU (9.3.1) in Intel Xeon Gold 6126
+  * Intel (oneAPI 2022.3.1) in AMD EPYC 7642/7643 (x86)
+  * Intel (oneAPI 2022.3.1) in Intel Xeon Gold 6126
 
 ## Instruction: Run and do a performance analysis
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.

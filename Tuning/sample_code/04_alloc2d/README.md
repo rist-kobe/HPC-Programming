@@ -14,7 +14,10 @@ $ cd src/c # On c
 $ make -f Makefile.gnu # if using GNU compiler
 ```
 The code is successfully compiled by:
+  * GNU compiler (9.3.1) in Intel Xeon Gold 6126.
   * GNU compiler (8.5.0) in AMD EPYC 7642/7643.  
+  * Intel oneAPI 2022.3.1 in Intel Xeon Gold 6126.
+     * **Unfixed**: Writing the address of a static array in `fortran_cbind` with Intel Fortran does not work, within my experiments. 
   * Apple clang (15.0.0) in Mac M1 (arm64). (only for c and cpp)
 
 ## Instruction: Run and do analyses
