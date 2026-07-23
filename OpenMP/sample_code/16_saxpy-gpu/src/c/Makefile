@@ -3,7 +3,7 @@ CC=nvc
 ## Offload mode: omp (OpenMP target offload), acc (OpenACC), nogpu (host only)
 OFFLOAD ?= omp
 ## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
-TP ?= icelake
+TP ?= native
 CFLAGS=-g -Wall -c99 -O3
 LIB=
 INC=
