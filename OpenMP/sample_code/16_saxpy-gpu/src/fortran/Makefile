@@ -2,10 +2,12 @@
 FC=nvfortran
 ## Set GPU=0 for a CPU-only build (OpenMP threading stays enabled)
 GPU ?= 1
+## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
+TP ?= icelake
 FCFLAGS=-g -Wall -O3
 LIB=
 INC=
-FCFLAGS += $(INC) -tp=icelake
+FCFLAGS += $(INC) -tp=$(TP)
 
 ifeq ($(GPU),1)
   ## GPU offload build
@@ -13,7 +15,7 @@ ifeq ($(GPU),1)
   ## 23.11, Xeon(Icelake) + NVIDIA A100
   FCFLAGS += -gpu=cc80,cuda12.3,ptxinfo,pinned
   ## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
-  #FCFLAGS += -tp=zen2 -gpu=cc86,cuda11.6,ptxinfo,pinned
+  #FCFLAGS += -gpu=cc86,cuda11.6,ptxinfo,pinned
 else
   ## CPU-only build: OpenMP remains enabled, no GPU offloading
   FCFLAGS += -mp -Minfo=mp
