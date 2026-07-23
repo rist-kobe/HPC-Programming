@@ -15,7 +15,6 @@ $ make
 ```
 The code is successfully compiled by GNU 8.5.0.
   * GNU 8.5.1 in AMD EPYC 7643
-  * Intel oneAPI 2022.3.1
 
 Three variants can be built by editing the commented macro in the Makefile (or passing it on the command line):
   * default: correct implementation protected by a `critical` construct.

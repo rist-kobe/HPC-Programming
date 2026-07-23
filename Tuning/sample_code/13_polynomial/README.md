@@ -39,7 +39,6 @@ $ make
 The code is successfully compiled by
   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642 (x86)
   * GNU (8.5.0) in AMD EPYC 7642 (x86)
-  * Intel (oneAPI 2022.3.1) in AMD EPYC 7642 (x86)
   * Fujitsu (4.10.0) in Fugaku (aarch64)
   * Fujitsu (4.10.0) in Wisteria/BDEC-01(Odyssey) (aarch64).
   * Apple clang (15.0.0) in MacM1 (arm64) (only for cpp, cpp.et14, cpp.oo, and cpp.valarray).

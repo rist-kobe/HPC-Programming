@@ -16,7 +16,6 @@ $ make -f MAKEFILES/Makefile.clang # if using LLVM compiler (only C/C++)
 ```
 The code is successfully compiled by
   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
-  * Intel (oneAPI 2022.3.1) in Intel Xeon Gold 6126
   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642/7643 (x86)
   * Apple clang (15.0.0) in MacM1 (arm64) (only for cpp, cpp.et14, cpp.oo, and cpp.valarray).
 

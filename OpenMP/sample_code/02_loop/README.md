@@ -16,7 +16,6 @@ $ make
 The code is successfully compiled by: 
   * GNU 8.5.1 in AMD EPYC 7643
   * GNU 9.3.1 in Xeon Gold 6126
-  * Intel oneAPI 2022.3.1 in AMD EPYC 7643
 4. Run
 ```
 $ env OMP_NUM_THREADS=4 ./run.x

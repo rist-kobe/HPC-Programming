@@ -16,10 +16,7 @@ $ make -f Makefile.intel # if using Intel compiler
 ```
 The code is successfully compiled by 
   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642 (x86)
-  * GNU (9.3.1) in Intel Xeon Gold 6126 (x86)
   * GNU (8.5.0) in AMD EPYC 7642 (x86)
-  * Intel (oneAPI 2022.3.1) in Intel Xeon Gold 6126 (x86)
-  * Intel (oneAPI 2022.3.1) in AMD EPYC 7642 (x86)
   * Apple clang (15.0.0) in Mac M1 (Arm64) (only for c)
 
 ## Instruction: Run and do a performance analysis
