@@ -15,7 +15,6 @@ $cd src/fortran # Fortran
    * No GPU (host only): `-mp -Minfo=mp` (also comment out the `-gpu=...` option lines)
 
 The code is successfully compiled by:
-  * NVIDIA HPC SDK 23.11 in Intel Xeon Platinum 8360Y with NVIDIA A100.
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
 If you use a different kind of machine, set `-tp=native` and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). For CC 8.0, use `-gpu=cc80`.
 4. Run
