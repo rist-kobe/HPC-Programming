@@ -6,7 +6,7 @@ INC=
 ## 23.11, Xeon(Icelake) + NVIDIA A100
 CFLAGS += $(INC) -tp=icelake -gpu=cc80,cuda12.3,ptxinfo,pinned 
 ## 22.2,  AMD EPYC Zen2 + NVIDIA RTX A5000
-#CFLAGS += $(INC) -tp=zen2 -gpu=cc80,cuda11.6,ptxinfo,pinned
+#CFLAGS += $(INC) -tp=zen2 -gpu=cc86,cuda11.6,ptxinfo,pinned
 
 .SUFFIXES: .o .c
 
