@@ -13,8 +13,10 @@ $cd src/fortran # Fortran
 ```
 $ make
 ```
-The code is successfully compiled by (built by overriding `CC`/`FC` when running `make`):
+The code has been successfully compiled with the following configurations:
   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
+
+To use a different compiler, override `CC` (C) or `FC` (Fortran) when running `make`, e.g., `make CC=icx` or `make FC=ifx`.
 4. Run
 ```
 $ env OMP_NUM_THREADS=1 ./run.x
@@ -31,4 +33,4 @@ The file name of the output is `logfile`.
 
 ## Exercise
 1. Check the version number of OpenMP in the output file. Then, compare the value to the issued date of the OpenMP standard, as seen in [https://www.openmp.org/](https://www.openmp.org/).
-2. On Fortran: Examine the role of `!$` in the head of the statements. Checking whether the program is successfully compiled without an OpenMP activate flag (e.g., `-fopenmp`) will be helpful for understanding the role.
+2. On Fortran: Examine the role of `!$` in the head of the statements. Checking whether the program is successfully compiled without an OpenMP activate flag (e.g., `-fopenmp`) will be helpful for understanding compilation of codes with OpenMP.
