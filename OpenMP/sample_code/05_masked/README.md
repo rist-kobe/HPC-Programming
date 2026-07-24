@@ -17,14 +17,13 @@ $cd src/fortran # Fortran
 3. Make 
 ```
 # If using masked construct:
-$ make  # Note: Makefile is equivalent to Makefile.gnu.
+$ make
 # If not using masked construct:
 $ make DFLAGS=-DNOT_USE_MASKED
 ```
 The code is successfully compiled by:
   * GNU (14.1.0 and 12.2.0; miniforge3 for x86) in AMD EPYC 7642/7643
   * GNU (8.5.0) in AMD EPYC 7642/7643, without using `masked` construct (i.e., setting `-DNOT_USE_MASKED`).
-  * Intel (oneAPI 2022.3.1) in AMD EPYC 7642/7643 (x86)
 
 The cache-line size is set for x86 (64 bytes) by the `CACHE_LINE_*` macros in the sources. On aarch64 (256 bytes), switch to the commented macro block in `main.c`/`main.F90`. On Linux, you can detect the cache-line size with `getconf LEVEL1_DCACHE_LINESIZE`.
 4. Run

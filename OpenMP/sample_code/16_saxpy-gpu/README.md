@@ -6,36 +6,31 @@
 1. Source code is in `src/`. Choose either fortran or c.
 2. Change directory
 ```
-$cd src/c/      # C
-$cd src/fortran # Fortran
+$ cd src/c/      # C
+$ cd src/fortran # Fortran
 ```
-3. Make. You can find three kinds of Makefile, with OpenMP offloading, with OpenACC offloading, and without any offloading. You can create three kinds of executable files by the following procedure.
-```
-$ mkdir omp
-$ make -f Makefile.nvhpc.omp &> make.log # OpenMP offloading
-$ mv run.x ./omp
-$ mv make.log ./omp
-$ make -f Makefile.nvhpc.omp clean
-$ mkdir acc
-$ make -f Makefile.nvhpc.acc &> make.log # OpenACC offloading
-$ mv run.x ./acc
-$ mv make.log ./acc
-$ make -f Makefile.nvhpc.acc clean
-$ mkdir nogpu
-$ make -f Makefile.nvhpc.nogpu &> make.log # not using GPU
-$ mv run.x ./nogpu
-$ mv make.log ./nogpu
-$ make -f Makefile.nvhpc.nogpu clean
-```
+3. Compile. This example requires NVIDIA HPC SDK (`nvc`/`nvfortran`). The Makefile selects the build variant via the `OFFLOAD` variable (`omp`, `acc`, or `nogpu`; default is `omp`). The run script expects one executable per variant, so build each variant into its own directory:
+
+    $ mkdir -p omp acc nogpu
+
+    # OpenMP offloading (`-mp=gpu -Minfo=mp,accel`)
+    $ make clean && make OFFLOAD=omp && mv run.x omp/
+
+    # OpenACC offloading (`-acc=gpu -Minfo=accel`)
+    $ make clean && make OFFLOAD=acc && mv run.x acc/
+
+    # CPU OpenMP only (no GPU offloading) (`-mp -Minfo=mp`)
+    $ make clean && make OFFLOAD=nogpu && mv run.x nogpu/
 The code is successfully compiled by:
-  * NVIDIA HPC SDK 23.11 in Intel Xeon Platinum 8360Y with NVIDIA A100.
   * NVIDIA HPC SDK 22.2  in AMD EPYC 7F52 (zen2) with NVIDIA RTX A5000.  
-If you use a different kind of machine, we suggest that you change `-tp` and `-gpu` options in Makefile. As for `-tp`, we suggest that you simply set `-tp=native`. As for `-gpu`, you need to check the Compute Capability (CC) of your NVIDIA GPU. See [You GPU Compute Capability](https://developer.nvidia.com/cuda-gpus) for details. If you find that CC is 8.0, for example, you can set `-gpu=cc80`. 
-4. Run
+If you use a different kind of machine, pass `TP=native` (the default) or your target CPU type, and check the Compute Capability (CC) of your NVIDIA GPU at [Your GPU Compute Capability](https://developer.nvidia.com/cuda-gpus). Then set the `GPUFLAGS` variable accordingly on the `make` command line — for example, for CC 8.6 with CUDA 11.6: `make OFFLOAD=omp GPUFLAGS='-gpu=cc86,cuda11.6,ptxinfo,pinned'`. The default is `GPUFLAGS='-gpu=cc80,ptxinfo,pinned'` (CC 8.0); add `cudaXX.Y` only if you need to select a specific CUDA toolkit shipped with your NVIDIA HPC SDK.
+4. Run. Stay in the build directory from step 2 (`src/c` or `src/fortran`). Each variant built in step 3 has its own executable, so run the one you want to measure:
 ```
-$ ./run.x 
+$ ./omp/run.x   # OpenMP offloading
+$ ./acc/run.x   # OpenACC offloading
+$ ./nogpu/run.x # Host only
 ```
-The sample scripts are located in `tests/c` (for C) and `tests/fortran` (for Fortran). You can use them.
+The sample scripts are located in `tests/c` (for C) and `tests/fortran` (for Fortran), with one subdirectory per variant (`omp`, `acc`, `nogpu`). You can use them.
 ```
 $ cd tests/c/omp
 $ bash task.sh 1> out.log 2> err.log
