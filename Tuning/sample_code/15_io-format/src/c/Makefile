@@ -8,22 +8,6 @@ LIB=
 INC=
 CFLAGS=-g -std=gnu11 $(COPT) $(INC) 
 CFLAGS_TIMER=-g -std=gnu11 -O0 $(INC)
-else ifeq ($(COMPILER),intel)
-## Intel DPC++/C++ (Intel oneAPI 2022.3.1)
-CC=icx
-COPT=-O1
-LIB=
-INC=
-CFLAGS=-g -std=gnu11 $(COPT) $(INC) 
-CFLAGS_TIMER=-g -std=gnu11 -O0 $(INC)
-else ifeq ($(COMPILER),clang)
-## LLVM 13.0.0, Apple clang 15.0.0
-CC=clang
-COPT=-O1
-LIB=
-INC=
-CFLAGS=-g -std=gnu11 $(COPT) $(INC) 
-CFLAGS_TIMER=-g -std=gnu11 -O0 $(INC)
 endif
 
 SRC = \

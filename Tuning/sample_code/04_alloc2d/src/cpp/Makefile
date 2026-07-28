@@ -5,16 +5,6 @@ ifeq ($(COMPILER),gnu)
 CC=g++
 CCFLAGS=-g -Wall -O0 -std=c++11
 ############################
-else ifeq ($(COMPILER),intel)
-## Intel DPC++/C++ (Intel oneAPI 2022.3.1)
-CC=icpx
-CCFLAGS=-g -Wall -O0 -std=c++11
-############################
-else ifeq ($(COMPILER),clang)
-## Apple clang 15.0.0
-CC=clang++
-CCFLAGS=-g -Wall -std=c++11 -O0
-############################
 endif
 
 SRC= \

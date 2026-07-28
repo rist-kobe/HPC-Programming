@@ -12,20 +12,6 @@ INC=
 #
 CC=gcc
 CFLAGS=-g -O0 -std=gnu11
-else ifeq ($(COMPILER),intel)
-## Intel oneAPI 2022.3.1
-FC=ifx
-#FC=ifort # classic
-ARCHFLAGS=-mavx2 # x86, AVX512
-#ARCHFLAGS=-xCORE_AVX512 # Intel, AVX512
-FFLAGS=-g -warn $(ARCHFLAGS) -O3 -qopenmp -D__USE_F08__
-FVEC=-qopt-report=5 -qopt-report-phase=vec
-FNVEC=-no-vec -no-simd
-LIB=
-INC=
-#
-CC=icx
-CFLAGS=-g -O0 -std=gnu11
 endif
 
 .SUFFIXES: .o .F90 .c
@@ -68,4 +54,4 @@ clean:
 
 .PHONY: veryclean
 veryclean: clean
-	rm -f *.x *.optrpt
+	rm -f *.x

@@ -4,11 +4,6 @@ ifeq ($(COMPILER),gnu)
 ## GNU 8.5.0, 9.3.1
 FC=gfortran
 FFLAGS=-O1 -Wall
-else ifeq ($(COMPILER),intel)
-## Intel oneAPI 2022.3.1
-FC=ifx
-#FC=ifort # classic
-FFLAGS=-O1
 endif
 
 SRC= \

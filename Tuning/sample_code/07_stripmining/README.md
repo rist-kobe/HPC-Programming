@@ -14,14 +14,9 @@ $ cd src/c # On c
 3. Make
 ```
 $ make # if using GNU compiler (default)
-$ make COMPILER=intel # if using Intel compiler
-$ make COMPILER=intel-classic # if using Intel compiler(Classic)
 ```
 The code is successfully compiled by
-   * GNU (9.3.1) in Intel Xeon 6126
    * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
-   * Intel (oneAPI 2022.3.1) in Intel Xeon 6126  
-   * Intel (oneAPI 2022.3.1) in AMD EPYC 7642/7643 (x86)  
 
 ## Instruction: Run 
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.

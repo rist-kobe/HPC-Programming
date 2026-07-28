@@ -1,9 +1,6 @@
 ## GNU  (8.5.0)
 FC=gfortran
 FFLAGS=-g -Wall -O0 -fconvert=native
-# Intel Fortran (Intel oneAPI 2022.3.1)
-#FC=ifx #ifort
-#FFLAGS=-g -warn -O0 -convert native
 
 ###############################################
 SRC= \

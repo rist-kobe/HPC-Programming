@@ -11,31 +11,6 @@ FFLAGS=-g -Wall $(ARCHFLAGS) $(FOPT) $(INC)
 
 CC=gcc
 CFLAGS=-g -O0 -std=gnu11
-else ifeq ($(COMPILER),intel)
-## Intel oneAPI 2022.3.1
-FC=ifx
-#FC=ifort
-ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
-FOPT=-O2 -qopt-report=2 
-LIB=
-INC= 
-FFLAGS=-g -warn $(ARCHFLAGS) $(FOPT) $(INC) 
-
-CC=icx
-CFLAGS=-g -O0
-else ifeq ($(COMPILER),intel-classic)
-## Intel oneAPI 2022.3.1
-#FC=ifx
-FC=ifort
-ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
-#ARCHFLAGS=-xCORE_AVX512 # xeon (with CORE-AVX512)
-FOPT=-O2 -qopt-report=2 
-LIB=
-INC= 
-FFLAGS=-g -warn $(ARCHFLAGS) $(FOPT) $(INC) 
-
-CC=icx
-CFLAGS=-g -O0
 endif
 
 SRC = \
@@ -66,11 +41,9 @@ timer.o:
 
 .PHONY:
 clean:
-	rm -f *~ *.o *.mod *genmod* *optinfo* *.yaml *optrpt
+	rm -f *~ *.o *.mod *genmod* *optinfo*
 
 .PHONY:
 veryclean: clean
 	rm -f *.x
 	rm -rf bin/gnu
-	rm -rf bin/intel
-	rm -rf bin/intel-classic

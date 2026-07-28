@@ -12,32 +12,6 @@ FFLAGS=-g -Wall -O1
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu11 
 #######################################################################
-else ifeq ($(COMPILER),intel)
-## Intel Fortran (oneAPI 2022.3.1)
-FC=ifx
-FFLAGS=-g -warn all -O1
-# To increase optimization level
-#  I think compiler-based optimization would be much better than
-#  an application of manually stripmining. :(
-#ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
-#ARCHFLAGS=-xCORE-AVX512 # x86, CORE-AVX512
-#FFLAGS=-g -warn $(ARCHFLAGS) -O2 -fvectorize -qopt-report #-fsave-optimization-record 
-CC=icx
-CFLAGS=-g -Wall -O0 -std=gnu11
-#######################################################################
-else ifeq ($(COMPILER),intel-classic)
-## Intel Fortran Classic (oneAPI 2022.3.1)
-FC=ifort
-FFLAGS=-g -warn all -O1
-# To increase optimization level
-#  I think compiler-based optimization would be much better than
-#  an application of manually stripmining. :(
-#ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
-#ARCHFLAGS=-xCORE-AVX512 # xeon (with CORE-AVX512)
-#FFLAGS=-g -warn $(ARCHFLAGS) -O2 -qopt-report=5
-CC=icc
-CFLAGS=-g -Wall -O0 -std=gnu11
-#######################################################################
 endif
 
 SRC = \
