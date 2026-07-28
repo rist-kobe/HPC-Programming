@@ -4,7 +4,7 @@ ifeq ($(COMPILER),gnu)
 ## GNU 8.5.0, 9.3.1
 CC=g++
 ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
-#ARCHFLAGS=-march=armv8-a # Arm-based systems (example)
+#ARCHFLAGS=-arch arm64 -mcpu=native # Arm-based systems (example)
 CFLAGS=-g -std=gnu++11 $(ARCHFLAGS) -O3 -ffast-math -funroll-loops -ftree-vectorize -ftree-loop-vectorize -fopt-info-all=optinfo.all 
 ###################################################################################
 endif
