@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # GNU
-module purge
-module load gcc/9.3.1
 compiler=gnu
 dirname=${compiler}
 mkdir -p ${dirname}
