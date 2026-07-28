@@ -1,48 +1,46 @@
 #!/bin/bash
 
-CONFIGDIR=MAKEFILES
-
 # GNU
 module purge
 module load gcc/9.3.1
-surfix=gnu
-dirname=${surfix}
+compiler=gnu
+dirname=${compiler}
 mkdir -p ${dirname}
 {
 gcc --version
-make -f ${CONFIGDIR}/Makefile.${surfix}
+make COMPILER=${compiler}
 mv -v *.x ${dirname}/
-make -f ${CONFIGDIR}/Makefile.${surfix} veryclean
-} &> ${surfix}.log
-mv ${surfix}.log ${dirname}
+make COMPILER=${compiler} veryclean
+} &> ${compiler}.log
+mv ${compiler}.log ${dirname}
 
 # Intel oneAPI 2022.3.1
 module purge
 module load intel_oneapi/2022.3.1
-surfix=intel
-dirname=${surfix}
+compiler=intel
+dirname=${compiler}
 mkdir -p ${dirname}
 {
 ifx --version
-make -f ${CONFIGDIR}/Makefile.${surfix}
+make COMPILER=${compiler}
 mv -v *.x ${dirname}/
 mv -v *.yaml ${dirname}/
 mv -v *.optrpt ${dirname}/
-make -f ${CONFIGDIR}/Makefile.${surfix} veryclean
-} &> ${surfix}.log
-mv ${surfix}.log ${dirname}
+make COMPILER=${compiler} veryclean
+} &> ${compiler}.log
+mv ${compiler}.log ${dirname}
 
-# Intel oneAPI 2022.3.1
+# Intel oneAPI 2022.3.1 (Classic)
 #module purge
 #module load intel_oneapi/2022.3.1
-#surfix=intel-classic
-#dirname=${surfix}
+#compiler=intel-classic
+#dirname=${compiler}
 #mkdir -p ${dirname}
 #{
 #icx --version
-#make -f ${CONFIGDIR}/Makefile.${surfix}
+#make COMPILER=${compiler}
 #mv -v *.x ${dirname}/
 #mv -v *.optrpt ${dirname}/
-#make -f ${CONFIGDIR}/Makefile.${surfix} veryclean
-#} &> ${surfix}.log
-#mv ${surfix}.log ${dirname}
+#make COMPILER=${compiler} veryclean
+#} &> ${compiler}.log
+#mv ${compiler}.log ${dirname}
