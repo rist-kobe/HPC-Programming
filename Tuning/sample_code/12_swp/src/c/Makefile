@@ -3,7 +3,7 @@ COMPILER ?= gnu
 ifeq ($(COMPILER),gnu)
 ## GNU 8.5.0
 CC=gcc
-ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
+ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 COPT=-O1 
 LIB=-lm
 INC=

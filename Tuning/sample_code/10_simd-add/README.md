@@ -15,7 +15,7 @@ $ make all                 # GNU compiler (default)
 $ make COMPILER=gnu all    # explicit GNU selection
 ```
 The code is successfully compiled by:  
-  * GNU (8.5.0) in AMD EPYC 7642 (x86)
+  * GNU (8.5.0) on x86-64 systems
 
 ## Instruction: Run and do a performance analysis
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.  

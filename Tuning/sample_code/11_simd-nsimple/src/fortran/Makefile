@@ -3,7 +3,7 @@ COMPILER ?= gnu
 ifeq ($(COMPILER),gnu)
 ## GNU 8.5.0 
 FC=gfortran
-ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
+ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 FFLAGS=-g -Wall $(ARCHFLAGS) -O3 -fopenmp -mavx2 -D__USE_F08__  -D__USE_DIRECTIVES__
 FVEC=-ftree-loop-vectorize -ftree-slp-vectorize -ftree-vectorize -fopt-info-all-vec
 FNVEC=-fno-tree-loop-vectorize -fno-tree-slp-vectorize -fno-tree-vectorize
