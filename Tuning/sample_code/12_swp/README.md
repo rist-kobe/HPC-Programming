@@ -10,9 +10,9 @@ $ cd src/c # On c
 ```
 3. Make
 ```
-$ make -f MAKEFILES/Makefile.gnu   # if using GNU compiler
-$ make -f MAKEFILES/Makefile.intel # if using Intel compiler
-$ make -f MAKEFILES/Makefile.clang # if using LLVM compiler (only C/C++)
+$ make                  # if using GNU compiler (default)
+$ make COMPILER=intel # if using Intel compiler
+$ make COMPILER=clang # if using LLVM compiler (only C/C++)
 ```
 The code is successfully compiled by
   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)

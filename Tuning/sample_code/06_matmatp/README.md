@@ -11,11 +11,11 @@ $ cd src/c # On C
 3. Before compiling the code, set `NSIZE` (matrix dimension) in `main.F90` or `main.c`.  
   * Before running this sample, we recommend that you measure the memory latency in your machine using [LMbench](https://lmbench.sourceforge.net/). You can estimate which level of cache is almost equivalent to the main memory from a latency point of view.   
   * `LMbench` requires `libtirpc`. If the library and the related header file are absent in your machine, you need to obtain it. On RHEL8, the corresponding library is involved in `libtirpc-devel`.
-4. Type "make" with your desired Makefile.
+4. Type `make` with your desired compiler setting.
 ```
-$ make -f MAKEFILES/Makefile.intel   # Intel compiler 
-$ make -f MAKEFILES/Makefile.gnu     # GNU compiler 
-$ make -f MAKEFILES/Makefile.clang   # LLVM compiler (only for C)
+$ make COMPILER=intel   # Intel compiler 
+$ make                  # GNU compiler (default)
+$ make COMPILER=clang   # LLVM compiler (only for C)
 ```
 The code is successfully compiled by
    * GNU (9.3.1) in Intel Xeon Gold 6126 

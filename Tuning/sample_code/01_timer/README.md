@@ -12,9 +12,9 @@ $ cd src/c # On c
 ```
 3. Make
 ```
-$ make -f Makefile.clang # if using LLVM compiler (only C/C++)
-$ make -f Makefile.gnu   # if using GNU compiler
-$ make -f Makefile.intel # if using Intel compiler
+$ make COMPILER=clang # if using LLVM compiler (only C/C++)
+$ make                    # if using GNU compiler (default)
+$ make COMPILER=intel # if using Intel compiler
 ```
 The code is successfully compiled by
   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642/7643 (x86)

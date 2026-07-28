@@ -11,7 +11,7 @@ $ cd src/c # On c
 ```
 3. Make
 ```
-$ make -f Makefile.gnu # if using GNU compiler
+$ make # if using GNU compiler (default)
 ```
 The code is successfully compiled by:
   * GNU compiler (9.3.1) in Intel Xeon Gold 6126.

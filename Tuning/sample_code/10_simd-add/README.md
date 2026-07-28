@@ -11,8 +11,8 @@ $ cd src/c # On c
 3. Make
 ```
 ## For GNU
-$ ln -s MAKEFILES/Makefile.gnu Makefile
-$ make all
+$ make all                 # GNU compiler (default)
+$ make COMPILER=gnu all    # explicit GNU selection
 ```
 The code is successfully compiled by:  
   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642 (x86)

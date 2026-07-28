@@ -23,7 +23,7 @@ $ cd src/c # On c
 ```
 3. Make
 ```
-$ make -f Makefile.gnu # if using GNU compiler
+$ make # GNU compiler (default)
 ```
 The code is successfully compiled by:
    * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)

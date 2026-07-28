@@ -10,9 +10,9 @@ $ cd src/c  # On C
 ```
 3. Make
 ```
-$ make -f MAKEFILES/Makefile.intel   # Intel compiler 
-$ make -f MAKEFILES/Makefile.gnu     # GNU compiler 
-$ make -f MAKEFILES/Makefile.clang   # LLVM compiler (only for C)
+$ make COMPILER=intel   # Intel compiler 
+$ make                  # GNU compiler (default)
+$ make COMPILER=clang   # LLVM compiler (only for C)
 ```
 The code is successfully compiled by:
    * GNU (9.3.1) in Intel Xeon Gold 6126 

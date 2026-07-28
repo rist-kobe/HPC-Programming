@@ -13,9 +13,9 @@ $ cd src/c # On c
 ```
 3. Make
 ```
-$ make -f Makefile.gnu # if using GNU compiler
-$ make -f Makefile.intel # if using Intel compiler
-$ make -f Makefile.intel-classic # if using Intel compiler(Classic)
+$ make # if using GNU compiler (default)
+$ make COMPILER=intel # if using Intel compiler
+$ make COMPILER=intel-classic # if using Intel compiler(Classic)
 ```
 The code is successfully compiled by
    * GNU (9.3.1) in Intel Xeon 6126
