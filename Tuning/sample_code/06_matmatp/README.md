@@ -47,4 +47,4 @@ $ numactl -H
 5. Examine the elapsed time in each of kernels (`mmp_simple`, `mmp_simple_blk`, and `mmp_lex_tp_blk`), varying the size of blocks. Your compiler may generate better code even in the case of `mmp_simple`. This is a good news if so; It means that you do not need to take care of by-hand optimization. 
 
 ## Advanced topics
-1. Use a matrix-matrix product routine in a well-tuned library, e.g., DGEMM in BLAS (e.g., OpenBLAS). Compare the results to those in the hand-made kernels.  
+1. Use a matrix-matrix product routine in a well-tuned library, e.g., DGEMM in BLAS (such as OpenBLAS). Compare the results to those in the hand-made kernels.  
