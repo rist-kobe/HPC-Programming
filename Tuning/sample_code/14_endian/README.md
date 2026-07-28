@@ -14,7 +14,7 @@ $ cd src/fortran/swap        # Fortran, with the swapped version
 ```
 $ make
 ```
-The code is successfully compiled by GNU compiler (8.5.0) and Intel compiler (Intel oneAPI 2022.3.1).  
+The code is successfully compiled by GNU compiler (8.5.0).  
   * Remark: In fortran, you need to consider two patterns. 
 
 ## Instruction: Run and do analyses

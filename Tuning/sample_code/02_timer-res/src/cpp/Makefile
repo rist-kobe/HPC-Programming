@@ -7,13 +7,6 @@ CXX=g++
 CXXFLAGS=-g -Wall -std=gnu++11  -O0
 #LIB=
 #######################################################################
-else ifeq ($(COMPILER),clang)
-## LLVM 13.0.0, Apple clang 15.0.0
-CXX=clang++
-
-CXXFLAGS=-g -Wall -std=gnu++11  -O0
-#LIB=
-#######################################################################
 endif
 
 SRC = \

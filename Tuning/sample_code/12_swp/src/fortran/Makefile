@@ -5,11 +5,6 @@ ifeq ($(COMPILER),gnu)
 FC=gfortran
 ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
 FFLAGS=-g -Wall $(ARCHFLAGS) -O1
-else ifeq ($(COMPILER),intel)
-## Intel oneAPI 2022.3.1
-FC=ifx
-ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
-FFLAGS=-g -warn $(ARCHFLAGS) -O1
 endif
 
 SRC= \

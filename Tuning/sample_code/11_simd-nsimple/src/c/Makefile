@@ -10,47 +10,6 @@ FNVEC=-fno-tree-loop-vectorize -fno-tree-slp-vectorize -fno-tree-vectorize
 LIB=
 INC=
 CFLAGS0=-g -std=gnu99 -O0
-else ifeq ($(COMPILER),intel)
-## Intel DPC++/C++ (Intel oneAPI 2022.3.1)
-CC=icx
-ARCHFLAGS=-mavx2 # amd64 (x86)
-CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -fopenmp -fstrict-aliasing -ansi-alias -D__USE_DIRECTIVES__
-FVEC=-fvectorize -fslp-vectorize -qopt-report #-fsave-optimization-record 
-FNVEC=-fno-vectorize -fno-slp-vectorize  
-LIB=
-INC=
-CFLAGS0=-g -std=gnu99 -O0
-else ifeq ($(COMPILER),clang)
-# LLVM 13.0.0
-CC=clang
-ARCHFLAGS=-mavx2 # amd64 (x86)
-#ARCHFLAGS=-mcpu=thunderx2t99 # Arm64
-CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -fopenmp -fstrict-aliasing -D__USE_DIRECTIVES__
-FVEC=-fvectorize -fslp-vectorize -fsave-optimization-record -Rpass=".*loop.*" -Rpass-missed=".*loop.*" #-Rpass-analysis=".*loop.*|regalloc"
-FNVEC=-fno-vectorize -fno-slp-vectorize
-LIB=
-INC=
-CFLAGS0=-g -std=gnu99 -O0
-else ifeq ($(COMPILER),appleclang)
-# Apple clang 15.0.0
-CC=clang
-ARCHFLAGS=-arch arm64 -mcpu=apple-m1 # MacM1 (Arm64)
-CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -fstrict-aliasing -D__USE_DIRECTIVES__
-FVEC=-fvectorize -fslp-vectorize -fsave-optimization-record -Rpass=".*loop.*" -Rpass-missed=".*loop.*" #-Rpass-analysis=".*loop.*|regalloc"
-FNVEC=-fno-vectorize -fno-slp-vectorize
-LIB=
-INC=
-CFLAGS0=-g -std=gnu99 -O0
-else ifeq ($(COMPILER),intel-classic)
-## Intel oneAPI 2022.3.1
-CC=icc
-ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
-CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -qopenmp -fstrict-aliasing -restrict -diag-disable=10441 -D__USE_DIRECTIVES__
-FVEC=-qopt-report=5 -qopt-report-phase=vec
-FNVEC=-no-vec -no-simd
-LIB=
-INC=
-CFLAGS0=-g -std=gnu99 -O0 -diag-disable=10441
 endif
 
 .SUFFIXES: .o .c
@@ -91,4 +50,4 @@ clean:
 
 .PHONY: veryclean
 veryclean: clean
-	rm -f *.x *.yaml *.optrpt
+	rm -f *.x

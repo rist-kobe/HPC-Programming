@@ -11,18 +11,6 @@ FC=gfortran
 FFLAGS=-Wall -g -cpp -D__USE_CPU_TIMER__ -O0
 
 #######################################################################
-else ifeq ($(COMPILER),intel)
-# Intel Fortran (oneAPI 2022.3.1)
-FC=ifx
-#FC=ifort ## traditional
-
-## Please choose one of the following flag settings
-## FLAGS for no timer
-#FFLAGS=-g -warn all -fpp -O0
-## FLAGS for use of timer (cpu time)
-FFLAGS=-g -warn all -fpp -D__USE_CPU_TIMER__ -O0
-
-#######################################################################
 endif
 
 SRC = \

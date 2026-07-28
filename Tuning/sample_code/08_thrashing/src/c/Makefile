@@ -5,16 +5,6 @@ ifeq ($(COMPILER),gnu)
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu99
 ##########################################################################
-else ifeq ($(COMPILER),intel)
-# Intel DPC/C++ (oneAPI 2022.3.1)
-CC=icx
-CFLAGS=-g -Wall -std=gnu99 -O0 #-DNOT_USE_GNULOC
-##########################################################################
-else ifeq ($(COMPILER),clang)
-## LLVM 13.0.0, Apple clang 15.0.0
-CC=clang
-CFLAGS=-g -Wall -O0 -std=gnu99
-##########################################################################
 endif
 
 SRC= \

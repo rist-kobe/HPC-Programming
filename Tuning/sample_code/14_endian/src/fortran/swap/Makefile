@@ -1,9 +1,6 @@
 ## GNU 8.5.0
 FC=gfortran
 FFLAGS=-O0 -g -Wall -fconvert=swap
-## Intel Fortran (Intel oneAPI 2022.3.1) in little-endian machine
-#FC=ifx #ifort
-#FFLAGS=-O0 -g -warn -convert big_endian 
 ###############################################
 SRC= \
 	main.f90
