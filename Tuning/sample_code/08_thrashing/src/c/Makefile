@@ -3,6 +3,7 @@ COMPILER ?= gnu
 ifeq ($(COMPILER),gnu)
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu99
+LIB=
 ##########################################################################
 endif
 
@@ -18,11 +19,11 @@ run.x: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@ $(LIB)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 main.o: mykernel.o main.c
 
-mykernel.: mykernel.c
+mykernel.o: mykernel.c
 
 .PHONY: clean
 clean:

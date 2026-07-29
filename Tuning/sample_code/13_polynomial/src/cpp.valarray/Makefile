@@ -25,7 +25,7 @@ main.o: main.cc
 
 .PHONY: clean
 clean:
-	rm -f *.o *~
+	rm -f *.o *~ optinfo.all
 
 .PHONY: veryclean
 veryclean: clean

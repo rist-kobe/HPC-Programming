@@ -48,13 +48,20 @@ OBJS   = \
 
 .SUFFIXES: .f90 .o
 
+.PHONY: common rnd calc main
+
 diffuse.x: common rnd calc main
 	$(FC) $(FFLAGS) $(OBJS) -o $@ 
+
+# mtfort90.f90 is NOT included in this sample.
+# See README.md for instructions on how to obtain it.
+mtfort90.f90:
+	$(error $@ is missing. Download the Mersenne-Twister source (mtfort90.f90) and copy it into this directory. See README.md for details)
 
 common:
 	$(FC) $(FFLAGS) -c $(COMSRC) 
 
-rnd: common
+rnd: common mtfort90.f90
 	$(FC) $(FFLAGS) -c $(RNDSRC) 
 
 calc: common
@@ -67,6 +74,6 @@ main: common
 clean:
 	rm -f *.o *.mod *.f90~ *__genmod.f90
 
-.PHONY: clean
+.PHONY: veryclean
 veryclean: clean
 	rm -f *.x

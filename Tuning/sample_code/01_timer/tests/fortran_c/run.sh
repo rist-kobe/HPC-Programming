@@ -5,9 +5,9 @@ date
 ulimit -s unlimited
 
 # Set load module (absolute path could be preferable)
-EXE=$(echo "../../src/c/run.x")
+EXE=$(echo "../../src/fortran_c/run.x")
 
-COMPILER=gcc
+COMPILER=gfortran
 
 ${COMPILER} --version
 uname -a

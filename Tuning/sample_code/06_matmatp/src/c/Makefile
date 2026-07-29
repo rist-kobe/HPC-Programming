@@ -19,6 +19,7 @@ OBJ  = $(SRC:.c=.o)
 
 .SUFFIXES: .o .c
 
+.PHONY: all
 all: run.x
 
 run.x: timer.o $(OBJ)
@@ -34,10 +35,10 @@ mykernel.o: mykernel.c
 timer.o:
 	$(CC) $(CFLAGS_O0) -c timer.c -o $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *~ *.o *optinfo*
 
-.PHONY:
+.PHONY: veryclean
 veryclean: clean
 	rm -f *.x

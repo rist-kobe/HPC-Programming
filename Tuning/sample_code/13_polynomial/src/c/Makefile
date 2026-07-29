@@ -21,13 +21,11 @@ run.x: $(OBJS)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
-main.o: mykernel.o main.c
-
-main.o: mykernel.c
+main.o: mykernel.o mykernel.h main.c
 
 .PHONY: clean
 clean:
-	rm -f *.o *~
+	rm -f *.o *~ optinfo.all
 
 .PHONY: veryclean
 veryclean: clean
