@@ -1,22 +1,28 @@
-## GNU 8.5.0
-CC=gcc
-CCFLAG=-g -O0 -std=c99 
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+CC = gcc
+CFLAGS = -g -O0 -std=c99
 ## if you can use 64-bit int
-##CCFLAG=-g -O0 -std=c99 #-D__BIGINT__
+##CFLAGS = -g -O0 -std=c99 #-D__BIGINT__
+###################################################################
+endif
 
+TARGET = run.x
 
-SRC=\
-	main.c
-
-OBJ=$(SRC:.c=.o)
+SRC = main.c
+OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .c .o
 
-run.x: $(OBJ)
-	$(CC) $(CCFLAG) $(OBJ) -o $@
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 .c.o:
-	$(CC) $(CCFLAG) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 main.o: main.c
 
@@ -26,5 +32,5 @@ clean:
 
 .PHONY: veryclean
 veryclean: clean
-	rm -f run.x
+	rm -f $(TARGET)
 

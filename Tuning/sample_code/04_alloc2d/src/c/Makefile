@@ -1,24 +1,7 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 CC=gcc
-CFLAGS=-g -Wall -O0 -std=c11 
-INCPATH= 
-LIBPATH=
-LIB= 
-###########################################################################
-else ifeq ($(COMPILER),intel)
-## Intel DPC++/C++ (Intel oneAPI 2022.3.1)
-CC=icx
-CFLAGS=-g -Wall -O0 -std=c11 
-INCPATH=
-LIBPATH=
-LIB=
-###########################################################################
-else ifeq ($(COMPILER),clang)
-## Apple clang 15.0.0
-CC=clang
 CFLAGS=-g -Wall -O0 -std=c11 
 INCPATH= 
 LIBPATH=

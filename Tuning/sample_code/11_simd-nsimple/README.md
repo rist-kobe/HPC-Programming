@@ -15,12 +15,7 @@ $ make all                 # GNU compiler (default)
 $ make COMPILER=gnu all    # explicit GNU selection
 ```
 The code is successfully compiled by 
-  * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642 (x86)
-  * GNU (9.3.1) in Intel Xeon Gold 6126 (x86)
-  * GNU (8.5.0) in AMD EPYC 7642 (x86)
-  * Intel (oneAPI 2022.3.1) in Intel Xeon Gold 6126 (x86)
-  * Intel (oneAPI 2022.3.1) in AMD EPYC 7642 (x86)
-  * Apple clang (15.0.0) in Mac M1 (Arm64) without OpenMP (only c)
+  * GNU (8.5.0) on x86-64 systems
 
 ## Instruction: Run and do a performance analysis
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.  

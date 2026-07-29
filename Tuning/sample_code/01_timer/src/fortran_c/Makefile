@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 FC=gfortran
 
 ## Please choose one of the following flag settings
@@ -12,21 +11,6 @@ FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
 
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu11 
-
-#######################################################################
-else ifeq ($(COMPILER),intel)
-# Intel Fortran and DPC++/C++ (oneAPI 2022.3.1)
-FC=ifx
-#FC=ifort ## traditional
-
-## Please choose one of the following flag settings
-## Use of timer for CPU time
-FFLAGS=-g -warn all -fpp -O0 -DUSE_CPU_TIMER
-## Use of timer (elapsed time)
-#FFLAGS=-g -warn all -fpp -O0 -DUSE_ELP_TIMER
-
-CC=icx
-CFLAGS=-g -Wall -std=gnu11 -O0
 
 #######################################################################
 endif

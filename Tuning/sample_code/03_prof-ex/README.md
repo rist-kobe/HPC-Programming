@@ -26,8 +26,7 @@ $ cd src/c # On c
 $ make # GNU compiler (default)
 ```
 The code is successfully compiled by:
-   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
-   * GNU (9.3.1) in Intel Xeon Gold 6126
+   * GNU (8.5.0) on x86-64 systems
 
 ## Instruction: Run and do a performance analysis
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.

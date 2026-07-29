@@ -28,7 +28,7 @@ patching file stream.f
 
 ### 3. Edit Makefile and Do make
 
-You need to set your C compiler (e.g., `gcc` and `clang`) in `CC` and your Fortran compiler (e.g., `gfortran` and `flang`) in `FF`. Moreover, you need to set a compiler option to activate OpenMP in `CFLAGS` and `FFLAGS`, such as`-fopenmp` (in GPU and LLVM) although the option depends on sorts of compilers.
+You need to set your C compiler (e.g., `gcc`) in `CC` and your Fortran compiler (e.g., `gfortran`) in `FF`. Moreover, you need to set a compiler option to activate OpenMP in `CFLAGS` and `FFLAGS`, such as `-fopenmp`.
 
 ```shell
 $ cd stream.v5
@@ -44,14 +44,6 @@ CC = gcc
 CFLAGS = -O3 -fopenmp -ftree-vectorize
 FF = gfortran
 FFLAGS = -O3 -fopenmp -ftree-vectorize
-```
-
-```Makefile
-# LLVM
-CC = clang
-CFLAGS = -O3 -fopenmp -fvectorize
-FF = flang
-FFLAGS = -O3 -fopenmp -fvectorize
 ```
 
 ### 4. Run

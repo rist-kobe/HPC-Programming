@@ -5,12 +5,6 @@ ifeq ($(COMPILER),gnu)
 FC=gfortran
 FFLAGS=-g -Wall -O0  #-DNOT_USE_GNULOC
 ##########################################################################
-else ifeq ($(COMPILER),intel)
-# Intel Fortran (oneAPI 2022.3.1)
-FC=ifx
-#FC=ifort ## classic
-FFLAGS=-warn all -O0 #-DNOT_USE_GNULOC
-#######################################################################
 endif
 
 SRC= \

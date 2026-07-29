@@ -11,7 +11,7 @@ echo -n "START: "
 date
 ulimit -s unlimited
 
-COMPILER=icc 
+COMPILER=gcc
 ${COMPILER} --version
 uname -a
 lscpu

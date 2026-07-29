@@ -10,17 +10,10 @@ $ cd src/c  # On C
 ```
 3. Make
 ```
-$ make COMPILER=intel   # Intel compiler 
 $ make                  # GNU compiler (default)
-$ make COMPILER=clang   # LLVM compiler (only for C)
 ```
 The code is successfully compiled by:
-   * GNU (9.3.1) in Intel Xeon Gold 6126 
-   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86) 
-   * Intel (oneAPI 2022.3.1) in Intel Xeon Gold 6126 
-   * Intel (oneAPI 2022.3.1) in AMD EPYC 7642/7643 (x86)
-   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642/7643 (x86)
-   * Apple clang (15.0.0) in Mac M1 (arm64)
+   * GNU (8.5.0) on x86-64 systems 
 
 ## Instruction: Run and do analyses
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.       

@@ -12,16 +12,11 @@ $ cd src/cpp      # C++
 ```
 3. Make
 ```
-$ make COMPILER=clang # if using LLVM compiler (only C/C++)
 $ make                # if using GNU compiler (default)
-$ make COMPILER=intel # if using Intel compiler
 ```
 The code is successfully compiled by
-  * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642 (x86)
-  * GNU (9.3.1) in Xeon Gold 6126 (x86)
-  * GNU (8.5.0) in AMD EPYC 7642 (x86)
-  * Intel (oneAPI 2022.3.1) in AMD EPYC 7642 (x86)
-  * Apple clang (15.0.0) in Mac M1 (arm64) (only for c and cpp)
+  * GNU (9.3.1) on x86-64 systems
+  * GNU (8.5.0) on x86-64 systems
 
 ## Instruction: Run and do analyses
 1. Sample scripts are in `tests/`. Choose either fortran, c, or c++.       

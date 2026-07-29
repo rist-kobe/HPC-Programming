@@ -43,20 +43,20 @@ double get_cpu_time () {
 double get_elp_res () {
   struct timespec res ;
   clock_getres ( CLOCK_REALTIME, &res ) ;
-  return res.tv_sec*1.0e-6 + (double)res.tv_nsec*1.0e-3 ;
+  return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
 #else
 double get_elp_res () {
   struct timespec res ;
   clock_getres ( CLOCK_MONOTONIC, &res ) ;
-  return res.tv_sec*1.0e-6 + (double)res.tv_nsec*1.0e-3 ;
+  return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
 #endif
 
 double get_cpu_res () {
   struct timespec res ;
   clock_getres ( CLOCK_PROCESS_CPUTIME_ID, &res ) ;
-  return res.tv_sec*1.0e-6 + (double)res.tv_nsec*1.0e-3 ;
+  return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
 
 #if 0
@@ -77,7 +77,7 @@ double get_elp_time () {
 double get_cpu_time () {
   struct rusage ru ;
   getrusage ( RUSAGE_SELF, &ru ) ;
-  return ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_sec*1.0e-6 ;
+  return ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec*1.0e-6 ;
 }
 
 /* Get resolution */

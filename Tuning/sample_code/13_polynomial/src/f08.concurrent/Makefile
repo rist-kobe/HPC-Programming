@@ -1,25 +1,9 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0 
 FC=gfortran
-ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
+ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 FFLAGS=-g -cpp $(ARCHFLAGS) -O3 -ffast-math -funroll-loops -ftree-loop-vectorize -ftree-slp-vectorize -ftree-vectorize -fopt-info-all=optinfo.all
-##########################################################################
-else ifeq ($(COMPILER),intel)
-## Intel oneAPI 2022.3.1
-FC=ifx
-#FC=ifort # classic
-ARCHFLAGS=-mavx2 # x86, AVX512
-#ARCHFLAGS=-xCORE_AVX512 # Intel, AVX512
-FFLAGS=-g -cpp $(ARCHFLAGS) -O3 -funroll-loops -qopt-report=2 -qopt-report-phase=vec
-##########################################################################
-else ifeq ($(COMPILER),fj)
-## Fujitsu Fortran (4.10.0)
-FC=frtpx
-#FC=frt # native compiler
-ARCHFLAGS=-KA64FX -KSVE # aarch64, SVE)
-FFLAGS=-g -X08 -Cpp -V $(ARCHFLAGS) -Kfast -Knoomitfp -Ksimd=auto -Kswp -Kswp_policy=auto -Koptmsg=2 -Nlst=t 
 ##########################################################################
 endif
 
