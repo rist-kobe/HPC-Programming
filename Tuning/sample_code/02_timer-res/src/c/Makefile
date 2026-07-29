@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 CC=gcc
 CFLAGS=-Wall -O0 -std=gnu11  
 #LIB=

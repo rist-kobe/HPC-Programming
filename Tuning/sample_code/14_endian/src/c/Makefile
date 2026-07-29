@@ -1,4 +1,3 @@
-## GNU 8.5.0
 CC=gcc
 CCFLAG=-g -O0 -std=c99 
 ## if you can use 64-bit int

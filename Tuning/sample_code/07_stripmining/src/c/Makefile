@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 CC=gcc
 CFLAGS=-g -Wall -std=gnu99 -O1
 # To increase optimization level 

@@ -1,4 +1,3 @@
-## GNU 8.5.0
 FC=gfortran
 FFLAGS=-O0 -g -Wall -fconvert=swap
 ###############################################
