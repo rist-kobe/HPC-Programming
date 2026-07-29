@@ -3,7 +3,7 @@ COMPILER ?= gnu
 ifeq ($(COMPILER),gnu)
 CC=gcc
 CFLAGS=-Wall -O0 -std=gnu11  
-#LIB=
+LIB=
 #######################################################################
 endif
 

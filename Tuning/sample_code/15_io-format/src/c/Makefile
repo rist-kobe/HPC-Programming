@@ -31,10 +31,10 @@ memory.o: memory.c
 timer.o:
 	$(CC) $(CFLAGS_TIMER) -c timer.c -o $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *~ *.o 
 
-.PHONY:
+.PHONY: veryclean
 veryclean: clean
 	rm -f *.x

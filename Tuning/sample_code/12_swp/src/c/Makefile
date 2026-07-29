@@ -28,7 +28,7 @@ main.o: timer.o mykernel.o main.c
 
 memory.o: memory.c
 
-mekernel.o: mykernel.c
+mykernel.o: mykernel.c
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -36,10 +36,10 @@ mekernel.o: mykernel.c
 timer.o:
 	$(CC) $(CFLAGS_TIMER) -c timer.c -o $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *~ *.o 
 
-.PHONY:
+.PHONY: veryclean
 veryclean: clean
 	rm -f *.x

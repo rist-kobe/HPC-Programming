@@ -21,6 +21,7 @@ OBJ  = $(SRC:.F90=.o)
 
 .SUFFIXES: .o .F90 .c
 
+.PHONY: all
 all: run.x 
 
 run.x: timer.o $(OBJ)
@@ -38,11 +39,10 @@ mytype.o: mytype.F90
 timer.o:
 	$(CC) $(CFLAGS) -c timer.c -o $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *~ *.o *.mod *genmod* *optinfo*
 
-.PHONY:
+.PHONY: veryclean
 veryclean: clean
 	rm -f *.x
-	rm -rf bin/gnu

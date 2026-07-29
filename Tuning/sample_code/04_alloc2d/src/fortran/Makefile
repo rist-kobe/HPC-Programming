@@ -22,7 +22,7 @@ run.x: main.o
 	$(FC) $(FFLAGS) $(INCPATH) $(LIBPATH) $(OBJS) $(LIB) -o $@
 
 .f90.o:
-	$(FC) $(FFLAGS) -c $(INCPATH) $(LIBPATH) $< $(LIB) -o $@
+	$(FC) $(FFLAGS) $(INCPATH) -c $< -o $@
 
 main.o : main.f90
 

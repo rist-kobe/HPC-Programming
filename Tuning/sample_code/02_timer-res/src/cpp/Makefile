@@ -4,7 +4,7 @@ ifeq ($(COMPILER),gnu)
 CXX=g++
 
 CXXFLAGS=-g -Wall -std=gnu++11  -O0
-#LIB=
+LIB=
 #######################################################################
 endif
 

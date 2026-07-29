@@ -36,10 +36,10 @@ mytype.o: mytype.F90
 timer.o: mytype.o timer.F90
 
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f *.f90~ *.F90~ *.o *.mod
 
-.PHONY:
+.PHONY: veryclean
 veryclean: clean
 	rm -f $(EXE)

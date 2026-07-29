@@ -29,7 +29,7 @@ mytype.o: mytype.f90
 
 .PHONY: clean
 clean:
-	rm -f *.o *~ *.mod
+	rm -f *.o *~ *.mod optinfo.all
 
 .PHONY: veryclean
 veryclean: clean
