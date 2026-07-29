@@ -1,6 +1,6 @@
 /* Copyright 2024 Research Organization for Information Science and Technology */
-#ifndef __TIMER_H__
-#define __TIMER_H__
+#ifndef TIMER_H_
+#define TIMER_H_
 
 /* Wall clock (Elapsed time) */
 double get_elp_time () ;
@@ -12,4 +12,4 @@ double get_cpu_time () ;
 double get_elp_res () ;
 double get_cpu_res () ;
 
-#endif /* __TIMER_H__ */
+#endif /* TIMER_H_ */

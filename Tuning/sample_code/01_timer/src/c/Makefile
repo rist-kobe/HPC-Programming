@@ -25,7 +25,7 @@ OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .o .c
 
-run.x: timer.o main.o
+run.x: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
 
 .c.o:
@@ -37,7 +37,7 @@ timer.o: timer.c timer.h
 
 .PHONY: clean
 clean:
-	rm -f *.o *~
+	rm -f *.o *~ gmon.out
 
 .PHONY: veryclean
 veryclean: clean
