@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0
 CC=gcc
 ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 COPT=-O1 

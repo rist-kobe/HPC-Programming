@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 FC=gfortran
 ARCHFLAGS=-mavx2 # x86 with AVX2
 FOPT=-O2 -fopt-info-all=optinfo.all 

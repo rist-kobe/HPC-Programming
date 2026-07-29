@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 CC=gcc
 ARCHFLAGS=-mavx2 # x86 with AVX2
 COPT=-O2 -fopt-info-all=optinfo.all 

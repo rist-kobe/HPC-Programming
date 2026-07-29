@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 CC=g++
 CCFLAGS=-g -Wall -O0 -std=c++11
 ############################

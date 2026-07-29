@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 CXX=g++
 
 CXXFLAGS=-g -Wall -std=gnu++11  -O0

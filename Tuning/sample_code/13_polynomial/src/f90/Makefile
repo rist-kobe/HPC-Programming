@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0 
 FC=gfortran
 ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 FFLAGS=-g -cpp $(ARCHFLAGS) -O3 -ffast-math -funroll-loops -ftree-loop-vectorize -ftree-slp-vectorize -ftree-vectorize -fopt-info-all=optinfo.all

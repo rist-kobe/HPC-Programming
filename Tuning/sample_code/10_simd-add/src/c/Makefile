@@ -1,7 +1,6 @@
 COMPILER ?= gnu
 
 ifeq ($(COMPILER),gnu)
-## GNU 8.5.0, 9.3.1
 CC=gcc
 ARCHFLAGS=-mavx2 # amd64 (x86)
 CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -fopenmp -fstrict-aliasing
