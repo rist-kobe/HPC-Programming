@@ -1,14 +1,31 @@
-CC=gcc
-CFLAGS=-g -O0 -std=c99
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+CC = gcc
+CFLAGS = -g -O0 -std=c99
+###################################################################
+endif
+
+TARGET = run.x
+
+SRC = serial.c
+OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .c .o
 
-run.x: serial.o
-	$(CC) $(CFLAGS) serial.o -o run.x
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f *.o *.x
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

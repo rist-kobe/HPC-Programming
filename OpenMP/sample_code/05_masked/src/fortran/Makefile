@@ -1,21 +1,35 @@
-## GNU 14.1.0 (miniforge3 for x86_64)
-FC=gfortran
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+FC = gfortran
 DFLAGS := $(DFLAGS)
 #DFLAGS := -DNOT_USE_MASKED # for GNU 8.5.0
-FCFLAGS=-g -fopenmp -O0 $(DFLAGS) 
+FFLAGS = -g -fopenmp -O0 $(DFLAGS)
+###################################################################
+endif
+
+TARGET = run.x
+
+SRC = main.F90
+OBJS = $(SRC:.F90=.o)
 
 .SUFFIXES: .F90 .o
 
-SRC=main.F90
+.PHONY: all
+all: $(TARGET)
 
-run.x: main.o
-	$(FC) $(FCFLAGS) main.o -o $@ 
+$(TARGET): $(OBJS)
+	$(FC) $(FFLAGS) $(OBJS) -o $@
 
 .F90.o:
-	$(FC) $(FCFLAGS) -c $< -o  $@ 
+	$(FC) $(FFLAGS) -c $< -o $@
 
 main.o: main.F90
 
 .PHONY: clean
 clean:
-	rm -f *.o run.x
+	rm -f *.o *.mod *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

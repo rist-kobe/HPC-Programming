@@ -1,16 +1,26 @@
-## Nvidia HPC SDK 
-CC ?= nvc
+COMPILER ?= nvhpc
+
+ifeq ($(COMPILER),gnu)
+CC = gcc
+## Offload mode: nogpu (host only)
+OFFLOAD ?= nogpu
+CFLAGS = -g -Wall -std=c99 -O3 -fopenmp
+LIB =
+INC =
+###################################################################
+else ifeq ($(COMPILER),nvhpc)
+## Nvidia HPC SDK
+CC = nvc
 ## Offload mode: omp (OpenMP target offload), acc (OpenACC), nogpu (host only)
 OFFLOAD ?= omp
 ## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
 TP ?= native
 ## GPU code generation flags (override, e.g. GPUFLAGS='-gpu=cc86,cuda11.6,ptxinfo,pinned')
 GPUFLAGS ?= -gpu=cc80,ptxinfo,pinned
-CFLAGS=-g -Wall -c99 -O3
-LIB=
-INC=
+CFLAGS = -g -Wall -c99 -O3
+LIB =
+INC =
 CFLAGS += $(INC) -tp=$(TP)
-
 ifeq ($(OFFLOAD),omp)
   ## OpenMP GPU offload build
   CFLAGS += -mp=gpu -Minfo=mp,accel
@@ -29,13 +39,20 @@ else ifeq ($(OFFLOAD),nogpu)
 else
   $(error Unknown OFFLOAD=$(OFFLOAD) (expected omp, acc, or nogpu))
 endif
+###################################################################
+endif
+
+TARGET = run.x
+
+OBJS = mykernel.o main.o timer.o
 
 .SUFFIXES: .o .c
 
-all: run.x
+.PHONY: all
+all: $(TARGET)
 
-run.x: mykernel.o main.o timer.o
-	$(CC) $(CFLAGS) mykernel.o main.o timer.o $(LIB) -o $@	
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
 
 main.o: main.c
 
@@ -48,4 +65,8 @@ timer.o: timer.c
 
 .PHONY: clean
 clean:
-	rm -f *~ *.o *.x
+	rm -f *~ *.o
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)
