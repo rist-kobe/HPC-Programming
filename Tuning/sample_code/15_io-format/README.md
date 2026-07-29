@@ -15,8 +15,8 @@ $ cd src/cpp      # C++
 $ make                # if using GNU compiler (default)
 ```
 The code is successfully compiled by
-  * GNU (9.3.1) in Xeon Gold 6126 (x86)
-  * GNU (8.5.0) in AMD EPYC 7642 (x86)
+  * GNU (9.3.1) on x86-64 systems
+  * GNU (8.5.0) on x86-64 systems
 
 ## Instruction: Run and do analyses
 1. Sample scripts are in `tests/`. Choose either fortran, c, or c++.       

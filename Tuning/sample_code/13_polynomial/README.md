@@ -38,7 +38,7 @@ $ make COMPILER=gnu       # explicit GNU selection
 
 ```
 The code is successfully compiled by
-  * GNU (8.5.0) in AMD EPYC 7642 (x86)
+  * GNU (8.5.0) on x86-64 systems
 
 ## Description
 All of them calculate a completely identical kernel composed of several multiplication-and-add, but the implementations are different. As a result, the performance could be different. If doing the calculations, you can find `GFLOP/s` in the standard output. Compare such statistical information b/w different kinds of implementation.  
