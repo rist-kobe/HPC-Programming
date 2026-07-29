@@ -1,0 +1,1478 @@
+Unit growth for small function inlining: 0->0 (0%)
+
+Inlined 0 calls, eliminated 0 functions
+
+Unit growth for small function inlining: 126->126 (0%)
+
+Inlined 0 calls, eliminated 0 functions
+
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:53:24: optimized: loop vectorized using 32 byte vectors
+mykernel.f90:53:24: optimized: loop vectorized using 16 byte vectors
+mykernel.f90:41:19: note: vectorized 1 loops in function.
+mykernel.f90:53:24: optimized: loop turned into non-loop; it never loops
+mykernel.f90:41:19: optimized: loop turned into non-loop; it never loops
+mykernel.f90:53:24: note: ***** Analysis failed with vector mode V8SI
+mykernel.f90:53:24: note: ***** The result for vector mode V32QI would be the same
+mykernel.f90:53:24: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.f90:53:24: note: ***** Analysis failed with vector mode V16QI
+mykernel.f90:53:24: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.f90:53:24: note: ***** Analysis failed with vector mode V8QI
+mykernel.f90:53:24: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.f90:53:24: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:53:24: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.f90:53:24: optimized: loop unrolled 1 times
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:38:15: optimized: loop vectorized using 32 byte vectors
+mykernel.f90:38:15: optimized: loop vectorized using 16 byte vectors
+mykernel.f90:28:18: note: vectorized 1 loops in function.
+mykernel.f90:38:15: optimized: loop turned into non-loop; it never loops
+mykernel.f90:28:18: optimized: loop turned into non-loop; it never loops
+mykernel.f90:38:15: note: ***** Analysis failed with vector mode V8SI
+mykernel.f90:38:15: note: ***** The result for vector mode V32QI would be the same
+mykernel.f90:38:15: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.f90:38:15: note: ***** Analysis failed with vector mode V16QI
+mykernel.f90:38:15: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.f90:38:15: note: ***** Analysis failed with vector mode V8QI
+mykernel.f90:38:15: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.f90:38:15: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:38:15: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.f90:38:15: optimized: loop unrolled 1 times
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:25:11: optimized: loop vectorized using 32 byte vectors
+mykernel.f90:25:11: optimized: loop vectorized using 16 byte vectors
+mykernel.f90:16:18: note: vectorized 1 loops in function.
+mykernel.f90:25:11: optimized: loop turned into non-loop; it never loops
+mykernel.f90:16:18: optimized: loop turned into non-loop; it never loops
+mykernel.f90:25:11: note: ***** Analysis failed with vector mode V8SI
+mykernel.f90:25:11: note: ***** The result for vector mode V32QI would be the same
+mykernel.f90:25:11: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.f90:25:11: note: ***** Analysis failed with vector mode V16QI
+mykernel.f90:25:11: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.f90:25:11: note: ***** Analysis failed with vector mode V8QI
+mykernel.f90:25:11: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.f90:25:11: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:25:11: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.f90:25:11: optimized: loop unrolled 3 times
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:13:47: optimized: loop vectorized using 32 byte vectors
+mykernel.f90:13:47: optimized: loop vectorized using 16 byte vectors
+mykernel.f90:6:18: note: vectorized 1 loops in function.
+mykernel.f90:13:47: optimized: loop turned into non-loop; it never loops
+mykernel.f90:6:18: optimized: loop turned into non-loop; it never loops
+mykernel.f90:13:47: note: ***** Analysis failed with vector mode V8SI
+mykernel.f90:13:47: note: ***** The result for vector mode V32QI would be the same
+mykernel.f90:13:47: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.f90:13:47: note: ***** Analysis failed with vector mode V16QI
+mykernel.f90:13:47: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.f90:13:47: note: ***** Analysis failed with vector mode V8QI
+mykernel.f90:13:47: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.f90:13:47: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.f90:13:47: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.f90:13:47: optimized: loop unrolled 7 times
+main.f90:8:12: note: Considering inline candidate MAIN__/0.
+main.f90:8:12: missed:   not inlinable: main/1 -> MAIN__/0, --param large-stack-frame-growth limit reached
+main.f90:8:12: missed:   not inlinable: main/1 -> MAIN__/0, --param max-inline-insns-auto limit reached
+main.f90:8:12: missed:   not inlinable: main/1 -> _gfortran_set_options/3, function body not available
+main.f90:8:12: missed:   not inlinable: main/1 -> _gfortran_set_args/2, function body not available
+main.f90:172:12: missed:   not inlinable: MAIN__/0 -> _gfortran_stop_string/22, function body not available
+main.f90:170:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:170:47: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:170:40: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:170:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:169:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:169:64: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:169:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:169:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:168:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:168:62: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:168:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:168:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:160:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:157:38: missed:   not inlinable: MAIN__/0 -> poly16/21, function body not available
+main.f90:155:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:153:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:153:72: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:153:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:153:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:152:73: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:152:73: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:152:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:152:73: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:151:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:151:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:151:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:145:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:145:47: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:145:40: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:145:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:144:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:144:64: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:144:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:144:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:143:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:143:62: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:143:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:143:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:135:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:132:37: missed:   not inlinable: MAIN__/0 -> poly8/20, function body not available
+main.f90:130:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:128:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:128:72: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:128:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:128:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:127:73: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:127:73: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:127:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:127:73: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:126:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:126:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:126:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:120:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:120:47: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:120:40: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:120:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:119:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:119:64: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:119:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:119:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:118:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:118:62: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:118:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:118:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:110:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:107:37: missed:   not inlinable: MAIN__/0 -> poly4/19, function body not available
+main.f90:105:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:103:71: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:103:71: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:103:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:103:71: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:102:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:102:72: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:102:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:102:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:101:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:101:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:101:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:95:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:95:47: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:95:40: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:95:47: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:94:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:94:64: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:94:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:94:64: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:93:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:93:62: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:93:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:93:62: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:85:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:82:37: missed:   not inlinable: MAIN__/0 -> poly1/18, function body not available
+main.f90:80:55: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+main.f90:78:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:78:72: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:78:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:78:72: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:77:73: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:77:73: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_real_write/17, function body not available
+main.f90:77:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:77:73: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:76:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:76:58: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:76:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:66:71: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:66:66: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:66:71: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:64:42: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:64:42: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_integer_write/16, function body not available
+main.f90:64:35: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:64:42: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:62:41: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:62:41: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_integer_write/16, function body not available
+main.f90:62:35: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:62:41: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:60:20: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:60:20: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:60:20: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:58:38: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:58:38: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:58:38: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:56:43: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:56:43: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:56:43: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:54:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:54:57: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:54:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:52:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:52:57: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:52:58: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:50:71: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write_done/15, function body not available
+main.f90:50:66: missed:   not inlinable: MAIN__/0 -> _gfortran_transfer_character_write/14, function body not available
+main.f90:50:71: missed:   not inlinable: MAIN__/0 -> _gfortran_st_write/13, function body not available
+main.f90:48:27: missed:   not inlinable: MAIN__/0 -> __builtin_free/12, function body not available
+main.f90:48:19: missed:   not inlinable: MAIN__/0 -> _gfortran_runtime_error_at/8, function body not available
+main.f90:44:35: missed:   not inlinable: MAIN__/0 -> _gfortran_random_r8/11, function body not available
+main.f90:43:35: missed:   not inlinable: MAIN__/0 -> _gfortran_random_r8/11, function body not available
+main.f90:41:34: missed:   not inlinable: MAIN__/0 -> _gfortran_random_seed_i4/6, function body not available
+main.f90:37:34: missed:   not inlinable: MAIN__/0 -> _gfortran_random_seed_i4/6, function body not available
+main.f90:36:34: missed:   not inlinable: MAIN__/0 -> _gfortran_os_error_at/10, function body not available
+main.f90:36:34: missed:   not inlinable: MAIN__/0 -> __builtin_malloc/9, function body not available
+main.f90:36:18: missed:   not inlinable: MAIN__/0 -> _gfortran_runtime_error_at/8, function body not available
+main.f90:36:34: missed:   not inlinable: MAIN__/0 -> _gfortran_runtime_error/7, function body not available
+main.f90:35:40: missed:   not inlinable: MAIN__/0 -> _gfortran_random_seed_i4/6, function body not available
+main.f90:34:37: missed:   not inlinable: MAIN__/0 -> _gfortran_system_clock_4/5, function body not available
+Unit growth for small function inlining: 853->853 (0%)
+main.f90:8:12: missed:   not inlinable: main/1 -> MAIN__/0, --param large-stack-frame-growth limit reached
+main.f90:8:12: missed:   not inlinable: main/1 -> MAIN__/0, --param large-stack-frame-growth limit reached
+
+Inlined 0 calls, eliminated 0 functions
+
+BB 30 is always executed in loop 6
+BB 25 is always executed in loop 5
+BB 20 is always executed in loop 4
+BB 15 is always executed in loop 3
+BB 11 is always executed in loop 2
+BB 9 is always executed in loop 1
+loop 6's coldest_outermost_loop is 6, hotter_than_inner_loop is NULL
+loop 5's coldest_outermost_loop is 5, hotter_than_inner_loop is NULL
+loop 4's coldest_outermost_loop is 4, hotter_than_inner_loop is NULL
+loop 3's coldest_outermost_loop is 3, hotter_than_inner_loop is NULL
+loop 2's coldest_outermost_loop is 2, hotter_than_inner_loop is NULL
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+main.f90:157:38: missed: statement clobbers memory: poly16 (&C.4417, &x, &c1, &c2);
+main.f90:132:37: missed: statement clobbers memory: poly8 (&C.4394, &x, &c1, &c2);
+main.f90:107:37: missed: statement clobbers memory: poly4 (&C.4371, &x, &c1, &c2);
+main.f90:82:37: missed: statement clobbers memory: poly1 (&C.4348, &x, &c1, &c2);
+main.f90:43:35: missed: statement clobbers memory: _gfortran_random_r8 (&tmp1);
+main.f90:156:16: missed: couldn't vectorize loop
+main.f90:157:38: missed: statement clobbers memory: poly16 (&C.4417, &x, &c1, &c2);
+main.f90:131:16: missed: couldn't vectorize loop
+main.f90:132:37: missed: statement clobbers memory: poly8 (&C.4394, &x, &c1, &c2);
+main.f90:106:16: missed: couldn't vectorize loop
+main.f90:107:37: missed: statement clobbers memory: poly4 (&C.4371, &x, &c1, &c2);
+main.f90:81:16: missed: couldn't vectorize loop
+main.f90:82:37: missed: statement clobbers memory: poly1 (&C.4348, &x, &c1, &c2);
+main.f90:42:13: missed: couldn't vectorize loop
+main.f90:43:35: missed: statement clobbers memory: _gfortran_random_r8 (&tmp1);
+main.f90:38:13: optimized: loop vectorized using 32 byte vectors
+main.f90:38:13: optimized: loop vectorized using 16 byte vectors
+main.f90:7:18: note: vectorized 1 loops in function.
+main.f90:43:35: missed: statement clobbers memory: _gfortran_random_r8 (&tmp1);
+main.f90:82:37: missed: statement clobbers memory: poly1 (&C.4348, &x, &c1, &c2);
+main.f90:107:37: missed: statement clobbers memory: poly4 (&C.4371, &x, &c1, &c2);
+main.f90:132:37: missed: statement clobbers memory: poly8 (&C.4394, &x, &c1, &c2);
+main.f90:157:38: missed: statement clobbers memory: poly16 (&C.4417, &x, &c1, &c2);
+main.f90:38:13: optimized: loop with 2 iterations completely unrolled (header execution count 5206427)
+main.f90:7:18: optimized: loop turned into non-loop; it never loops
+main.f90:34:37: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.0, 0B, 0B);
+main.f90:35:40: missed: statement clobbers memory: _gfortran_random_seed_i4 (&seedsize, 0B, 0B);
+main.f90:36:34: missed: statement clobbers memory: _14 = __builtin_malloc (_13);
+main.f90:37:34: missed: statement clobbers memory: _gfortran_random_seed_i4 (0B, 0B, &seed);
+main.f90:41:34: missed: statement clobbers memory: _gfortran_random_seed_i4 (0B, &seed, 0B);
+main.f90:43:35: missed: statement clobbers memory: _gfortran_random_r8 (&tmp1);
+main.f90:44:35: missed: statement clobbers memory: _gfortran_random_r8 (&tmp2);
+main.f90:48:27: missed: statement clobbers memory: __builtin_free (_35);
+main.f90:50:71: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.4);
+main.f90:50:66: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.4, &"------------------------------------------------------"[1]{lb: 1 sz: 1}, 54);
+main.f90:50:71: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.4);
+main.f90:52:58: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.5);
+main.f90:52:57: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.5, &"Some benchmark of multiplication and addition"[1]{lb: 1 sz: 1}, 45);
+main.f90:52:58: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.5);
+main.f90:54:58: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.6);
+main.f90:54:57: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.6, &"Authors:       Yukihiro Ota (yota@rist.or.jp)"[1]{lb: 1 sz: 1}, 45);
+main.f90:54:58: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.6);
+main.f90:56:43: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.7);
+main.f90:56:43: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.7, &"               Tatsunobu Kokubo"[1]{lb: 1 sz: 1}, 31);
+main.f90:56:43: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.7);
+main.f90:58:38: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.8);
+main.f90:58:38: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.8, &"Last Update:   11 Oct 2017"[1]{lb: 1 sz: 1}, 26);
+main.f90:58:38: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.8);
+main.f90:60:20: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.9);
+main.f90:60:20: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.9, &"[setup] "[1]{lb: 1 sz: 1}, 8);
+main.f90:60:20: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.9);
+main.f90:62:41: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.10);
+main.f90:62:35: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.10, &"Number of repetitions :"[1]{lb: 1 sz: 1}, 23);
+main.f90:62:41: missed: statement clobbers memory: _gfortran_transfer_integer_write (&dt_parm.10, &C.4333, 4);
+main.f90:62:41: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.10);
+main.f90:64:42: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.11);
+main.f90:64:35: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.11, &"Number of elements    :"[1]{lb: 1 sz: 1}, 23);
+main.f90:64:42: missed: statement clobbers memory: _gfortran_transfer_integer_write (&dt_parm.11, &C.4335, 4);
+main.f90:64:42: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.11);
+main.f90:66:71: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.12);
+main.f90:66:66: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.12, &"------------------------------------------------------"[1]{lb: 1 sz: 1}, 54);
+main.f90:66:71: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.12);
+main.f90:76:58: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.13);
+main.f90:76:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.13, &"[run] 1 FMA            "[1]{lb: 1 sz: 1}, 23);
+main.f90:76:58: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.13);
+main.f90:77:73: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.14);
+main.f90:77:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.14, &"Giga FLOP             :"[1]{lb: 1 sz: 1}, 23);
+main.f90:77:73: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.14, &D.4339, 8);
+main.f90:77:73: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.14);
+main.f90:78:72: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.15);
+main.f90:78:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.15, &"Memory (MB)           :"[1]{lb: 1 sz: 1}, 23);
+main.f90:78:72: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.15, &D.4341, 8);
+main.f90:78:72: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.15);
+main.f90:80:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.16, &count_rate.17, &count_max.18);
+main.f90:82:37: missed: statement clobbers memory: poly1 (&C.4348, &x, &c1, &c2);
+main.f90:85:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.19, &count_rate.20, &count_max.21);
+main.f90:93:62: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.22);
+main.f90:93:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.22, &"Elapsed (sec.)        :"[1]{lb: 1 sz: 1}, 23);
+main.f90:93:62: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.22, &elp, 8);
+main.f90:93:62: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.22);
+main.f90:94:64: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.23);
+main.f90:94:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.23, &"Giga FLOPs            :"[1]{lb: 1 sz: 1}, 23);
+main.f90:94:64: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.23, &flops, 8);
+main.f90:94:64: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.23);
+main.f90:95:47: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.24);
+main.f90:95:40: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.24, &"x(1)="[1]{lb: 1 sz: 1}, 5);
+main.f90:95:47: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.24, &x[0], 8);
+main.f90:95:47: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.24);
+main.f90:101:58: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.25);
+main.f90:101:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.25, &"[run] 4 FMA            "[1]{lb: 1 sz: 1}, 23);
+main.f90:101:58: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.25);
+main.f90:102:72: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.26);
+main.f90:102:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.26, &"Giga FLOP             :"[1]{lb: 1 sz: 1}, 23);
+main.f90:102:72: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.26, &D.4362, 8);
+main.f90:102:72: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.26);
+main.f90:103:71: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.27);
+main.f90:103:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.27, &"Memory (MB)           :"[1]{lb: 1 sz: 1}, 23);
+main.f90:103:71: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.27, &D.4364, 8);
+main.f90:103:71: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.27);
+main.f90:105:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.28, &count_rate.29, &count_max.30);
+main.f90:107:37: missed: statement clobbers memory: poly4 (&C.4371, &x, &c1, &c2);
+main.f90:110:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.31, &count_rate.32, &count_max.33);
+main.f90:118:62: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.34);
+main.f90:118:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.34, &"Elapsed (sec.)        :"[1]{lb: 1 sz: 1}, 23);
+main.f90:118:62: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.34, &elp, 8);
+main.f90:118:62: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.34);
+main.f90:119:64: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.35);
+main.f90:119:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.35, &"Giga FLOPs            :"[1]{lb: 1 sz: 1}, 23);
+main.f90:119:64: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.35, &flops, 8);
+main.f90:119:64: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.35);
+main.f90:120:47: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.36);
+main.f90:120:40: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.36, &"x(1)="[1]{lb: 1 sz: 1}, 5);
+main.f90:120:47: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.36, &x[0], 8);
+main.f90:120:47: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.36);
+main.f90:126:58: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.37);
+main.f90:126:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.37, &"[run] 8 FMA            "[1]{lb: 1 sz: 1}, 23);
+main.f90:126:58: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.37);
+main.f90:127:73: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.38);
+main.f90:127:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.38, &"Giga FLOP             :"[1]{lb: 1 sz: 1}, 23);
+main.f90:127:73: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.38, &D.4385, 8);
+main.f90:127:73: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.38);
+main.f90:128:72: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.39);
+main.f90:128:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.39, &"Memory (MB)           :"[1]{lb: 1 sz: 1}, 23);
+main.f90:128:72: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.39, &D.4387, 8);
+main.f90:128:72: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.39);
+main.f90:130:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.40, &count_rate.41, &count_max.42);
+main.f90:132:37: missed: statement clobbers memory: poly8 (&C.4394, &x, &c1, &c2);
+main.f90:135:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.43, &count_rate.44, &count_max.45);
+main.f90:143:62: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.46);
+main.f90:143:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.46, &"Elapsed (sec.)        :"[1]{lb: 1 sz: 1}, 23);
+main.f90:143:62: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.46, &elp, 8);
+main.f90:143:62: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.46);
+main.f90:144:64: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.47);
+main.f90:144:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.47, &"Giga FLOPs            :"[1]{lb: 1 sz: 1}, 23);
+main.f90:144:64: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.47, &flops, 8);
+main.f90:144:64: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.47);
+main.f90:145:47: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.48);
+main.f90:145:40: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.48, &"x(1)="[1]{lb: 1 sz: 1}, 5);
+main.f90:145:47: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.48, &x[0], 8);
+main.f90:145:47: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.48);
+main.f90:151:58: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.49);
+main.f90:151:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.49, &"[run] 16 FMA           "[1]{lb: 1 sz: 1}, 23);
+main.f90:151:58: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.49);
+main.f90:152:73: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.50);
+main.f90:152:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.50, &"Giga FLOP             :"[1]{lb: 1 sz: 1}, 23);
+main.f90:152:73: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.50, &D.4408, 8);
+main.f90:152:73: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.50);
+main.f90:153:72: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.51);
+main.f90:153:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.51, &"Memory (MB)           :"[1]{lb: 1 sz: 1}, 23);
+main.f90:153:72: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.51, &D.4410, 8);
+main.f90:153:72: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.51);
+main.f90:155:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.52, &count_rate.53, &count_max.54);
+main.f90:157:38: missed: statement clobbers memory: poly16 (&C.4417, &x, &c1, &c2);
+main.f90:160:55: missed: statement clobbers memory: _gfortran_system_clock_4 (&count.55, &count_rate.56, &count_max.57);
+main.f90:168:62: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.58);
+main.f90:168:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.58, &"Elapsed (sec.)        :"[1]{lb: 1 sz: 1}, 23);
+main.f90:168:62: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.58, &elp, 8);
+main.f90:168:62: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.58);
+main.f90:169:64: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.59);
+main.f90:169:58: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.59, &"Giga FLOPs            :"[1]{lb: 1 sz: 1}, 23);
+main.f90:169:64: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.59, &flops, 8);
+main.f90:169:64: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.59);
+main.f90:170:47: missed: statement clobbers memory: _gfortran_st_write (&dt_parm.60);
+main.f90:170:40: missed: statement clobbers memory: _gfortran_transfer_character_write (&dt_parm.60, &"x(1)="[1]{lb: 1 sz: 1}, 5);
+main.f90:170:47: missed: statement clobbers memory: _gfortran_transfer_real_write (&dt_parm.60, &x[0], 8);
+main.f90:170:47: missed: statement clobbers memory: _gfortran_st_write_done (&dt_parm.60);
+main.f90:172:12: missed: statement clobbers memory: _gfortran_stop_string (0B, 0, 0);
+main.f90:48:19: missed: statement clobbers memory: _gfortran_runtime_error_at (&"At line 48 of file main.f90"[1]{lb: 1 sz: 1}, &"Attempt to DEALLOCATE unallocated \'%s\'"[1]{lb: 1 sz: 1}, &"seed"[1]{lb: 1 sz: 1});
+main.f90:36:34: missed: statement clobbers memory: _gfortran_os_error_at (&"In file \'main.f90\', around line 37"[1]{lb: 1 sz: 1}, &"Error allocating %lu bytes"[1]{lb: 1 sz: 1}, size.1_106);
+main.f90:36:18: missed: statement clobbers memory: _gfortran_runtime_error_at (&"At line 36 of file main.f90"[1]{lb: 1 sz: 1}, &"Attempting to allocate already allocated variable \'%s\'"[1]{lb: 1 sz: 1}, &"seed"[1]{lb: 1 sz: 1});
+main.f90:170:47: note: ***** Analysis succeeded with vector mode V4DI
+main.f90:170:47: note: SLPing BB part
+main.f90:21:38: note: Costing subgraph: 
+main.f90:21:38: note: node 0x1d557468 (max_nunits=2, refcnt=1) vector(2) signed char
+main.f90:21:38: note: op template: seed.dtype.rank = 1;
+main.f90:21:38: note: 	stmt 0 seed.dtype.rank = 1;
+main.f90:21:38: note: 	stmt 1 seed.dtype.type = 1;
+main.f90:21:38: note: 	children 0x1d5574e8
+main.f90:21:38: note: node (constant) 0x1d5574e8 (max_nunits=1, refcnt=1) vector(2) signed char
+main.f90:21:38: note: 	{ 1, 1 }
+main.f90:21:38: note: Cost model analysis: 
+main.f90:21:38: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:36:34: note: Costing subgraph: 
+main.f90:36:34: note: node 0x1d557568 (max_nunits=2, refcnt=1) vector(2) signed char
+main.f90:36:34: note: op template: seed.dtype.rank = 1;
+main.f90:36:34: note: 	stmt 0 seed.dtype.rank = 1;
+main.f90:36:34: note: 	stmt 1 seed.dtype.type = 1;
+main.f90:36:34: note: 	children 0x1d5575e8
+main.f90:36:34: note: node (constant) 0x1d5575e8 (max_nunits=1, refcnt=1) vector(2) signed char
+main.f90:36:34: note: 	{ 1, 1 }
+main.f90:36:34: note: Cost model analysis: 
+main.f90:36:34: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:36:34: note: Costing subgraph: 
+main.f90:36:34: note: node 0x1d5576e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=8)
+main.f90:36:34: note: op template: seed.span = 4;
+main.f90:36:34: note: 	stmt 0 seed.span = 4;
+main.f90:36:34: note: 	stmt 1 seed.dim[0].stride = 1;
+main.f90:36:34: note: 	children 0x1d557768
+main.f90:36:34: note: node (constant) 0x1d557768 (max_nunits=1, refcnt=1) vector(2) integer(kind=8)
+main.f90:36:34: note: 	{ 4, 1 }
+main.f90:36:34: note: Cost model analysis: 
+main.f90:36:34: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:50:71: note: Costing subgraph: 
+main.f90:50:71: note: node 0x1d5577e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:50:71: note: op template: dt_parm.4.common.flags = 4096;
+main.f90:50:71: note: 	stmt 0 dt_parm.4.common.flags = 4096;
+main.f90:50:71: note: 	stmt 1 dt_parm.4.common.unit = 6;
+main.f90:50:71: note: 	children 0x1d557868
+main.f90:50:71: note: node (constant) 0x1d557868 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:50:71: note: 	{ 4096, 6 }
+main.f90:50:71: note: Cost model analysis: 
+main.f90:50:71: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:52:58: note: Costing subgraph: 
+main.f90:52:58: note: node 0x1d5578e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:52:58: note: op template: dt_parm.5.common.flags = 4096;
+main.f90:52:58: note: 	stmt 0 dt_parm.5.common.flags = 4096;
+main.f90:52:58: note: 	stmt 1 dt_parm.5.common.unit = 6;
+main.f90:52:58: note: 	children 0x1d557968
+main.f90:52:58: note: node (constant) 0x1d557968 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:52:58: note: 	{ 4096, 6 }
+main.f90:52:58: note: Cost model analysis: 
+main.f90:52:58: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:54:58: note: Costing subgraph: 
+main.f90:54:58: note: node 0x1d5579e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:54:58: note: op template: dt_parm.6.common.flags = 4096;
+main.f90:54:58: note: 	stmt 0 dt_parm.6.common.flags = 4096;
+main.f90:54:58: note: 	stmt 1 dt_parm.6.common.unit = 6;
+main.f90:54:58: note: 	children 0x1d557a68
+main.f90:54:58: note: node (constant) 0x1d557a68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:54:58: note: 	{ 4096, 6 }
+main.f90:54:58: note: Cost model analysis: 
+main.f90:54:58: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:56:43: note: Costing subgraph: 
+main.f90:56:43: note: node 0x1d557ae8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:56:43: note: op template: dt_parm.7.common.flags = 4096;
+main.f90:56:43: note: 	stmt 0 dt_parm.7.common.flags = 4096;
+main.f90:56:43: note: 	stmt 1 dt_parm.7.common.unit = 6;
+main.f90:56:43: note: 	children 0x1d557b68
+main.f90:56:43: note: node (constant) 0x1d557b68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:56:43: note: 	{ 4096, 6 }
+main.f90:56:43: note: Cost model analysis: 
+main.f90:56:43: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:58:38: note: Costing subgraph: 
+main.f90:58:38: note: node 0x1d557be8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:58:38: note: op template: dt_parm.8.common.flags = 4096;
+main.f90:58:38: note: 	stmt 0 dt_parm.8.common.flags = 4096;
+main.f90:58:38: note: 	stmt 1 dt_parm.8.common.unit = 6;
+main.f90:58:38: note: 	children 0x1d557c68
+main.f90:58:38: note: node (constant) 0x1d557c68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:58:38: note: 	{ 4096, 6 }
+main.f90:58:38: note: Cost model analysis: 
+main.f90:58:38: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:60:20: note: Costing subgraph: 
+main.f90:60:20: note: node 0x1d557ce8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:60:20: note: op template: dt_parm.9.common.flags = 4096;
+main.f90:60:20: note: 	stmt 0 dt_parm.9.common.flags = 4096;
+main.f90:60:20: note: 	stmt 1 dt_parm.9.common.unit = 6;
+main.f90:60:20: note: 	children 0x1d557d68
+main.f90:60:20: note: node (constant) 0x1d557d68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:60:20: note: 	{ 4096, 6 }
+main.f90:60:20: note: Cost model analysis: 
+main.f90:60:20: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:62:41: note: Costing subgraph: 
+main.f90:62:41: note: node 0x1d557de8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:62:41: note: op template: dt_parm.10.common.flags = 4096;
+main.f90:62:41: note: 	stmt 0 dt_parm.10.common.flags = 4096;
+main.f90:62:41: note: 	stmt 1 dt_parm.10.common.unit = 6;
+main.f90:62:41: note: 	children 0x1d557e68
+main.f90:62:41: note: node (constant) 0x1d557e68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:62:41: note: 	{ 4096, 6 }
+main.f90:62:41: note: Cost model analysis: 
+main.f90:62:41: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:64:42: note: Costing subgraph: 
+main.f90:64:42: note: node 0x1d557ee8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:64:42: note: op template: dt_parm.11.common.flags = 4096;
+main.f90:64:42: note: 	stmt 0 dt_parm.11.common.flags = 4096;
+main.f90:64:42: note: 	stmt 1 dt_parm.11.common.unit = 6;
+main.f90:64:42: note: 	children 0x1d557f68
+main.f90:64:42: note: node (constant) 0x1d557f68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:64:42: note: 	{ 4096, 6 }
+main.f90:64:42: note: Cost model analysis: 
+main.f90:64:42: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:66:71: note: Costing subgraph: 
+main.f90:66:71: note: node 0x1d557fe8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:66:71: note: op template: dt_parm.12.common.flags = 4096;
+main.f90:66:71: note: 	stmt 0 dt_parm.12.common.flags = 4096;
+main.f90:66:71: note: 	stmt 1 dt_parm.12.common.unit = 6;
+main.f90:66:71: note: 	children 0x1d558068
+main.f90:66:71: note: node (constant) 0x1d558068 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:66:71: note: 	{ 4096, 6 }
+main.f90:66:71: note: Cost model analysis: 
+main.f90:66:71: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:76:58: note: Costing subgraph: 
+main.f90:76:58: note: node 0x1d5580e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:76:58: note: op template: dt_parm.13.common.flags = 4096;
+main.f90:76:58: note: 	stmt 0 dt_parm.13.common.flags = 4096;
+main.f90:76:58: note: 	stmt 1 dt_parm.13.common.unit = 6;
+main.f90:76:58: note: 	children 0x1d558168
+main.f90:76:58: note: node (constant) 0x1d558168 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:76:58: note: 	{ 4096, 6 }
+main.f90:76:58: note: Cost model analysis: 
+main.f90:76:58: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:77:73: note: Costing subgraph: 
+main.f90:77:73: note: node 0x1d5581e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:77:73: note: op template: dt_parm.14.common.flags = 4096;
+main.f90:77:73: note: 	stmt 0 dt_parm.14.common.flags = 4096;
+main.f90:77:73: note: 	stmt 1 dt_parm.14.common.unit = 6;
+main.f90:77:73: note: 	children 0x1d558268
+main.f90:77:73: note: node (constant) 0x1d558268 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:77:73: note: 	{ 4096, 6 }
+main.f90:77:73: note: Cost model analysis: 
+main.f90:77:73: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:78:72: note: Costing subgraph: 
+main.f90:78:72: note: node 0x1d5582e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:78:72: note: op template: dt_parm.15.common.flags = 4096;
+main.f90:78:72: note: 	stmt 0 dt_parm.15.common.flags = 4096;
+main.f90:78:72: note: 	stmt 1 dt_parm.15.common.unit = 6;
+main.f90:78:72: note: 	children 0x1d558368
+main.f90:78:72: note: node (constant) 0x1d558368 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:78:72: note: 	{ 4096, 6 }
+main.f90:78:72: note: Cost model analysis: 
+main.f90:78:72: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:93:62: note: Costing subgraph: 
+main.f90:93:62: note: node 0x1d5583e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:93:62: note: op template: dt_parm.22.common.flags = 4096;
+main.f90:93:62: note: 	stmt 0 dt_parm.22.common.flags = 4096;
+main.f90:93:62: note: 	stmt 1 dt_parm.22.common.unit = 6;
+main.f90:93:62: note: 	children 0x1d558468
+main.f90:93:62: note: node (constant) 0x1d558468 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:93:62: note: 	{ 4096, 6 }
+main.f90:93:62: note: Cost model analysis: 
+main.f90:93:62: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:94:64: note: Costing subgraph: 
+main.f90:94:64: note: node 0x1d5584e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:94:64: note: op template: dt_parm.23.common.flags = 4096;
+main.f90:94:64: note: 	stmt 0 dt_parm.23.common.flags = 4096;
+main.f90:94:64: note: 	stmt 1 dt_parm.23.common.unit = 6;
+main.f90:94:64: note: 	children 0x1d558568
+main.f90:94:64: note: node (constant) 0x1d558568 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:94:64: note: 	{ 4096, 6 }
+main.f90:94:64: note: Cost model analysis: 
+main.f90:94:64: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:95:47: note: Costing subgraph: 
+main.f90:95:47: note: node 0x1d5585e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:95:47: note: op template: dt_parm.24.common.flags = 4096;
+main.f90:95:47: note: 	stmt 0 dt_parm.24.common.flags = 4096;
+main.f90:95:47: note: 	stmt 1 dt_parm.24.common.unit = 6;
+main.f90:95:47: note: 	children 0x1d558668
+main.f90:95:47: note: node (constant) 0x1d558668 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:95:47: note: 	{ 4096, 6 }
+main.f90:95:47: note: Cost model analysis: 
+main.f90:95:47: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:101:58: note: Costing subgraph: 
+main.f90:101:58: note: node 0x1d5586e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:101:58: note: op template: dt_parm.25.common.flags = 4096;
+main.f90:101:58: note: 	stmt 0 dt_parm.25.common.flags = 4096;
+main.f90:101:58: note: 	stmt 1 dt_parm.25.common.unit = 6;
+main.f90:101:58: note: 	children 0x1d558768
+main.f90:101:58: note: node (constant) 0x1d558768 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:101:58: note: 	{ 4096, 6 }
+main.f90:101:58: note: Cost model analysis: 
+main.f90:101:58: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:102:72: note: Costing subgraph: 
+main.f90:102:72: note: node 0x1d5587e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:102:72: note: op template: dt_parm.26.common.flags = 4096;
+main.f90:102:72: note: 	stmt 0 dt_parm.26.common.flags = 4096;
+main.f90:102:72: note: 	stmt 1 dt_parm.26.common.unit = 6;
+main.f90:102:72: note: 	children 0x1d558868
+main.f90:102:72: note: node (constant) 0x1d558868 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:102:72: note: 	{ 4096, 6 }
+main.f90:102:72: note: Cost model analysis: 
+main.f90:102:72: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:103:71: note: Costing subgraph: 
+main.f90:103:71: note: node 0x1d5588e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:103:71: note: op template: dt_parm.27.common.flags = 4096;
+main.f90:103:71: note: 	stmt 0 dt_parm.27.common.flags = 4096;
+main.f90:103:71: note: 	stmt 1 dt_parm.27.common.unit = 6;
+main.f90:103:71: note: 	children 0x1d558968
+main.f90:103:71: note: node (constant) 0x1d558968 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:103:71: note: 	{ 4096, 6 }
+main.f90:103:71: note: Cost model analysis: 
+main.f90:103:71: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:118:62: note: Costing subgraph: 
+main.f90:118:62: note: node 0x1d5589e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:118:62: note: op template: dt_parm.34.common.flags = 4096;
+main.f90:118:62: note: 	stmt 0 dt_parm.34.common.flags = 4096;
+main.f90:118:62: note: 	stmt 1 dt_parm.34.common.unit = 6;
+main.f90:118:62: note: 	children 0x1d558a68
+main.f90:118:62: note: node (constant) 0x1d558a68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:118:62: note: 	{ 4096, 6 }
+main.f90:118:62: note: Cost model analysis: 
+main.f90:118:62: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:119:64: note: Costing subgraph: 
+main.f90:119:64: note: node 0x1d558ae8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:119:64: note: op template: dt_parm.35.common.flags = 4096;
+main.f90:119:64: note: 	stmt 0 dt_parm.35.common.flags = 4096;
+main.f90:119:64: note: 	stmt 1 dt_parm.35.common.unit = 6;
+main.f90:119:64: note: 	children 0x1d558b68
+main.f90:119:64: note: node (constant) 0x1d558b68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:119:64: note: 	{ 4096, 6 }
+main.f90:119:64: note: Cost model analysis: 
+main.f90:119:64: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:120:47: note: Costing subgraph: 
+main.f90:120:47: note: node 0x1d558be8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:120:47: note: op template: dt_parm.36.common.flags = 4096;
+main.f90:120:47: note: 	stmt 0 dt_parm.36.common.flags = 4096;
+main.f90:120:47: note: 	stmt 1 dt_parm.36.common.unit = 6;
+main.f90:120:47: note: 	children 0x1d558c68
+main.f90:120:47: note: node (constant) 0x1d558c68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:120:47: note: 	{ 4096, 6 }
+main.f90:120:47: note: Cost model analysis: 
+main.f90:120:47: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:126:58: note: Costing subgraph: 
+main.f90:126:58: note: node 0x1d558ce8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:126:58: note: op template: dt_parm.37.common.flags = 4096;
+main.f90:126:58: note: 	stmt 0 dt_parm.37.common.flags = 4096;
+main.f90:126:58: note: 	stmt 1 dt_parm.37.common.unit = 6;
+main.f90:126:58: note: 	children 0x1d558d68
+main.f90:126:58: note: node (constant) 0x1d558d68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:126:58: note: 	{ 4096, 6 }
+main.f90:126:58: note: Cost model analysis: 
+main.f90:126:58: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:127:73: note: Costing subgraph: 
+main.f90:127:73: note: node 0x1d558de8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:127:73: note: op template: dt_parm.38.common.flags = 4096;
+main.f90:127:73: note: 	stmt 0 dt_parm.38.common.flags = 4096;
+main.f90:127:73: note: 	stmt 1 dt_parm.38.common.unit = 6;
+main.f90:127:73: note: 	children 0x1d558e68
+main.f90:127:73: note: node (constant) 0x1d558e68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:127:73: note: 	{ 4096, 6 }
+main.f90:127:73: note: Cost model analysis: 
+main.f90:127:73: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:128:72: note: Costing subgraph: 
+main.f90:128:72: note: node 0x1d558ee8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:128:72: note: op template: dt_parm.39.common.flags = 4096;
+main.f90:128:72: note: 	stmt 0 dt_parm.39.common.flags = 4096;
+main.f90:128:72: note: 	stmt 1 dt_parm.39.common.unit = 6;
+main.f90:128:72: note: 	children 0x1d558f68
+main.f90:128:72: note: node (constant) 0x1d558f68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:128:72: note: 	{ 4096, 6 }
+main.f90:128:72: note: Cost model analysis: 
+main.f90:128:72: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:143:62: note: Costing subgraph: 
+main.f90:143:62: note: node 0x1d558fe8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:143:62: note: op template: dt_parm.46.common.flags = 4096;
+main.f90:143:62: note: 	stmt 0 dt_parm.46.common.flags = 4096;
+main.f90:143:62: note: 	stmt 1 dt_parm.46.common.unit = 6;
+main.f90:143:62: note: 	children 0x1d559068
+main.f90:143:62: note: node (constant) 0x1d559068 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:143:62: note: 	{ 4096, 6 }
+main.f90:143:62: note: Cost model analysis: 
+main.f90:143:62: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:144:64: note: Costing subgraph: 
+main.f90:144:64: note: node 0x1d5590e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:144:64: note: op template: dt_parm.47.common.flags = 4096;
+main.f90:144:64: note: 	stmt 0 dt_parm.47.common.flags = 4096;
+main.f90:144:64: note: 	stmt 1 dt_parm.47.common.unit = 6;
+main.f90:144:64: note: 	children 0x1d559168
+main.f90:144:64: note: node (constant) 0x1d559168 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:144:64: note: 	{ 4096, 6 }
+main.f90:144:64: note: Cost model analysis: 
+main.f90:144:64: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:145:47: note: Costing subgraph: 
+main.f90:145:47: note: node 0x1d5591e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:145:47: note: op template: dt_parm.48.common.flags = 4096;
+main.f90:145:47: note: 	stmt 0 dt_parm.48.common.flags = 4096;
+main.f90:145:47: note: 	stmt 1 dt_parm.48.common.unit = 6;
+main.f90:145:47: note: 	children 0x1d559268
+main.f90:145:47: note: node (constant) 0x1d559268 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:145:47: note: 	{ 4096, 6 }
+main.f90:145:47: note: Cost model analysis: 
+main.f90:145:47: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:151:58: note: Costing subgraph: 
+main.f90:151:58: note: node 0x1d5592e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:151:58: note: op template: dt_parm.49.common.flags = 4096;
+main.f90:151:58: note: 	stmt 0 dt_parm.49.common.flags = 4096;
+main.f90:151:58: note: 	stmt 1 dt_parm.49.common.unit = 6;
+main.f90:151:58: note: 	children 0x1d559368
+main.f90:151:58: note: node (constant) 0x1d559368 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:151:58: note: 	{ 4096, 6 }
+main.f90:151:58: note: Cost model analysis: 
+main.f90:151:58: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:152:73: note: Costing subgraph: 
+main.f90:152:73: note: node 0x1d5593e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:152:73: note: op template: dt_parm.50.common.flags = 4096;
+main.f90:152:73: note: 	stmt 0 dt_parm.50.common.flags = 4096;
+main.f90:152:73: note: 	stmt 1 dt_parm.50.common.unit = 6;
+main.f90:152:73: note: 	children 0x1d559468
+main.f90:152:73: note: node (constant) 0x1d559468 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:152:73: note: 	{ 4096, 6 }
+main.f90:152:73: note: Cost model analysis: 
+main.f90:152:73: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:153:72: note: Costing subgraph: 
+main.f90:153:72: note: node 0x1d5594e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:153:72: note: op template: dt_parm.51.common.flags = 4096;
+main.f90:153:72: note: 	stmt 0 dt_parm.51.common.flags = 4096;
+main.f90:153:72: note: 	stmt 1 dt_parm.51.common.unit = 6;
+main.f90:153:72: note: 	children 0x1d559568
+main.f90:153:72: note: node (constant) 0x1d559568 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:153:72: note: 	{ 4096, 6 }
+main.f90:153:72: note: Cost model analysis: 
+main.f90:153:72: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:168:62: note: Costing subgraph: 
+main.f90:168:62: note: node 0x1d5595e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:168:62: note: op template: dt_parm.58.common.flags = 4096;
+main.f90:168:62: note: 	stmt 0 dt_parm.58.common.flags = 4096;
+main.f90:168:62: note: 	stmt 1 dt_parm.58.common.unit = 6;
+main.f90:168:62: note: 	children 0x1d559668
+main.f90:168:62: note: node (constant) 0x1d559668 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:168:62: note: 	{ 4096, 6 }
+main.f90:168:62: note: Cost model analysis: 
+main.f90:168:62: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:169:64: note: Costing subgraph: 
+main.f90:169:64: note: node 0x1d5596e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:169:64: note: op template: dt_parm.59.common.flags = 4096;
+main.f90:169:64: note: 	stmt 0 dt_parm.59.common.flags = 4096;
+main.f90:169:64: note: 	stmt 1 dt_parm.59.common.unit = 6;
+main.f90:169:64: note: 	children 0x1d559768
+main.f90:169:64: note: node (constant) 0x1d559768 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:169:64: note: 	{ 4096, 6 }
+main.f90:169:64: note: Cost model analysis: 
+main.f90:169:64: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:170:47: note: Costing subgraph: 
+main.f90:170:47: note: node 0x1d5597e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.60.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.60.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.60.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559868
+main.f90:170:47: note: node (constant) 0x1d559868 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: Cost model analysis: 
+main.f90:170:47: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 24
+main.f90:170:47: note: Basic block will be vectorized using SLP
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557468 (max_nunits=2, refcnt=1) vector(2) signed char
+main.f90:170:47: note: op template: seed.dtype.rank = 1;
+main.f90:170:47: note: 	stmt 0 seed.dtype.rank = 1;
+main.f90:170:47: note: 	stmt 1 seed.dtype.type = 1;
+main.f90:170:47: note: 	children 0x1d5574e8
+main.f90:170:47: note: node (constant) 0x1d5574e8 (max_nunits=1, refcnt=1) vector(2) signed char
+main.f90:170:47: note: 	{ 1, 1 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: seed.dtype.rank = 1;
+main.f90:170:47: note: vect_is_simple_use: operand 1, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) signed char  vectorizing a pointer ref: seed.dtype.rank
+main.f90:170:47: note: created &seed.dtype.rank
+main.f90:170:47: note: add new stmt: MEM <vector(2) signed char> [(signed char *)&seed + 28B] = { 1, 1 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557568 (max_nunits=2, refcnt=1) vector(2) signed char
+main.f90:170:47: note: op template: seed.dtype.rank = 1;
+main.f90:170:47: note: 	stmt 0 seed.dtype.rank = 1;
+main.f90:170:47: note: 	stmt 1 seed.dtype.type = 1;
+main.f90:170:47: note: 	children 0x1d5575e8
+main.f90:170:47: note: node (constant) 0x1d5575e8 (max_nunits=1, refcnt=1) vector(2) signed char
+main.f90:170:47: note: 	{ 1, 1 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: seed.dtype.rank = 1;
+main.f90:170:47: note: vect_is_simple_use: operand 1, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) signed char  vectorizing a pointer ref: seed.dtype.rank
+main.f90:170:47: note: created &seed.dtype.rank
+main.f90:170:47: note: add new stmt: MEM <vector(2) signed char> [(signed char *)&seed + 28B] = { 1, 1 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5576e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=8)
+main.f90:170:47: note: op template: seed.span = 4;
+main.f90:170:47: note: 	stmt 0 seed.span = 4;
+main.f90:170:47: note: 	stmt 1 seed.dim[0].stride = 1;
+main.f90:170:47: note: 	children 0x1d557768
+main.f90:170:47: note: node (constant) 0x1d557768 (max_nunits=1, refcnt=1) vector(2) integer(kind=8)
+main.f90:170:47: note: 	{ 4, 1 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: seed.span = 4;
+main.f90:170:47: note: vect_is_simple_use: operand 1, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=8)  vectorizing a pointer ref: seed.span
+main.f90:170:47: note: created &seed.span
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=8)> [(integer(kind=8) *)&seed + 32B] = { 4, 1 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5577e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.4.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.4.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.4.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557868
+main.f90:170:47: note: node (constant) 0x1d557868 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.4.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.4.common.flags
+main.f90:170:47: note: created &dt_parm.4
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.4] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5578e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.5.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.5.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.5.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557968
+main.f90:170:47: note: node (constant) 0x1d557968 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.5.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.5.common.flags
+main.f90:170:47: note: created &dt_parm.5
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.5] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5579e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.6.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.6.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.6.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557a68
+main.f90:170:47: note: node (constant) 0x1d557a68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.6.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.6.common.flags
+main.f90:170:47: note: created &dt_parm.6
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.6] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557ae8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.7.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.7.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.7.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557b68
+main.f90:170:47: note: node (constant) 0x1d557b68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.7.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.7.common.flags
+main.f90:170:47: note: created &dt_parm.7
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.7] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557be8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.8.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.8.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.8.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557c68
+main.f90:170:47: note: node (constant) 0x1d557c68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.8.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.8.common.flags
+main.f90:170:47: note: created &dt_parm.8
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.8] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557ce8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.9.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.9.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.9.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557d68
+main.f90:170:47: note: node (constant) 0x1d557d68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.9.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.9.common.flags
+main.f90:170:47: note: created &dt_parm.9
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.9] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557de8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.10.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.10.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.10.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557e68
+main.f90:170:47: note: node (constant) 0x1d557e68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.10.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.10.common.flags
+main.f90:170:47: note: created &dt_parm.10
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.10] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557ee8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.11.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.11.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.11.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d557f68
+main.f90:170:47: note: node (constant) 0x1d557f68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.11.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.11.common.flags
+main.f90:170:47: note: created &dt_parm.11
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.11] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d557fe8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.12.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.12.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.12.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558068
+main.f90:170:47: note: node (constant) 0x1d558068 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.12.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.12.common.flags
+main.f90:170:47: note: created &dt_parm.12
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.12] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5580e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.13.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.13.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.13.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558168
+main.f90:170:47: note: node (constant) 0x1d558168 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.13.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.13.common.flags
+main.f90:170:47: note: created &dt_parm.13
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.13] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5581e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.14.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.14.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.14.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558268
+main.f90:170:47: note: node (constant) 0x1d558268 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.14.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.14.common.flags
+main.f90:170:47: note: created &dt_parm.14
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.14] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5582e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.15.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.15.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.15.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558368
+main.f90:170:47: note: node (constant) 0x1d558368 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.15.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.15.common.flags
+main.f90:170:47: note: created &dt_parm.15
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.15] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5583e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.22.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.22.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.22.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558468
+main.f90:170:47: note: node (constant) 0x1d558468 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.22.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.22.common.flags
+main.f90:170:47: note: created &dt_parm.22
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.22] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5584e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.23.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.23.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.23.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558568
+main.f90:170:47: note: node (constant) 0x1d558568 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.23.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.23.common.flags
+main.f90:170:47: note: created &dt_parm.23
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.23] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5585e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.24.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.24.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.24.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558668
+main.f90:170:47: note: node (constant) 0x1d558668 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.24.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.24.common.flags
+main.f90:170:47: note: created &dt_parm.24
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.24] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5586e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.25.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.25.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.25.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558768
+main.f90:170:47: note: node (constant) 0x1d558768 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.25.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.25.common.flags
+main.f90:170:47: note: created &dt_parm.25
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.25] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5587e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.26.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.26.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.26.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558868
+main.f90:170:47: note: node (constant) 0x1d558868 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.26.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.26.common.flags
+main.f90:170:47: note: created &dt_parm.26
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.26] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5588e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.27.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.27.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.27.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558968
+main.f90:170:47: note: node (constant) 0x1d558968 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.27.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.27.common.flags
+main.f90:170:47: note: created &dt_parm.27
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.27] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5589e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.34.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.34.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.34.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558a68
+main.f90:170:47: note: node (constant) 0x1d558a68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.34.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.34.common.flags
+main.f90:170:47: note: created &dt_parm.34
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.34] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d558ae8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.35.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.35.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.35.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558b68
+main.f90:170:47: note: node (constant) 0x1d558b68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.35.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.35.common.flags
+main.f90:170:47: note: created &dt_parm.35
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.35] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d558be8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.36.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.36.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.36.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558c68
+main.f90:170:47: note: node (constant) 0x1d558c68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.36.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.36.common.flags
+main.f90:170:47: note: created &dt_parm.36
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.36] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d558ce8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.37.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.37.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.37.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558d68
+main.f90:170:47: note: node (constant) 0x1d558d68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.37.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.37.common.flags
+main.f90:170:47: note: created &dt_parm.37
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.37] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d558de8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.38.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.38.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.38.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558e68
+main.f90:170:47: note: node (constant) 0x1d558e68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.38.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.38.common.flags
+main.f90:170:47: note: created &dt_parm.38
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.38] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d558ee8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.39.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.39.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.39.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d558f68
+main.f90:170:47: note: node (constant) 0x1d558f68 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.39.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.39.common.flags
+main.f90:170:47: note: created &dt_parm.39
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.39] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d558fe8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.46.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.46.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.46.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559068
+main.f90:170:47: note: node (constant) 0x1d559068 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.46.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.46.common.flags
+main.f90:170:47: note: created &dt_parm.46
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.46] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5590e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.47.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.47.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.47.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559168
+main.f90:170:47: note: node (constant) 0x1d559168 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.47.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.47.common.flags
+main.f90:170:47: note: created &dt_parm.47
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.47] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5591e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.48.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.48.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.48.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559268
+main.f90:170:47: note: node (constant) 0x1d559268 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.48.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.48.common.flags
+main.f90:170:47: note: created &dt_parm.48
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.48] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5592e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.49.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.49.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.49.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559368
+main.f90:170:47: note: node (constant) 0x1d559368 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.49.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.49.common.flags
+main.f90:170:47: note: created &dt_parm.49
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.49] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5593e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.50.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.50.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.50.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559468
+main.f90:170:47: note: node (constant) 0x1d559468 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.50.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.50.common.flags
+main.f90:170:47: note: created &dt_parm.50
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.50] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5594e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.51.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.51.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.51.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559568
+main.f90:170:47: note: node (constant) 0x1d559568 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.51.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.51.common.flags
+main.f90:170:47: note: created &dt_parm.51
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.51] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5595e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.58.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.58.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.58.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559668
+main.f90:170:47: note: node (constant) 0x1d559668 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.58.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.58.common.flags
+main.f90:170:47: note: created &dt_parm.58
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.58] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5596e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.59.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.59.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.59.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559768
+main.f90:170:47: note: node (constant) 0x1d559768 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.59.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.59.common.flags
+main.f90:170:47: note: created &dt_parm.59
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.59] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: Vectorizing SLP tree:
+main.f90:170:47: note: node 0x1d5597e8 (max_nunits=2, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: op template: dt_parm.60.common.flags = 4096;
+main.f90:170:47: note: 	stmt 0 dt_parm.60.common.flags = 4096;
+main.f90:170:47: note: 	stmt 1 dt_parm.60.common.unit = 6;
+main.f90:170:47: note: 	children 0x1d559868
+main.f90:170:47: note: node (constant) 0x1d559868 (max_nunits=1, refcnt=1) vector(2) integer(kind=4)
+main.f90:170:47: note: 	{ 4096, 6 }
+main.f90:170:47: note: ------>vectorizing SLP node starting from: dt_parm.60.common.flags = 4096;
+main.f90:170:47: note: vect_is_simple_use: operand 6, type of def: constant
+main.f90:170:47: note: transform store. ncopies = 1
+main.f90:170:47: note: create vector_type-pointer variable to type: vector(2) integer(kind=4)  vectorizing a pointer ref: dt_parm.60.common.flags
+main.f90:170:47: note: created &dt_parm.60
+main.f90:170:47: note: add new stmt: MEM <vector(2) integer(kind=4)> [(integer(kind=4) *)&dt_parm.60] = { 4096, 6 };
+main.f90:170:47: note: vectorizing stmts using SLP.
+main.f90:170:47: optimized: basic block part vectorized using 32 byte vectors
+main.f90:170:47: note: ***** The result for vector mode V32QI would be the same
+BB 31 is always executed in loop 6
+BB 26 is always executed in loop 5
+BB 21 is always executed in loop 4
+BB 16 is always executed in loop 3
+BB 12 is always executed in loop 2
+BB 10 is always executed in loop 1
+loop 6's coldest_outermost_loop is 6, hotter_than_inner_loop is NULL
+loop 5's coldest_outermost_loop is 5, hotter_than_inner_loop is NULL
+loop 4's coldest_outermost_loop is 4, hotter_than_inner_loop is NULL
+loop 3's coldest_outermost_loop is 3, hotter_than_inner_loop is NULL
+loop 2's coldest_outermost_loop is 2, hotter_than_inner_loop is NULL
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+main.f90:156:16: note: considering unrolling loop 6 at BB 37
+considering unrolling loop with constant number of iterations
+main.f90:156:16: optimized: loop unrolled 7 times
+main.f90:131:16: note: considering unrolling loop 5 at BB 32
+considering unrolling loop with constant number of iterations
+main.f90:131:16: optimized: loop unrolled 7 times
+main.f90:106:16: note: considering unrolling loop 4 at BB 27
+considering unrolling loop with constant number of iterations
+main.f90:106:16: optimized: loop unrolled 7 times
+main.f90:81:16: note: considering unrolling loop 3 at BB 22
+considering unrolling loop with constant number of iterations
+main.f90:81:16: optimized: loop unrolled 7 times
+main.f90:42:13: note: considering unrolling loop 2 at BB 18
+considering unrolling loop with constant number of iterations
+main.f90:42:13: optimized: loop unrolled 3 times
+main.f90:39:25: note: considering unrolling loop 1 at BB 9
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+main.f90:39:25: optimized: loop unrolled 7 times
+main.f90:8:12: missed: statement clobbers memory: _gfortran_set_args (argc_2(D), argv_3(D));
+main.f90:8:12: missed: statement clobbers memory: _gfortran_set_options (7, &options.61[0]);
+main.f90:8:12: missed: statement clobbers memory: MAIN__ ();
+main.f90:8:12: note: ***** Analysis failed with vector mode VOID

@@ -1,19 +1,34 @@
-CC=gcc
-CCFLAGS=-g -fopenmp -O0
-#CCFLAGS=-g -fno-openmp -O0
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+CC = gcc
+CFLAGS = -g -fopenmp -O0
+#CFLAGS = -g -fno-openmp -O0
+###################################################################
+endif
+
+TARGET = run.x
+
+SRC = main.c
+OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .c .o
 
-SRC=main.c
+.PHONY: all
+all: $(TARGET)
 
-run.x: main.o
-	$(CC) $(CCFLAGS) main.o -o $@ 
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 .c.o:
-	$(CC) $(CCFLAGS) -c $< -o  $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 main.o: main.c
 
 .PHONY: clean
 clean:
-	rm -f *.o run.x
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

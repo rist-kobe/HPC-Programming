@@ -1,20 +1,32 @@
-CC=gcc
-CCFLAGS=-g -std=c99 -O2 -fopenmp
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+CC = gcc
+CFLAGS = -g -std=c99 -O2 -fopenmp
+###################################################################
+endif
+
+TARGET = run.x
+
+OBJS = main.o
 
 .SUFFIXES: .c .o
 
-EXE=run.x
+.PHONY: all
+all: $(TARGET)
 
-OBJS= main.o 
-
-$(EXE): main.o
-	$(CC) $(CCFLAGS) $(OBJS) -o $(EXE)
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 main.o: main.c
 
 .c.o:
-	$(CC) $(CCFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f *.o $(EXE)
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

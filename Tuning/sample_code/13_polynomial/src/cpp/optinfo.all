@@ -1,0 +1,354 @@
+Unit growth for small function inlining: 114->114 (0%)
+
+Inlined 0 calls, eliminated 0 functions
+
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:7:20: optimized: loop vectorized using 32 byte vectors
+mykernel.cc:7:20: optimized: loop vectorized using 16 byte vectors
+mykernel.cc:4:6: note: vectorized 1 loops in function.
+mykernel.cc:7:20: optimized: loop turned into non-loop; it never loops
+mykernel.cc:4:6: optimized: loop turned into non-loop; it never loops
+mykernel.cc:8:19: note: ***** Analysis failed with vector mode V4DF
+mykernel.cc:8:19: note: ***** The result for vector mode V32QI would be the same
+mykernel.cc:8:19: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.cc:8:19: note: ***** Analysis failed with vector mode V16QI
+mykernel.cc:8:19: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.cc:8:19: note: ***** Analysis failed with vector mode V8QI
+mykernel.cc:8:19: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.cc:8:19: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:7:20: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.cc:7:20: optimized: loop unrolled 7 times
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:15:20: optimized: loop vectorized using 32 byte vectors
+mykernel.cc:15:20: optimized: loop vectorized using 16 byte vectors
+mykernel.cc:12:6: note: vectorized 1 loops in function.
+mykernel.cc:15:20: optimized: loop turned into non-loop; it never loops
+mykernel.cc:12:6: optimized: loop turned into non-loop; it never loops
+mykernel.cc:17:15: note: ***** Analysis failed with vector mode V4DF
+mykernel.cc:17:15: note: ***** The result for vector mode V32QI would be the same
+mykernel.cc:17:15: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.cc:17:15: note: ***** Analysis failed with vector mode V16QI
+mykernel.cc:17:15: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.cc:17:15: note: ***** Analysis failed with vector mode V8QI
+mykernel.cc:17:15: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.cc:17:15: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:15:20: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.cc:15:20: optimized: loop unrolled 3 times
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:25:20: optimized: loop vectorized using 32 byte vectors
+mykernel.cc:25:20: optimized: loop vectorized using 16 byte vectors
+mykernel.cc:22:6: note: vectorized 1 loops in function.
+mykernel.cc:25:20: optimized: loop turned into non-loop; it never loops
+mykernel.cc:22:6: optimized: loop turned into non-loop; it never loops
+mykernel.cc:27:15: note: ***** Analysis failed with vector mode V4DF
+mykernel.cc:27:15: note: ***** The result for vector mode V32QI would be the same
+mykernel.cc:27:15: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.cc:27:15: note: ***** Analysis failed with vector mode V16QI
+mykernel.cc:27:15: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.cc:27:15: note: ***** Analysis failed with vector mode V8QI
+mykernel.cc:27:15: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.cc:27:15: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:25:20: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.cc:25:20: optimized: loop unrolled 1 times
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:36:20: optimized: loop vectorized using 32 byte vectors
+mykernel.cc:36:20: optimized: loop vectorized using 16 byte vectors
+mykernel.cc:33:6: note: vectorized 1 loops in function.
+mykernel.cc:36:20: optimized: loop turned into non-loop; it never loops
+mykernel.cc:33:6: optimized: loop turned into non-loop; it never loops
+mykernel.cc:38:15: note: ***** Analysis failed with vector mode V4DF
+mykernel.cc:38:15: note: ***** The result for vector mode V32QI would be the same
+mykernel.cc:38:15: note: ***** Re-trying analysis with vector mode V16QI
+mykernel.cc:38:15: note: ***** Analysis failed with vector mode V16QI
+mykernel.cc:38:15: note: ***** Re-trying analysis with vector mode V8QI
+mykernel.cc:38:15: note: ***** Analysis failed with vector mode V8QI
+mykernel.cc:38:15: note: ***** Re-trying analysis with vector mode V4QI
+mykernel.cc:38:15: note: ***** Analysis failed with vector mode V4QI
+BB 3 is always executed in loop 1
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+mykernel.cc:36:20: note: considering unrolling loop 1 at BB 5
+considering unrolling loop with constant number of iterations
+considering unrolling loop with runtime-computable number of iterations
+mykernel.cc:36:20: optimized: loop unrolled 1 times
+main.cc:167:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:166:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:165:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:153:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:152:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:151:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:150:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:144:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:143:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:142:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:130:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:129:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:128:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:127:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:121:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:120:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:119:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:107:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:106:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:105:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:104:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:98:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:97:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:96:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:84:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:83:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:82:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:81:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:72:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:71:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:70:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:69:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:68:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:67:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:66:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:65:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:64:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:63:9: optimized:   Inlining int printf(const char*, ...)/18 into int main(int, char**)/60 (always_inline).
+main.cc:161:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:161:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+main.cc:155:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:155:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+main.cc:138:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:138:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+main.cc:132:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:132:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+main.cc:115:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:115:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+main.cc:109:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:109:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+main.cc:92:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:92:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+main.cc:86:22: note: Considering inline candidate double get_elp_time()/58.
+main.cc:86:22: optimized:  Inlining double get_elp_time()/58 into int main(int, char**)/60.
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+main.cc:158:11: missed:   not inlinable: int main(int, char**)/60 -> void poly16(double*, double*, double*, int)/68, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+main.cc:135:10: missed:   not inlinable: int main(int, char**)/60 -> void poly8(double*, double*, double*, int)/67, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+main.cc:112:10: missed:   not inlinable: int main(int, char**)/60 -> void poly4(double*, double*, double*, int)/66, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+main.cc:89:10: missed:   not inlinable: int main(int, char**)/60 -> void poly1(double*, double*, double*, int)/65, function body not available
+main.cc:22:17: missed:   not inlinable: int main(int, char**)/60 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed:   not inlinable: int main(int, char**)/60 -> int __printf_chk(int, const char*, ...)/70, function body not available
+main.cc:59:31: missed:   not inlinable: int main(int, char**)/60 -> int rand()/64, function body not available
+main.cc:58:31: missed:   not inlinable: int main(int, char**)/60 -> int rand()/64, function body not available
+main.cc:56:8: missed:   not inlinable: int main(int, char**)/60 -> void srand(unsigned int)/63, function body not available
+main.cc:56:28: missed:   not inlinable: int main(int, char**)/60 -> time_t time(time_t*)/62, function body not available
+main.cc:36:17: missed:   not inlinable: double get_cpu_time()/59 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+main.cc:22:17: missed:   not inlinable: double get_elp_time()/58 -> int clock_gettime(clockid_t, timespec*)/61, function body not available
+Unit growth for small function inlining: 339->339 (0%)
+
+Inlined 46 calls, eliminated 0 functions
+
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+main.cc:23:42: note: ***** Analysis failed with vector mode V4DI
+main.cc:23:42: note: ***** The result for vector mode V32QI would be the same
+main.cc:23:42: note: ***** Re-trying analysis with vector mode V16QI
+main.cc:23:42: note: ***** Analysis failed with vector mode V16QI
+main.cc:23:42: note: ***** Re-trying analysis with vector mode V8QI
+main.cc:23:42: note: ***** Analysis failed with vector mode V8QI
+main.cc:23:42: note: ***** Re-trying analysis with vector mode V4QI
+main.cc:23:42: note: ***** Analysis failed with vector mode V4QI
+main.cc:36:17: missed: statement clobbers memory: clock_gettime (2, &tp);
+main.cc:37:42: note: ***** Analysis failed with vector mode V4DI
+main.cc:37:42: note: ***** The result for vector mode V32QI would be the same
+main.cc:37:42: note: ***** Re-trying analysis with vector mode V16QI
+main.cc:37:42: note: ***** Analysis failed with vector mode V16QI
+main.cc:37:42: note: ***** Re-trying analysis with vector mode V8QI
+main.cc:37:42: note: ***** Analysis failed with vector mode V8QI
+main.cc:37:42: note: ***** Re-trying analysis with vector mode V4QI
+main.cc:37:42: note: ***** Analysis failed with vector mode V4QI
+BB 19 is always executed in loop 9
+BB 17 is always executed in loop 8
+BB 15 is always executed in loop 7
+BB 13 is always executed in loop 6
+BB 11 is always executed in loop 5
+BB 9 is always executed in loop 4
+BB 7 is always executed in loop 3
+BB 5 is always executed in loop 2
+BB 3 is always executed in loop 1
+loop 9's coldest_outermost_loop is 9, hotter_than_inner_loop is NULL
+loop 8's coldest_outermost_loop is 8, hotter_than_inner_loop is NULL
+loop 7's coldest_outermost_loop is 7, hotter_than_inner_loop is NULL
+loop 6's coldest_outermost_loop is 6, hotter_than_inner_loop is NULL
+loop 5's coldest_outermost_loop is 5, hotter_than_inner_loop is NULL
+loop 4's coldest_outermost_loop is 4, hotter_than_inner_loop is NULL
+loop 3's coldest_outermost_loop is 3, hotter_than_inner_loop is NULL
+loop 2's coldest_outermost_loop is 2, hotter_than_inner_loop is NULL
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+main.cc:78:19: optimized: Loop 2 distributed: split to 0 loops and 1 library calls.
+main.cc:101:19: optimized: Loop 4 distributed: split to 0 loops and 1 library calls.
+main.cc:124:19: optimized: Loop 6 distributed: split to 0 loops and 1 library calls.
+main.cc:147:19: optimized: Loop 8 distributed: split to 0 loops and 1 library calls.
+main.cc:158:11: missed: statement clobbers memory: poly16 (&x, &c0, &c1, 1000);
+main.cc:135:10: missed: statement clobbers memory: poly8 (&x, &c0, &c1, 1000);
+main.cc:112:10: missed: statement clobbers memory: poly4 (&x, &c0, &c1, 1000);
+main.cc:89:10: missed: statement clobbers memory: poly1 (&x, &c0, &c1, 1000);
+main.cc:58:31: missed: statement clobbers memory: _3 = rand ();
+main.cc:156:24: missed: couldn't vectorize loop
+main.cc:158:11: missed: statement clobbers memory: poly16 (&x, &c0, &c1, 1000);
+main.cc:133:24: missed: couldn't vectorize loop
+main.cc:135:10: missed: statement clobbers memory: poly8 (&x, &c0, &c1, 1000);
+main.cc:110:24: missed: couldn't vectorize loop
+main.cc:112:10: missed: statement clobbers memory: poly4 (&x, &c0, &c1, 1000);
+main.cc:87:24: missed: couldn't vectorize loop
+main.cc:89:10: missed: statement clobbers memory: poly1 (&x, &c0, &c1, 1000);
+main.cc:57:18: missed: couldn't vectorize loop
+main.cc:58:31: missed: statement clobbers memory: _3 = rand ();
+main.cc:43:5: note: vectorized 0 loops in function.
+main.cc:58:31: missed: statement clobbers memory: _3 = rand ();
+main.cc:89:10: missed: statement clobbers memory: poly1 (&x, &c0, &c1, 1000);
+main.cc:112:10: missed: statement clobbers memory: poly4 (&x, &c0, &c1, 1000);
+main.cc:135:10: missed: statement clobbers memory: poly8 (&x, &c0, &c1, 1000);
+main.cc:158:11: missed: statement clobbers memory: poly16 (&x, &c0, &c1, 1000);
+main.cc:56:28: missed: statement clobbers memory: _1 = time (0B);
+main.cc:56:8: missed: statement clobbers memory: srand (_2);
+main.cc:58:31: missed: statement clobbers memory: _3 = rand ();
+main.cc:59:31: missed: statement clobbers memory: rand ();
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"******************************************************"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"Some benchmark of multiplication and addition"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"Authors:      Yukihiro Ota (yota@rist.or.jp)"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"              Tatsunobu Kokubo"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"Last Update:  11 Oct 2017"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"Description:  This code is written by C++11 standard."[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"[setup]"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Number of repetitions: %d\n", 100000);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Number of elements   : %d\n", 1000);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"******************************************************"[0]);
+main.cc:78:37: missed: statement clobbers memory: __builtin_memset (&x, 0, 8000);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"[run] 1 FMA"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOP              : %20.9f\n", 2.00000000000000033301269727892268690538912778720259666443e-6);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Memory (MB)            : %20.9f\n", 2.4000000000000000499600361081320443190634250640869140625e-2);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"start ..."[0]);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+main.cc:89:10: missed: statement clobbers memory: poly1 (&x, &c0, &c1, 1000);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Elapsed (sec.)         : %10.4f\n", elp_49);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOPs             : %10.4f\n", flops_50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "x[0] %13.6f\n", _12);
+main.cc:101:37: missed: statement clobbers memory: __builtin_memset (&x, 0, 8000);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"[run] 4 FMA"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOP              : %20.9f\n", 8.00000000000000133205078911569074762155651114881038665771e-6);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Memory (MB)            : %20.9f\n", 2.4000000000000000499600361081320443190634250640869140625e-2);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"start ..."[0]);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+main.cc:112:10: missed: statement clobbers memory: poly4 (&x, &c0, &c1, 1000);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Elapsed (sec.)         : %10.4f\n", elp_51);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOPs             : %10.4f\n", flops_52);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "x[0] %13.6f\n", _17);
+main.cc:124:37: missed: statement clobbers memory: __builtin_memset (&x, 0, 8000);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"[run] 8 FMA"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOP              : %20.9f\n", 1.60000000000000026641015782313814952431130222976207733154e-5);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Memory (MB)            : %20.9f\n", 2.4000000000000000499600361081320443190634250640869140625e-2);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"start ..."[0]);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+main.cc:135:10: missed: statement clobbers memory: poly8 (&x, &c0, &c1, 1000);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Elapsed (sec.)         : %10.4f\n", elp_53);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOPs             : %10.4f\n", flops_54);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "x[0] %13.6f\n", _22);
+main.cc:147:37: missed: statement clobbers memory: __builtin_memset (&x, 0, 8000);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"[run] 16 FMA"[0]);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOP              : %20.9f\n", 3.20000000000000053282031564627629904862260445952415466309e-5);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Memory (MB)            : %20.9f\n", 2.4000000000000000499600361081320443190634250640869140625e-2);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __builtin_puts (&"start ..."[0]);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+main.cc:158:11: missed: statement clobbers memory: poly16 (&x, &c0, &c1, 1000);
+main.cc:22:17: missed: statement clobbers memory: clock_gettime (0, &tp);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Elapsed (sec.)         : %10.4f\n", elp_55);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "Giga FLOPs             : %10.4f\n", flops_56);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:86:23: missed: statement clobbers memory: __printf_chk (2, "x[0] %13.6f\n", _27);
+main.cc:159:10: note: ***** Analysis failed with vector mode V4DF
+main.cc:159:10: note: ***** The result for vector mode V32QI would be the same
+main.cc:159:10: note: ***** Re-trying analysis with vector mode V16QI
+main.cc:159:10: note: ***** Analysis failed with vector mode V16QI
+main.cc:159:10: note: ***** Re-trying analysis with vector mode V8QI
+main.cc:159:10: note: ***** Analysis failed with vector mode V8QI
+main.cc:159:10: note: ***** Re-trying analysis with vector mode V4QI
+main.cc:159:10: note: ***** Analysis failed with vector mode V4QI
+BB 19 is always executed in loop 9
+BB 15 is always executed in loop 7
+BB 11 is always executed in loop 5
+BB 7 is always executed in loop 3
+BB 3 is always executed in loop 1
+loop 9's coldest_outermost_loop is 9, hotter_than_inner_loop is NULL
+loop 7's coldest_outermost_loop is 7, hotter_than_inner_loop is NULL
+loop 5's coldest_outermost_loop is 5, hotter_than_inner_loop is NULL
+loop 3's coldest_outermost_loop is 3, hotter_than_inner_loop is NULL
+loop 1's coldest_outermost_loop is 1, hotter_than_inner_loop is NULL
+main.cc:156:24: note: considering unrolling loop 9 at BB 11
+considering unrolling loop with constant number of iterations
+main.cc:156:24: optimized: loop unrolled 7 times
+main.cc:133:24: note: considering unrolling loop 7 at BB 9
+considering unrolling loop with constant number of iterations
+main.cc:133:24: optimized: loop unrolled 7 times
+main.cc:110:24: note: considering unrolling loop 5 at BB 7
+considering unrolling loop with constant number of iterations
+main.cc:110:24: optimized: loop unrolled 7 times
+main.cc:87:24: note: considering unrolling loop 3 at BB 5
+considering unrolling loop with constant number of iterations
+main.cc:87:24: optimized: loop unrolled 7 times
+main.cc:57:18: note: considering unrolling loop 1 at BB 3
+considering unrolling loop with constant number of iterations
+main.cc:57:18: optimized: loop unrolled 7 times
