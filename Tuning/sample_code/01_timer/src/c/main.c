@@ -18,7 +18,8 @@ void sub3 ( double *a, const int nn ) ;
 int main ( int argc, char* argv[] )
 {
   int nn = 20000 ;
-  double a[nn] ;
+  double *a = malloc ( nn * sizeof(double) ) ;
+  if ( a == NULL ) { fprintf ( stderr, "malloc failed\n" ) ; return EXIT_FAILURE ; }
 #if defined(USE_CPU_TIMER)
   double cpu1, cpu2;
 #endif
@@ -82,6 +83,7 @@ int main ( int argc, char* argv[] )
   printf ("a[0] = %13.6f\n", a[0] ) ;
 
   /* finalization */
+  free ( a ) ;
   return EXIT_SUCCESS ;
 }
 /*--------------------------------------------------------------------*/

@@ -2,8 +2,8 @@
 /* FYI
  * https://stackoverflow.com/questions/3789340/combining-c-and-c-how-does-ifdef-cplusplus-work
  */
-#ifndef __TIMER_H__
-#define __TIMER_H__
+#ifndef TIMER_H_
+#define TIMER_H_
 
 #if defined(__cplusplus)
 extern "C" {
@@ -23,4 +23,4 @@ double get_cpu_res () ;
 }
 #endif
 
-#endif /* __TIMER_H__ */
+#endif /* TIMER_H_ */

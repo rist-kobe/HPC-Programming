@@ -23,7 +23,7 @@ OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .o .c
 
-run.x: main.o timer.o 
+run.x: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
 
 .c.o:
