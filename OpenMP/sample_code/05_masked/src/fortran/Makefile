@@ -1,12 +1,7 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC = gfortran
 DFLAGS := $(DFLAGS)
 #DFLAGS := -DNOT_USE_MASKED # for GNU 8.5.0
 FFLAGS = -g -fopenmp -O0 $(DFLAGS)
-###################################################################
-endif
 
 TARGET = run.x
 

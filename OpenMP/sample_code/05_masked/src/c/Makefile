@@ -1,12 +1,7 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC = gcc
 DFLAGS := $(DFLAGS)
 #DFLAGS := -DNOT_USE_MASKED # for GNU 8.5.0
 CFLAGS = -g -fopenmp -O0 $(DFLAGS)
-###################################################################
-endif
 
 TARGET = run.x
 

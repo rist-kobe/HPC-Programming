@@ -1,10 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC = gfortran
 FFLAGS = -g -O0 -fopenmp
-###################################################################
-endif
 
 TARGET = run.x
 

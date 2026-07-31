@@ -1,10 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC = gfortran
 FFLAGS = -g -O2 -fopenmp #-DUSE_STATICMEM
-###################################################################
-endif
 
 TARGET = run.x
 

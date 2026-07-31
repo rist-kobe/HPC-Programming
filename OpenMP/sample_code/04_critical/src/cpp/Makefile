@@ -1,11 +1,6 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CXX = g++
 CXXFLAGS = -g -O2 -fopenmp #-DWO_CRITICAL or -DBETTER_IMPL
 LIB =
-###################################################################
-endif
 
 TARGET = run.x
 
