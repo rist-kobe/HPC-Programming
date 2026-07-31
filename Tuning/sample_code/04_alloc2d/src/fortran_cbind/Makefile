@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 ## GNU (8.5.0)
 FC=gfortran
 CC=gcc
@@ -9,8 +6,6 @@ CFLAGS=-g -Wall -O0
 INCPATH= 
 LIBPATH= 
 LIB= 
-###########################################################################
-endif
 
 SRC= \
      main.f90

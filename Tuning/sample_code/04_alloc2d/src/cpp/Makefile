@@ -1,10 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CXX = g++
 CXXFLAGS = -g -Wall -O0 -std=c++11
-############################
-endif
 
 TARGET = run.x
 

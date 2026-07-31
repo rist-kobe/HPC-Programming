@@ -1,12 +1,7 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC = gcc
 CFLAGS = -g -O0 -std=c99
 ## if you can use 64-bit int
 ##CFLAGS = -g -O0 -std=c99 #-D__BIGINT__
-###################################################################
-endif
 
 TARGET = run.x
 

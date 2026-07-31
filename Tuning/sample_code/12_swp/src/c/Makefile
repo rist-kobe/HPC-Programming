@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 COPT=-O1 
@@ -8,7 +5,6 @@ LIB=-lm
 INC=
 CFLAGS=-g -std=gnu11 $(ARCHFLAGS) $(COPT) $(INC) 
 CFLAGS_TIMER=-g -std=gnu11 -O0 $(INC)
-endif
 
 SRC = \
 	main.c \

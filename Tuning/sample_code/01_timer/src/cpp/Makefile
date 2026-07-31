@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CXX=g++
 
 ## Please choose one of the following flag settings
@@ -10,8 +7,6 @@ CXXFLAGS=-g -Wall -std=gnu++11 -DUSE_TIMER -O0
 #CXXFLAGS=-pg -g -Wall -std=gnu++11 -O0
 
 LIB=-lm
-#######################################################################
-endif
 
 SRC = \
 	main.cpp

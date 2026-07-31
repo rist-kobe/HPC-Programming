@@ -1,11 +1,6 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC = gfortran
 FFLAGS = -g -fopenmp -O0
 #FFLAGS = -g -O0 # No OpenMP
-###################################################################
-endif
 
 TARGET = run.x
 

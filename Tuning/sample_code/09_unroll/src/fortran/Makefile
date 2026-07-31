@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC=gfortran
 
 ## Please choose one of the following flag settings
@@ -9,8 +6,6 @@ FC=gfortran
 ## FLAGS for use of timer (cpu time)
 FFLAGS=-Wall -g -cpp -D__USE_CPU_TIMER__ -O0
 
-#######################################################################
-endif
 
 SRC = \
 	main.f90

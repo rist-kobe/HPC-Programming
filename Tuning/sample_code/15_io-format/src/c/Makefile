@@ -1,13 +1,9 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 COPT=-O1
 LIB=
 INC=
 CFLAGS=-g -std=gnu11 $(COPT) $(INC) 
 CFLAGS_TIMER=-g -std=gnu11 -O0 $(INC)
-endif
 
 SRC = \
 	main.c \

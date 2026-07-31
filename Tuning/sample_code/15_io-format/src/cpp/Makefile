@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CXX=g++
 CC=gcc
 COPT=-O1
@@ -8,7 +5,6 @@ LIB=
 INC=
 CXXFLAGS=-g -std=gnu++11 $(COPT) $(INC) 
 CFLAGS_TIMER=-g -std=gnu11 -O0 $(INC)
-endif
 
 SRC = \
 	main.cpp

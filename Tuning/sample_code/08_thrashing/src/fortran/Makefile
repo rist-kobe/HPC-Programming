@@ -1,11 +1,6 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 ## GNU Fortran 8.5.0, 9.3.1
 FC=gfortran
 FFLAGS=-g -Wall -O0  #-DNOT_USE_GNULOC
-##########################################################################
-endif
 
 SRC= \
      main.F90

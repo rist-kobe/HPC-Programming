@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 ARCHFLAGS=-mavx2 # x86 with AVX2
 COPT=-O2 -fopt-info-all=optinfo.all 
@@ -9,7 +6,6 @@ INC=
 CFLAGS=-g -Wall -std=gnu11 $(ARCHFLAGS) $(COPT) $(INC) 
 
 CFLAGS_O0=-g -O0 -std=gnu11 $(INC)
-endif
 
 SRC = \
 	main.c     \

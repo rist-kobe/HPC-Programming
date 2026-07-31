@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 #
 # Preprocessor option
 # __DIFFUSE__: Boundary condition (not periodic boundary condition)
@@ -16,8 +13,6 @@ CC=gcc
 CFLAGS=-g -Wall -std=gnu11 -pg -O2 -D__DIFFUSE__
 
 LIB=-lm
-#####################################################
-endif
 
 SETSRC = \
 	 message.c \

@@ -1,11 +1,6 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu99
 LIB=
-##########################################################################
-endif
 
 SRC= \
      main.c mykernel.c

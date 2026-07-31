@@ -1,10 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC = gcc
 CFLAGS = -g -O0 -std=c99
-###################################################################
-endif
 
 TARGET = run.x
 

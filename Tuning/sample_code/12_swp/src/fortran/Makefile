@@ -1,10 +1,6 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC=gfortran
 ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 FFLAGS=-g -Wall $(ARCHFLAGS) -O1
-endif
 
 SRC= \
 	main.F90 \
