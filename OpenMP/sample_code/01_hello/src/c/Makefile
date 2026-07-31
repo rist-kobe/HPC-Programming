@@ -1,11 +1,6 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC = gcc
 CFLAGS = -g -fopenmp -O0
 #CFLAGS = -g -fno-openmp -O0
-###################################################################
-endif
 
 TARGET = run.x
 

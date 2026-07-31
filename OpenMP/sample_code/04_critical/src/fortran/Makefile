@@ -1,10 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC = gfortran
 FFLAGS = -g -O2 -fopenmp #-DWO_CRITICAL or -DBETTER_IMPL
-###################################################################
-endif
 
 TARGET = run.x
 

@@ -1,10 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC = gcc
 CFLAGS = -g -Wall -O0 -fopenmp
-###################################################################
-endif
 
 TARGET = run.x
 

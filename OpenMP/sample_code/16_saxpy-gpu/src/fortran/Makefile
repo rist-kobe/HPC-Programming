@@ -1,14 +1,3 @@
-COMPILER ?= nvhpc
-
-ifeq ($(COMPILER),gnu)
-FC = gfortran
-## Offload mode: nogpu (host only)
-OFFLOAD ?= nogpu
-FFLAGS = -g -Wall -O3 -fopenmp
-LIB =
-INC =
-###################################################################
-else ifeq ($(COMPILER),nvhpc)
 ## Nvidia HPC SDK
 FC = nvfortran
 ## Offload mode: omp (OpenMP target offload), acc (OpenACC), nogpu (host only)
@@ -38,8 +27,6 @@ else ifeq ($(OFFLOAD),nogpu)
   FFLAGS += -mp -Minfo=mp
 else
   $(error Unknown OFFLOAD=$(OFFLOAD) (expected omp, acc, or nogpu))
-endif
-###################################################################
 endif
 
 TARGET = run.x

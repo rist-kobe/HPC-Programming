@@ -1,14 +1,3 @@
-COMPILER ?= nvhpc
-
-ifeq ($(COMPILER),gnu)
-CC = gcc
-## Offload mode: nogpu (host only)
-OFFLOAD ?= nogpu
-CFLAGS = -g -Wall -std=c99 -O3 -fopenmp
-LIB =
-INC =
-###################################################################
-else ifeq ($(COMPILER),nvhpc)
 ## Nvidia HPC SDK
 CC = nvc
 ## Offload mode: omp (OpenMP target offload), acc (OpenACC), nogpu (host only)
@@ -38,8 +27,6 @@ else ifeq ($(OFFLOAD),nogpu)
   CFLAGS += -mp -Minfo=mp
 else
   $(error Unknown OFFLOAD=$(OFFLOAD) (expected omp, acc, or nogpu))
-endif
-###################################################################
 endif
 
 TARGET = run.x
