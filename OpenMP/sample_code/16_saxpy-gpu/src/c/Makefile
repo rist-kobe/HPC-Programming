@@ -1,5 +1,5 @@
 ## Nvidia HPC SDK
-CC = nvc
+CC ?= nvc
 ## Offload mode: omp (OpenMP target offload), acc (OpenACC), nogpu (host only)
 OFFLOAD ?= omp
 ## Target CPU type (e.g., TP=zen2 for AMD EPYC Zen2)
