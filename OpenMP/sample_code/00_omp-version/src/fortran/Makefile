@@ -1,20 +1,29 @@
-## GNU 8.5.0 and 9.3.1
-FC=gfortran
-FCFLAGS=-g -fopenmp -O0
-#FCFLAGS=-g -O0 # No OpenMP
+FC = gfortran
+FFLAGS = -g -fopenmp -O0
+#FFLAGS = -g -O0 # No OpenMP
+
+TARGET = run.x
+
+SRC = main.F90
+OBJS = $(SRC:.F90=.o)
 
 .SUFFIXES: .F90 .o
 
-SRC=main.F90
+.PHONY: all
+all: $(TARGET)
 
-run.x: main.o
-	$(FC) $(FCFLAGS) main.o -o $@ 
+$(TARGET): $(OBJS)
+	$(FC) $(FFLAGS) $(OBJS) -o $@
 
 .F90.o:
-	$(FC) $(FCFLAGS) -c $< -o  $@ 
+	$(FC) $(FFLAGS) -c $< -o $@
 
 main.o: main.F90
 
 .PHONY: clean
 clean:
-	rm -f *.o run.x
+	rm -f *.o *.mod *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

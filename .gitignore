@@ -1,0 +1,8 @@
+
+# Build artifacts
+*.o
+*.mod
+*.a
+*.x
+optinfo.all
+gmon.out

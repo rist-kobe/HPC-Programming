@@ -11,7 +11,7 @@ echo -n "START: "
 date
 ulimit -s unlimited
 
-COMPILER=ifort
+COMPILER=gfortran
 ${COMPILER} --version
 uname -a
 lscpu

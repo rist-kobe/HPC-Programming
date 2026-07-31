@@ -2,7 +2,7 @@
 
 echo -n "START: " 
 date
-ulimit -s unlimited-
+ulimit -s unlimited
 
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/c/diffuse.x")

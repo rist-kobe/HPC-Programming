@@ -1,15 +1,27 @@
-CC=gcc
-CCFLAGS=-g -O2 -fopenmp 
-LIB=-lm
+CC = gcc
+CFLAGS = -g -O2 -fopenmp
+LIB = -lm
+
+TARGET = run.x
+
+SRC = main.c
+OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .c .o
 
-run.x: main.o
-	$(CC) $(CCFLAGS) main.o $(LIB) -o run.x
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
 
 .c.o:
-	$(CC) $(CCFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f *.o  *.x
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

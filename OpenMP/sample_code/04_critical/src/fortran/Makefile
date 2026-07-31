@@ -1,17 +1,20 @@
-## GNU 8.5.0
-FC=gfortran
-FCFLAGS=-g -O2 -fopenmp #-DWO_CRITICAL or -DBETTER_IMPL
+FC = gfortran
+FFLAGS = -g -O2 -fopenmp #-DWO_CRITICAL or -DBETTER_IMPL
 
-EXE=run.x
-OBJS=mymod.o main.o
+TARGET = run.x
+
+OBJS = mymod.o main.o
 
 .SUFFIXES: .F90 .o
 
-$(EXE): $(OBJS)
-	$(FC) $(FCFLAGS) $(OBJS) -o $@
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(FC) $(FFLAGS) $(OBJS) -o $@
 
 .F90.o:
-	$(FC) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS) -c $< -o $@
 
 main.o: mymod.o main.F90
 
@@ -19,4 +22,8 @@ mymod.o: mymod.F90
 
 .PHONY: clean
 clean:
-	rm -f *.o *.mod $(EXE)
+	rm -f *.o *.mod *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

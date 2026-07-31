@@ -7,7 +7,7 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/fortran/run.x")
 
-COMPILER=gcc
+COMPILER=gfortran
 
 ${COMPILER} --version
 uname -a
@@ -17,9 +17,9 @@ lscpu
 $EXE > outfile
 
 # Get profiler data 
-# If not setting -pg in the compiler option, comment out the following two lines
-sleep 10s
-gprof $EXE > prof.out 
+# If setting -pg in the compiler option, uncomment the following two lines
+#sleep 10s
+#gprof $EXE > prof.out
 
 echo -n "END: " 
 date

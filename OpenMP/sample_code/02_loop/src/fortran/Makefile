@@ -1,16 +1,19 @@
-## GNU 8.5.0, 9.3.1
-FC=gfortran
-FFLAGS=-g -Wall -O3 -fopenmp
-LIB=
-INC=
-#
+FC = gfortran
+FFLAGS = -g -Wall -O3 -fopenmp
+LIB =
+INC =
 
-.SUFFIXES: .o .F90 .c
+TARGET = run.x
 
-all: run.x
+OBJS = mytype.o mykernel.o main.o
 
-run.x: mytype.o mykernel.o main.o
-	$(FC) $(FFLAGS) $(INC) mytype.o mykernel.o main.o $(LIB) -o $@	
+.SUFFIXES: .o .F90
+
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(FC) $(FFLAGS) $(INC) $(OBJS) $(LIB) -o $@
 
 main.o: mytype.o main.F90
 
@@ -23,4 +26,8 @@ mytype.o: mytype.F90
 
 .PHONY: clean
 clean:
-	rm -f *~ *.o *.mod *.x
+	rm -f *~ *.o *.mod
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

@@ -1,14 +1,12 @@
-# Intel Fortran (oneAPI 2022.3.1)
-FC=ifx
-#FC=ifort ## traditional
+FC=gfortran
 
 ## Please choose one of the following flag settings
 ## FLAGS for no timer
-#FFLAGS=-g -warn all -fpp -O0 
+#FFLAGS=-Wall -g -cpp -O0
 ## FLAGS for use of timer (cpu time)
-FFLAGS=-g -warn all -fpp -D__USE_CPU_TIMER__ -O0
+FFLAGS=-Wall -g -cpp -D__USE_CPU_TIMER__ -O0
 
-#######################################################################
+
 SRC = \
 	main.f90
 
@@ -26,7 +24,7 @@ main.o: main.f90
 
 .PHONY: clean
 clean:
-	rm -f *.o *~
+	rm -f *.o *~ *.mod *genmod.f90
 
 .PHONY: veryclean
 veryclean: clean

@@ -1,14 +1,17 @@
-# GNU 8.5.0
-CXX=g++
-CXXFLAGS=-g -O2 -fopenmp #-DWO_CRITICAL or -DBETTER_IMPL
-LIB=
+CXX = g++
+CXXFLAGS = -g -O2 -fopenmp #-DWO_CRITICAL or -DBETTER_IMPL
+LIB =
 
-EXE=run.x
-OBJS=myclass.o main.o
+TARGET = run.x
+
+OBJS = myclass.o main.o
 
 .SUFFIXES: .cpp .o
 
-$(EXE): $(OBJS)
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) $(LIB) -o $@
 
 .cpp.o:
@@ -20,4 +23,8 @@ myclass.o: myclass.cpp
 
 .PHONY: clean
 clean:
-	rm -f *.o $(EXE)
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

@@ -1,16 +1,19 @@
-## GNU 8.5.0, 9.3.1
-CC=gcc
-CFLAGS=-g -Wall -std=gnu99 -O3 -fopenmp
-LIB=
-INC=
-#
+CC = gcc
+CFLAGS = -g -Wall -std=gnu99 -O3 -fopenmp
+LIB =
+INC =
+
+TARGET = run.x
+
+OBJS = mykernel.o main.o
 
 .SUFFIXES: .o .c
 
-all: run.x
+.PHONY: all
+all: $(TARGET)
 
-run.x: mykernel.o main.o
-	$(CC) $(CFLAGS) $(INC) mykernel.o main.o $(LIB) -o $@	
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) -o $@
 
 main.o: main.c
 
@@ -21,4 +24,8 @@ mykernel.o: mykernel.c
 
 .PHONY: clean
 clean:
-	rm -f *~ *.o *.x
+	rm -f *~ *.o
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

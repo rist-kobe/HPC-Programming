@@ -11,20 +11,13 @@ $ cd src/c # On C
 3. Before compiling the code, set `NSIZE` (matrix dimension) in `main.F90` or `main.c`.  
   * Before running this sample, we recommend that you measure the memory latency in your machine using [LMbench](https://lmbench.sourceforge.net/). You can estimate which level of cache is almost equivalent to the main memory from a latency point of view.   
   * `LMbench` requires `libtirpc`. If the library and the related header file are absent in your machine, you need to obtain it. On RHEL8, the corresponding library is involved in `libtirpc-devel`.
-4. Type "make" with your desired Makefile.
+4. Type `make` with your desired compiler setting.
 ```
-$ make -f MAKEFILES/Makefile.intel   # Intel compiler 
-$ make -f MAKEFILES/Makefile.gnu     # GNU compiler 
-$ make -f MAKEFILES/Makefile.clang   # LLVM compiler (only for C)
+$ make                  # GNU compiler (default)
 ```
 The code is successfully compiled by
-   * GNU (9.3.1) in Intel Xeon Gold 6126 
-   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86) 
-   * Intel (oneAPI 2022.3.1) in Intel Xeon Gold 6126 
-   * Intel (oneAPI 2022.3.1) in AMD EPYC 7642/7643 (x86)
-   * AOCC (3.2.0; LLVM 13.0.0) in AMD EPYC 7642/7643 (x86)
+   * GNU (8.5.0) on x86-64 systems 
 
-Our recommendation for the first choice is to use Intel `classic` compiler in Intel oneAPI, such as `ifort` and `icc`.
 
 ## Instruction: Run and do analyses
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.       
@@ -54,4 +47,4 @@ $ numactl -H
 5. Examine the elapsed time in each of kernels (`mmp_simple`, `mmp_simple_blk`, and `mmp_lex_tp_blk`), varying the size of blocks. Your compiler may generate better code even in the case of `mmp_simple`. This is a good news if so; It means that you do not need to take care of by-hand optimization. 
 
 ## Advanced topics
-1. Use a matrix-matrix product routine in a well-tuned library, e.g., DGEMM in BLAS (OpenBLAS, IntelMKL, Fujitsu, etc.). Compare the results to those in the hand-made kernels.  
+1. Use a matrix-matrix product routine in a well-tuned library, e.g., DGEMM in BLAS (such as OpenBLAS). Compare the results to those in the hand-made kernels.  

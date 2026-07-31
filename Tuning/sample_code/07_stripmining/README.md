@@ -13,15 +13,10 @@ $ cd src/c # On c
 ```
 3. Make
 ```
-$ make -f Makefile.gnu # if using GNU compiler
-$ make -f Makefile.intel # if using Intel compiler
-$ make -f Makefile.intel-classic # if using Intel compiler(Classic)
+$ make # if using GNU compiler (default)
 ```
 The code is successfully compiled by
-   * GNU (9.3.1) in Intel Xeon 6126
-   * GNU (8.5.0) in AMD EPYC 7642/7643 (x86)
-   * Intel (oneAPI 2022.3.1) in Intel Xeon 6126  
-   * Intel (oneAPI 2022.3.1) in AMD EPYC 7642/7643 (x86)  
+   * GNU (8.5.0) on x86-64 systems
 
 ## Instruction: Run 
 1. Sample scripts are stored in `tests/`. Choose either fortran or c.

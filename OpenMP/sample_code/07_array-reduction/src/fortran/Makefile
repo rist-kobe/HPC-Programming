@@ -1,16 +1,28 @@
-CC=gfortran
-CFLAGS=-g -O0 -fopenmp 
+FC = gfortran
+FFLAGS = -g -O0 -fopenmp
+
+TARGET = run.x
+
+SRC = main.F90
+OBJS = $(SRC:.F90=.o)
 
 .SUFFIXES: .F90 .o
 
-run.x: main.o 
-	$(CC) $(CFLAGS) main.o -o run.x
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(FC) $(FFLAGS) $(OBJS) -o $@
 
 main.o: main.F90
 
 .F90.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f *.o *.mod *.x
+	rm -f *.o *.mod *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

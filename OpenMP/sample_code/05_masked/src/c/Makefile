@@ -1,21 +1,30 @@
-## GNU 14.1.0 and 12.2.0 (miniforge3 for x86_64)
 CC = gcc
 DFLAGS := $(DFLAGS)
 #DFLAGS := -DNOT_USE_MASKED # for GNU 8.5.0
 CFLAGS = -g -fopenmp -O0 $(DFLAGS)
 
+TARGET = run.x
+
+SRC = main.c
+OBJS = $(SRC:.c=.o)
+
 .SUFFIXES: .c .o
 
-SRC=main.c
+.PHONY: all
+all: $(TARGET)
 
-run.x: main.o
-	$(CC) $(CFLAGS) main.o -o $@ 
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o  $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 main.o: main.c
 
 .PHONY: clean
 clean:
-	rm -f *.o run.x
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

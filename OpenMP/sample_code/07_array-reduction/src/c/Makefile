@@ -1,10 +1,18 @@
-CC=gcc
-CFLAGS=-g -Wall -O0 -fopenmp
+CC = gcc
+CFLAGS = -g -Wall -O0 -fopenmp
+
+TARGET = run.x
+
+SRC = main.c
+OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .c .o
 
-run.x: main.o 
-	$(CC) $(CFLAGS) main.o -o run.x
+.PHONY: all
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 main.o: main.c
 
@@ -13,4 +21,8 @@ main.o: main.c
 
 .PHONY: clean
 clean:
-	rm -f *.o *.x
+	rm -f *.o *~
+
+.PHONY: veryclean
+veryclean: clean
+	rm -f $(TARGET)

@@ -25,10 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.1] - 2024-01-30
 ### Added
-- Add Makefile for Mac M1 and Apple clang in `timer-res`, `alloc2d`, `thrashing`, `unroll`, `simd-add`, `simd-nsimple`, `polynomial`, and `io-format`.
-- Add a remark on sample scripts for program execution in Mac M1.
+- Add Makefile support for Arm-based systems in `timer-res`, `alloc2d`, `thrashing`, `unroll`, `simd-add`, `simd-nsimple`, `polynomial`, and `io-format`.
+- Add a remark on sample scripts for program execution on Arm-based systems.
 ### Changed
-- Remove a wrong arch specific options for Mac  in `simd-add`.
+- Remove incorrect architecture-specific options in `simd-add`.
 ### Fixed
 - Fix mistakes in Makefile for GNU in `alloc2d/src/cpp`.
 
@@ -51,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rename `ET` into `polynomial`.
 ### Fixed
 - Fix the setting of block sizes in `matmatp`. 
-- Test the performance measurement in `matmatp` in AMD EPYC 7642/7643 and Intel Xeon 6126.
+- Test the performance measurement in `matmatp` on recent x86-64 systems.
 - Fix the kernels to check the occurrence of cache thrashing in `thrashing`.
 - Fix mistakes and typos in `readme.md` in several samples. 
 
