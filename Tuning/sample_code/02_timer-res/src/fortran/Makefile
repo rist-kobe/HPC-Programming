@@ -1,6 +1,19 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+## GNU 8.5.0, 9.3.1
 FC=gfortran
 FFLAGS=-Wall -O0 
 
+#######################################################################
+else ifeq ($(COMPILER),intel)
+# Intel Fortran (oneAPI 2022.3.1)
+FC=ifx
+#FC=ifort ## classic
+FFLAGS=-warn all -O0 
+
+#######################################################################
+endif
 
 SRC = \
 	main.f90

@@ -1,30 +1,41 @@
-CXX = g++
-CXXFLAGS = -g -Wall -O0 -std=c++11
+COMPILER ?= gnu
 
-TARGET = run.x
+ifeq ($(COMPILER),gnu)
+## GNU 8.5.0, 9.3.1
+CC=g++
+CCFLAGS=-g -Wall -O0 -std=c++11
+############################
+else ifeq ($(COMPILER),intel)
+## Intel DPC++/C++ (Intel oneAPI 2022.3.1)
+CC=icpx
+CCFLAGS=-g -Wall -O0 -std=c++11
+############################
+else ifeq ($(COMPILER),clang)
+## Apple clang 15.0.0
+CC=clang++
+CCFLAGS=-g -Wall -std=c++11 -O0
+############################
+endif
 
-SRC = \
+SRC= \
 	main.cc
 
-OBJS = $(SRC:.cc=.o)
+OBJ=$(SRC:.cc=.o)
 
 .SUFFIXES: .cc .o
 
-.PHONY: all
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
+run.x: $(OBJ) 
+	$(CC) $(CCFLAGS) $(OBJ) -o run.x
 
 .cc.o:
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CC) $(CCFLAGS) -c $< -o $@
 
 main.o: main.cc
 
 .PHONY: clean
 clean:
-	rm -f *.o *.cc~ *~
+	rm -f *.cc~ *.o *.mod
 
 .PHONY: veryclean
 veryclean: clean
-	rm -f $(TARGET)
+	rm -f *.x

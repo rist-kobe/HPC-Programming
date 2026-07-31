@@ -44,7 +44,7 @@ program main
   real(kind=DP) :: rbuff
 
   cbuff = 'Is your num big or little?'
-  ibuff = int(Z'12345678') !! 305419896
+  ibuff = X'12345678' !! 305419896
   ibsgn = -305419896  !! 0xedcba988 
   rbuff = 1.4_DP
 

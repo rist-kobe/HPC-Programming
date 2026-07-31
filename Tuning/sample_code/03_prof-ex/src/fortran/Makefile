@@ -1,3 +1,6 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
 #
 # Preprocessor option
 # _DIFFUSE: Boundary condition (not periodic boundary condition)
@@ -12,6 +15,8 @@ FFLAGS=-g -Wall -cpp -O2 -fopt-info -D_DIFFUSE
 ## for using gprof
 #FFLAGS=-g -Wall -cpp -pg -O2 -D_DIFFUSE
 
+#####################################################
+endif
 
 COMSRC = \
 	common_par.f90       \

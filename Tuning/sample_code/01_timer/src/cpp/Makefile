@@ -1,3 +1,7 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+## GNU 8.5.0, 9.3.1
 CXX=g++
 
 ## Please choose one of the following flag settings
@@ -7,6 +11,19 @@ CXXFLAGS=-g -Wall -std=gnu++11 -DUSE_TIMER -O0
 #CXXFLAGS=-pg -g -Wall -std=gnu++11 -O0
 
 LIB=-lm
+#######################################################################
+else ifeq ($(COMPILER),clang)
+CXX=clang++
+
+## Please choose one of the following flag settings
+## Use of timer for std::chrono in C++11 
+CXXFLAGS=-g -Wall -std=gnu++11 -DUSE_TIMER -O0
+## Use of gprof
+#CXXFLAGS=-pg -g -Wall -std=gnu++11 -O0
+
+LIB=-lm
+#######################################################################
+endif
 
 SRC = \
 	main.cpp

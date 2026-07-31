@@ -33,7 +33,8 @@ $ cd cpp/
 2. Make 
 ```
 ## For GNU
-$ make
+$ make                    # GNU compiler (default)
+$ make COMPILER=gnu       # explicit GNU selection
 
 ```
 The code is successfully compiled by

@@ -1,5 +1,9 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+## GNU 8.5.0 
 FC=gfortran
-ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
+ARCHFLAGS=-mavx2 # xeon, amd64 (with AVX2)
 FFLAGS=-g -Wall $(ARCHFLAGS) -O3 -fopenmp -D__USE_F08__
 FVEC=-ftree-loop-vectorize -ftree-slp-vectorize -ftree-vectorize -fopt-info-all-vec
 FNVEC=-fno-tree-loop-vectorize -fno-tree-slp-vectorize -fno-tree-vectorize
@@ -8,6 +12,21 @@ INC=
 #
 CC=gcc
 CFLAGS=-g -O0 -std=gnu11
+else ifeq ($(COMPILER),intel)
+## Intel oneAPI 2022.3.1
+FC=ifx
+#FC=ifort # classic
+ARCHFLAGS=-mavx2 # x86, AVX512
+#ARCHFLAGS=-xCORE_AVX512 # Intel, AVX512
+FFLAGS=-g -warn $(ARCHFLAGS) -O3 -qopenmp -D__USE_F08__
+FVEC=-qopt-report=5 -qopt-report-phase=vec
+FNVEC=-no-vec -no-simd
+LIB=
+INC=
+#
+CC=icx
+CFLAGS=-g -O0 -std=gnu11
+endif
 
 .SUFFIXES: .o .F90 .c
 
@@ -49,4 +68,4 @@ clean:
 
 .PHONY: veryclean
 veryclean: clean
-	rm -f *.x
+	rm -f *.x *.optrpt

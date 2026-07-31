@@ -1,3 +1,7 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+## GNU 8.5.0, 9.3.1
 FC=gfortran
 
 ## Please choose one of the following flag settings
@@ -8,6 +12,28 @@ FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
 ## Use of gprof
 #FFLAGS=-pg -g -Wall -cpp -O0
 
+#######################################################################
+else ifeq ($(COMPILER),intel)
+# Intel Fortran (oneAPI 2022.3.1)
+FC=ifx
+#FC=ifort ## traditional
+
+## Please choose one of the following flag settings
+## Use of timer for CPU time
+FFLAGS=-g -warn all -fpp -O0 -DUSE_CPU_TIMER
+## Use of timer (elapsed time)
+#FFLAGS=-g -warn all -fpp -O0 -DUSE_ELP_TIMER
+## Use of gprof: Available only for ifort(?)
+##  * An issue on ifx: Yukihiro Ota, RIST on 17th Jan. 2024 
+##    When ifx -pg, I obtain an error message, 
+##    "xfortcom: Unknown command line argument '-pg'."
+##    The version of Intel oneAPI is 2022.3.1. I'm not quite sure
+##    why such a behavior occurs, but please use ifort when using 
+##    -pg option, instead of ifx.
+#FFLAGS=-pg -warn all -fpp -O0
+
+#######################################################################
+endif
 
 SRC = \
 	main.f90

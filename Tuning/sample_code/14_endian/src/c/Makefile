@@ -1,23 +1,22 @@
-CC = gcc
-CFLAGS = -g -O0 -std=c99
+## GNU 8.5.0
+CC=gcc
+CCFLAG=-g -O0 -std=c99 
 ## if you can use 64-bit int
-##CFLAGS = -g -O0 -std=c99 #-D__BIGINT__
+##CCFLAG=-g -O0 -std=c99 #-D__BIGINT__
 
-TARGET = run.x
 
-SRC = main.c
-OBJS = $(SRC:.c=.o)
+SRC=\
+	main.c
+
+OBJ=$(SRC:.c=.o)
 
 .SUFFIXES: .c .o
 
-.PHONY: all
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+run.x: $(OBJ)
+	$(CC) $(CCFLAG) $(OBJ) -o $@
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CCFLAG) -c $< -o $@
 
 main.o: main.c
 
@@ -27,5 +26,5 @@ clean:
 
 .PHONY: veryclean
 veryclean: clean
-	rm -f $(TARGET)
+	rm -f run.x
 

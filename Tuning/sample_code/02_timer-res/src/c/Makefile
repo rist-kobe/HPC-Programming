@@ -1,6 +1,24 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
+## GNU 8.5.0, 9.3.1
 CC=gcc
 CFLAGS=-Wall -O0 -std=gnu11  
 LIB=
+#######################################################################
+else ifeq ($(COMPILER),intel)
+# Intel DPC++/C++ (Intel oneAPI 2022.3.1)
+CC=icx
+CFLAGS=-Wall -O0 -std=gnu11  
+#LIB=
+#######################################################################
+else ifeq ($(COMPILER),clang)
+## LLVM 13.0.0, Apple clang 15.0.0
+CC=clang
+CFLAGS=-Wall -std=gnu11 -O0
+#LIB=
+#######################################################################
+endif
 
 SRC = \
 	timer.c \
@@ -10,7 +28,7 @@ OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .o .c
 
-run.x: $(OBJS)
+run.x: timer.o main.o 
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
 
 .c.o:

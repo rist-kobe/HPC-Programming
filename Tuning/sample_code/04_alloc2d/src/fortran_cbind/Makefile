@@ -1,3 +1,6 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
 ## GNU (8.5.0)
 FC=gfortran
 CC=gcc
@@ -6,6 +9,19 @@ CFLAGS=-g -Wall -O0
 INCPATH= 
 LIBPATH= 
 LIB= 
+###########################################################################
+else ifeq ($(COMPILER),intel)
+## Intel Fortran (oneAPI 2022.3.1)
+FC=ifx
+#FC=ifort
+CC=icx
+FFLAGS=-g -warn all -O0 -fpp
+CFLAGS=-g -Wall -O0
+#INCPATH= 
+#LIBPATH= 
+#LIB= 
+###########################################################################
+endif
 
 SRC= \
      main.f90

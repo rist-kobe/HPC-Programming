@@ -1,3 +1,6 @@
+COMPILER ?= gnu
+
+ifeq ($(COMPILER),gnu)
 CC=gcc
 
 ## Please choose one of the following flag settings
@@ -8,6 +11,8 @@ CFLAGS=-Wall -g -O2 -std=gnu99 -D__USE_POSIX_TIMER__ -D__USE_CPU_TIMER__
 ## Comment out if compiling is failed under -D__USE_POSIX_TIMER__ 
 LIB=-lrt
 
+#######################################################################
+endif
 
 SRC = \
 	timer.c \
@@ -17,7 +22,7 @@ OBJS = $(SRC:.c=.o)
 
 .SUFFIXES: .o .c
 
-run.x: $(OBJS)
+run.x: main.o timer.o 
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $@
 
 .c.o:
