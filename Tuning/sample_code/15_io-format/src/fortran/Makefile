@@ -1,9 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC=gfortran
 FFLAGS=-O1 -Wall
-endif
 
 SRC= \
 	main.f90 \

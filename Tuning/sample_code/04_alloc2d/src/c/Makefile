@@ -1,13 +1,8 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=c11 
 INCPATH= 
 LIBPATH=
 LIB= 
-###########################################################################
-endif
 
 SRC= \
      main.c

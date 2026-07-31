@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 ARCHFLAGS=-mavx2 # amd64 (x86)
 CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -fopenmp -fstrict-aliasing -D__USE_DIRECTIVES__
@@ -9,7 +6,6 @@ FNVEC=-fno-tree-loop-vectorize -fno-tree-slp-vectorize -fno-tree-vectorize
 LIB=
 INC=
 CFLAGS0=-g -std=gnu99 -O0
-endif
 
 .SUFFIXES: .o .c
 

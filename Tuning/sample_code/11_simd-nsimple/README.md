@@ -11,8 +11,7 @@ $ cd src/c # On c
 3. Make
 ```
 ## For GNU
-$ make all                 # GNU compiler (default)
-$ make COMPILER=gnu all    # explicit GNU selection
+$ make all
 ```
 The code is successfully compiled by 
   * GNU (8.5.0) on x86-64 systems

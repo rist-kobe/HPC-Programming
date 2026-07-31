@@ -1,10 +1,5 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC = gfortran
 FFLAGS = -O0 -g -Wall -fconvert=swap
-###############################################
-endif
 
 TARGET = run.x
 

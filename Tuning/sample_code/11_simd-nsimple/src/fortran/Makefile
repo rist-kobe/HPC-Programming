@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC=gfortran
 ARCHFLAGS=-mavx2 # x86-64 CPUs with AVX2 support
 FFLAGS=-g -Wall $(ARCHFLAGS) -O3 -fopenmp -D__USE_F08__  -D__USE_DIRECTIVES__
@@ -11,7 +8,6 @@ INC=
 #
 CC=gcc
 CFLAGS=-g -O0 -std=gnu11
-endif
 
 .SUFFIXES: .o .F90 .c
 

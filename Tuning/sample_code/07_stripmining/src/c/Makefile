@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 CFLAGS=-g -Wall -std=gnu99 -O1
 # To increase optimization level 
@@ -8,8 +5,6 @@ CFLAGS=-g -Wall -std=gnu99 -O1
 #  an application of manually stripmining. :(
 #ARCHFLAGS=-mavx2 
 #CFLAGS=-g -Wall -std=gnu99 $(ARCHFLAGS) -O2 -ftree-loop-vectorize -fopt-info-all
-#######################################################################
-endif
 
 SRC = \
 	main.c \

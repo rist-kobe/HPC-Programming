@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 CC=gcc
 
 ## Please choose one of the following flag settings
@@ -11,8 +8,6 @@ CFLAGS=-Wall -g -std=gnu99 -D__USE_CPU_TIMER__ -O0
 
 LIB=-lm
 #LIB=-lm -lrt # if linking is failed
-#######################################################################
-endif
 
 SRC = \
 	timer.c \

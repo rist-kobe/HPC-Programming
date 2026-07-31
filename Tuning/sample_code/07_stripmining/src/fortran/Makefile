@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC=gfortran
 FFLAGS=-g -Wall -O1 
 # To increase optimization level
@@ -10,8 +7,6 @@ FFLAGS=-g -Wall -O1
 #FFLAGS=-g -Wall $(ARCHFLAGS) -O2 -fopt-info-all
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu11 
-#######################################################################
-endif
 
 SRC = \
 	main.f90

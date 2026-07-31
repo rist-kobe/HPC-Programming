@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC=gfortran
 ARCHFLAGS=-mavx2 # x86 with AVX2
 FOPT=-O2 -fopt-info-all=optinfo.all 
@@ -10,7 +7,6 @@ FFLAGS=-g -Wall $(ARCHFLAGS) $(FOPT) $(INC)
 
 CC=gcc
 CFLAGS=-g -O0 -std=gnu11
-endif
 
 SRC = \
 	main.F90     \

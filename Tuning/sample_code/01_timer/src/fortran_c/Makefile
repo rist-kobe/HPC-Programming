@@ -1,6 +1,3 @@
-COMPILER ?= gnu
-
-ifeq ($(COMPILER),gnu)
 FC=gfortran
 
 ## Please choose one of the following flag settings
@@ -12,8 +9,6 @@ FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu11 
 
-#######################################################################
-endif
 
 SRC = \
 	main.f90
