@@ -12,30 +12,8 @@
  **********************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "mykernel.h"
-
-/* Wall clock */
-#if ! defined(NOT_USE_REALTIME)
-double get_elp_time () {
-  struct timespec tp ;
-  clock_gettime ( CLOCK_REALTIME, &tp ) ;
-  return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
-}
-#else
-double get_elp_time () {
-  struct timespec tp ;
-  clock_gettime ( CLOCK_MONOTONIC, &tp ) ;
-  return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
-}
-#endif
-
-/* CPU time */
-double get_cpu_time () {
-  struct timespec tp ;
-  clock_gettime ( CLOCK_PROCESS_CPUTIME_ID, &tp ) ;
-  return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
-}
+#include "timer.h"
 
 /*#define ARRAY_SIZE 10000*/
 #define ARRAY_SIZE 1000
