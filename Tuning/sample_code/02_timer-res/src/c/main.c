@@ -33,11 +33,11 @@ int main ( int argc, char* argv[] )
     t2 -= t1 ;
   }
   printf ("[Check resolution of wallclock timer]\n") ;
-  printf ("It took %7d iterations to generate a none-zero time\n", nn) ;
+  printf ("It took %7d iterations to generate a non-zero time\n", nn) ;
   if ( nn == 1 ) {
-    printf (" timer resolution less than or equal to %15.9f\n", t2) ;      
+    printf (" timer resolution less than or equal to %17.9f\n", t2) ;      
   } else {
-    printf (" timer resolution is %15.9f sec.\n", t2) ;      
+    printf (" timer resolution is %17.9f sec.\n", t2) ;      
   }
 
   printf ("--------------------------------------------------------\n");
@@ -53,9 +53,9 @@ int main ( int argc, char* argv[] )
     t2 -= t1 ;
   }
   printf ("[Check resolution of cpu timer]\n") ;
-  printf ("It took %7d iterations to generate a none-zero time\n", nn) ;
+  printf ("It took %7d iterations to generate a non-zero time\n", nn) ;
   if ( nn == 1 ) {
-    printf (" timer resolution less than or equal to %15.9f\n", t2) ;      
+    printf (" timer resolution less than or equal to %17.9f\n", t2) ;      
   } else {
     printf (" timer resolution is %15.9f sec.\n", t2) ;      
   }

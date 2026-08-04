@@ -150,9 +150,9 @@ uint16_t bswap_uint16( uint16_t val )
   return ( val << 8 ) | ( val >> 8 ) ;
 }
 // Byte swap 16-bit int
-int16_t bswap_int16( int16_t val ) 
-{
-  return ( val << 8 ) | ( (val >> 8)&0xFF ) ;
+int16_t bswap_int16( int16_t val ) {
+  uint16_t u = (uint16_t)val;
+  return (int16_t)( (u << 8) | (u >> 8) );
 }
 // Byte swap unsigned 32-bit int
 uint32_t bswap_uint32( uint32_t val ) 

@@ -11,7 +11,7 @@
 /* Avogadro number (1/mol) */
 #define NA     6.022140857e+23
 
-/* Boltzmann constant (kJ/(mod K)) */
+/* Boltzmann constant (kJ/(mol K)) */
 #define KB     8.3144621e-3
 
 /* atomic mass unit (kg) */

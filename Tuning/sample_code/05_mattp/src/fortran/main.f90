@@ -44,7 +44,7 @@ program main
     stop
   endif
   if ( nrow > 8192 ) then
-    !! 2 double arrays * 8 bytes * (nrow)^2 < 1 GiB=2^30 bytes */
+    !! 2 double arrays * 8 bytes * (nrow)^2 < 1 GiB=2^30 bytes
     write (6,'(1a48)') "Matrix row size must be smaller than 8192.     "
     write (6,'(1a48)') "The program is terminated.                     "
     stop

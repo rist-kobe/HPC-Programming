@@ -164,7 +164,7 @@ int main ( int argc, char **argv )
   /*------------------------------------------------------------------*/ 
   AtomData_Free_Mem ( &atom );
 
-  printf("*** The program is normally finished ***");
+  printf("*** The program is normally finished ***\n");
 
   return EXIT_SUCCESS; 
 }

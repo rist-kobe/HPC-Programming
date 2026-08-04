@@ -24,7 +24,7 @@
 ! in several ways.
 ! (ex) In compiling
 !      gfortran -fconvert=swap foo.f90 -o foo.exe
-! (ex) Use  Enviromental Variables
+! (ex) Use  Environmental Variables
 !      This depends on kinds of architecture 
 !---------------------------------------------------------------------72
 module mytype

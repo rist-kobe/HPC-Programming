@@ -59,7 +59,7 @@ program main
 
   write(6,'("[Check resolution of wallclock timer]")')
   write(6,'("It took ",1I7," &
-&   iterations to generate a none-zero time")') nn 
+&   iterations to generate a non-zero time")') nn 
   if ( nn == 1 ) then
     write(6,'(" timer resolution less than or equal to ",1F15.9)') tval
   else
@@ -81,7 +81,7 @@ program main
 
   write(6,'("[Check resolution of cpu timer]")')
   write(6,'("It took ",1I7," &
-&   iterations to generate a none-zero time")') nn 
+&   iterations to generate a non-zero time")') nn 
   if ( nn == 1 ) then
     write(6,'(" timer resolution less than or equal to ",1F15.9)') tval
   else
