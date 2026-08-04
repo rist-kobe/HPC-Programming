@@ -36,7 +36,7 @@ void release_int_1d_array( int *array)
  *--------------------------------------------------------------------*/
 double *create_dp_1d_array( const int n )
 {  
-   size_t nbytes = (size_t)sizeof(int)*n1*n2*n3;
+   size_t nbytes = sizeof(double) * (size_t)n;
    double *array = (double *)malloc(nbytes); 
    return array;
 }
