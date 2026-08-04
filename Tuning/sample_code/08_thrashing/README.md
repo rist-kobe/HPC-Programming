@@ -10,7 +10,7 @@ $ cd src/c  # On C
 ```
 3. Make
 ```
-$ make                  # GNU compiler (default)
+$ make
 ```
 The code is successfully compiled by:
    * GNU (8.5.0) on x86-64 systems 

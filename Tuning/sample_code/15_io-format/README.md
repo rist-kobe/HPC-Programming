@@ -12,7 +12,7 @@ $ cd src/cpp      # C++
 ```
 3. Make
 ```
-$ make                # if using GNU compiler (default)
+$ make
 ```
 The code is successfully compiled by
   * GNU (9.3.1) on x86-64 systems
