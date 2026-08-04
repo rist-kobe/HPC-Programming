@@ -16,7 +16,6 @@ void vadd_lsta (const int ns, int * restrict ind,
                 double * restrict va, double * restrict vb)
 {
 
-#if defined(__USE_DIRECTIVES__)
 #if defined(__INTEL_COMPILER)
   #pragma ivdep
   #pragma vector aligned
@@ -24,7 +23,6 @@ void vadd_lsta (const int ns, int * restrict ind,
   #pragma clang loop vectorize(enable) interleave(enable) 
 #elif defined(_OPENMP)
   #pragma omp simd 
-#endif
 #endif
   for (int i=0; i<ns; ++i ) {
      int ii = ind[i];
