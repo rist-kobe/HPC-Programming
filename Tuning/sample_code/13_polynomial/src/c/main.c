@@ -12,6 +12,7 @@
  **********************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "mykernel.h"
 #include "timer.h"
 
