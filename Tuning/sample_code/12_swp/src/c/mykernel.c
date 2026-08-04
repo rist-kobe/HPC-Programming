@@ -69,7 +69,7 @@ void coremgs_swp(double * restrict a, double * restrict q,
          int ij1 = j + (i-1)*N;
          int ij  = j + i*N;
          a[j] += -s*q[ij1]; /* i-1   */ 
-         r += q[ij]*a[i];   /* i     */
+         r += q[ij]*a[j];   /* i     */
       }
 
       s = r;
