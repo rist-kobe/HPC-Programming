@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "mykernel.h"
+#include "timer.h"
 
 /*#define ARRAY_SIZE 10000*/
 #define ARRAY_SIZE 1000
