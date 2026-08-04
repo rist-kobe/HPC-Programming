@@ -17,7 +17,7 @@
  *--------------------------------------------------------------------*/
 int *create_int_1d_array( const int n )
 {  
-   size_t nbytes = (size_t)sizeof(int)*n1*n2*n3;
+   size_t nbytes = sizeof(int) * (size_t)n;
    int *array = (int *)malloc(nbytes); 
    return array;
 }
