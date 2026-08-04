@@ -86,7 +86,7 @@ int main ( int argc, char** argv )
   printf("  uint32_t ua[0] = 0x12345678 \n") ;
   printf("  int32_t  a[0]  = -305419896 \n") ;
   printf("  float    fw[0] = 1.1f \n") ;
-  printf("  double   dw[0] = 3.14156265359 \n") ;
+  printf("  double   dw[0] = -3.14159265359 \n") ;
 #ifdef __BIGINT__
   printf("  int64_t  la[0] = 0x123456789ABCDEF0\n") ;
 #endif
@@ -150,9 +150,9 @@ uint16_t bswap_uint16( uint16_t val )
   return ( val << 8 ) | ( val >> 8 ) ;
 }
 // Byte swap 16-bit int
-int16_t bswap_int16( int16_t val ) 
-{
-  return ( val << 8 ) | ( (val >> 8)&0xFF ) ;
+int16_t bswap_int16( int16_t val ) {
+  uint16_t u = (uint16_t)val;
+  return (int16_t)( (u << 8) | (u >> 8) );
 }
 // Byte swap unsigned 32-bit int
 uint32_t bswap_uint32( uint32_t val ) 

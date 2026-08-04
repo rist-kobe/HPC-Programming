@@ -1,4 +1,3 @@
-## GNU  (8.5.0)
 FC = gfortran
 FFLAGS = -g -Wall -O0 -fconvert=native
 

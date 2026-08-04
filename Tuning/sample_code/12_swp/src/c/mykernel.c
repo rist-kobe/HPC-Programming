@@ -62,14 +62,14 @@ void coremgs_swp(double * restrict a, double * restrict q,
    }
 
    /* main body  */
-   for (int i = 1; i < M-1; ++i) {
+   for (int i = 1; i < M; ++i) {
 
       double r = 0.0;
       for (int j = 0; j < N; ++j) {
          int ij1 = j + (i-1)*N;
          int ij  = j + i*N;
          a[j] += -s*q[ij1]; /* i-1   */ 
-         r += q[ij]*a[i];   /* i     */
+         r += q[ij]*a[j];   /* i     */
       }
 
       s = r;

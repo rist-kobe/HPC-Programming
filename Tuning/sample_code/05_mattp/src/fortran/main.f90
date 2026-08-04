@@ -38,13 +38,13 @@ program main
   call get_command_argument ( number=1, value=cbuff )
   read (cbuff,'(1i10)') nrow
   ncol = nrow
-  if ( nrow < 0 ) then
+  if ( nrow <= 0 ) then
     write (6,'(1a48)') "Matrix row size is greater than 0              "
     write (6,'(1a48)') "The program is terminated.                     "
     stop
   endif
   if ( nrow > 8192 ) then
-    !! 2 double arrays * 8 bytes * (nrow)^2 < 1 GiB=2^30 bytes */
+    !! 2 double arrays * 8 bytes * (nrow)^2 < 1 GiB=2^30 bytes
     write (6,'(1a48)') "Matrix row size must be smaller than 8192.     "
     write (6,'(1a48)') "The program is terminated.                     "
     stop
