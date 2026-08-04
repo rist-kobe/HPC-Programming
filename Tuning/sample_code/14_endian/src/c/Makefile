@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -g -O0 -std=c99
-## if you can use 64-bit int
-##CFLAGS = -g -O0 -std=c99 #-D__BIGINT__
+CFLAGS = -g -O0 -std=c99 -D__BIGINT__
+## if you cannot use 64-bit int, remove -D__BIGINT__
+##CFLAGS = -g -O0 -std=c99
 
 TARGET = run.x
 
