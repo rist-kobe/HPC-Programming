@@ -13,10 +13,14 @@ contains
         return
      else
         call system_clock(ielp1, icount_rate, icount_max)
-        if ( ielp1 .ge. ioffset ) then
-           tv = (ielp1 - ioffset) / dble(icount_rate)
+        if ( icount_rate > 0 ) then
+           if ( ielp1 .ge. ioffset ) then
+              tv = (ielp1 - ioffset) / dble(icount_rate)
+           else
+              tv = (ielp1 + icount_max + 1 - ioffset) / dble(icount_rate)
+           end if
         else
-           tv = (ielp1 + icount_max + 1 - ioffset) / dble(icount_rate)
+           tv = 0.0_DP
         end if
         return
      end if
