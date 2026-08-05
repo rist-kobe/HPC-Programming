@@ -67,7 +67,7 @@ int main ( int argc, char** argv )
   b    = (double *)malloc ( (size_t)nin*sizeof(double) ) ;
   c    = (double *)malloc ( (size_t)ntot*sizeof(double) ) ;
   aref = (double *)malloc ( (size_t)nin*sizeof(double) ) ;
-  if ( !a || !b || !c || !aref ) { perror("malloc"); return EXIT_FAILURE; }
+  if ( !a || !b || !c || !aref ) { perror("malloc"); free(a); free(b); free(c); free(aref); return EXIT_FAILURE; }
   /* get physical memory */
   {
     double tmp = 1.0/nin ;
