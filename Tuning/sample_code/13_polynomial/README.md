@@ -43,8 +43,8 @@ The code is successfully compiled by
 All of them calculate a completely identical kernel composed of several multiplication-and-add, but the implementations are different. As a result, the performance could be different. If doing the calculations, you can find `GFLOP/s` in the standard output. Compare such statistical information b/w different kinds of implementation.  
 
 ## Exercise 
-1.  Compare `GFLOP/s` b/w different kinds of implementation. An expected result on performance (`FLOP/s`) is: `c = cpp = f90 = f90.forall = f08.concurrent = cpp.et14 = cpp.ept = cpp.valarray >> cpp.oo`. Depending on a kind of compiler, the above rank may change.
-2. Why are the kenerls considered to be **compute-bound** one?
+1.  Compare `GFLOP/s` b/w different kinds of implementation. An expected result on performance (`FLOP/s`) is: `c = cpp = f90 = f90.forall = f08.concurrent = cpp.et14 = cpp.etp = cpp.valarray >> cpp.oo`. Depending on a kind of compiler, the above rank may change.
+2. Why are the kernels considered to be **compute-bound** one?
 
 ## Reference 
 * Yukihiro Ota, Tasunobu Kokubo, and Takaaki Noguchi, "A Performance Analysis of Evaluating Polynomials with 

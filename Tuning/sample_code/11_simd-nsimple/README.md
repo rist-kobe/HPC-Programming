@@ -1,6 +1,6 @@
 # Example of SIMD: Non-simple loops
 * Author:   Yukihiro Ota (yota@rist.or.jp)
-* Last update: 30th Jan.., 2024 
+* Last update: 30th Jan., 2024 
 
 ## Instruction: Compile
 1. Source code is stored in `src/`. Choose either fortran or c.  

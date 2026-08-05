@@ -131,14 +131,14 @@ program main
 
   do i = 1, nsize
     U(i) = 0.0_DP
-    A(i) = 1.0_DP
-    B(i) = 2.0_DP
-    C(i) = 3.0_DP
-    D(i) = 4.0_DP
-    E(i) = 1.0_DP
-    F(i) = 2.0_DP
-    G(i) = 3.0_DP
-    H(i) = 4.0_DP
+    A(i) = 1.0e-2_DP
+    B(i) = 2.0e-2_DP
+    C(i) = 3.0e-2_DP
+    D(i) = 4.0e-2_DP
+    E(i) = 1.0e-2_DP
+    F(i) = 2.0e-2_DP
+    G(i) = 3.0e-2_DP
+    H(i) = 4.0e-2_DP
   end do
 
   memuse = 0.0_DP

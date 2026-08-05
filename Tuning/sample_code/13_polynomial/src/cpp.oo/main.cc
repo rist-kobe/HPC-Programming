@@ -61,7 +61,7 @@ int main ( int argc, char* argv[] )
     double tmp1 = (double)rand()/RAND_MAX ;
     double tmp2 = (double)rand()/RAND_MAX ;
     c0[i]  = 2.0*(tmp1-0.5)*drep ;
-    c1[i]  = 2.0*(tmp1-0.5)*drep/2.0 ;
+    c1[i]  = 2.0*(tmp2-0.5)*drep/2.0 ;
   }
   printf("******************************************************\n") ;
   printf("Some benchmark of multiplication and addition\n") ;

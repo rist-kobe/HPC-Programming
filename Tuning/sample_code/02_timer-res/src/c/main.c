@@ -57,7 +57,7 @@ int main ( int argc, char* argv[] )
   if ( nn == 1 ) {
     printf (" timer resolution less than or equal to %17.9f\n", t2) ;      
   } else {
-    printf (" timer resolution is %17.9f sec.\n", t2) ;      
+    printf (" timer resolution is %15.9f sec.\n", t2) ;      
   }
 
   printf ("--------------------------------------------------------\n");

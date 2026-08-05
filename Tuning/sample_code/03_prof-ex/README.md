@@ -5,9 +5,9 @@
 ## Preparation
 First, you need to obtain Mersenne-Twister source code for a random-number generator. This sample **DOES NOT** include it.
 ### Fortran
-* Visit the following website and obtain `mtfortf90.f`: [http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/VERSIONS/FORTRAN/fortran.html](http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/VERSIONS/FORTRAN/fortran.html)
-* Extract module part, `mtmod`, from `mtfortf90.f`. Then the resultant code is named by `mtfortf90.f90`.
-* Copy `mtfortf90.f90` in `src/fortran`.
+* Visit the following website and obtain `mtfort90.f`: [http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/VERSIONS/FORTRAN/fortran.html](http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/VERSIONS/FORTRAN/fortran.html)
+* Extract module part, `mtmod`, from `mtfort90.f`. Then the resultant code is named by `mtfort90.f90`.
+* Copy `mtfort90.f90` in `src/fortran`.
 ### C
 * Visit the following website and obtain `mt19937ar.c` and `mt19937ar.h`: [http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/mt.html](http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/mt.html) and [http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/MT2002/mt19937ar.html](http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/MT2002/mt19937ar.html). Use of `mt19937ar.sep.tgz` is recommended.
 * Copy `mt19937ar.c` and `mt19937ar.h` in `src/c`.
