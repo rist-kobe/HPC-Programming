@@ -82,13 +82,12 @@ void mmp_simple_blk(const int ns, const int nbk1, const int nbk2,
  *=======================================================================*/
 void mmp_lex_tp_blk(const int ns, const int nbk1, const int nbk2, 
   const int nbkr, const int nbkc, 
-  double mc[restrict][ns], double ma[restrict][ns], double mb[restrict][ns])
+  double mc[restrict][ns], double ma[restrict][ns], double mb[restrict][ns],
+  double work[restrict][ns])
 /* use of variable arrays in C99 
  * note: double A[][ns] is equal to double (*A)[ns]  */
 {
   int i, j, k, jj, kk;
-  double (*work)[ns] = (double (*)[ns])malloc(sizeof(double)*(size_t)ns*(size_t)ns);
-  if ( !work ) { exit(EXIT_FAILURE); }
 
 #if ! defined(NOT_USE_TRANS_BLK)
   trans_blk(ns,ns,nbkr,nbkc,work,mb); 
@@ -111,7 +110,6 @@ void mmp_lex_tp_blk(const int ns, const int nbk1, const int nbk2,
         }
      }}
   }}
-  free(work);
 }
 
 /*=========================================================================
