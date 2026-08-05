@@ -23,15 +23,15 @@ int main(int argc, char **argv)
      fprintf(stdout,"   (arg1): Integer (0-1)\n");
      fprintf(stdout,"           0: write w/  format \n");
      fprintf(stdout,"           1: write w/o format \n");
-     fprintf(stdout,"   (arg2): Integer (<200) to change array size\n");
+     fprintf(stdout,"   (arg2): Integer (1-200) to change array size\n");
      return EXIT_SUCCESS;
   }
 
   ifmt = atoi(argv[1]);
   nz = atoi(argv[2]);
 
-  if ( nz > 200 ) {
-     fprintf(stdout,"[Error] 2nd arg must be < 200.");
+  if ( nz <= 0 || nz > 200 ) {
+     fprintf(stdout,"[Error] 2nd arg must be in the range 1-200.\n");
      return EXIT_FAILURE;
   }
 
