@@ -32,7 +32,6 @@ program main
   
   call random_seed (get=seed) 
 
-  call system_clock (count=i)
   do i=1,seed_size
     call system_clock (count=seed(i))
   enddo

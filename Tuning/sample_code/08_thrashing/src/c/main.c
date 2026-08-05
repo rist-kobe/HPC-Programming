@@ -23,8 +23,8 @@
 ----------------------------------------------------------------------*/
 double *create_vec_d(int n)
 {
-   int nbytes = sizeof(double) * n ;
-   double *a = (double *)malloc( nbytes ) ;
+   double *a = (double *)malloc( sizeof(double) * (size_t)n ) ;
+   if ( a == NULL ) { perror("malloc"); exit(EXIT_FAILURE); }
    return a ;
 }
 
@@ -91,7 +91,7 @@ int main( int argc, char **argv)
   icon = 0;
   cpu1 = get_cpu_time() ; 
   /* 4 loads, 1 load and store */
-  for ( int itr = 0 ; itr <= nitr; ++itr ) {
+  for ( int itr = 0 ; itr < nitr; ++itr ) {
     kernel_l4_ls1(icon, nsize, a, b, c, d, u);
     icon = itr % 2;
   }
@@ -105,7 +105,7 @@ int main( int argc, char **argv)
   icon = 0;
   cpu1 = get_cpu_time() ; 
   /* 4 loads, 1 load and store */
-  for ( int itr = 0 ; itr <= nitr; ++itr ) {
+  for ( int itr = 0 ; itr < nitr; ++itr ) {
     kernel_l8_ls1(icon, nsize, a, b, c, d, e, f, g, h, u);
     icon = itr % 2;
   }

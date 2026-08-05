@@ -146,6 +146,14 @@ void AtomData_Get_Mem ( AtomData *ADp, InputData *IDp )
   ADp->fx    = (double *)malloc(sizeof(double)*n);
   ADp->fy    = (double *)malloc(sizeof(double)*n);
   ADp->fz    = (double *)malloc(sizeof(double)*n);
+
+  if ( !ADp->rx || !ADp->ry || !ADp->rz ||
+       !ADp->rx0 || !ADp->ry0 || !ADp->rz0 ||
+       !ADp->mass || !ADp->fx || !ADp->fy || !ADp->fz ) {
+    perror("malloc in AtomData_Get_Mem") ;
+    AtomData_Free_Mem(ADp) ;
+    exit(EXIT_FAILURE) ;
+  }
 }
 /*--------------------------------------------------------------------*/
 /* AtomData_Free_Mem                                                  */

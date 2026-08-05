@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 //#include <thread>
 
 void sub1 ( double *a, const int nn ) ;
@@ -21,17 +22,16 @@ void sub3 ( double *a, const int nn ) ;
 int main ( int argc, char* argv[] )
 {
   int nn = 20000 ;
-  double a[nn] ;
+  std::vector<double> a(nn, 0.0) ;
 
-  // set values 
-  for ( int i=0; i<nn; ++i ) a[i] = 0.0 ;
+  // set values -- already zero-initialized via std::vector
 
   // routine 1 
 #if defined(USE_TIMER)
   {
      const auto elp1 = std::chrono::steady_clock::now();
 
-     for ( int k=0; k<100000; ++k ) sub1 ( a, nn ) ;
+     for ( int k=0; k<100000; ++k ) sub1 ( a.data(), nn ) ;
 
      const auto elp2 = std::chrono::steady_clock::now();
      const std::chrono::duration<double> elapsed = elp2 - elp1;
@@ -41,7 +41,7 @@ int main ( int argc, char* argv[] )
      // fprintf(stdout, "Elapsed time (seconds) : %9.3f\n", static_cast<double>(elapsed.count()));
   }
 #else
-  for ( int k=0; k<100000; ++k ) sub1 ( a, nn ) ;
+  for ( int k=0; k<100000; ++k ) sub1 ( a.data(), nn ) ;
 #endif
 
   fprintf (stdout, "a[0] = %13.6f\n", a[0] ) ;
@@ -51,7 +51,7 @@ int main ( int argc, char* argv[] )
   {
      const auto elp1 = std::chrono::steady_clock::now();
 
-     for ( int k=0; k<200000; ++k ) sub2 ( a, nn ) ;
+     for ( int k=0; k<200000; ++k ) sub2 ( a.data(), nn ) ;
 
      const auto elp2 = std::chrono::steady_clock::now();
      const std::chrono::duration<double> elapsed = elp2 - elp1;
@@ -61,7 +61,7 @@ int main ( int argc, char* argv[] )
      // fprintf(stdout, "Elapsed time (seconds) : %9.3f\n", static_cast<double>(elapsed.count()));
   }
 #else
-  for ( int k=0; k<200000; ++k ) sub2 ( a, nn ) ;
+  for ( int k=0; k<200000; ++k ) sub2 ( a.data(), nn ) ;
 #endif
 
   fprintf (stdout, "a[0] = %13.6f\n", a[0] ) ;

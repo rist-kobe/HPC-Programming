@@ -12,8 +12,8 @@
 template<typename T>
 T *create_mem(T *&array, int n)
 {
-  int nbytes = sizeof(T) * n ;
-  array = (T *)malloc(nbytes) ; 
+  array = (T *)malloc(sizeof(T) * (size_t)n) ; 
+  if ( array == NULL ) { perror("malloc"); exit(EXIT_FAILURE); }
   return array ; 
 }
 
@@ -29,10 +29,12 @@ void release_mem(T *&array)
 template<typename T>
 T **create_mem(T **&array, int n1, int n2)
 {
-  int nbytes = sizeof(T) * n1 * n2 ; // use of int64_t is preferable 
+  size_t nbytes = sizeof(T) * (size_t)n1 * (size_t)n2 ;
   T *data = (T *)malloc(nbytes) ;
-  nbytes = sizeof(T *) * n1 ;
+  if ( data == NULL ) { perror("malloc"); exit(EXIT_FAILURE); }
+  nbytes = sizeof(T *) * (size_t)n1 ;
   array = (T **)malloc(nbytes) ;
+  if ( array == NULL ) { perror("malloc"); exit(EXIT_FAILURE); }
 
   int n = 0 ;
   for ( int i = 0; i < n1; ++i ) {

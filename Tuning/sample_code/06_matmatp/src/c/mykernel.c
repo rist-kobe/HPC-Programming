@@ -1,5 +1,6 @@
 /* Copyright 2024 Research Organization for Information Science and Technology */
 #include "mykernel.h"
+#include <stdlib.h>
 /*=========================================================================
  * Simple implementation
  * + Memory access pattern 
@@ -86,7 +87,8 @@ void mmp_lex_tp_blk(const int ns, const int nbk1, const int nbk2,
  * note: double A[][ns] is equal to double (*A)[ns]  */
 {
   int i, j, k, jj, kk;
-  double work[ns][ns];
+  double (*work)[ns] = (double (*)[ns])malloc(sizeof(double)*(size_t)ns*(size_t)ns);
+  if ( !work ) { exit(EXIT_FAILURE); }
 
 #if ! defined(NOT_USE_TRANS_BLK)
   trans_blk(ns,ns,nbkr,nbkc,work,mb); 
@@ -109,6 +111,7 @@ void mmp_lex_tp_blk(const int ns, const int nbk1, const int nbk2,
         }
      }}
   }}
+  free(work);
 }
 
 /*=========================================================================
