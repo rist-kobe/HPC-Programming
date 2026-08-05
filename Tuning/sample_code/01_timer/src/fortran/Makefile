@@ -1,10 +1,10 @@
 FC=gfortran
 
 ## Please choose one of the following flag settings
-## Use of timer for CPU time
-FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
 ## Use of timer (elapsed time)
-#FFLAGS=-g -Wall -cpp -O0 -DUSE_ELP_TIMER
+FFLAGS=-g -Wall -cpp -O0 -DUSE_ELP_TIMER
+## Use of timer for CPU time
+#FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
 ## Use of gprof
 #FFLAGS=-pg -g -Wall -cpp -O0
 
