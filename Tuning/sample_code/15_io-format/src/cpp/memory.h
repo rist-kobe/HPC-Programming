@@ -78,6 +78,11 @@ void release_2d_array( T **&array)
 template<typename T>
 T ***create_3d_array( T ***&array, const int n1, const int n2, const int n3)
 {
+#if ! defined(__NOT_STDCPP11__)
+   if ( n1 <= 0 || n2 <= 0 || n3 <= 0 ) { array = nullptr; return array; }
+#else
+   if ( n1 <= 0 || n2 <= 0 || n3 <= 0 ) { array = NULL; return array; }
+#endif
    std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2)*static_cast<std::size_t>(n3); /* 64-bit unsigned int should be used */ 
    T *data = (T *)malloc(nbytes);
    nbytes = sizeof(T *)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2);
