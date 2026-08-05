@@ -36,7 +36,7 @@ int main(int argc, char **argv)
   }
 
   int ***aa = create_int_3d_array( nx, ny, nz);
-
+  if ( aa == NULL ) { fprintf(stderr, "Memory allocation failed.\n"); return EXIT_FAILURE; }
   for ( i=0; i<nx; ++i ) {
   for ( j=0; j<ny; ++j ) {
   for ( k=0; k<nz; ++k ) {

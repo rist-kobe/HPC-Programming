@@ -108,9 +108,9 @@ int main ( int argc, char* argv[] )
   printf ("%d\n", idm ) ;
   printf ("Check matrix transpose         \n") ;
   printf ("%d %d %17.6f %17.6f\n", 
-          0, ncol-1, a[ncol-1], b[ncol-1]);
+          0, ncol-1, a[ncol-1], b[(ncol-1)*ncol]);
   printf ("%d %d %17.6f %17.6f\n", 
-          nrow-1, 0, a[(nrow-1)*ncol], b[(nrow-1)*ncol]);
+          nrow-1, 0, a[(nrow-1)*ncol], b[nrow-1]);
   printf ("Req. memory (MB)               \n") ;
   printf ("%17.6f\n", mema) ;
 #ifdef __USE_CPU_TIMER__
@@ -159,9 +159,9 @@ int main ( int argc, char* argv[] )
   printf ("%d\n", idm ) ;
   printf ("Check matrix transpose         \n") ;
   printf ("%d %d %17.6f %17.6f\n", 
-          0, ncol-1, a[ncol-1], b[ncol-1]);
+          0, ncol-1, a[ncol-1], b[(ncol-1)*ncol]);
   printf ("%d %d %17.6f %17.6f\n", 
-          nrow-1, 0, a[(nrow-1)*ncol], b[(nrow-1)*ncol]);
+          nrow-1, 0, a[(nrow-1)*ncol], b[nrow-1]);
   printf ("Req. memory (MB)               \n") ;
   printf ("%17.6f\n", mema) ;
   printf ("Number of blocks w.r.t.        \n") ;

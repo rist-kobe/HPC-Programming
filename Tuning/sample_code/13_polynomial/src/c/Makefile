@@ -16,7 +16,7 @@ run.x: $(OBJS)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
-main.o: mykernel.o mykernel.h timer.h main.c
+main.o: main.c mykernel.h timer.h
 
 timer.o: timer.h timer.c
 

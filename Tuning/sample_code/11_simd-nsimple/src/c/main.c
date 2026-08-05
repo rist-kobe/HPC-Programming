@@ -32,7 +32,7 @@ int main (int argc, char **argv)
     ind[i] = (ii >= NSIZE) ? ii - NSIZE : ii;
   }
 /*======================================================================*/
-  printf("%16s %14s %23s\n", "Kernel", "elapsed(sed)", "check");
+  printf("%16s %14s %23s\n", "Kernel", "elapsed(sec)", "check");
 /*======================================================================*/
   elp0 = get_elp_time();
 

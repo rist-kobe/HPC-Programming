@@ -19,6 +19,7 @@ int main ( int argc, char* argv[] )
 {
   int nn = 20000 ;
   double *a = malloc ( nn * sizeof(double) ) ;
+  if ( a == NULL ) { perror("malloc"); return EXIT_FAILURE; }
 #if defined(USE_CPU_TIMER)
   double cpu1, cpu2;
 #endif
