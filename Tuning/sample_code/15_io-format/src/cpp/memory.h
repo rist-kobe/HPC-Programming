@@ -39,9 +39,9 @@ void release_1d_array( T *&array)
 template<typename T>
 T **create_2d_array( T **&array, const int n1, const int n2)
 {
-   int nbytes = sizeof(T)*n1*n2; 
+   std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2); 
    T *data = (T *)malloc(nbytes);
-   nbytes = sizeof(T *)*n1;
+   nbytes = sizeof(T *)*static_cast<std::size_t>(n1);
    array = (T **)malloc(nbytes);
 
    std::size_t i;
@@ -78,11 +78,11 @@ void release_2d_array( T **&array)
 template<typename T>
 T ***create_3d_array( T ***&array, const int n1, const int n2, const int n3)
 {
-   int nbytes = sizeof(T)*n1*n2*n3; /* 64-bit unsigned int should be used */ 
+   std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2)*static_cast<std::size_t>(n3); /* 64-bit unsigned int should be used */ 
    T *data = (T *)malloc(nbytes);
-   nbytes = sizeof(T *)*n1*n2;
+   nbytes = sizeof(T *)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2);
    T **array2 = (T **)malloc(nbytes);
-   nbytes = sizeof(T **)*n1;
+   nbytes = sizeof(T **)*static_cast<std::size_t>(n1);
    array = (T ***)malloc(nbytes);
 
    std::size_t i, n;
