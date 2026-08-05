@@ -61,10 +61,10 @@ int **create_int_2d_array( const int n1, const int n2)
    int **array = (int **)malloc(nbytes);
 
    int i;
-   int n = 0;
+   size_t n = 0;
    for ( i = 0; i < n1; ++i ) {
       array[i] = &data[n];
-      n += n2;
+      n += (size_t)n2;
    }
    return array;
 }
@@ -91,10 +91,10 @@ double **create_dp_2d_array( const int n1, const int n2)
    double **array = (double **)malloc(nbytes);
 
    int i;
-   int n = 0;
+   size_t n = 0;
    for ( i = 0; i < n1; ++i ) {
       array[i] = &data[n];
-      n += n2;
+      n += (size_t)n2;
    }
    return array;
 }
@@ -122,18 +122,18 @@ int ***create_int_3d_array( const int n1, const int n2, const int n3)
    nbytes = sizeof(int **)*n1;
    int ***array = (int ***)malloc(nbytes);
 
-   int i, n;
+   size_t i, n;
 
    n = 0;
-   for ( i = 0; i < n1*n2; ++i ){
+   for ( i = 0; i < (size_t)n1*(size_t)n2; ++i ){
       array2[i] = &data[n];
-      n += n3; 
+      n += (size_t)n3; 
    }
 
    n = 0;
-   for ( i = 0; i < n1; ++i ){
+   for ( i = 0; i < (size_t)n1; ++i ){
       array[i] = &array2[n];
-      n += n2; 
+      n += (size_t)n2; 
    }
    return array;
 }
@@ -162,18 +162,18 @@ double ***create_dp_3d_array( const int n1, const int n2, const int n3)
    nbytes = sizeof(double **)*n1;
    double ***array = (double ***)malloc(nbytes);
 
-   int i, n;
+   size_t i, n;
 
    n = 0;
-   for ( i = 0; i < n1*n2; ++i ){
+   for ( i = 0; i < (size_t)n1*(size_t)n2; ++i ){
       array2[i] = &data[n];
-      n += n3; 
+      n += (size_t)n3; 
    }
 
    n = 0;
-   for ( i = 0; i < n1; ++i ){
+   for ( i = 0; i < (size_t)n1; ++i ){
       array[i] = &array2[n];
-      n += n2; 
+      n += (size_t)n2; 
    }
    return array;
 }
