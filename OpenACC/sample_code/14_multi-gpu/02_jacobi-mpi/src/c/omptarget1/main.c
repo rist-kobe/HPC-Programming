@@ -355,8 +355,8 @@ int main (int argc, char **argv)
        send_buff[iy] = phie[IDX(1,iy,ny_loc)];
     }
 
-    MPI_Sendrecv(&send_buff[0], ny_loc-2, MPI_DOUBLE, rank_dest_xdown, tag, 
-                 &recv_buff[0], ny_loc-2, MPI_DOUBLE, rank_src_xdown, tag,
+    MPI_Sendrecv(&send_buff[1], ny_loc-2, MPI_DOUBLE, rank_dest_xdown, tag, 
+                 &recv_buff[1], ny_loc-2, MPI_DOUBLE, rank_src_xdown, tag,
                  cartComm, &status);
 
     /* unpacking */
@@ -370,8 +370,8 @@ int main (int argc, char **argv)
        send_buff[iy] = phie[IDX(nx_loc-2,iy,ny_loc)];
     }
 
-    MPI_Sendrecv(&send_buff[0], ny_loc-2, MPI_DOUBLE, rank_dest_xup, tag, 
-                 &recv_buff[0], ny_loc-2, MPI_DOUBLE, rank_src_xup, tag,
+    MPI_Sendrecv(&send_buff[1], ny_loc-2, MPI_DOUBLE, rank_dest_xup, tag, 
+                 &recv_buff[1], ny_loc-2, MPI_DOUBLE, rank_src_xup, tag,
                  cartComm, &status);
 
     /* unpacking */
@@ -385,8 +385,8 @@ int main (int argc, char **argv)
        send_buff[ix] = phie[IDX(ix,1,ny_loc)];
     }
 
-    MPI_Sendrecv(&send_buff[0], nx_loc-2, MPI_DOUBLE, rank_dest_ydown, tag, 
-                 &recv_buff[0], nx_loc-2, MPI_DOUBLE, rank_src_ydown, tag,
+    MPI_Sendrecv(&send_buff[1], nx_loc-2, MPI_DOUBLE, rank_dest_ydown, tag, 
+                 &recv_buff[1], nx_loc-2, MPI_DOUBLE, rank_src_ydown, tag,
                  cartComm, &status);
 
     /* unpacking */
@@ -400,8 +400,8 @@ int main (int argc, char **argv)
        send_buff[ix] = phie[IDX(ix,ny_loc-2,ny_loc)];
     }
 
-    MPI_Sendrecv(&send_buff[0], nx_loc-2, MPI_DOUBLE, rank_dest_yup, tag, 
-                 &recv_buff[0], nx_loc-2, MPI_DOUBLE, rank_src_yup, tag,
+    MPI_Sendrecv(&send_buff[1], nx_loc-2, MPI_DOUBLE, rank_dest_yup, tag, 
+                 &recv_buff[1], nx_loc-2, MPI_DOUBLE, rank_src_yup, tag,
                  cartComm, &status);
 
     /* unpacking */
