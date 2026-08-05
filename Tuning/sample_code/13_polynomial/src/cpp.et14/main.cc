@@ -24,17 +24,20 @@
 #include <ctime>
 #include "mykernel.h"
 
-/* Wall clock */
-#if ! defined(NOT_USE_REALTIME)
+/* Wall clock (Elapsed time)
+   Default: CLOCK_MONOTONIC (safe for interval timing; unaffected by
+   NTP adjustments or manual clock changes).
+   Define USE_REALTIME to use CLOCK_REALTIME instead.               */
+#if ! defined(USE_REALTIME)
 double get_elp_time () {
   struct timespec tp ;
-  clock_gettime ( CLOCK_REALTIME, &tp ) ;
+  clock_gettime ( CLOCK_MONOTONIC, &tp ) ;
   return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
 }
 #else
 double get_elp_time () {
   struct timespec tp ;
-  clock_gettime ( CLOCK_MONOTONIC, &tp ) ;
+  clock_gettime ( CLOCK_REALTIME, &tp ) ;
   return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
 }
 #endif

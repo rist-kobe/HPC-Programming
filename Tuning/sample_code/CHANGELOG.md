@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.2] - 2024-02-03
 ### Added
-- Add timer with use of `CLOCK_MONOTONIC`. If setting `-DNOT_USE_REALTIME` in compiler options, one can use this version. Otherwise, one will use the timer with `CLOCK_REALTIME`.
+- Add timer with use of `CLOCK_MONOTONIC`. This version is now used by default. If setting `-DUSE_REALTIME` in compiler options, one will use the timer with `CLOCK_REALTIME` instead.
 
 ## [0.2.1] - 2024-01-30
 ### Added
