@@ -38,7 +38,7 @@ int main(int argc,char *argv[]){
   MPI_Group_incl(mpi_group_world,2,ranks2,&group2);
   MPI_Comm_create(MPI_COMM_WORLD,group1,&mpi_comm_group1);
   MPI_Comm_create(MPI_COMM_WORLD,group2,&mpi_comm_group2);
-  MPI_Comm mpi_comm_inter;
+  MPI_Comm mpi_comm_inter=MPI_COMM_NULL;
   int tag=32767;
   rootS=1;
   if(mpi_comm_group1!=MPI_COMM_NULL){
@@ -66,7 +66,7 @@ int main(int argc,char *argv[]){
     fprintf(fp0," index=%2d  recv=%02d\n",i,recvbuf[i]);
   }
   MPI_Barrier(MPI_COMM_WORLD);
-  MPI_Comm_free(&mpi_comm_inter);
+  if(mpi_comm_inter!=MPI_COMM_NULL) MPI_Comm_free(&mpi_comm_inter);
   if(mpi_comm_group1!=MPI_COMM_NULL) MPI_Comm_free(&mpi_comm_group1);
   if(mpi_comm_group2!=MPI_COMM_NULL) MPI_Comm_free(&mpi_comm_group2);
   MPI_Group_free(&group1);

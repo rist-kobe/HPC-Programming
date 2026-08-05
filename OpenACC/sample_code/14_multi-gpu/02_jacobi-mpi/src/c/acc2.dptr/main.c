@@ -372,8 +372,8 @@ int main (int argc, char **argv)
 
     #pragma acc host_data use_device(send_buff,recv_buff)
     {
-    MPI_Sendrecv(&send_buff[0], ny_loc-2, MPI_DOUBLE, rank_dest_xdown, tag, 
-                 &recv_buff[0], ny_loc-2, MPI_DOUBLE, rank_src_xdown, tag,
+    MPI_Sendrecv(&send_buff[1], ny_loc-2, MPI_DOUBLE, rank_dest_xdown, tag, 
+                 &recv_buff[1], ny_loc-2, MPI_DOUBLE, rank_src_xdown, tag,
                  cartComm, &status);
     } /* acc host_data */
 
@@ -396,8 +396,8 @@ int main (int argc, char **argv)
 
     #pragma acc host_data use_device(send_buff,recv_buff)
     {
-    MPI_Sendrecv(&send_buff[0], ny_loc-2, MPI_DOUBLE, rank_dest_xup, tag, 
-                 &recv_buff[0], ny_loc-2, MPI_DOUBLE, rank_src_xup, tag,
+    MPI_Sendrecv(&send_buff[1], ny_loc-2, MPI_DOUBLE, rank_dest_xup, tag, 
+                 &recv_buff[1], ny_loc-2, MPI_DOUBLE, rank_src_xup, tag,
                  cartComm, &status);
     } /* acc host_data */
 
@@ -420,8 +420,8 @@ int main (int argc, char **argv)
 
     #pragma acc host_data use_device(send_buff,recv_buff)
     {
-    MPI_Sendrecv(&send_buff[0], nx_loc-2, MPI_DOUBLE, rank_dest_ydown, tag, 
-                 &recv_buff[0], nx_loc-2, MPI_DOUBLE, rank_src_ydown, tag,
+    MPI_Sendrecv(&send_buff[1], nx_loc-2, MPI_DOUBLE, rank_dest_ydown, tag, 
+                 &recv_buff[1], nx_loc-2, MPI_DOUBLE, rank_src_ydown, tag,
                  cartComm, &status);
     } /* acc host_data */
 
@@ -444,8 +444,8 @@ int main (int argc, char **argv)
 
     #pragma acc host_data use_device(send_buff,recv_buff)
     {
-    MPI_Sendrecv(&send_buff[0], nx_loc-2, MPI_DOUBLE, rank_dest_yup, tag, 
-                 &recv_buff[0], nx_loc-2, MPI_DOUBLE, rank_src_yup, tag,
+    MPI_Sendrecv(&send_buff[1], nx_loc-2, MPI_DOUBLE, rank_dest_yup, tag, 
+                 &recv_buff[1], nx_loc-2, MPI_DOUBLE, rank_src_yup, tag,
                  cartComm, &status);
     } /* acc host_data */
 
