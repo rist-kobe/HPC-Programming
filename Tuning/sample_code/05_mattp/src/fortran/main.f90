@@ -38,7 +38,7 @@ program main
   call get_command_argument ( number=1, value=cbuff )
   read (cbuff,'(1i10)') nrow
   ncol = nrow
-  if ( nrow < 0 ) then
+  if ( nrow <= 0 ) then
     write (6,'(1a48)') "Matrix row size is greater than 0              "
     write (6,'(1a48)') "The program is terminated.                     "
     stop

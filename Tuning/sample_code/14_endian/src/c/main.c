@@ -86,7 +86,7 @@ int main ( int argc, char** argv )
   printf("  uint32_t ua[0] = 0x12345678 \n") ;
   printf("  int32_t  a[0]  = -305419896 \n") ;
   printf("  float    fw[0] = 1.1f \n") ;
-  printf("  double   dw[0] = 3.14156265359 \n") ;
+  printf("  double   dw[0] = -3.14159265359 \n") ;
 #ifdef __BIGINT__
   printf("  int64_t  la[0] = 0x123456789ABCDEF0\n") ;
 #endif

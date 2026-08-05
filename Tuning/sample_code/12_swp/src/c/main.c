@@ -136,7 +136,7 @@ int main (int argc, char **argv)
    fprintf(stdout,"%16s %8d %8d %8d %18.3f %8d\n",
            "coremgs", ndim, mvec, NITR, elp[0], icon);
    fprintf(stdout,"%16s %8d %8d %8d %18.3f %8d\n",
-           "coremgs_spw", ndim, mvec, NITR, elp[1], icon);
+           "coremgs_swp", ndim, mvec, NITR, elp[1], icon);
 
    /* =========================
     * medium mvec 
@@ -176,7 +176,7 @@ int main (int argc, char **argv)
    fprintf(stdout,"%16s %8d %8d %8d %18.3f %8d\n",
            "coremgs", ndim, mvec, NITR, elp[0], icon);
    fprintf(stdout,"%16s %8d %8d %8d %18.3f %8d\n",
-           "coremgs_spw", ndim, mvec, NITR, elp[1], icon);
+           "coremgs_swp", ndim, mvec, NITR, elp[1], icon);
 
    /* =========================
     * small mvec 
@@ -216,7 +216,7 @@ int main (int argc, char **argv)
    fprintf(stdout,"%16s %8d %8d %8d %18.3f %8d\n",
            "coremgs", ndim, mvec, NITR, elp[0], icon);
    fprintf(stdout,"%16s %8d %8d %8d %18.3f %8d\n",
-           "coremgs_spw", ndim, mvec, NITR, elp[1], icon);
+           "coremgs_swp", ndim, mvec, NITR, elp[1], icon);
 
    /* finalization */
    release_dp_1d_array( A );
