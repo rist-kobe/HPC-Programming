@@ -62,6 +62,3 @@ double get_cpu_res () {
   return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
 
-#if 0
-/* Obsolete: Probably does not work                                  */
-#endif
