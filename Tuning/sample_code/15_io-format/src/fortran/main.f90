@@ -36,8 +36,8 @@ program main
   call get_command_argument(2,cbuf)
   read(cbuf,'(1I10)') NZ
 
-  if ( NZ .gt. 200 ) then
-     write(6,'(1A)') "[Error] 2nd arg must be < 200."
+  if ( NZ .le. 0 .or. NZ .gt. 200 ) then
+     write(6,'(1A)') "[Error] 2nd arg must be in the range 1-200."
      stop 
   end if
 

@@ -30,8 +30,8 @@ int main(int argc, char **argv)
   ifmt = atoi(argv[1]);
   nz = atoi(argv[2]);
 
-  if ( nz > 200 ) {
-     fprintf(stdout,"[Error] 2nd arg must be < 200.");
+  if ( nz <= 0 || nz > 200 ) {
+     fprintf(stdout,"[Error] 2nd arg must be in the range 1-200.");
      return EXIT_FAILURE;
   }
 

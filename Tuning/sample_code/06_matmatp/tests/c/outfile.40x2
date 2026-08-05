@@ -1,0 +1,6 @@
+NA=80, NB=20
+run.sh: line 24:  6271 Segmentation fault      (core dumped) ${NUMARUN} ${EXE} ${NA} ${NB}
+NA=40, NB=40
+run.sh: line 24:  6278 Segmentation fault      (core dumped) ${NUMARUN} ${EXE} ${NA} ${NB}
+NA=20, NB=80
+run.sh: line 24:  6288 Segmentation fault      (core dumped) ${NUMARUN} ${EXE} ${NA} ${NB}

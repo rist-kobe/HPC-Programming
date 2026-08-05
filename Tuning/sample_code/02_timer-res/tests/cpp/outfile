@@ -1,0 +1,9 @@
+--------------------------------------------------------
+[Check resolution of steady_clock]
+It took       1 iterations to generate a non-zero time
+ timer resolution less than or equal to     0.000000130
+--------------------------------------------------------
+[Check resolution of high_resolution_clock]
+It took       1 iterations to generate a non-zero time
+ timer resolution less than or equal to     0.000000041
+--------------------------------------------------------

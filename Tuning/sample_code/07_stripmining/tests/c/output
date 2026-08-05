@@ -1,0 +1,10 @@
+[Job setting]
+1st loop length 3000
+2nd loop length 1000
+vec length of strip-mining 8
+Standard
+CPU time (sec)     22.255196
+a[0] =    3.959995e+03
+Stripmining with vector length 8
+CPU time (sec)     24.196932
+a[0] =    3.959995e+03

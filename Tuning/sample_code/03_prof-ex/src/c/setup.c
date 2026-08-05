@@ -19,6 +19,7 @@ int read_input ( InputData *IDp )
 {
   FILE *fp;
   char *filename = "./input.dat";
+  *IDp = (InputData){0};
   if ( (fp=fopen(filename,"r")) == NULL ) {
     printf("Input file %s is not found.\n",filename);
     printf("The program is abnormally terminated.\n");
@@ -116,6 +117,8 @@ void AtomData_Init ( AtomData *ADp )
   ADp->rx0 = NULL;
   ADp->ry0 = NULL;
   ADp->rz0 = NULL;
+
+  ADp->mass = NULL;
 
   ADp->fx  = NULL;
   ADp->fy  = NULL;
