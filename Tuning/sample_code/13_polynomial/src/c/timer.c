@@ -64,4 +64,4 @@ double get_cpu_res () {
 
 #if 0
 /* Obsolete: Probably does not work                                  */
-
+#endif
