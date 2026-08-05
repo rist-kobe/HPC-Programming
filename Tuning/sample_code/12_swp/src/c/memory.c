@@ -120,7 +120,7 @@ void release_dp_2d_array( double **array)
 int ***create_int_3d_array( const int n1, const int n2, const int n3)
 {
    if ( n1 <= 0 || n2 <= 0 || n3 <= 0 ) return NULL;
-   size_t nbytes = sizeof(int)*n1*n2*n3; /* 64-bit unsigned int should be used */ 
+   size_t nbytes = sizeof(int)*n1*n2*n3; /* size_t is used for the byte count */
    int *data = (int *)malloc(nbytes);
    nbytes = sizeof(int *)*n1*n2;
    int **array2 = (int **)malloc(nbytes);
