@@ -39,6 +39,11 @@ void release_1d_array( T *&array)
 template<typename T>
 T **create_2d_array( T **&array, const int n1, const int n2)
 {
+#if ! defined(__NOT_STDCPP11__)
+   if ( n1 <= 0 || n2 <= 0 ) { array = nullptr; return array; }
+#else
+   if ( n1 <= 0 || n2 <= 0 ) { array = NULL; return array; }
+#endif
    std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2); 
    T *data = (T *)malloc(nbytes);
    nbytes = sizeof(T *)*static_cast<std::size_t>(n1);
