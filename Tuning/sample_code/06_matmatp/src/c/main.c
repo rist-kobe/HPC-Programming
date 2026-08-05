@@ -55,7 +55,7 @@ int main (int argc, char **argv)
 
   if ( nbk1 <= 0 || nbk2 <= 0 ) {
      printf("[error] blocking sizes must be positive integers.\n");
-     free(mata); free(matb); free(matc);
+     free(mata); free(matb); free(matc); free(work);
      return EXIT_FAILURE;
   }
 
