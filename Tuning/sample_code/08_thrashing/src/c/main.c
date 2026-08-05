@@ -23,6 +23,7 @@
 ----------------------------------------------------------------------*/
 double *create_vec_d(int n)
 {
+   if ( n <= 0 ) { return NULL ; }
    double *a = (double *)malloc( sizeof(double) * (size_t)n ) ;
    if ( a == NULL ) { perror("malloc"); exit(EXIT_FAILURE); }
    return a ;
