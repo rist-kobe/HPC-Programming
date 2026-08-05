@@ -1,9 +1,0 @@
-----------------------------------------------------------
-[Check resolution of wallclock timer]
-It took     919    iterations to generate a non-zero time
- timer resolution is     0.001000000 sec.
-----------------------------------------------------------
-[Check resolution of cpu timer]
-It took       1    iterations to generate a non-zero time
- timer resolution less than or equal to     0.000002000
-----------------------------------------------------------
