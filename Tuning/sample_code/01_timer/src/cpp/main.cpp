@@ -27,7 +27,7 @@ int main ( int argc, char* argv[] )
   // set values -- already zero-initialized via std::vector
 
   // routine 1 
-#if defined(USE_TIMER)
+#if defined(USE_ELP_TIMER)
   {
      const auto elp1 = std::chrono::steady_clock::now();
 
@@ -36,9 +36,7 @@ int main ( int argc, char* argv[] )
      const auto elp2 = std::chrono::steady_clock::now();
      const std::chrono::duration<double> elapsed = elp2 - elp1;
 
-     std::cout << "Elapsed time (sec)   = " << elapsed.count() << std::endl;
-     // If you perfer to cstdio
-     // fprintf(stdout, "Elapsed time (seconds) : %9.3f\n", static_cast<double>(elapsed.count()));
+     fprintf (stdout, "Elapsed time (sec)   = %17.6f\n", elapsed.count()) ;
   }
 #else
   for ( int k=0; k<100000; ++k ) sub1 ( a.data(), nn ) ;
@@ -47,7 +45,7 @@ int main ( int argc, char* argv[] )
   fprintf (stdout, "a[0] = %13.6f\n", a[0] ) ;
 
   // routine 2 
-#if defined(USE_TIMER)
+#if defined(USE_ELP_TIMER)
   {
      const auto elp1 = std::chrono::steady_clock::now();
 
@@ -56,9 +54,7 @@ int main ( int argc, char* argv[] )
      const auto elp2 = std::chrono::steady_clock::now();
      const std::chrono::duration<double> elapsed = elp2 - elp1;
 
-     std::cout << "Elapsed time (sec)   = " << elapsed.count() << std::endl;
-     // If you perfer to cstdio
-     // fprintf(stdout, "Elapsed time (seconds) : %9.3f\n", static_cast<double>(elapsed.count()));
+     fprintf (stdout, "Elapsed time (sec)   = %17.6f\n", elapsed.count()) ;
   }
 #else
   for ( int k=0; k<200000; ++k ) sub2 ( a.data(), nn ) ;

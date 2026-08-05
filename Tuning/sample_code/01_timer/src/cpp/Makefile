@@ -1,8 +1,8 @@
 CXX=g++
 
 ## Please choose one of the following flag settings
-## Use of timer for std::chrono in C++11 
-CXXFLAGS=-g -Wall -std=gnu++11 -DUSE_TIMER -O0
+## Use of timer for elapsed time (std::chrono in C++11) 
+CXXFLAGS=-g -Wall -std=gnu++11 -DUSE_ELP_TIMER -O0
 ## Use of gprof
 #CXXFLAGS=-pg -g -Wall -std=gnu++11 -O0
 
