@@ -43,19 +43,19 @@ int read_input ( InputData *IDp )
   char tag_dtm[]  = "<dt>";
 
   while ( fgets(cbuff,maxcbufflen,fp) != NULL ) {
-    if ( strcmp(trim(cbuff),tag_npT) == 0 ) fscanf(fp,"%d",&IDp->num_partot);
-    if ( strcmp(trim(cbuff),tag_npA) == 0 ) fscanf(fp,"%d",&IDp->num_parA);
-    if ( strcmp(trim(cbuff),tag_npB) == 0 ) fscanf(fp,"%d",&IDp->num_parB);
-    if ( strcmp(trim(cbuff),tag_stp) == 0 ) fscanf(fp,"%d",&IDp->nstep);
-    if ( strcmp(trim(cbuff),tag_obs) == 0 ) fscanf(fp,"%d",&IDp->nobs);
-    if ( strcmp(trim(cbuff),tag_tst) == 0 ) fscanf(fp,"%d",&IDp->iflag_test);
-    if ( strcmp(trim(cbuff),tag_mpA) == 0 ) fscanf(fp,"%lf",&IDp->mamu_parA);
-    if ( strcmp(trim(cbuff),tag_mpB) == 0 ) fscanf(fp,"%lf",&IDp->mamu_parB);
-    if ( strcmp(trim(cbuff),tag_lcl) == 0 ) fscanf(fp,"%lf",&IDp->len_cell);
-    if ( strcmp(trim(cbuff),tag_tem) == 0 ) fscanf(fp,"%lf",&IDp->tempt);
-    if ( strcmp(trim(cbuff),tag_eLJ) == 0 ) fscanf(fp,"%lf",&IDp->epsLJ);
-    if ( strcmp(trim(cbuff),tag_sLJ) == 0 ) fscanf(fp,"%lf",&IDp->sigLJ);
-    if ( strcmp(trim(cbuff),tag_dtm) == 0 ) fscanf(fp,"%lf",&IDp->dt);
+    if ( strcmp(trim(cbuff),tag_npT) == 0 && fscanf(fp,"%d",&IDp->num_partot) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_npA) == 0 && fscanf(fp,"%d",&IDp->num_parA) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_npB) == 0 && fscanf(fp,"%d",&IDp->num_parB) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_stp) == 0 && fscanf(fp,"%d",&IDp->nstep) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_obs) == 0 && fscanf(fp,"%d",&IDp->nobs) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_tst) == 0 && fscanf(fp,"%d",&IDp->iflag_test) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_mpA) == 0 && fscanf(fp,"%lf",&IDp->mamu_parA) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_mpB) == 0 && fscanf(fp,"%lf",&IDp->mamu_parB) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_lcl) == 0 && fscanf(fp,"%lf",&IDp->len_cell) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_tem) == 0 && fscanf(fp,"%lf",&IDp->tempt) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_eLJ) == 0 && fscanf(fp,"%lf",&IDp->epsLJ) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_sLJ) == 0 && fscanf(fp,"%lf",&IDp->sigLJ) != 1 ) goto parse_error;
+    if ( strcmp(trim(cbuff),tag_dtm) == 0 && fscanf(fp,"%lf",&IDp->dt) != 1 ) goto parse_error;
   }
   free(cbuff);
   fclose(fp);
@@ -67,6 +67,11 @@ int read_input ( InputData *IDp )
   }
 
   return 0;
+
+parse_error:
+  free(cbuff);
+  fclose(fp);
+  return -1;
 }
 /*--------------------------------------------------------------------*/
 /* write_output_pos.c                                                 */
