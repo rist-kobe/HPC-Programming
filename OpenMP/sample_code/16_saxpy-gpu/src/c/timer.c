@@ -61,34 +61,3 @@ double get_cpu_res () {
   if ( clock_getres ( CLOCK_PROCESS_CPUTIME_ID, &res ) != 0 ) return -1.0 ;
   return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
-
-#if 0
-/* Obsolete: Probably does not work                                  */
-
-#include <stdlib.h>
-#include <sys/time.h>
-#include <sys/resource.h>
-
-/* Wall clock (Elapsed time) */
-double get_elp_time () {
-  struct timeval tv ;
-  gettimeofday ( &tv, NULL ) ;
-  return tv.tv_sec + (double)tv.tv_usec*1.0e-6 ;
-}
-
-/* CPU time */
-double get_cpu_time () {
-  struct rusage ru ;
-  getrusage ( RUSAGE_SELF, &ru ) ;
-  return ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec*1.0e-6 ;
-}
-
-/* Get resolution */
-double get_elp_res () {
-  return -1.0; /* not implemented */
-}
-
-double get_cpu_res () {
-  return -1.0; /* not implemented */
-}
-#endif
