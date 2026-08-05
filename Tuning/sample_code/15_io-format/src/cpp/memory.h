@@ -44,11 +44,11 @@ T **create_2d_array( T **&array, const int n1, const int n2)
    nbytes = sizeof(T *)*n1;
    array = (T **)malloc(nbytes);
 
-   int i;
-   int n = 0;
-   for ( i = 0; i < n1; ++i ) {
+   std::size_t i;
+   std::size_t n = 0;
+   for ( i = 0; i < static_cast<std::size_t>(n1); ++i ) {
       array[i] = &data[n];
-      n += n2;
+      n += static_cast<std::size_t>(n2);
    }
    return array;
 }
@@ -85,18 +85,18 @@ T ***create_3d_array( T ***&array, const int n1, const int n2, const int n3)
    nbytes = sizeof(T **)*n1;
    array = (T ***)malloc(nbytes);
 
-   int i, n;
+   std::size_t i, n;
 
    n = 0;
-   for ( i = 0; i < n1*n2; ++i ){
+   for ( i = 0; i < static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2); ++i ){
       array2[i] = &data[n];
-      n += n3; 
+      n += static_cast<std::size_t>(n3); 
    }
 
    n = 0;
-   for ( i = 0; i < n1; ++i ){
+   for ( i = 0; i < static_cast<std::size_t>(n1); ++i ){
       array[i] = &array2[n];
-      n += n2; 
+      n += static_cast<std::size_t>(n2); 
    }
    return array;
 }
