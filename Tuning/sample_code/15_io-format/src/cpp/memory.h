@@ -88,7 +88,7 @@ T ***create_3d_array( T ***&array, const int n1, const int n2, const int n3)
 #else
    if ( n1 <= 0 || n2 <= 0 || n3 <= 0 ) { array = NULL; return array; }
 #endif
-   std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2)*static_cast<std::size_t>(n3); /* 64-bit unsigned int should be used */ 
+   std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2)*static_cast<std::size_t>(n3); /* use size_t for byte counts */
    T *data = (T *)malloc(nbytes);
    nbytes = sizeof(T *)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2);
    T **array2 = (T **)malloc(nbytes);
