@@ -47,6 +47,11 @@ int main( int argc, char **argv)
 
   int nsize = atoi(argv[1]) ;
 
+  if ( nsize <= 0 ) {
+    printf("[error] vector size must be a positive integer.\n") ;
+    return EXIT_FAILURE ;
+  }
+
   /* memory allocation                                                */
   double *u;
   double *a;

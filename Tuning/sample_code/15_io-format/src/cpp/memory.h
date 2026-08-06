@@ -14,6 +14,11 @@
 template<typename T>
 T *create_1d_array( T *&array, const int n )
 {  
+#if ! defined(__NOT_STDCPP11__)
+   if ( n <= 0 ) { array = nullptr; return array; }
+#else
+   if ( n <= 0 ) { array = NULL; return array; }
+#endif
    std::size_t nbytes = sizeof(T)*(std::size_t)n;
    array = (T *)malloc(nbytes); 
    return array;

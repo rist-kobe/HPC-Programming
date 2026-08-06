@@ -32,14 +32,15 @@ int main (int argc, char **argv)
   double (*mata)[NSIZE] = (double (*)[NSIZE])malloc(sizeof(double)*NSIZE*NSIZE);
   double (*matb)[NSIZE] = (double (*)[NSIZE])malloc(sizeof(double)*NSIZE*NSIZE);
   double (*matc)[NSIZE] = (double (*)[NSIZE])malloc(sizeof(double)*NSIZE*NSIZE);
+  double (*work)[NSIZE] = (double (*)[NSIZE])malloc(sizeof(double)*NSIZE*NSIZE);
 
-  if ( !mata || !matb || !matc ) { perror("malloc"); return EXIT_FAILURE; }
+  if ( !mata || !matb || !matc || !work ) { perror("malloc"); free(mata); free(matb); free(matc); free(work); return EXIT_FAILURE; }
 
   if ( argc != 3 ) {
      printf("[usage] run.x (arg1) (arg2)\n");
      printf("        (arg1): blocking size for the innermost loop\n");
      printf("        (arg2): blocking size for the 2nd innermost loop\n");
-     free(mata); free(matb); free(matc);
+     free(mata); free(matb); free(matc); free(work);
      return EXIT_SUCCESS;
   }
 
@@ -54,7 +55,7 @@ int main (int argc, char **argv)
 
   if ( nbk1 <= 0 || nbk2 <= 0 ) {
      printf("[error] blocking sizes must be positive integers.\n");
-     free(mata); free(matb); free(matc);
+     free(mata); free(matb); free(matc); free(work);
      return EXIT_FAILURE;
   }
 
@@ -141,7 +142,7 @@ int main (int argc, char **argv)
   /* warm up */
   icon = 0;
   for ( int i = 0; i < 3; ++i ) {
-     mmp_lex_tp_blk(NSIZE, nbk1, nbk2, nbkr, nbkc, matc, mata, matb);
+     mmp_lex_tp_blk(NSIZE, nbk1, nbk2, nbkr, nbkc, matc, mata, matb, work);
      icon += dummy(NSIZE, matc);
   }
 
@@ -149,7 +150,7 @@ int main (int argc, char **argv)
 
   icon = 0;
   for ( int i = 0; i < NITR; ++i ) {
-     mmp_lex_tp_blk(NSIZE, nbk1, nbk2, nbkr, nbkc, matc, mata, matb);
+     mmp_lex_tp_blk(NSIZE, nbk1, nbk2, nbkr, nbkc, matc, mata, matb, work);
      icon += dummy(NSIZE, matc);
   }
 
@@ -168,5 +169,6 @@ int main (int argc, char **argv)
   free(mata);
   free(matb);
   free(matc);
+  free(work);
   return EXIT_SUCCESS;
 }

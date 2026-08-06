@@ -11,7 +11,8 @@ void mmp_simple_blk(const int, const int, const int,
   double mc[restrict][*], double ma[restrict][*], double mb[restrict][*]);
 
 void mmp_lex_tp_blk(const int, const int, const int, const int, const int, 
-  double mc[restrict][*], double ma[restrict][*], double mb[restrict][*]);
+  double mc[restrict][*], double ma[restrict][*], double mb[restrict][*],
+  double work[restrict][*]);
 
 void trans(const int, const int, double tm[restrict][*], 
   double m[restrict][*]);
