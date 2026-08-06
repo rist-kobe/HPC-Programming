@@ -38,13 +38,13 @@ program main
   call get_command_argument ( number=1, value=cbuff )
   read (cbuff,'(1i10)') nrow
   ncol = nrow
-  if ( nrow < 0 ) then
+  if ( nrow <= 0 ) then
     write (6,'(1a48)') "Matrix row size is greater than 0              "
     write (6,'(1a48)') "The program is terminated.                     "
     stop
   endif
   if ( nrow > 8192 ) then
-    !! 2 double arrays * 8 bytes * (nrow)^2 < 1 GiB=2^30 bytes */
+    !! 2 double arrays * 8 bytes * (nrow)^2 < 1 GiB=2^30 bytes
     write (6,'(1a48)') "Matrix row size must be smaller than 8192.     "
     write (6,'(1a48)') "The program is terminated.                     "
     stop
@@ -101,8 +101,8 @@ program main
   write (6,'(1a48)') "Number of iterations                             "
   write (6,'(1i10)') idm
   write (6,'(1a48)') "Check matrix transpose                           "
-  write (6,'(2i5,2f17.6)') 1, ncol, a(1,ncol), b(1,ncol)
-  write (6,'(2i5,2f17.6)') nrow, 1, a(nrow,1), b(nrow,1)
+  write (6,'(2i5,2f17.6)') 1, ncol, a(1,ncol), b(ncol,1)
+  write (6,'(2i5,2f17.6)') nrow, 1, a(nrow,1), b(1,nrow)
   write (6,'(1a48)') "Req. memory (MB)                                 "
   write (6,'(1f17.6)') mema
 #ifdef __USE_CPU_TIMER__
@@ -147,8 +147,8 @@ program main
   write (6,'(1a48)') "Number of iterations                             "
   write (6,'(1i10)') idm
   write (6,'(1a48)') "Check matrix transpose                           "
-  write (6,'(2i5,2f17.6)') 1, ncol, a(1,ncol), b(1,ncol)
-  write (6,'(2i5,2f17.6)') nrow, 1, a(nrow,1), b(nrow,1)
+  write (6,'(2i5,2f17.6)') 1, ncol, a(1,ncol), b(ncol,1)
+  write (6,'(2i5,2f17.6)') nrow, 1, a(nrow,1), b(1,nrow)
   write (6,'(1a48)') "Req. memory (MB)                                 "
   write (6,'(1f17.6)') mema
   write (6,'(1a48)') "Number of blocks w.r.t. row and column           "

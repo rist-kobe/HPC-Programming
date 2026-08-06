@@ -5,6 +5,8 @@
 !-----------------------------------------------------------------------
 program main
 
+  use iso_fortran_env, only: int64
+
   implicit none
 
   integer,parameter :: nn = 20000
@@ -13,7 +15,7 @@ program main
   real(8) :: a(nn)
 
 #ifdef USE_ELP_TIMER
-  integer :: ielp1, ielp2, icount_rate, icount_max
+  integer(int64) :: ielp1, ielp2, icount_rate, icount_max
   real(8) :: elp
 #endif
 #ifdef USE_CPU_TIMER
@@ -37,12 +39,16 @@ program main
   enddo
 #ifdef USE_ELP_TIMER
   call system_clock ( ielp2, icount_rate, icount_max )
-  if ( ielp1 <= ielp2 ) then
-    elp = (ielp2 - ielp1) / dble(icount_rate)
+  if ( icount_rate > 0 ) then
+    if ( ielp1 <= ielp2 ) then
+      elp = (ielp2 - ielp1) / dble(icount_rate)
+    else
+      elp = (ielp2 - ielp1 + icount_max + 1) / dble(icount_rate)
+    endif
+    write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp
   else
-    elp = (ielp2 - ielp1 + icount_max + 1) / dble(icount_rate)
+    write (6,'(1a24)') "Elapsed time: clock unavailable"
   endif
-  write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp
 #endif
 #ifdef USE_CPU_TIMER
   call cpu_time ( cpu2 )
@@ -62,12 +68,16 @@ program main
   enddo
 #ifdef USE_ELP_TIMER
   call system_clock ( ielp2, icount_rate, icount_max )
-  if ( ielp1 <= ielp2 ) then
-    elp = (ielp2 - ielp1) / dble(icount_rate)
+  if ( icount_rate > 0 ) then
+    if ( ielp1 <= ielp2 ) then
+      elp = (ielp2 - ielp1) / dble(icount_rate)
+    else
+      elp = (ielp2 - ielp1 + icount_max + 1) / dble(icount_rate)
+    endif
+    write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp
   else
-    elp = (ielp2 - ielp1 + icount_max + 1) / dble(icount_rate)
+    write (6,'(1a24)') "Elapsed time: clock unavailable"
   endif
-  write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp
 #endif
 #ifdef USE_CPU_TIMER
   call cpu_time ( cpu2 )

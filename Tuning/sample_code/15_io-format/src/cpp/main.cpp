@@ -31,8 +31,8 @@ int main(int argc, char **argv)
   ifmt = atoi(argv[1]);
   nz = atoi(argv[2]);
 
-  if ( nz > 200 ) {
-     std::cout << "[Error] 2nd arg must be < 200." << std::endl;
+  if ( nz <= 0 || nz > 200 ) {
+     std::cout << "[Error] 2nd arg must be in the range 1-200." << std::endl;
      return EXIT_FAILURE;
   }
 

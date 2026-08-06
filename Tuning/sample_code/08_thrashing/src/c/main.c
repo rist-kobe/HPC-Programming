@@ -15,44 +15,23 @@
                 larger, an effect of thrashing will be less.  
 ----------------------------------------------------------------------*/
 #include "mykernel.h"
+#include "timer.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 /*--------------------------------------------------------------------
    Memory management
 ----------------------------------------------------------------------*/
 double *create_vec_d(int n)
 {
-   int nbytes = sizeof(double) * n ;
-   double *a = (double *)malloc( nbytes ) ;
+   if ( n <= 0 ) { return NULL ; }
+   double *a = (double *)malloc( sizeof(double) * (size_t)n ) ;
+   if ( a == NULL ) { perror("malloc"); exit(EXIT_FAILURE); }
    return a ;
 }
 
 void release_vec_d( double *a )
 {
    free( a ) ; a = NULL ;
-}
-/*--------------------------------------------------------------------
-   Timer routine 
-----------------------------------------------------------------------*/
-#if ! defined(NOT_USE_REALTIME)
-double get_elp_time () {
-  struct timespec tp ;
-  clock_gettime ( CLOCK_REALTIME, &tp ) ;
-  return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
-}
-#else
-double get_elp_time () {
-  struct timespec tp ;
-  clock_gettime ( CLOCK_MONOTONIC, &tp ) ;
-  return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
-}
-#endif
-
-double get_cpu_time () {
-  struct timespec tp ;
-  clock_gettime ( CLOCK_PROCESS_CPUTIME_ID, &tp ) ;
-  return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
 }
 /*--------------------------------------------------------------------
    Main function 
@@ -113,7 +92,7 @@ int main( int argc, char **argv)
   icon = 0;
   cpu1 = get_cpu_time() ; 
   /* 4 loads, 1 load and store */
-  for ( int itr = 0 ; itr <= nitr; ++itr ) {
+  for ( int itr = 0 ; itr < nitr; ++itr ) {
     kernel_l4_ls1(icon, nsize, a, b, c, d, u);
     icon = itr % 2;
   }
@@ -127,7 +106,7 @@ int main( int argc, char **argv)
   icon = 0;
   cpu1 = get_cpu_time() ; 
   /* 4 loads, 1 load and store */
-  for ( int itr = 0 ; itr <= nitr; ++itr ) {
+  for ( int itr = 0 ; itr < nitr; ++itr ) {
     kernel_l8_ls1(icon, nsize, a, b, c, d, e, f, g, h, u);
     icon = itr % 2;
   }

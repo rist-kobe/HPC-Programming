@@ -16,17 +16,20 @@
 
 #include <time.h>
 
-/* Wall clock (Elapsed time) */
-#if ! defined(NOT_USE_REALTIME)
+/* Wall clock (Elapsed time)
+   Default: CLOCK_MONOTONIC (safe for interval timing; unaffected by
+   NTP adjustments or manual clock changes).
+   Define USE_REALTIME to use CLOCK_REALTIME instead.               */
+#if ! defined(USE_REALTIME)
 double get_elp_time () {
   struct timespec tp ;
-  clock_gettime ( CLOCK_REALTIME, &tp ) ;
+  if ( clock_gettime ( CLOCK_MONOTONIC, &tp ) != 0 ) return -1.0 ;
   return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
 }
 #else
 double get_elp_time () {
   struct timespec tp ;
-  clock_gettime ( CLOCK_MONOTONIC, &tp ) ;
+  if ( clock_gettime ( CLOCK_REALTIME, &tp ) != 0 ) return -1.0 ;
   return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
 }
 #endif
@@ -34,58 +37,27 @@ double get_elp_time () {
 /* CPU time */
 double get_cpu_time () {
   struct timespec tp ;
-  clock_gettime ( CLOCK_PROCESS_CPUTIME_ID, &tp ) ;
+  if ( clock_gettime ( CLOCK_PROCESS_CPUTIME_ID, &tp ) != 0 ) return -1.0 ;
   return  tp.tv_sec + (double)tp.tv_nsec*1.0e-9 ;
 }
 
 /* Get resolution */
-#if ! defined(NOT_USE_REALTIME)
+#if ! defined(USE_REALTIME)
 double get_elp_res () {
   struct timespec res ;
-  clock_getres ( CLOCK_REALTIME, &res ) ;
+  if ( clock_getres ( CLOCK_MONOTONIC, &res ) != 0 ) return -1.0 ;
   return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
 #else
 double get_elp_res () {
   struct timespec res ;
-  clock_getres ( CLOCK_MONOTONIC, &res ) ;
+  if ( clock_getres ( CLOCK_REALTIME, &res ) != 0 ) return -1.0 ;
   return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
 #endif
 
 double get_cpu_res () {
   struct timespec res ;
-  clock_getres ( CLOCK_PROCESS_CPUTIME_ID, &res ) ;
+  if ( clock_getres ( CLOCK_PROCESS_CPUTIME_ID, &res ) != 0 ) return -1.0 ;
   return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
-
-#if 0
-/* Obsolete: Probably does not work                                  */
-
-#include <stdlib.h>
-#include <sys/time.h>
-#include <sys/resource.h>
-
-/* Wall clock (Elapsed time) */
-double get_elp_time () {
-  struct timeval tv ;
-  gettimeofday ( &tv, NULL ) ;
-  return tv.tv_sec + (double)tv.tv_usec*1.0e-6 ;
-}
-
-/* CPU time */
-double get_cpu_time () {
-  struct rusage ru ;
-  getrusage ( RUSAGE_SELF, &ru ) ;
-  return ru.ru_utime.tv_sec + (double)ru.ru_utime.tv_usec*1.0e-6 ;
-}
-
-/* Get resolution */
-double get_elp_res () {
-  return -1.0; /* not implemented */
-}
-
-double get_cpu_res () {
-  return -1.0; /* not implemented */
-}
-#endif

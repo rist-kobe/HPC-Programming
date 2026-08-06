@@ -9,6 +9,6 @@ void set_rndseed ( int *irnd );
 void get_rnd_array( int *n, double rd[] );
 void get_rnd_array_for_BM ( int *n, double rdx[], double rdy[] );
 double boxmueller( int *irnd, double *rdx, double *rdy, 
-		double *sigam );
+		double *sigma );
 
-#endif /* __RNDBAR_H__ */
+#endif /* __RNDVAR_H__ */

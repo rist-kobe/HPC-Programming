@@ -21,11 +21,14 @@ end module mytype
 program main
 
   use mytype,only: DP
+  use iso_fortran_env, only: int64
 
   implicit none
 
   !! local var
-  integer :: i, nn, cnt1, cnt2, cnt_rate, cnt_max
+  integer :: i, nn
+  integer(int64) :: cnt1, cnt2, cnt_rate, cnt_max
+  integer,parameter :: nn_max = 10000000
 
   real(kind=DP) :: tval, tval0 
   real(kind=DP),parameter :: ZERO = 0.0_DP
@@ -45,25 +48,31 @@ program main
   !! check resolution of wallclock timer  
   tval = -1.0_DP 
   nn = 0
-  do while ( tval .le. ZERO )
+  do while ( tval .le. ZERO .and. nn .lt. nn_max )
     nn = nn + 1
     call system_clock (cnt1)
     i = func(nn)
     call system_clock (cnt2, cnt_rate, cnt_max)
-    if ( cnt2 .ge. cnt1 ) then
-       tval = (cnt2 - cnt1) / dble(cnt_rate)
-    else
-       tval = (cnt2 - cnt1 + cnt_max + 1) / dble(cnt_rate)
+    if ( cnt_rate > 0 ) then
+      if ( cnt2 .ge. cnt1 ) then
+         tval = (cnt2 - cnt1) / dble(cnt_rate)
+      else
+         tval = (cnt2 - cnt1 + cnt_max + 1) / dble(cnt_rate)
+      end if
     end if
   end do
 
-  write(6,'("[Check resolution of wallclock timer]")')
-  write(6,'("It took ",1I7," &
-&   iterations to generate a none-zero time")') nn 
-  if ( nn == 1 ) then
-    write(6,'(" timer resolution less than or equal to ",1F15.9)') tval
+  if ( nn .ge. nn_max ) then
+    write(6,'("Warning: wallclock timer resolution could not be determined.")')
   else
-    write(6,'(" timer resolution is ",1F15.9," sec.")') tval
+    write(6,'("[Check resolution of wallclock timer]")')
+    write(6,'("It took ",1I7," &
+&   iterations to generate a non-zero time")') nn 
+    if ( nn == 1 ) then
+      write(6,'(" timer resolution less than or equal to ",1F15.9)') tval
+    else
+      write(6,'(" timer resolution is ",1F15.9," sec.")') tval
+    end if
   end if
 
   write(6,'("----------------------------------------------------------")')
@@ -71,7 +80,7 @@ program main
   !! check resolution of cpu timer  
   tval = -1.0_DP 
   nn = 0
-  do while ( tval .le. ZERO )
+  do while ( tval .le. ZERO .and. nn .lt. nn_max )
     nn = nn + 1
     call cpu_time (tval0)
     i = func(nn)
@@ -79,13 +88,17 @@ program main
     tval = tval - tval0
   end do
 
-  write(6,'("[Check resolution of cpu timer]")')
-  write(6,'("It took ",1I7," &
-&   iterations to generate a none-zero time")') nn 
-  if ( nn == 1 ) then
-    write(6,'(" timer resolution less than or equal to ",1F15.9)') tval
+  if ( nn .ge. nn_max ) then
+    write(6,'("Warning: cpu timer resolution could not be determined.")')
   else
-    write(6,'(" timer resolution is ",1F15.9," sec.")') tval
+    write(6,'("[Check resolution of cpu timer]")')
+    write(6,'("It took ",1I7," &
+&   iterations to generate a non-zero time")') nn 
+    if ( nn == 1 ) then
+      write(6,'(" timer resolution less than or equal to ",1F15.9)') tval
+    else
+      write(6,'(" timer resolution is ",1F15.9," sec.")') tval
+    end if
   end if
 
   write(6,'("----------------------------------------------------------")')

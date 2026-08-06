@@ -18,6 +18,7 @@ int func ( const int nn ) ;
 int main ( int argc, char* argv[] )
 {
   int nn ;
+  int nn_max = 10000000 ; /* safety limit to prevent infinite loop */
   double t1, t2 ;
 
   printf ("--------------------------------------------------------\n");
@@ -25,19 +26,23 @@ int main ( int argc, char* argv[] )
   /* check resolution of wallclock timer */
   t2 = -1.0 ;
   nn = 0 ;
-  while ( t2 <= 0.0 ) {
+  while ( t2 <= 0.0 && nn < nn_max ) {
     nn++ ;
     t1 = get_elp_time () ; 
     func ( nn ) ;
     t2 = get_elp_time () ;
     t2 -= t1 ;
   }
-  printf ("[Check resolution of wallclock timer]\n") ;
-  printf ("It took %7d iterations to generate a none-zero time\n", nn) ;
-  if ( nn == 1 ) {
-    printf (" timer resolution less than or equal to %15.9f\n", t2) ;      
+  if ( nn >= nn_max ) {
+    printf ("Warning: wallclock timer resolution could not be determined.\n") ;
   } else {
-    printf (" timer resolution is %15.9f sec.\n", t2) ;      
+    printf ("[Check resolution of wallclock timer]\n") ;
+    printf ("It took %7d iterations to generate a non-zero time\n", nn) ;
+    if ( nn == 1 ) {
+      printf (" timer resolution less than or equal to %17.9f\n", t2) ;      
+    } else {
+      printf (" timer resolution is %17.9f sec.\n", t2) ;      
+    }
   }
 
   printf ("--------------------------------------------------------\n");
@@ -45,19 +50,23 @@ int main ( int argc, char* argv[] )
   /* check resolution of cpu timer */
   t2 = -1.0 ;
   nn = 0 ;
-  while ( t2 <= 0.0 ) {
+  while ( t2 <= 0.0 && nn < nn_max ) {
     nn++ ;
     t1 = get_cpu_time () ; 
     func ( nn ) ;
     t2 = get_cpu_time () ;
     t2 -= t1 ;
   }
-  printf ("[Check resolution of cpu timer]\n") ;
-  printf ("It took %7d iterations to generate a none-zero time\n", nn) ;
-  if ( nn == 1 ) {
-    printf (" timer resolution less than or equal to %15.9f\n", t2) ;      
+  if ( nn >= nn_max ) {
+    printf ("Warning: cpu timer resolution could not be determined.\n") ;
   } else {
-    printf (" timer resolution is %17.9f sec.\n", t2) ;      
+    printf ("[Check resolution of cpu timer]\n") ;
+    printf ("It took %7d iterations to generate a non-zero time\n", nn) ;
+    if ( nn == 1 ) {
+      printf (" timer resolution less than or equal to %17.9f\n", t2) ;      
+    } else {
+      printf (" timer resolution is %17.9f sec.\n", t2) ;      
+    }
   }
 
   printf ("--------------------------------------------------------\n");

@@ -29,12 +29,17 @@ int main (int argc, char **argv)
   double zero = 0.0;
   double one  = 1.0;
   double tmp, elp0, elp, memsize;
-  double mata[NSIZE][NSIZE], matb[NSIZE][NSIZE], matc[NSIZE][NSIZE];
+  double (*mata)[NSIZE] = (double (*)[NSIZE])malloc(sizeof(double)*NSIZE*NSIZE);
+  double (*matb)[NSIZE] = (double (*)[NSIZE])malloc(sizeof(double)*NSIZE*NSIZE);
+  double (*matc)[NSIZE] = (double (*)[NSIZE])malloc(sizeof(double)*NSIZE*NSIZE);
+
+  if ( !mata || !matb || !matc ) { perror("malloc"); return EXIT_FAILURE; }
 
   if ( argc != 3 ) {
      printf("[usage] run.x (arg1) (arg2)\n");
      printf("        (arg1): blocking size for the innermost loop\n");
      printf("        (arg2): blocking size for the 2nd innermost loop\n");
+     free(mata); free(matb); free(matc);
      return EXIT_SUCCESS;
   }
 
@@ -46,6 +51,12 @@ int main (int argc, char **argv)
 
   nbk1 = atoi(argv[1]);
   nbk2 = atoi(argv[2]);
+
+  if ( nbk1 <= 0 || nbk2 <= 0 ) {
+     printf("[error] blocking sizes must be positive integers.\n");
+     free(mata); free(matb); free(matc);
+     return EXIT_FAILURE;
+  }
 
   {
      tmp = 1.0 / NSIZE;
@@ -154,5 +165,8 @@ int main (int argc, char **argv)
   /*====================================================================*/
 
   printf("--------------------\n");
+  free(mata);
+  free(matb);
+  free(matc);
   return EXIT_SUCCESS;
 }

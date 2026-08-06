@@ -6,6 +6,7 @@
  *--------------------------------------------------------------------*/
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <math.h>
 #include "timer.h"
 
@@ -18,7 +19,8 @@ void fma4 ( double *a, double *b, double *c,
 
 int main ( int argc, char** argv ) 
 {
-  int nout, nin, ntot ;
+  int nout, nin ;
+  int64_t ntot ;
   int idm ;
 
   double res ;
@@ -41,7 +43,7 @@ int main ( int argc, char** argv )
   }
   nout = atoi ( argv[1] ) ;
   nin  = atoi ( argv[2] ) ;
-  ntot = nout*nin ;
+  ntot = (int64_t)nout*nin ;
   if ( nout < 4 ) {
     printf ("Outer loop size must be greater than 4.\n") ;
     printf ("The program is terminated.\n") ;
@@ -52,7 +54,7 @@ int main ( int argc, char** argv )
     printf ("The program is terminated.\n") ;
     return EXIT_FAILURE ;
   }
-  if ( ntot > 8192*8192 ) {
+  if ( ntot > (int64_t)8192*8192 ) {
     /* ntot*8bytes < 512 MiB=2^29 */
     printf ("(outer loop)*(inner loop) < 8192*8192  \n") ;
     printf ("The program is terminated.\n") ;
@@ -61,10 +63,11 @@ int main ( int argc, char** argv )
   /*--------------------------------------------------------------------
    *  memory allocation 
    *------------------------------------------------------------------*/
-  a    = (double *)malloc ( nin*sizeof(double) ) ;
-  b    = (double *)malloc ( nin*sizeof(double) ) ;
-  c    = (double *)malloc ( ntot*sizeof(double) ) ;
-  aref = (double *)malloc ( nin*sizeof(double) ) ;
+  a    = (double *)malloc ( (size_t)nin*sizeof(double) ) ;
+  b    = (double *)malloc ( (size_t)nin*sizeof(double) ) ;
+  c    = (double *)malloc ( (size_t)ntot*sizeof(double) ) ;
+  aref = (double *)malloc ( (size_t)nin*sizeof(double) ) ;
+  if ( !a || !b || !c || !aref ) { perror("malloc"); free(a); free(b); free(c); free(aref); return EXIT_FAILURE; }
   /* get physical memory */
   {
     double tmp = 1.0/nin ;

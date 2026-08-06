@@ -86,7 +86,7 @@ int main ( int argc, char** argv )
   printf("  uint32_t ua[0] = 0x12345678 \n") ;
   printf("  int32_t  a[0]  = -305419896 \n") ;
   printf("  float    fw[0] = 1.1f \n") ;
-  printf("  double   dw[0] = 3.14156265359 \n") ;
+  printf("  double   dw[0] = -3.14159265359 \n") ;
 #ifdef __BIGINT__
   printf("  int64_t  la[0] = 0x123456789ABCDEF0\n") ;
 #endif
@@ -150,9 +150,9 @@ uint16_t bswap_uint16( uint16_t val )
   return ( val << 8 ) | ( val >> 8 ) ;
 }
 // Byte swap 16-bit int
-int16_t bswap_int16( int16_t val ) 
-{
-  return ( val << 8 ) | ( (val >> 8)&0xFF ) ;
+int16_t bswap_int16( int16_t val ) {
+  uint16_t u = (uint16_t)val;
+  return (int16_t)( (u << 8) | (u >> 8) );
 }
 // Byte swap unsigned 32-bit int
 uint32_t bswap_uint32( uint32_t val ) 
@@ -165,10 +165,11 @@ uint32_t bswap_uint32( uint32_t val )
 // Byte swap 32-bit int
 int32_t bswap_int32( int32_t val ) 
 {
-  return ( val << 24 )
-    |( (val&0x0000FF00) << 8 )
-    |( ((val&0x00FF0000) >> 8)&0x0000FF00 )
-    |( (val >> 24)&0x000000FF ) ;
+  uint32_t u = (uint32_t)val;
+  return (int32_t)(( u << 24 )
+    |( (u&0x0000FF00U) << 8 )
+    |( ((u&0x00FF0000U) >> 8)&0x0000FF00U )
+    |( (u >> 24)&0x000000FFU ) );
 }
 // Byte swap 32-bit FP
 void bswap_float( float *v )
@@ -268,28 +269,29 @@ void bswap_double_array( double *restrict v, const int len )
 // Byte swap 64-bit int
 int64_t bswap_int64( int64_t val ) 
 {
-  return ( val << 56 )
-    |( (val&0x000000000000FF00) << 40 )
-    |( (val&0x0000000000FF0000) << 24 )
-    |( (val&0x00000000FF000000) << 8  )
-    |( ((val&0x000000FF00000000) >> 8 )&0x00000000FF000000  )
-    |( ((val&0x0000FF0000000000) >> 24)&0x0000000000FF0000  )
-    |( ((val&0x00FF000000000000) >> 40)&0x000000000000FF00  )
-    |( (val >> 56)&0x00000000000000FF ) ;
+  uint64_t u = (uint64_t)val;
+  return (int64_t)(( u << 56 )
+    |( (u&0x000000000000FF00ULL) << 40 )
+    |( (u&0x0000000000FF0000ULL) << 24 )
+    |( (u&0x00000000FF000000ULL) << 8  )
+    |( ((u&0x000000FF00000000ULL) >> 8 )&0x00000000FF000000ULL  )
+    |( ((u&0x0000FF0000000000ULL) >> 24)&0x0000000000FF0000ULL  )
+    |( ((u&0x00FF000000000000ULL) >> 40)&0x000000000000FF00ULL  )
+    |( (u >> 56)&0x00000000000000FFULL ) );
 }
 // Byte swap 64-bit int array
 void bswap_int64_array(int64_t *restrict v, const int len)
 {
   for ( int i=0; i<len; ++i ) {
-    int64_t w = v[i] ;
-    v[i] = ( w << 56 )
-              |( (w & 0x000000000000FF00) << 40 )
-              |( (w & 0x0000000000FF0000) << 24 )
-              |( (w & 0x00000000FF000000) << 8  )
-              |( ((w & 0x000000FF00000000) >> 8 )&0x00000000FF000000 )
-              |( ((w & 0x0000FF0000000000) >> 24)&0x0000000000FF0000 )
-              |( ((w & 0x00FF000000000000) >> 40)&0x000000000000FF00 )
-              |( (w >> 56)&0x00000000000000FF ) ;
+    uint64_t w = (uint64_t)v[i] ;
+    v[i] = (int64_t)(( w << 56 )
+              |( (w & 0x000000000000FF00ULL) << 40 )
+              |( (w & 0x0000000000FF0000ULL) << 24 )
+              |( (w & 0x00000000FF000000ULL) << 8  )
+              |( ((w & 0x000000FF00000000ULL) >> 8 )&0x00000000FF000000ULL )
+              |( ((w & 0x0000FF0000000000ULL) >> 24)&0x0000000000FF0000ULL )
+              |( ((w & 0x00FF000000000000ULL) >> 40)&0x000000000000FF00ULL )
+              |( (w >> 56)&0x00000000000000FFULL ) );
   }
 }
 #endif

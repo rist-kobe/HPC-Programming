@@ -38,7 +38,7 @@ int main ( int argc, char* argv[] )
   }
 
   printf ("[Check resolution of steady_clock]\n") ;
-  printf ("It took %7d iterations to generate a none-zero time\n", nn) ;
+  printf ("It took %7d iterations to generate a non-zero time\n", nn) ;
   if ( nn == 1 ) {
     printf (" timer resolution less than or equal to %15.9f\n", t) ;      
   } else {
@@ -60,7 +60,7 @@ int main ( int argc, char* argv[] )
   }
 
   printf ("[Check resolution of high_resolution_clock]\n") ;
-  printf ("It took %7d iterations to generate a none-zero time\n", nn) ;
+  printf ("It took %7d iterations to generate a non-zero time\n", nn) ;
   if ( nn == 1 ) {
     printf (" timer resolution less than or equal to %15.9f\n", t) ;      
   } else {

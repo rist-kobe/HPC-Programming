@@ -19,12 +19,16 @@ int main ( int argc, char **argv )
 
   /* Memory allocation                                                   */
   x_d = (double **)malloc ( sizeof(double *)*nrow ) ;
+  if ( x_d == NULL ) { perror("malloc"); return EXIT_FAILURE; }
   for ( int i=0; i<nrow; ++i ) {
     x_d[i] = (double *)malloc ( sizeof(double)*ncol ) ;
+    if ( x_d[i] == NULL ) { perror("malloc"); return EXIT_FAILURE; }
   }
 
   x_dc_ptr = (double **)malloc ( sizeof(double *)*nrow ) ;
+  if ( x_dc_ptr == NULL ) { perror("malloc"); return EXIT_FAILURE; }
   x_dc = (double *)malloc ( sizeof(double)*nrow*ncol ) ; /* 1D array */
+  if ( x_dc == NULL ) { perror("malloc"); return EXIT_FAILURE; }
   for ( int i=0; i<nrow; ++i ) {
     x_dc_ptr[i] = x_dc + i*ncol ; /* pointer to 1D array per row */
   }

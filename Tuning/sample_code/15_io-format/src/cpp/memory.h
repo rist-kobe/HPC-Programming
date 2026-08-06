@@ -14,7 +14,7 @@
 template<typename T>
 T *create_1d_array( T *&array, const int n )
 {  
-   int nbytes = sizeof(T)*n;
+   std::size_t nbytes = sizeof(T)*(std::size_t)n;
    array = (T *)malloc(nbytes); 
    return array;
 }
@@ -39,16 +39,21 @@ void release_1d_array( T *&array)
 template<typename T>
 T **create_2d_array( T **&array, const int n1, const int n2)
 {
-   int nbytes = sizeof(T)*n1*n2; 
+#if ! defined(__NOT_STDCPP11__)
+   if ( n1 <= 0 || n2 <= 0 ) { array = nullptr; return array; }
+#else
+   if ( n1 <= 0 || n2 <= 0 ) { array = NULL; return array; }
+#endif
+   std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2); 
    T *data = (T *)malloc(nbytes);
-   nbytes = sizeof(T *)*n1;
+   nbytes = sizeof(T *)*static_cast<std::size_t>(n1);
    array = (T **)malloc(nbytes);
 
-   int i;
-   int n = 0;
-   for ( i = 0; i < n1; ++i ) {
+   std::size_t i;
+   std::size_t n = 0;
+   for ( i = 0; i < static_cast<std::size_t>(n1); ++i ) {
       array[i] = &data[n];
-      n += n2;
+      n += static_cast<std::size_t>(n2);
    }
    return array;
 }
@@ -78,25 +83,30 @@ void release_2d_array( T **&array)
 template<typename T>
 T ***create_3d_array( T ***&array, const int n1, const int n2, const int n3)
 {
-   int nbytes = sizeof(T)*n1*n2*n3; /* 64-bit unsigned int should be used */ 
+#if ! defined(__NOT_STDCPP11__)
+   if ( n1 <= 0 || n2 <= 0 || n3 <= 0 ) { array = nullptr; return array; }
+#else
+   if ( n1 <= 0 || n2 <= 0 || n3 <= 0 ) { array = NULL; return array; }
+#endif
+   std::size_t nbytes = sizeof(T)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2)*static_cast<std::size_t>(n3); /* use size_t for byte counts */
    T *data = (T *)malloc(nbytes);
-   nbytes = sizeof(T *)*n1*n2;
+   nbytes = sizeof(T *)*static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2);
    T **array2 = (T **)malloc(nbytes);
-   nbytes = sizeof(T **)*n1;
+   nbytes = sizeof(T **)*static_cast<std::size_t>(n1);
    array = (T ***)malloc(nbytes);
 
-   int i, n;
+   std::size_t i, n;
 
    n = 0;
-   for ( i = 0; i < n1*n2; ++i ){
+   for ( i = 0; i < static_cast<std::size_t>(n1)*static_cast<std::size_t>(n2); ++i ){
       array2[i] = &data[n];
-      n += n3; 
+      n += static_cast<std::size_t>(n3); 
    }
 
    n = 0;
-   for ( i = 0; i < n1; ++i ){
+   for ( i = 0; i < static_cast<std::size_t>(n1); ++i ){
       array[i] = &array2[n];
-      n += n2; 
+      n += static_cast<std::size_t>(n2); 
    }
    return array;
 }

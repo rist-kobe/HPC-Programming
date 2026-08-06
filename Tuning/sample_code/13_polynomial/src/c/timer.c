@@ -61,3 +61,4 @@ double get_cpu_res () {
   if ( clock_getres ( CLOCK_PROCESS_CPUTIME_ID, &res ) != 0 ) return -1.0 ;
   return res.tv_sec*1.0e6 + (double)res.tv_nsec*1.0e-3 ;
 }
+

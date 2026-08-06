@@ -1,6 +1,6 @@
 CC=gcc
 ARCHFLAGS=-mavx2 # amd64 (x86)
-CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -fopenmp -fstrict-aliasing -D__USE_DIRECTIVES__
+CFLAGS=-g -std=gnu99 -Wall $(ARCHFLAGS) -O3 -fopenmp -fstrict-aliasing
 FVEC=-ftree-loop-vectorize -ftree-slp-vectorize -ftree-vectorize -fopt-info-all-vec
 FNVEC=-fno-tree-loop-vectorize -fno-tree-slp-vectorize -fno-tree-vectorize
 LIB=

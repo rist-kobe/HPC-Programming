@@ -27,11 +27,6 @@ subroutine vadd_lsta (ns, ind, va, vb)
   real(kind=DP),intent(inout) :: vb(1:ns)
 
   integer :: i, ii
-#if defined(__USE_DIRECTIVES__)
-#if ( __GNUC__ > 5 ) && defined(_OPENMP)
-  !$omp simd 
-#endif
-#endif
   do i = 1, ns
      ii = ind(i) 
      vb(i) = vb(ii) + va(i)

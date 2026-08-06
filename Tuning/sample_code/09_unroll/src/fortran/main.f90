@@ -69,7 +69,7 @@ program main
   tmp = 1.d0 / ntot
   do j=1, nout
     do i=1, nin
-      c(i,j) = 1.d0 + (i+j*nin-ntot/2)*tmp
+      c(i,j) = 1.d0 + ((i-1)+(j-1)*nin-ntot/2)*tmp
     enddo
   enddo  
   !---------------------------------------------------------------------

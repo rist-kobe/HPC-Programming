@@ -1,10 +1,10 @@
 CC=gcc
 
 ## Please choose one of the following flag settings
-## Use of timer for CPU time
-CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_CPU_TIMER
 ## Use of timer for Elapsed time
-#CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_ELP_TIMER
+CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_ELP_TIMER
+## Use of timer for CPU time
+#CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_CPU_TIMER
 ## Use of gprof
 #CFLAGS=-pg -g -Wall -O0 -std=gnu99
 

@@ -17,7 +17,7 @@
  *--------------------------------------------------------------------*/
 int *create_int_1d_array( const int n )
 {  
-   int nbytes = sizeof(int)*n;
+   size_t nbytes = sizeof(int) * (size_t)n;
    int *array = (int *)malloc(nbytes); 
    return array;
 }
@@ -36,7 +36,7 @@ void release_int_1d_array( int *array)
  *--------------------------------------------------------------------*/
 double *create_dp_1d_array( const int n )
 {  
-   int nbytes = sizeof(double)*n;
+   size_t nbytes = sizeof(double) * (size_t)n;
    double *array = (double *)malloc(nbytes); 
    return array;
 }
@@ -55,16 +55,16 @@ void release_dp_1d_array( double *array)
  *--------------------------------------------------------------------*/
 int **create_int_2d_array( const int n1, const int n2)
 {
-   int nbytes = sizeof(int)*n1*n2; 
+   size_t nbytes = (size_t)sizeof(int)*n1*n2;
    int *data = (int *)malloc(nbytes);
    nbytes = sizeof(int *)*n1;
    int **array = (int **)malloc(nbytes);
 
    int i;
-   int n = 0;
+   size_t n = 0;
    for ( i = 0; i < n1; ++i ) {
       array[i] = &data[n];
-      n += n2;
+      n += (size_t)n2;
    }
    return array;
 }
@@ -85,16 +85,16 @@ void release_int_2d_array( int **array)
  *--------------------------------------------------------------------*/
 double **create_dp_2d_array( const int n1, const int n2)
 {
-   int nbytes = sizeof(double)*n1*n2; 
+   size_t nbytes = (size_t)sizeof(double)*n1*n2;
    double *data = (double *)malloc(nbytes);
    nbytes = sizeof(double *)*n1;
    double **array = (double **)malloc(nbytes);
 
    int i;
-   int n = 0;
+   size_t n = 0;
    for ( i = 0; i < n1; ++i ) {
       array[i] = &data[n];
-      n += n2;
+      n += (size_t)n2;
    }
    return array;
 }
@@ -115,25 +115,25 @@ void release_dp_2d_array( double **array)
  *--------------------------------------------------------------------*/
 int ***create_int_3d_array( const int n1, const int n2, const int n3)
 {
-   int nbytes = sizeof(int)*n1*n2*n3; /* 64-bit unsigned int should be used */ 
+   size_t nbytes = (size_t)sizeof(int)*n1*n2*n3;
    int *data = (int *)malloc(nbytes);
    nbytes = sizeof(int *)*n1*n2;
    int **array2 = (int **)malloc(nbytes);
    nbytes = sizeof(int **)*n1;
    int ***array = (int ***)malloc(nbytes);
 
-   int i, n;
+   size_t i, n;
 
    n = 0;
-   for ( i = 0; i < n1*n2; ++i ){
+   for ( i = 0; i < (size_t)n1*(size_t)n2; ++i ){
       array2[i] = &data[n];
-      n += n3; 
+      n += (size_t)n3; 
    }
 
    n = 0;
-   for ( i = 0; i < n1; ++i ){
+   for ( i = 0; i < (size_t)n1; ++i ){
       array[i] = &array2[n];
-      n += n2; 
+      n += (size_t)n2; 
    }
    return array;
 }
@@ -155,25 +155,25 @@ void release_int_3d_array( int ***array)
  *--------------------------------------------------------------------*/
 double ***create_dp_3d_array( const int n1, const int n2, const int n3)
 {
-   int nbytes = sizeof(double)*n1*n2*n3; /* 64-bit unsigned int should be used */ 
+   size_t nbytes = (size_t)sizeof(double)*n1*n2*n3;
    double *data = (double *)malloc(nbytes);
    nbytes = sizeof(double *)*n1*n2;
    double **array2 = (double **)malloc(nbytes);
    nbytes = sizeof(double **)*n1;
    double ***array = (double ***)malloc(nbytes);
 
-   int i, n;
+   size_t i, n;
 
    n = 0;
-   for ( i = 0; i < n1*n2; ++i ){
+   for ( i = 0; i < (size_t)n1*(size_t)n2; ++i ){
       array2[i] = &data[n];
-      n += n3; 
+      n += (size_t)n3; 
    }
 
    n = 0;
-   for ( i = 0; i < n1; ++i ){
+   for ( i = 0; i < (size_t)n1; ++i ){
       array[i] = &array2[n];
-      n += n2; 
+      n += (size_t)n2; 
    }
    return array;
 }

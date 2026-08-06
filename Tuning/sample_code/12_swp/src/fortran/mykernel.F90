@@ -72,7 +72,7 @@ contains
      end do
 
      ! main body  
-     do j = 2, M-1
+     do j = 2, M
 
         r = 0.0_DP
         do i = 1, N

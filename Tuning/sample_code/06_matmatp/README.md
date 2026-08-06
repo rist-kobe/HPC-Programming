@@ -13,7 +13,7 @@ $ cd src/c # On C
   * `LMbench` requires `libtirpc`. If the library and the related header file are absent in your machine, you need to obtain it. On RHEL8, the corresponding library is involved in `libtirpc-devel`.
 4. Type `make` with your desired compiler setting.
 ```
-$ make                  # GNU compiler (default)
+$ make
 ```
 The code is successfully compiled by
    * GNU (8.5.0) on x86-64 systems 
