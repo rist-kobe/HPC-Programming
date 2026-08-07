@@ -9,7 +9,7 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a by-hand timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify which routine dominates the execution time.
+The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify where the execution time is spent.
 
 ## Directory layout
 ```
@@ -56,14 +56,14 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
 4. Compare the elapsed times of the two timed loops (routine 1 calling `sub1`, and routine 2 calling `sub2`) and consider which one is more expensive and why.
 
 ### Step 2: Measure CPU time
-1. Go back to `src/c` and edit the `Makefile`: comment out the `-DUSE_ELP_TIMER` line and enable the `-DUSE_CPU_TIMER` line:
+1. Go back to the source directory (`cd ../../src/c`) and edit the `Makefile`: comment out the `-DUSE_ELP_TIMER` line and enable the `-DUSE_CPU_TIMER` line:
    ```makefile
    ## Use of timer for Elapsed time
    #CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_ELP_TIMER
    ## Use of timer for CPU time
    CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_CPU_TIMER
    ```
-2. Rebuild and rerun:
+2. Rebuild in `src/c`, then move to the test directory and rerun:
    ```
    $ make veryclean && make
    $ cd ../../tests/c
@@ -73,10 +73,10 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
    ```
    CPU time (sec)     = ...
    ```
-4. Compare CPU time with the elapsed time from Step 1. Note that the resolution of the CPU timer is coarser; you may have to enlarge the array size (`nn` in `main.c`) or the loop counts to obtain a meaningful measurement.
+4. Compare CPU time with the elapsed time from Step 1. Note that the resolution of the CPU timer is coarser; you may have to enlarge the array size (`nn` in `main.c`) or the loop counts to obtain meaningful values.
 
 ### Step 3: Profile with gprof
-1. Edit the `Makefile` again: disable the `-DUSE_*_TIMER` flags and enable the `-pg` line:
+1. Go back to the source directory (`cd ../../src/c`) and edit the `Makefile` again: disable the `-DUSE_*_TIMER` flags and enable the `-pg` line:
    ```makefile
    ## Use of gprof
    CFLAGS=-pg -g -Wall -O0 -std=gnu99
@@ -90,12 +90,18 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
    sleep 10s
    gprof $EXE > prof.out
    ```
-4. Run the job script:
+4. Move to the test directory and run the job script:
    ```
    $ cd ../../tests/c
    $ bash run.sh
    ```
-5. The `gprof` result is summarized in `prof.out`. Examine the flat profile and the call graph to find the functions corresponding to the hotspot, and confirm that the result is consistent with the by-hand timer measurements from Steps 1 and 2.
+5. The `gprof` result is summarized in `prof.out`. Examine the flat profile and the call graph to find the functions corresponding to the hotspot, and confirm that the result is consistent with the timings obtained in Steps 1 and 2.
+
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from `tests/c`. The `make clean` target in `src/c/Makefile` removes only a `gmon.out` located in `src/c/`; to clean up the test directory, remove the generated files by hand:
+> ```
+> $ cd tests/c
+> $ rm -f gmon.out prof.out outfile
+> ```
 
 ## Questions to consider
 1. Which function is the hotspot, and how do the call counts of `sub1`, `sub2`, and `sub3` explain it?
