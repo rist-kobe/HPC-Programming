@@ -9,7 +9,7 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a by-hand timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify where a program spends its execution time.
+The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify which part of a program dominates the execution time.
 
 ## Directory layout
 ```
@@ -36,7 +36,7 @@ The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/
 | CPU time | `-DUSE_CPU_TIMER` |
 | gprof profiling | `-pg` (no `-DUSE_*_TIMER`) |
 
-The code has been verified with GNU compilers (11.4.0) on x86_64 systems.
+The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
 If linking fails, try `LIB=-lm -lrt` in the Makefile.
 
 ## Exercise steps
@@ -100,7 +100,7 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
    ```
 5. The `gprof` result is summarized in `prof.out`. Examine the flat profile and the call graph to find the functions corresponding to the hotspot, and confirm that the result is consistent with the by-hand timer measurements.
 
-> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up profiling artifacts:
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up:
 > ```
 > $ cd tests/c
 > $ rm -f gmon.out prof.out outfile
