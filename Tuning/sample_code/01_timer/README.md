@@ -9,7 +9,7 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a by-hand timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify which part of a program dominates the execution time.
+The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify where a program spends its execution time.
 
 ## Directory layout
 ```
@@ -26,7 +26,7 @@ The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub
     └── cpp/
 ```
 
-Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`.
+Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`, and edit `FFLAGS` instead of `CFLAGS` in the Makefile (the Fortran flags also include `-cpp` and omit `-std=gnu99`).
 
 The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/Makefile`):
 
@@ -66,6 +66,13 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
    ## Use of timer for CPU time
    CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_CPU_TIMER
    ```
+   For Fortran (`src/fortran/Makefile`), edit `FFLAGS` instead:
+   ```makefile
+   ## Use of timer (elapsed time)
+   #FFLAGS=-g -Wall -cpp -O0 -DUSE_ELP_TIMER
+   ## Use of timer for CPU time
+   FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
+   ```
 2. Rebuild in `src/c`, then move to the test directory and rerun:
    ```
    $ make veryclean && make
@@ -84,6 +91,11 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
    ## Use of gprof
    CFLAGS=-pg -g -Wall -O0 -std=gnu99
    ```
+   For Fortran (`src/fortran/Makefile`), edit `FFLAGS` instead:
+   ```makefile
+   ## Use of gprof
+   FFLAGS=-pg -g -Wall -cpp -O0
+   ```
 2. Rebuild:
    ```
    $ make veryclean && make
@@ -100,7 +112,7 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
    ```
 5. The `gprof` result is summarized in `prof.out`. Examine the flat profile and the call graph to find the functions corresponding to the hotspot, and confirm that the result is consistent with the by-hand timer measurements.
 
-> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up:
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up profiling artifacts:
 > ```
 > $ cd tests/c
 > $ rm -f gmon.out prof.out outfile
