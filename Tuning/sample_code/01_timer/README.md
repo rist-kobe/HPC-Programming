@@ -3,13 +3,13 @@
 * Last update: 7th Aug., 2026
 
 ## Purpose
-This sample demonstrates three basic techniques for measuring the performance of a program, which are the first step of any tuning work:
+This sample demonstrates three basic techniques for measuring the performance of a program, which are the first steps of any tuning work:
 
 1. **Elapsed (wall-clock) time measurement** with a by-hand timer inserted in the source code
 2. **CPU time measurement** with a by-hand timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify where the execution time is spent.
+The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify where a program spends its execution time.
 
 ## Directory layout
 ```
@@ -20,7 +20,10 @@ The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub
 │   ├── fortran_c/  # Optional: Fortran with a C timer
 │   └── cpp/        # Optional: C++ with std::chrono
 └── tests/          # Job scripts (run.sh) for each language
-    ├── c/  ├── fortran/  ├── fortran_c/  └── cpp/
+    ├── c/
+    ├── fortran/
+    ├── fortran_c/
+    └── cpp/
 ```
 
 Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`.
@@ -95,9 +98,9 @@ If linking fails, try `LIB=-lm -lrt` in the Makefile.
    $ cd ../../tests/c
    $ bash run.sh
    ```
-5. The `gprof` result is summarized in `prof.out`. Examine the flat profile and the call graph to find the functions corresponding to the hotspot, and confirm that the result is consistent with the timings obtained in Steps 1 and 2.
+5. The `gprof` result is summarized in `prof.out`. Examine the flat profile and the call graph to find the functions corresponding to the hotspot, and confirm that the result is consistent with the by-hand timer measurements.
 
-> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from `tests/c`. The `make clean` target in `src/c/Makefile` removes only a `gmon.out` located in `src/c/`; to clean up the test directory, remove the generated files by hand:
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up profiling artifacts:
 > ```
 > $ cd tests/c
 > $ rm -f gmon.out prof.out outfile
