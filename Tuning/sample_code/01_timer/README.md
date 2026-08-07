@@ -33,7 +33,7 @@ The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/
 | CPU time | `-DUSE_CPU_TIMER` |
 | gprof profiling | `-pg` (no `-DUSE_*_TIMER`) |
 
-The code has been verified with GNU compilers (8.5.0) on x86-64 systems.
+The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
 If linking fails, try `LIB=-lm -lrt` in the Makefile.
 
 ## Exercise steps
