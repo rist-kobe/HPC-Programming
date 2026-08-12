@@ -7,10 +7,6 @@ ulimit -s unlimited
 # Set load module (absolute path might be preferable)
 EXE=$(echo "../../../src/c/diffuse.x")
 
-COMPILER=gcc
-${COMPILER} --version
-uname -a
-lscpu
 
 # You can check what kinds of Hardware events are 
 # analyzed in your own architecture typing 'perf list'.

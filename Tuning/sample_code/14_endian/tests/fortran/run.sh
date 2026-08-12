@@ -4,10 +4,6 @@ echo -n "START: "
 date
 ulimit -s unlimited
 
-COMPILER=gfortran
-${COMPILER} --version
-uname -a
-lscpu
 
 MACHINE=$(uname -a)
 

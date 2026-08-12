@@ -11,10 +11,6 @@ echo -n "START: "
 date
 ulimit -s unlimited
 
-COMPILER=gcc
-${COMPILER} --version
-uname -a
-lscpu
 
 ### Load module
 BINDIR=../../src/c
