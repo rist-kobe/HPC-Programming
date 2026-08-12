@@ -9,7 +9,7 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a by-hand timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-The sample program (`main.c` / `main.f90`) calls three subroutines (`sub1`, `sub2`, `sub3`) with different call counts and workloads. By timing and profiling them, you will learn how to identify where a program spends its execution time.
+The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify where a program spends its execution time.
 
 ## Directory layout
 ```
