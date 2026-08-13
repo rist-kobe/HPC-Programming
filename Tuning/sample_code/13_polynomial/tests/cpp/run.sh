@@ -7,10 +7,6 @@ ulimit -s unlimited
 BINDIR=../../src/cpp
 EXE=${BINDIR}/run.x
 
-COMPILER=g++
-${COMPILER} --version
-uname -a
-lscpu
 
 # Run
 ${EXE} &> run.log

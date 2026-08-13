@@ -7,10 +7,6 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/c/diffuse.x")
 
-COMPILER=gcc
-${COMPILER} --version
-uname -a
-lscpu
 
 # Run
 ${EXE} 0 > diffuse.out

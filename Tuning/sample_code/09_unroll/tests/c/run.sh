@@ -7,10 +7,6 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/c/run.x")
 
-COMPILER=gcc
-${COMPILER} --version
-uname -a
-lscpu
 
 # Set outer loop and inner loop length
 # NOUTL * NINNL < 8192*8192
