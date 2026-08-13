@@ -7,11 +7,7 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/c/run.x")
 
-COMPILER=gcc
 
-${COMPILER} --version
-uname -a
-lscpu
 
 # Run
 NDIM=100

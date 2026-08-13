@@ -7,10 +7,6 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/fortran/diffuse.x")
 
-COMPILER=gfortran
-${COMPILER} --version
-uname -a
-lscpu
 
 # Run
 ${EXE} 0 &> diffuse.out

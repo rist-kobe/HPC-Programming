@@ -8,10 +8,6 @@ ulimit -s unlimited
 BIN=../../src/c
 EXE=${BIN}/run.x
 
-COMPILER=gcc
-${COMPILER} --version
-uname -a
-lscpu
 
 ## L1 data cache size per way (KiB)
 # 32KiB, 8way

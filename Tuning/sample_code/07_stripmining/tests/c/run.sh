@@ -8,10 +8,6 @@ ulimit -s unlimited
 BIN=../../src/c
 EXE=${BIN}/run.x
 
-COMPILER=gcc
-${COMPILER} --version
-uname -a
-lscpu
 
 ### Run
 {

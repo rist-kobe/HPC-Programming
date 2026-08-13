@@ -8,10 +8,6 @@ ulimit -s unlimited
 BIN=../../src/fortran
 EXE=${BIN}/run.x
 
-COMPILER=gfortran
-${COMPILER} --version
-uname -a
-lscpu
 
 ### Run
 {
