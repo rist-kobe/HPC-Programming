@@ -8,12 +8,8 @@ ulimit -s unlimited
 BINDIR=../../src/fortran
 EXE=${BINDIR}/run.x
 
-COMPILER=gfortran
-${COMPILER} --version
-uname -a
-lscpu
 
-# array size along z-asix (<200)
+# array size along z-axis (<200)
 NZARRAY=120
 
 # logfile

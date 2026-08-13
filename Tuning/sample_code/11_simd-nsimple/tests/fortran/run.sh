@@ -6,10 +6,6 @@ ulimit -s unlimited
 
 BINDIR=../../src/fortran
 
-COMPILER=gfortran
-${COMPILER} --version
-uname -a
-lscpu
 
 EXE=${BINDIR}/run_v.x
 ${EXE} &> run_v.log

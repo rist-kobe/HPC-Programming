@@ -7,11 +7,7 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/fortran_c/run.x")
 
-COMPILER=gfortran
 
-${COMPILER} --version
-uname -a
-lscpu
 
 # Run
 $EXE > outfile

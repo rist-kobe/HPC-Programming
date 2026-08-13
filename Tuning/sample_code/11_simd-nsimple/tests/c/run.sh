@@ -6,10 +6,6 @@ ulimit -s unlimited
 
 BINDIR=../../src/c
 
-COMPILER=gcc
-${COMPILER} --version
-uname -a
-lscpu
 
 EXE=${BINDIR}/run_v.x
 ${EXE} &> run_v.log
