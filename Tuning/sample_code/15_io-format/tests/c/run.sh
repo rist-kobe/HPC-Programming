@@ -9,7 +9,7 @@ BINDIR=../../src/c
 EXE=${BINDIR}/run.x
 
 
-# array size along z-asix (<200)
+# array size along z-axis (<200)
 NZARRAY=120
 
 # logfile
