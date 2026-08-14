@@ -82,33 +82,27 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
 4. Compare CPU time with the elapsed time from Step 1. Note that the resolution of the CPU timer is coarser; you may have to enlarge the array size (`nn` in `main.c`) or the loop counts to obtain meaningful values.
 
 ### Step 3: Profile with gprof
-1. Go back to the source directory (`cd ../../src/c`) and edit the `Makefile` again: disable the `-DUSE_*_TIMER` flags and enable the `-pg` line:
-   ```makefile
-   ## Use of gprof
-   CFLAGS=-pg -g -Wall -O0 -std=gnu99
+1. Go back to the source directory (`cd ../../src/c`) and rebuild with profiling mode:
    ```
-   For Fortran (`src/fortran/Makefile`), edit `FFLAGS` instead:
-   ```makefile
-   ## Use of gprof
-   FFLAGS=-pg -g -Wall -cpp -O0
+   $ make veryclean && make MODE=gprof
    ```
-   The notebook automates this same flag switch in the `01-step3-code` cell.
-2. Rebuild:
+   For Fortran, use:
    ```
-   $ make veryclean && make
+   $ make veryclean && make MODE=gprof
    ```
-3. In `tests/c/run.sh`, uncomment the gprof lines:
+   The notebook automates this same mode switch in the `01-step3-code` cell.
+2. In `tests/c/run.sh`, uncomment the gprof lines:
    ```bash
    sleep 10s
    gprof $EXE > prof.out
    ```
    The notebook also automates this `run.sh` edit.
-4. Move to the test directory and run the job script:
+3. Move to the test directory and run the job script:
    ```
    $ cd ../../tests/c
    $ bash run.sh
    ```
-5. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out` to find the functions corresponding to the hotspot, and confirm that the result is consistent with the hand-coded timer measurements.
+4. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out` to find the functions corresponding to the hotspot, and confirm that the result is consistent with the hand-coded timer measurements.
 
 > **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up profiling artifacts:
 > ```
