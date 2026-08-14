@@ -17,6 +17,7 @@ gprof -p ${EXE} > flat.out
 cat flat.out
 echo
 echo
+echo
 gprof -q ${EXE} > call.out
 cat call.out
 echo -n "END: " 
