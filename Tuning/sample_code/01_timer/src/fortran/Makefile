@@ -18,7 +18,6 @@ else
   $(error Unknown MODE '$(MODE)'. Use MODE=elp, MODE=cpu, or MODE=gprof)
 endif
 
-
 SRC = \
 	main.f90
 
