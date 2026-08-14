@@ -39,7 +39,7 @@ The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/
 The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
 If linking fails, try `LIB=-lm -lrt` in the Makefile.
 
-For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and toggling the profiler lines in `tests/c/run.sh` before each run.
+For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh` with the desired mode (e.g., `bash run.sh MODE=gprof` for profiling).
 
 ## Exercise steps
 
