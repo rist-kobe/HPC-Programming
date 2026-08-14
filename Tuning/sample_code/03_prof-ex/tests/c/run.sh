@@ -7,7 +7,6 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/c/diffuse.x")
 
-
 # Run
 ${EXE} 0 > diffuse.out
 
@@ -17,7 +16,9 @@ echo
 gprof -p ${EXE} > flat.out
 cat flat.out
 echo
+echo
 gprof -q ${EXE} > call.out
 cat call.out
 echo -n "END: " 
 date
+echo
