@@ -13,9 +13,11 @@ ${EXE} 0 > diffuse.out
 
 # Get profiler data 
 sleep 10s
+echo
 gprof -p ${EXE} > flat.out
-
+cat flat.out
+echo
 gprof -q ${EXE} > call.out
-
+cat call.out
 echo -n "END: " 
 date
