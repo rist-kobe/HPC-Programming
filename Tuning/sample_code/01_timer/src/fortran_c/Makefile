@@ -18,7 +18,6 @@ endif
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu11 
 
-
 SRC = \
 	main.f90
 
