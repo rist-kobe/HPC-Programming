@@ -1,10 +1,19 @@
 FC=gfortran
 
-## Please choose one of the following flag settings
-## Use of timer (elapsed time)
-FFLAGS=-g -Wall -cpp -O0 -DUSE_ELP_TIMER
-## Use of timer for CPU time
-#FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
+## Select timer mode: make MODE=elp | cpu  (default: elp)
+MODE ?= elp
+
+BASE_FFLAGS=-g -Wall -cpp -O0
+
+ifeq ($(MODE),elp)
+  ## Use of timer for Elapsed time
+  FFLAGS=$(BASE_FFLAGS) -DUSE_ELP_TIMER
+else ifeq ($(MODE),cpu)
+  ## Use of timer for CPU time
+  FFLAGS=$(BASE_FFLAGS) -DUSE_CPU_TIMER
+else
+  $(error Unknown MODE '$(MODE)'. Use MODE=elp or MODE=cpu)
+endif
 
 CC=gcc
 CFLAGS=-g -Wall -O0 -std=gnu11 
