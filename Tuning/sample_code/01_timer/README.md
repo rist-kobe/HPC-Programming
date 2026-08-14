@@ -62,21 +62,13 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
 4. Compare the elapsed times of the two timed loops (routine 1 calling `sub1`, and routine 2 calling `sub2`) and consider which one is more expensive and why.
 
 ### Step 2: Measure CPU time
-1. Go back to the source directory (`cd ../../src/c`) and edit the `Makefile`: comment out the `-DUSE_ELP_TIMER` line and enable the `-DUSE_CPU_TIMER` line:
-   ```makefile
-   ## Use of timer for Elapsed time
-   #CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_ELP_TIMER
-   ## Use of timer for CPU time
-   CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_CPU_TIMER
+1. Go back to the source directory (`cd ../../src/c`) and rebuild in CPU-timer mode:
+   ```bash
+   $ make veryclean
+   $ make MODE=cpu
    ```
-   For Fortran (`src/fortran/Makefile`), edit `FFLAGS` instead:
-   ```makefile
-   ## Use of timer (elapsed time)
-   #FFLAGS=-g -Wall -cpp -O0 -DUSE_ELP_TIMER
-   ## Use of timer for CPU time
-   FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
-   ```
-   The notebook automates this same edit in the `01-step2-code` cell.
+   For Fortran, run the same commands in `src/fortran`.
+   The notebook does the same with `make -C src/c MODE=cpu` in the `01-step2-code` cell.
 2. Rebuild in `src/c`, then move to the test directory and rerun:
    ```
    $ make veryclean && make
