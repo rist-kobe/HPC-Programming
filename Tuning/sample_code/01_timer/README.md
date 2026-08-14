@@ -1,12 +1,12 @@
-# Timer Sample: By-hand Timers and gprof
+# Timer Sample: Hand-coded Timers and gprof
 * Author:   Yukihiro Ota (yota@rist.or.jp)
 * Last update: 7th Aug., 2026
 
 ## Purpose
 This sample demonstrates three basic techniques for measuring the performance of a program, which are the first steps of any tuning work:
 
-1. **Elapsed (wall-clock) time measurement** with a by-hand timer inserted in the source code
-2. **CPU time measurement** with a by-hand timer
+1. **Elapsed (wall-clock) time measurement** with a hand-coded timer inserted in the source code
+2. **CPU time measurement** with a hand-coded timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
 The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify where a program spends its execution time.
@@ -116,7 +116,7 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    $ cd ../../tests/c
    $ bash run.sh
    ```
-5. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out` to find the functions corresponding to the hotspot, and confirm that the result is consistent with the by-hand timer measurements.
+5. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out` to find the functions corresponding to the hotspot, and confirm that the result is consistent with the hand-coded timer measurements.
 
 > **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up profiling artifacts:
 > ```
@@ -127,4 +127,4 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
 ## Questions to consider
 1. Which function is the hotspot, and how do the call counts of `sub1`, `sub2`, and `sub3` explain it?
 2. When do elapsed time and CPU time differ, and which one should you use for tuning?
-3. What are the pros and cons of by-hand timers vs. `gprof`?
+3. What are the pros and cons of hand-coded timers vs. `gprof`?
