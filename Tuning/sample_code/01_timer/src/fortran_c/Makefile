@@ -1,23 +1,28 @@
 FC=gfortran
 
-## Select timer mode: make MODE=elp | cpu  (default: elp)
+## Select timer mode: make MODE=elp | cpu | gprof  (default: elp)
 MODE ?= elp
 
 BASE_FFLAGS=-g -Wall -cpp -O0
+BASE_CFLAGS=-g -Wall -O0 -std=gnu11
 
 ifeq ($(MODE),elp)
   ## Use of timer for Elapsed time
   FFLAGS=$(BASE_FFLAGS) -DUSE_ELP_TIMER
+  CFLAGS=$(BASE_CFLAGS)
 else ifeq ($(MODE),cpu)
   ## Use of timer for CPU time
   FFLAGS=$(BASE_FFLAGS) -DUSE_CPU_TIMER
+  CFLAGS=$(BASE_CFLAGS)
+else ifeq ($(MODE),gprof)
+  ## Use of gprof
+  FFLAGS=-pg $(BASE_FFLAGS)
+  CFLAGS=-pg $(BASE_CFLAGS)
 else
-  $(error Unknown MODE '$(MODE)'. Use MODE=elp or MODE=cpu)
+  $(error Unknown MODE '$(MODE)'. Use MODE=elp, MODE=cpu, or MODE=gprof)
 endif
 
 CC=gcc
-CFLAGS=-g -Wall -O0 -std=gnu11 
-
 SRC = \
 	main.f90
 
