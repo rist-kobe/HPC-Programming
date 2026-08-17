@@ -91,18 +91,13 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    $ make veryclean && make MODE=gprof
    ```
    The notebook automates this same mode switch in the `01-step3-code` cell.
-2. In `tests/c/run.sh`, uncomment the gprof lines:
-   ```bash
-   sleep 10s
-   gprof $EXE > prof.out
-   ```
-   The notebook also automates this `run.sh` edit.
-3. Move to the test directory and run the job script:
+2. Move to the test directory and run the job script in profiling mode:
    ```
    $ cd ../../tests/c
-   $ bash run.sh
+   $ MODE=gprof bash run.sh
    ```
-4. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out` to find the functions corresponding to the hotspot, and confirm that the result is consistent with the hand-coded timer measurements.
+   (Equivalently, `bash run.sh MODE=gprof`.) `run.sh` will sleep briefly and run `gprof` automatically in this mode; no manual editing is required.
+3. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out` to find the functions corresponding to the hotspot, and confirm that the result is consistent with the hand-coded timer measurements.
 
 > **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up profiling artifacts:
 > ```

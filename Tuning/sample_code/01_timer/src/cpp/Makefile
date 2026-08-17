@@ -1,6 +1,6 @@
 CXX=g++
 
-## Select timer mode: make MODE=elp | gprof  (default: elp)
+## Select timer mode: make [MODE=elp|gprof]  (default: elp)
 MODE ?= elp
 
 BASE_CXXFLAGS=-g -Wall -std=gnu++11 -O0

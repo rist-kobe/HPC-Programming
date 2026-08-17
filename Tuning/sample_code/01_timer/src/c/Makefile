@@ -1,6 +1,6 @@
 CC=gcc
 
-## Select timer mode: make MODE=elp | cpu | gprof  (default: elp)
+## Select timer mode: make [MODE=elp|cpu|gprof]  (default: elp)
 MODE ?= elp
 
 BASE_CFLAGS=-g -Wall -O0 -std=gnu99
