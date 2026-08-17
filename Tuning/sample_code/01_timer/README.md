@@ -79,7 +79,17 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    sub1: CPU time (sec)     = ...
    sub2: CPU time (sec)     = ...
    ```
-4. Compare CPU time with the elapsed time from Step 1. Note that the resolution of the CPU timer is coarser; you may have to enlarge the array size (`nn` in `main.c`) or the loop counts to obtain meaningful values.
+4. Compare CPU time with the elapsed time from Step 1.
+   For a single-threaded program (like this sample), CPU time is at most the
+   elapsed time; a noticeable gap indicates the process was waiting (I/O,
+   other processes, etc.) rather than computing. For a multi-threaded program
+   (e.g., OpenMP), the CPU timer used here (`CLOCK_PROCESS_CPUTIME_ID`) sums
+   the CPU time of all threads, so CPU time can exceed the elapsed time —
+   the ratio CPU time / elapsed time is a rough measure of how many cores
+   were kept busy.
+   Note that the resolution of the CPU timer is coarser; you may have to
+   enlarge the array size (`nn` in `main.c`) or the loop counts to obtain
+   meaningful values.
 
 ### Step 3: Profile with gprof
 1. Go back to the source directory (`cd ../../src/c`) and rebuild with profiling mode:
