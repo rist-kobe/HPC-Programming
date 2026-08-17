@@ -47,7 +47,7 @@ program main
     endif
     write (6,'(1a30,1f13.6)') "sub1: Elapsed time (sec)     ", elp
   else
-    write (6,'(1a40)') "sub1: Elapsed time: clock unavailable"
+    write (6,'(1a37)') "sub1: Elapsed time: clock unavailable"
   endif
 #endif
 #ifdef USE_CPU_TIMER
@@ -76,7 +76,7 @@ program main
     endif
     write (6,'(1a30,1f13.6)') "sub2: Elapsed time (sec)     ", elp
   else
-    write (6,'(1a40)') "sub2: Elapsed time: clock unavailable"
+    write (6,'(1a37)') "sub2: Elapsed time: clock unavailable"
   endif
 #endif
 #ifdef USE_CPU_TIMER
