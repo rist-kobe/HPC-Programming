@@ -56,7 +56,8 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    ```
 3. Check `outfile`. The elapsed time of each timed section is printed as:
    ```
-   Elapsed time (sec) = ...
+   sub1: Elapsed time (sec) = ...
+   sub2: Elapsed time (sec) = ...
    ```
 4. Compare the elapsed times of the two timed loops (routine 1 calling `sub1`, and routine 2 calling `sub2`) and consider which one is more expensive and why.
 
@@ -75,7 +76,8 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    ```
 3. Check `outfile` for lines such as:
    ```
-   CPU time (sec)     = ...
+   sub1: CPU time (sec)     = ...
+   sub2: CPU time (sec)     = ...
    ```
 4. Compare CPU time with the elapsed time from Step 1. Note that the resolution of the CPU timer is coarser; you may have to enlarge the array size (`nn` in `main.c`) or the loop counts to obtain meaningful values.
 
