@@ -9,9 +9,9 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a hand-coded timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program spends most of its time, identifying hotspots is the essential first step of performance tuning: optimizing a routine that accounts for 80% of the run time can dramatically speed up the whole program, while optimizing one that accounts for only 1% barely matters.
+A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program spends most of its time, finding hotspots is the first step of performance tuning.
 
-The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify the hotspot of a program.
+The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify which routine dominates the execution time.
 
 ## Directory layout
 ```
@@ -41,7 +41,7 @@ The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/
 The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
 If linking fails, try `LIB=-lm -lrt` in the Makefile.
 
-For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh` in each mode.
+For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh`.
 
 ## Exercise steps
 
@@ -97,16 +97,15 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    ```
    $ make veryclean && make MODE=gprof
    ```
-   The notebook automates this same mode switch in the `01-step3-code` cell.
 2. Move to the test directory and run the job script in profiling mode:
    ```
    $ cd ../../tests/c
    $ MODE=gprof bash run.sh
    ```
    (Equivalently, `bash run.sh MODE=gprof`.) `run.sh` will sleep briefly and run `gprof` automatically in this mode; no manual editing is required.
-3. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph to find the hotspot — the function where the program spends the largest fraction of its execution time (shown in the `% time` column of the flat profile).
+3. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out`.
 
-> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from the test directory. To start over, remove the generated files:
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from `tests/c/`. To clean up:
 > ```
 > $ cd tests/c
 > $ rm -f gmon.out prof.out outfile
