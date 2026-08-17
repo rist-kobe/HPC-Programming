@@ -47,7 +47,6 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
 1. Move to the source directory and build. The default Makefile already sets `-DUSE_ELP_TIMER`:
    ```
    $ cd src/c
-   $ make veryclean
    $ make
    ```
 2. Move to the test directory and run the job script:
