@@ -1,6 +1,6 @@
 // Copyright 2024 Research Organization for Information Science and Technology 
 //----------------------------------------------------------------------
-//   By-hand timer (C++11) and Use of gprof 
+//   Hand-coded timer (C++11) and Use of gprof 
 //   Author:      Yukihiro Ota (yota@rist.or.jp)
 // ---------------------------------------------------------------------
 #include <chrono>
@@ -36,7 +36,7 @@ int main ( int argc, char* argv[] )
      const auto elp2 = std::chrono::steady_clock::now();
      const std::chrono::duration<double> elapsed = elp2 - elp1;
 
-     fprintf (stdout, "Elapsed time (sec)   = %17.6f\n", elapsed.count()) ;
+     fprintf (stdout, "sub1: Elapsed time (sec)   = %17.6f\n", elapsed.count()) ;
   }
 #else
   for ( int k=0; k<100000; ++k ) sub1 ( a.data(), nn ) ;
@@ -54,7 +54,7 @@ int main ( int argc, char* argv[] )
      const auto elp2 = std::chrono::steady_clock::now();
      const std::chrono::duration<double> elapsed = elp2 - elp1;
 
-     fprintf (stdout, "Elapsed time (sec)   = %17.6f\n", elapsed.count()) ;
+     fprintf (stdout, "sub2: Elapsed time (sec)   = %17.6f\n", elapsed.count()) ;
   }
 #else
   for ( int k=0; k<200000; ++k ) sub2 ( a.data(), nn ) ;

@@ -1,6 +1,6 @@
 ! Copyright 2024 Research Organization for Information Science and Technology
 !-----------------------------------------------------------------------
-!  By-hand timer and Use of gprof
+!  Hand-coded timer and Use of gprof
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
 !  Last Update: 18th Apr. 2023
 !  Reference:   M. Metcalf et al. "Modern Fortran explained"
@@ -51,11 +51,11 @@ program main
   enddo
 #ifdef USE_ELP_TIMER
   elp2 = get_elp_time() 
-  write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp2 - elp1
+  write (6,'(1a30,1f13.6)') "sub1: Elapsed time (sec)     ", elp2 - elp1
 #endif
 #ifdef USE_CPU_TIMER
   cpu2 = get_cpu_time()
-  write (6,'(1a24,1f13.6)') "CPU time (sec)         ", cpu2 - cpu1 
+  write (6,'(1a30,1f13.6)') "sub1: CPU time (sec)         ", cpu2 - cpu1 
 #endif
   write (6,'(1a24,1f13.6)') "a(1) =                 ", a(1)
 
@@ -71,11 +71,11 @@ program main
   enddo
 #ifdef USE_ELP_TIMER
   elp2 = get_elp_time() 
-  write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp2 - elp1
+  write (6,'(1a30,1f13.6)') "sub2: Elapsed time (sec)     ", elp2 - elp1
 #endif
 #ifdef USE_CPU_TIMER
   cpu2 = get_cpu_time()
-  write (6,'(1a24,1f13.6)') "CPU time (sec)         ", cpu2 - cpu1 
+  write (6,'(1a30,1f13.6)') "sub2: CPU time (sec)         ", cpu2 - cpu1 
 #endif
   write (6,'(1a24,1f13.6)') "a(1) =                 ", a(1)
 

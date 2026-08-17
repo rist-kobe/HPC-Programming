@@ -1,4 +1,3 @@
-
 # Build artifacts
 *.o
 *.mod
@@ -14,3 +13,6 @@ Tuning/sample_code/**/tests/**/outfile.*
 Tuning/sample_code/**/tests/**/outlist
 Tuning/sample_code/**/tests/**/output
 Tuning/sample_code/**/tests/**/*.out
+
+# macOS
+.DS_Store
