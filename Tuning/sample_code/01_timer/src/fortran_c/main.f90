@@ -1,6 +1,6 @@
 ! Copyright 2024 Research Organization for Information Science and Technology
 !-----------------------------------------------------------------------
-!  By-hand timer and Use of gprof
+!  Hand-coded timer and Use of gprof
 !  Author:      Yukihiro Ota (yota@rist.or.jp)
 !  Last Update: 18th Apr. 2023
 !  Reference:   M. Metcalf et al. "Modern Fortran explained"

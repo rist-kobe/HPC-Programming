@@ -1,6 +1,6 @@
 // Copyright 2024 Research Organization for Information Science and Technology 
 //----------------------------------------------------------------------
-//   By-hand timer (C++11) and Use of gprof 
+//   Hand-coded timer (C++11) and Use of gprof 
 //   Author:      Yukihiro Ota (yota@rist.or.jp)
 // ---------------------------------------------------------------------
 #include <chrono>
