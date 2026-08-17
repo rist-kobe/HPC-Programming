@@ -1,6 +1,6 @@
 # Timer Sample: Hand-coded Timers and gprof
 * Author:   Yukihiro Ota (yota@rist.or.jp)
-* Last update: 7th Aug., 2026
+* Last update: 17th Aug., 2026
 
 ## Purpose
 This sample demonstrates three basic techniques for measuring the performance of a program, which are the first steps of any tuning work:
@@ -9,7 +9,7 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a hand-coded timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program spends most of its time, finding hotspots is the first step of performance tuning.
+A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program spends most of its time, finding hotspots is the essential first step of performance tuning.
 
 The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify which routine dominates the execution time.
 
@@ -28,7 +28,7 @@ The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in tur
     └── cpp/
 ```
 
-Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`, and edit `FFLAGS` instead of `CFLAGS` in the Makefile (the flag names are the same).
+Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`, and edit `FFLAGS` instead of `CFLAGS` in the Makefile (the flags themselves are the same).
 
 The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/Makefile`):
 
@@ -41,7 +41,7 @@ The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/
 The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
 If linking fails, try `LIB=-lm -lrt` in the Makefile.
 
-For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh`.
+For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh` in each mode.
 
 ## Exercise steps
 
@@ -105,7 +105,7 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    (Equivalently, `bash run.sh MODE=gprof`.) `run.sh` will sleep briefly and run `gprof` automatically in this mode; no manual editing is required.
 3. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out`.
 
-> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from `tests/c/`. To clean up:
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from there. To clean up:
 > ```
 > $ cd tests/c
 > $ rm -f gmon.out prof.out outfile
