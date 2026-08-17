@@ -1,6 +1,6 @@
 FC=gfortran
 
-## Select timer mode: make MODE=elp | cpu | gprof  (default: elp)
+## Select timer mode: make [MODE=elp|cpu|gprof]  (default: elp)
 MODE ?= elp
 
 BASE_FFLAGS=-g -Wall -cpp -O0

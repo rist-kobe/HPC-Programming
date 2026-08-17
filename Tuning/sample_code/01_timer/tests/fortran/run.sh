@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Select timer mode: bash run.sh MODE=elp | cpu | gprof  (default: elp)
+## Select timer mode: bash run.sh [MODE=elp|cpu|gprof]  (default: elp)
 ## Or: MODE=gprof bash run.sh
 for arg in "$@"; do
   case $arg in
