@@ -45,14 +45,14 @@ program main
     else
       elp = (ielp2 - ielp1 + icount_max + 1) / dble(icount_rate)
     endif
-    write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp
+    write (6,'(1a30,1f13.6)') "sub1: Elapsed time (sec)     ", elp
   else
-    write (6,'(1a24)') "Elapsed time: clock unavailable"
+    write (6,'(1a37)') "sub1: Elapsed time: clock unavailable"
   endif
 #endif
 #ifdef USE_CPU_TIMER
   call cpu_time ( cpu2 )
-  write (6,'(1a24,1f13.6)') "CPU time (sec)         ", cpu2 - cpu1 
+  write (6,'(1a30,1f13.6)') "sub1: CPU time (sec)         ", cpu2 - cpu1 
 #endif
   write (6,'(1a24,1f13.6)') "a(1) =                 ", a(1)
 
@@ -74,14 +74,14 @@ program main
     else
       elp = (ielp2 - ielp1 + icount_max + 1) / dble(icount_rate)
     endif
-    write (6,'(1a24,1f13.6)') "Elapsed time (sec)     ", elp
+    write (6,'(1a30,1f13.6)') "sub2: Elapsed time (sec)     ", elp
   else
-    write (6,'(1a24)') "Elapsed time: clock unavailable"
+    write (6,'(1a37)') "sub2: Elapsed time: clock unavailable"
   endif
 #endif
 #ifdef USE_CPU_TIMER
   call cpu_time ( cpu2 )
-  write (6,'(1a24,1f13.6)') "CPU time (sec)         ", cpu2 - cpu1 
+  write (6,'(1a30,1f13.6)') "sub2: CPU time (sec)         ", cpu2 - cpu1 
 #endif
   write (6,'(1a24,1f13.6)') "a(1) =                 ", a(1)
 

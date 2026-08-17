@@ -47,7 +47,6 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
 1. Move to the source directory and build. The default Makefile already sets `-DUSE_ELP_TIMER`:
    ```
    $ cd src/c
-   $ make veryclean
    $ make
    ```
 2. Move to the test directory and run the job script:
@@ -69,11 +68,10 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    ```
    For Fortran, run the same commands in `src/fortran`.
    The notebook does the same with `make -C src/c MODE=cpu` in the `01-step2-code` cell.
-2. Rebuild in `src/c`, then move to the test directory and rerun:
+2. Move to the test directory and rerun:
    ```
-   $ make veryclean && make MODE=cpu
    $ cd ../../tests/c
-   $ bash run.sh
+   $ bash run.sh MODE=cpu
    ```
 3. Check `outfile` for lines such as:
    ```
