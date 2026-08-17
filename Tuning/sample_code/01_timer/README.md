@@ -9,7 +9,7 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a hand-coded timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify where a program spends its execution time.
+The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify the hotspot of a program.
 
 ## Directory layout
 ```
@@ -26,7 +26,7 @@ The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in tur
     └── cpp/
 ```
 
-Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`, and edit `FFLAGS` instead of `CFLAGS` in the Makefile (the Fortran flags also include `-cpp` and omit `-std=gnu99`).
+Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`, and edit `FFLAGS` instead of `CFLAGS` in the Makefile (the Fortran timer modes are selected the same way).
 
 The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/Makefile`):
 
@@ -39,7 +39,7 @@ The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/
 The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
 If linking fails, try `LIB=-lm -lrt` in the Makefile.
 
-For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh` with the desired mode (e.g., `bash run.sh MODE=gprof` for profiling).
+For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh` in each mode.
 
 ## Exercise steps
 
@@ -79,7 +79,18 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    sub1: CPU time (sec)     = ...
    sub2: CPU time (sec)     = ...
    ```
-4. Compare CPU time with the elapsed time from Step 1. Note that the resolution of the CPU timer is coarser; you may have to enlarge the array size (`nn` in `main.c`) or the loop counts to obtain meaningful values.
+4. Compare CPU time with the elapsed time from Step 1.
+   For a single-threaded program (like this sample), CPU time is at most the
+   elapsed time; a noticeable gap indicates the process was waiting (I/O,
+   other processes, etc.) rather than computing. For a multi-threaded program
+   (e.g., OpenMP), the CPU timer used here (`get_cpu_time()`, based on
+   `CLOCK_PROCESS_CPUTIME_ID`) sums
+   the CPU time of all threads, so CPU time can exceed the elapsed time —
+   the ratio CPU time / elapsed time is a rough measure of how many cores
+   were kept busy.
+   Note that the resolution of the CPU timer is coarser; you may have to
+   enlarge the array size (`nn` in `main.c`) or the loop counts to obtain
+   meaningful values.
 
 ### Step 3: Profile with gprof
 1. Go back to the source directory (`cd ../../src/c`) and rebuild with profiling mode:
@@ -99,7 +110,7 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    (Equivalently, `bash run.sh MODE=gprof`.) `run.sh` will sleep briefly and run `gprof` automatically in this mode; no manual editing is required.
 3. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out` to find the functions corresponding to the hotspot, and confirm that the result is consistent with the hand-coded timer measurements.
 
-> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` there. To clean up profiling artifacts:
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from `tests/c/`. To clean up, remove the generated files there:
 > ```
 > $ cd tests/c
 > $ rm -f gmon.out prof.out outfile
