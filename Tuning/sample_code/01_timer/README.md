@@ -73,7 +73,7 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    ```
    $ make veryclean && make MODE=cpu
    $ cd ../../tests/c
-   $ bash run.sh
+   $ bash run.sh MODE=cpu
    ```
 3. Check `outfile` for lines such as:
    ```
