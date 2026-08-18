@@ -9,18 +9,18 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a hand-coded timer
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program spends most of its time, finding hotspots is the essential first step of performance tuning.
+A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program[...]
 
-The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify which routine dominates the execution time.
+The sample program (`main.c` / `main.f90` / `main.cpp`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify which function is a hotspot and why.
 
 ## Directory layout
 ```
 01_timer/
 ├── src/            # Source code and Makefiles
 │   ├── c/          # C version (default)
-│   ├── fortran/    # Fortran version
-│   ├── fortran_c/  # Optional: Fortran with a C timer
-│   └── cpp/        # Optional: C++ with std::chrono
+│   ├── fortran/    # Fortran version (pure)
+│   ├── fortran_c/  # Fortran with a C timer (via ISO_C_BINDING)
+│   └── cpp/        # C++ with std::chrono
 └── tests/          # Job scripts (run.sh) for each language
     ├── c/
     ├── fortran/
@@ -28,24 +28,54 @@ The sample program (`main.c` / `main.f90`) calls `sub1` and `sub2`, which in tur
     └── cpp/
 ```
 
-Choose either C or Fortran. The examples below use C; for Fortran, replace `src/c` and `tests/c` with `src/fortran` and `tests/fortran`, and edit `FFLAGS` instead of `CFLAGS` in the Makefile (the flags themselves are the same).
+You can choose C, Fortran (pure), Fortran with C timer, or C++. Select the variant and language pair that suits your needs:
+
+| Language | Timer | Build Directory | Test Directory |
+|---|---|---|---|
+| C | hand-coded (POSIX `clock_gettime`) | `src/c/` | `tests/c/` |
+| Fortran | built-in `system_clock` / `cpu_time` | `src/fortran/` | `tests/fortran/` |
+| Fortran + C timer | C timer via ISO_C_BINDING | `src/fortran_c/` | `tests/fortran_c/` |
+| C++ | `std::chrono` | `src/cpp/` | `tests/cpp/` |
+
+## Building and Running
 
 The timer mode is selected by the compiler flags in the `Makefile` (`src/<lang>/Makefile`):
 
-| Mode | Flag setting in Makefile |
-|---|---|
-| Elapsed time (wall clock) | `-DUSE_ELP_TIMER` (default) |
-| CPU time | `-DUSE_CPU_TIMER` |
-| gprof profiling | `-pg` (no `-DUSE_*_TIMER`) |
+| Mode | C/C++ Flag | Fortran Flag/Mode |
+|---|---|---|
+| Elapsed time (wall clock) | `-DUSE_ELP_TIMER` (default) | `MODE=elp` (default) |
+| CPU time | `-DUSE_CPU_TIMER` | `MODE=cpu` |
+| gprof profiling | `-pg` | `MODE=gprof` |
 
 The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
-If linking fails, try `LIB=-lm -lrt` in the Makefile.
 
-For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh` in each mode.
+### General Build Instructions
+
+For **C** and **C++** (simple Makefile with hardcoded flags):
+```bash
+$ cd src/<c|cpp>
+$ make                              # Default: elapsed time timer
+$ cd ../../tests/<c|cpp>
+$ bash run.sh
+```
+
+For **Fortran** variants (Makefile with `MODE` variable):
+```bash
+$ cd src/<fortran|fortran_c>
+$ make [MODE=elp|cpu|gprof]         # Default: MODE=elp
+$ cd ../../tests/<fortran|fortran_c>
+$ bash run.sh [MODE=elp|cpu|gprof]  # Mode parameter optional for run.sh
+```
+
+If linking fails with C or C++, try adding `LIB=-lm -lrt` in the Makefile.
+
+For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipynb` automates the same three steps below by rebuilding with `make -C src/c MODE=elp|cpu|gprof` and running `tests/c/run.sh`.
 
 ## Exercise steps
 
 ### Step 1: Measure elapsed (wall-clock) time
+
+#### C version
 1. Move to the source directory and build. The default Makefile already sets `-DUSE_ELP_TIMER`:
    ```
    $ cd src/c
@@ -58,60 +88,256 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    ```
 3. Check `outfile`. The elapsed time of each timed section is printed as:
    ```
-   sub1: Elapsed time (sec) = ...
-   sub2: Elapsed time (sec) = ...
+   Elapsed time (sec) = ...
    ```
-4. Compare the elapsed times of the two timed loops (routine 1 calling `sub1`, and routine 2 calling `sub2`) and consider which one is more expensive and why.
+4. Compare the elapsed times of the two timed loops and consider which is more expensive and why.
+
+#### Fortran version
+1. Move to the source directory and build with elapsed time mode:
+   ```
+   $ cd src/fortran
+   $ make MODE=elp
+   ```
+2. Move to the test directory and run the job script:
+   ```
+   $ cd ../../tests/fortran
+   $ bash run.sh MODE=elp
+   ```
+3. Check `outfile`. The elapsed time is printed as:
+   ```
+   Elapsed time (sec)     = ...
+   ```
+   - Uses Fortran intrinsic `system_clock()` for wall-clock timing.
+4. Compare the elapsed times and consider which routine is more expensive.
+
+#### Fortran with C timer version
+1. Move to the source directory and build with elapsed time mode:
+   ```
+   $ cd src/fortran_c
+   $ make MODE=elp
+   ```
+2. Move to the test directory and run the job script:
+   ```
+   $ cd ../../tests/fortran_c
+   $ bash run.sh MODE=elp
+   ```
+3. Check `outfile`. The elapsed time is printed as:
+   ```
+   Elapsed time (sec)     = ...
+   ```
+   - This variant uses ISO_C_BINDING to call the C timer functions (`get_elp_time()`) from Fortran.
+   - Demonstrates language interoperability and comparison with the C version.
+   - Timing results should be equivalent to the C version for the same machine.
+
+#### C++ version
+1. Move to the source directory and build. The default Makefile already sets `-DUSE_ELP_TIMER`:
+   ```
+   $ cd src/cpp
+   $ make
+   ```
+2. Move to the test directory and run the job script:
+   ```
+   $ cd ../../tests/cpp
+   $ bash run.sh
+   ```
+3. Check `outfile`. The elapsed time is printed as:
+   ```
+   Elapsed time (sec)   = ...
+   ```
+   - Uses `std::chrono::steady_clock` for precise, portable timing without external dependencies.
+4. The C++ version uses modern C++11 standard library features.
 
 ### Step 2: Measure CPU time
-1. Go back to the source directory (`cd ../../src/c`) and rebuild in CPU-timer mode:
+
+#### C version
+1. Go back to the source directory and rebuild in CPU-timer mode:
    ```bash
+   $ cd src/c
    $ make veryclean
    $ make MODE=cpu
    ```
 2. Move to the test directory and rerun:
    ```
    $ cd ../../tests/c
-   $ bash run.sh MODE=cpu
+   $ bash run.sh
    ```
-3. Check `outfile` for lines such as:
+3. Check `outfile` for:
    ```
-   sub1: CPU time (sec)     = ...
-   sub2: CPU time (sec)     = ...
+   CPU time (sec)     = ...
    ```
 4. Compare CPU time with the elapsed time from Step 1.
-   For a single-threaded program (like this sample), CPU time is at most the
-   elapsed time; a noticeable gap indicates the process was waiting (I/O,
-   other processes, etc.) rather than computing. For a multi-threaded program
-   (e.g., OpenMP), the CPU timer used here (`get_cpu_time()`, based on
-   `CLOCK_PROCESS_CPUTIME_ID`) sums
-   the CPU time of all threads, so CPU time can exceed the elapsed time —
-   the ratio CPU time / elapsed time is a rough measure of how many cores
-   were kept busy.
-   Note that the resolution of the CPU timer is coarser; you may have to
-   enlarge the array size (`nn` in `main.c`) or the loop counts to obtain
-   meaningful values.
+
+#### Fortran version
+1. Go back to the source directory and rebuild in CPU-timer mode:
+   ```bash
+   $ cd src/fortran
+   $ make veryclean
+   $ make MODE=cpu
+   ```
+2. Move to the test directory and rerun:
+   ```
+   $ cd ../../tests/fortran
+   $ bash run.sh MODE=cpu
+   ```
+3. Check `outfile` for:
+   ```
+   CPU time (sec)         = ...
+   ```
+   - Uses Fortran intrinsic `cpu_time()`.
+4. Compare CPU time with the elapsed time from Step 1.
+
+#### Fortran with C timer version
+1. Go back to the source directory and rebuild in CPU-timer mode:
+   ```bash
+   $ cd src/fortran_c
+   $ make veryclean
+   $ make MODE=cpu
+   ```
+2. Move to the test directory and rerun:
+   ```
+   $ cd ../../tests/fortran_c
+   $ bash run.sh MODE=cpu
+   ```
+3. Check `outfile` for:
+   ```
+   CPU time (sec)         = ...
+   ```
+   - Uses the C timer function `get_cpu_time()` called from Fortran via ISO_C_BINDING.
+4. Compare results with the Fortran-only CPU time measurement to verify consistency.
+
+#### C++ version
+- C++ `std::chrono::steady_clock` measures wall-clock elapsed time only.
+- To measure CPU time with C++, you would need to:
+  - Use platform-specific APIs (e.g., POSIX `clock_gettime()`)
+  - Link with a C timer library and call it from C++
+  - Use an external profiling tool like `gprof` or `perf`
+- The current C++ sample focuses on elapsed time measurement.
+
+### Understanding CPU Time vs. Elapsed Time
+
+For a **single-threaded program** (like this sample):
+- CPU time ≤ elapsed time
+- A noticeable gap indicates the process was waiting (I/O, scheduling, etc.)
+
+For a **multi-threaded program** (e.g., with OpenMP):
+- CPU time can exceed elapsed time
+- The ratio (CPU time / elapsed time) estimates the number of cores kept busy
+- The CPU timer sums the CPU time of all threads
+
+**Note:** CPU timer resolution is coarser than elapsed time. You may need to enlarge the array size (`nn`) or increase loop counts to obtain meaningful values.
 
 ### Step 3: Profile with gprof
-1. Go back to the source directory (`cd ../../src/c`) and rebuild with profiling mode:
+
+#### C version
+1. Go back to the source directory and rebuild with profiling mode:
    ```
+   $ cd src/c
    $ make veryclean && make MODE=gprof
    ```
 2. Move to the test directory and run the job script in profiling mode:
    ```
    $ cd ../../tests/c
-   $ MODE=gprof bash run.sh
+   $ bash run.sh
    ```
-   (Equivalently, `bash run.sh MODE=gprof`.) `run.sh` will sleep briefly and run `gprof` automatically in this mode; no manual editing is required.
-3. In this mode, `outfile` contains the program output (`a[0] = ...` lines), `gmon.out` contains the raw profiling data, and `prof.out` contains the `gprof` report. Examine the flat profile and the call graph in `prof.out`.
+   - `run.sh` automatically sleeps and runs `gprof` if the binary was compiled with `-pg`.
+3. In profiling mode, the output includes:
+   - `outfile`: program output (`a[0] = ...` lines)
+   - `gmon.out`: raw profiling data
+   - `prof.out`: `gprof` report with flat profile and call graph
+4. Examine `prof.out` to identify hotspots.
 
-> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/c/` when using `run.sh` — not in `src/c/`. This is why `run.sh` invokes `gprof` from there. To clean up:
+#### Fortran version
+1. Go back to the source directory and rebuild with profiling mode:
+   ```
+   $ cd src/fortran
+   $ make veryclean && make MODE=gprof
+   ```
+2. Move to the test directory and run the job script in profiling mode:
+   ```
+   $ cd ../../tests/fortran
+   $ bash run.sh MODE=gprof
+   ```
+3. `run.sh` automatically handles profiling: execution, sleep, and `gprof` report generation.
+4. Examine `prof.out` for the flat profile and call graph to identify hotspots.
+
+#### Fortran with C timer version
+1. Go back to the source directory and rebuild with profiling mode:
+   ```
+   $ cd src/fortran_c
+   $ make veryclean && make MODE=gprof
+   ```
+2. Move to the test directory and run the job script in profiling mode:
+   ```
+   $ cd ../../tests/fortran_c
+   $ bash run.sh MODE=gprof
+   ```
+3. Examine `prof.out` to compare profiling results between pure Fortran and Fortran-with-C-timer versions.
+   - Both should identify the same hotspots, confirming interoperability.
+
+#### C++ version
+1. Go back to the source directory and rebuild with profiling mode:
+   ```
+   $ cd src/cpp
+   $ make veryclean
+   ```
+2. **Edit the Makefile** to enable profiling by uncommenting the `-pg` flag in `CXXFLAGS`.
+3. Rebuild and rerun:
+   ```
+   $ make
+   $ cd ../../tests/cpp
+   $ bash run.sh
+   ```
+   - This will generate `gmon.out` and the program output in `outfile`.
+4. Manually run `gprof` to generate the report:
+   ```
+   $ gprof ../../src/cpp/run.x gmon.out > prof.out
+   $ cat prof.out
+   ```
+
+### Cleaning Up Profiling Data
+
+> **Note:** The profiling data file `gmon.out` is created in the directory where the program *runs*, i.e., `tests/<lang>/` when using `run.sh` — not in `src/<lang>/`. 
+> To clean up profiling results, run:
 > ```
-> $ cd tests/c
+> $ cd tests/<lang>
 > $ rm -f gmon.out prof.out outfile
 > ```
+
+## Implementation Details by Language
+
+### C
+- **Elapsed timer**: POSIX `clock_gettime()` with `CLOCK_MONOTONIC`
+- **CPU timer**: POSIX `clock_gettime()` with `CLOCK_PROCESS_CPUTIME_ID`
+- **Files**: `src/c/timer.c`, `src/c/timer.h`, `src/c/main.c`
+- **Compilation**: Hand-coded timer functions compiled separately
+- **Advantages**: Precise timing, portable (POSIX standard), low overhead
+
+### Fortran (pure)
+- **Elapsed timer**: Fortran intrinsic `system_clock()` for wall-clock timing
+- **CPU timer**: Fortran intrinsic `cpu_time()` 
+- **Files**: `src/fortran/main.f90`
+- **Compilation**: Single source file; no external timer library needed
+- **Advantages**: Simple, language-native, no external dependencies
+
+### Fortran with C timer
+- **Timer**: Same POSIX C timer as the C version, called via ISO_C_BINDING (Fortran2003+)
+- **Files**: `src/fortran_c/main.f90`, `src/fortran_c/timer.c`, `src/fortran_c/timer.h`
+- **Compilation**: Fortran and C files compiled separately, then linked
+- **Advantages**: Demonstrates language interoperability, allows direct comparison with C implementation
+- **Use cases**: Learning mixed-language programming, verifying consistency between implementations
+
+### C++
+- **Elapsed timer**: `std::chrono::steady_clock` (C++11 standard library)
+- **CPU timer**: Not implemented (would require platform-specific APIs or external libraries)
+- **Files**: `src/cpp/main.cpp`
+- **Compilation**: No external timer library; uses standard C++11 features
+- **Advantages**: Modern, type-safe, header-only, portable, no external dependencies
+- **Notes**: `std::chrono` provides high-resolution timing and handles platform differences transparently
 
 ## Questions to consider
 1. Which function is the hotspot, and how do the call counts of `sub1`, `sub2`, and `sub3` explain it?
 2. When do elapsed time and CPU time differ, and which one should you use for tuning?
 3. What are the pros and cons of hand-coded timers vs. `gprof`?
+4. How do timer implementations differ across C, Fortran, C++, and Fortran-C interoperability?
+5. What are the trade-offs between POSIX timers (`clock_gettime`), Fortran intrinsics (`system_clock`, `cpu_time`), and C++ `std::chrono`?
+6. For your use case, which language and timer approach is most appropriate and why?
