@@ -33,7 +33,7 @@ $ bash run.sh
 $ chmod 755 run.sh
 $ ./run.sh
 ```
-4. The results will be summarized in files, `output.40x2` and `output.60x2`. The suffixes, e.g., `40x2`, indicate the setting of the two input parameters, `NA` and `NB`; `40x2` means that `NA*NB ~ 40 KiB` and `NB = 2`.
+4. The results will be summarized in files, `outfile.40x2` and `outfile.60x2`. The suffix `<i>x2` (e.g., `40x2` for `i = 40`) indicates the block-size parameter `i` used by `run.sh`: each run keeps the product of the two block-size parameters fixed at `NA*NB = i*i` and executes the program with three `(NA, NB)` combinations, `(2*i, i/2)`, `(i, i)`, and `(i/2, 2*i)` (e.g., `(80, 20)`, `(40, 40)`, and `(20, 80)` for `i = 40`).
 
 ## Exercise 
 1. Check your CPU, about the number of processor cores and the number of sockets. The following Linux commands would be helpful.  
