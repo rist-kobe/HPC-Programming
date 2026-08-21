@@ -33,7 +33,7 @@ $ bash run.sh
 $ chmod 755 run.sh
 $ ./run.sh
 ```
-4. The results will be summarized in files, `output.40x2` and `output.60x2`. The suffixes, e.g., `40x2`, indicate the setting of the two input parameters, `NA` and `NB`; `40x2` means that `NA*NB ~ 40x2=1600`. 
+4. The results will be summarized in files, `output.40x2` and `output.60x2`. The suffixes, e.g., `40x2`, indicate the setting of the two input parameters, `NA` and `NB`; `40x2` means that `NA*NB ~ 40 KiB` and `NB = 2`.
 
 ## Exercise 
 1. Check your CPU, about the number of processor cores and the number of sockets. The following Linux commands would be helpful.  
