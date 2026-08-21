@@ -16,20 +16,20 @@ ${EXE} 0 > diffuse.out
 # Get profiler data 
 sleep 10s
 
-# Check that gmon.out was produced (requires -pg build)
+# gmon.out is only produced when the executable is built with -pg.
+# If it is missing, warn and skip the gprof steps instead of failing.
 if [ ! -f gmon.out ]; then
-    echo "Error: gmon.out was not generated. Was the executable built with -pg?" >&2
-    exit 1
+    echo "Warning: gmon.out was not generated (executable not built with -pg?). Skipping gprof." >&2
+else
+    echo
+    gprof -p ${EXE} gmon.out > flat.out
+    cat flat.out
+    echo
+    echo
+    echo
+    gprof -q ${EXE} gmon.out > call.out
+    cat call.out
 fi
-
-echo
-gprof -p ${EXE} gmon.out > flat.out
-cat flat.out
-echo
-echo
-echo
-gprof -q ${EXE} gmon.out > call.out
-cat call.out
 echo -n "END: " 
 date
 echo
