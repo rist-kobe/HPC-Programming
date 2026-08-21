@@ -25,10 +25,14 @@ EXE=$(echo "../../src/fortran/run.x")
 $EXE > outfile
 
 # Get profiler data
-# Executed only when the program was built with -pg (make MODE=gprof)
+# Run gprof only when MODE=gprof (expected: binary built with -pg via make MODE=gprof)
 if [ "$MODE" = "gprof" ]; then
   sleep 10s
-  gprof $EXE > prof.out
+  if [ -f gmon.out ]; then
+    gprof "$EXE" > prof.out
+  else
+    echo "gmon.out not found. Rebuild with 'make MODE=gprof' and re-run." >&2
+  fi
 fi
 
 echo -n "END: " 
