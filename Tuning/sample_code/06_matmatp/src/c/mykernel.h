@@ -22,4 +22,4 @@ void trans_blk(const int nraw, const int ncol, const int nbkr, const int nbkc,
   double tm[restrict][nraw], double m[restrict][ncol]);
 
 int dummy(const int ns, double mat[restrict][ns]);
-#endif /* __MYKERNEL_H_ */
+#endif /* __MYKERNEL_H__ */
