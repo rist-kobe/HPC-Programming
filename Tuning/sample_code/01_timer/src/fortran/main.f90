@@ -120,8 +120,6 @@ subroutine sub2 ( a, nn )
    !*** local variables ***
    integer :: i, k
 
-   a(1) = sin(a(1))
-
    do i = 1, nn
      a(i) = a(i) + 1.0_real64
    enddo
