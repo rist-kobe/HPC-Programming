@@ -10,9 +10,9 @@ This sample demonstrates three basic techniques for measuring the performance of
 2. **CPU time measurement** with a hand-coded timer inserted in the source code
 3. **Profiling with `gprof`** to find hotspots without modifying the source code
 
-A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program spends most of its time, finding hotspots is the essential first step of performance tuning.
+A *hotspot* is a part of a program (a function, loop, or code section) that consumes a disproportionately large share of the total execution time. Because tuning effort pays off most where the program spends most of its time, identifying hotspots is the essential first step of any performance tuning work.
 
-The sample program (`main.c` / `main.f90` / `main.cpp`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify which part of a program dominates the execution time.
+The sample program (`main.c` / `main.f90` / `main.cpp`) calls `sub1` and `sub2`, which in turn call `sub3`, with different call counts and workloads. By timing and profiling them, you will learn how to identify hotspots.
 
 ## Directory layout
 ```
@@ -48,7 +48,7 @@ All language variants use the same `MODE` variable to select the **build configu
 | `MODE=cpu` | Build the CPU-time timer version | |
 | `MODE=gprof` | Build with `-pg` for `gprof` profiling | |
 
-Internally, `MODE=elp` and `MODE=cpu` define `-DUSE_ELP_TIMER` and `-DUSE_CPU_TIMER` (C/C++) or select the corresponding Fortran timer, and `MODE=gprof` adds the `-pg` compiler flag. `bash run.sh` does **not** switch timer implementations at run time; its optional `MODE=gprof` argument only controls the post-processing step that sleeps briefly and runs `gprof` on `gmon.out` after a `-pg` build.
+Internally, `MODE=elp` and `MODE=cpu` define `-DUSE_ELP_TIMER` and `-DUSE_CPU_TIMER` (C/C++) or select the corresponding Fortran timer, and `MODE=gprof` adds the `-pg` compiler flag. `bash run.sh` accepts the same `MODE` values; only `MODE=gprof` changes the run-time behavior (it triggers `gprof` post-processing).
 
 To switch between `elp`, `cpu`, and `gprof`, rebuild from scratch each time:
 ```text
@@ -321,7 +321,7 @@ For a **multi-threaded program** (e.g., with OpenMP):
 - **Advantages**: Simple, language-native, no external dependencies
 
 ### Fortran with C timer
-- **Timer**: Same POSIX C timer as the C version, called via iso_c_binding (Fortran2008+)
+- **Timer**: Same POSIX C timer as the C version, called via iso_c_binding (Fortran 2003+)
 - **Files**: `src/fortran_c/main.f90`, `src/c/timer.c`, `src/c/timer.h`
   (timer sources are shared with the C variant — no duplicated copies in `src/fortran_c/`)
 - **Compilation**: Fortran and C files compiled separately, then linked
