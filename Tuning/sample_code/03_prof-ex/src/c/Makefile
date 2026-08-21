@@ -7,10 +7,21 @@
 # GNU compiler: gcc
 #
 CC=gcc
-## standard 
-#CFLAGS=-g -Wall -std=gnu11 -O2 -fopt-info-all -D__DIFFUSE__ 
-## for using gprof
-CFLAGS=-g -Wall -std=gnu11 -pg -O2 -D__DIFFUSE__
+
+## Select build mode: make [MODE=std|gprof]  (default: gprof)
+MODE ?= gprof
+
+BASE_CFLAGS=-g -Wall -std=gnu11 -O2 -D__DIFFUSE__
+
+ifeq ($(MODE),std)
+  ## standard
+  CFLAGS=$(BASE_CFLAGS) -fopt-info-all
+else ifeq ($(MODE),gprof)
+  ## for using gprof
+  CFLAGS=-pg $(BASE_CFLAGS)
+else
+  $(error Unknown MODE '$(MODE)'. Use MODE=std or MODE=gprof)
+endif
 
 LIB=-lm
 
@@ -64,7 +75,7 @@ main:
 
 .PHONY: clean
 clean:
-	rm -f *.o *~
+	rm -f *.o *~ gmon.out
 
 .PHONY: veryclean
 veryclean: clean
