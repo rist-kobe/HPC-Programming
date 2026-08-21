@@ -333,7 +333,7 @@ For a **multi-threaded program** (e.g., with OpenMP):
 - **CPU timer**: `std::clock()` (`<ctime>`, C++ standard library)
 - **Files**: `src/cpp/main.cpp`
 - **Compilation**: No external timer library; uses standard C++11 features
-- **Advantages**: Modern, type-safe, header-only, portable, no external dependencies
+- **Advantages**: Modern, type-safe, standard-library-only, portable, no external (non-standard) dependencies
 - **Notes**: `std::chrono` provides high-resolution timing and handles platform differences transparently; note that `std::clock()` resolution depends on `CLOCKS_PER_SEC`
 
 ## Questions to consider
