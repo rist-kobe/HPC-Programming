@@ -64,7 +64,7 @@ The procedure is identical for all languages (`<lang>` = `c`, `cpp`, `fortran`, 
 $ cd src/<lang>
 $ make [MODE=elp|cpu|gprof]         # Default: MODE=elp
 $ cd ../../tests/<lang>
-$ bash run.sh [MODE=gprof]          # Optional: only needed to generate prof.out after a gprof build
+$ bash run.sh [MODE=elp|cpu|gprof]  # Optional; only MODE=gprof triggers gprof post-processing
 ```
 
 If linking fails with C or C++, try adding `LIB=-lm -lrt` in the Makefile.
