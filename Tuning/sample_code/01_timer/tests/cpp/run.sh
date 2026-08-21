@@ -21,6 +21,11 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/cpp/run.x")
 
+# Remove stale profiling artifacts so gprof never reports old data
+if [ "$MODE" = "gprof" ]; then
+  rm -f gmon.out prof.out
+fi
+
 # Run
 $EXE > outfile
 
