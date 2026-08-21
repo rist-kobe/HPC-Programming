@@ -1,12 +1,22 @@
 CC=gcc
 
-## Please choose one of the following flag settings
-## Use of timer for Elapsed time
-CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_ELP_TIMER
-## Use of timer for CPU time
-#CFLAGS=-g -Wall -O0 -std=gnu99 -DUSE_CPU_TIMER
-## Use of gprof
-#CFLAGS=-pg -g -Wall -O0 -std=gnu99
+## Select timer mode: make [MODE=elp|cpu|gprof]  (default: elp)
+MODE ?= elp
+
+BASE_CFLAGS=-g -Wall -O0 -std=gnu99
+
+ifeq ($(MODE),elp)
+  ## Use of timer for Elapsed time
+  CFLAGS=$(BASE_CFLAGS) -DUSE_ELP_TIMER
+else ifeq ($(MODE),cpu)
+  ## Use of timer for CPU time
+  CFLAGS=$(BASE_CFLAGS) -DUSE_CPU_TIMER
+else ifeq ($(MODE),gprof)
+  ## Use of gprof
+  CFLAGS=-pg $(BASE_CFLAGS)
+else
+  $(error Unknown MODE '$(MODE)'. Use MODE=elp, MODE=cpu, or MODE=gprof)
+endif
 
 LIB=-lm
 #LIB=-lm -lrt # if linking is failed
