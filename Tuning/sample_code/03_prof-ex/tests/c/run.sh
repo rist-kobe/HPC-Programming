@@ -7,8 +7,8 @@ ulimit -s unlimited
 # Set load module (absolute path could be preferable)
 EXE=$(echo "../../src/c/diffuse.x")
 
-# Remove any stale profiling data before run
-rm -f gmon.out
+# Remove any stale profiling data and reports before run
+rm -f gmon.out flat.out call.out
 
 # Run
 ${EXE} 0 > diffuse.out
