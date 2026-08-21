@@ -44,7 +44,7 @@ $ numactl -H
 2. Check the size of cache with different levels, such as L1, L2, and last-level cache (e.g., L3), in your machine. On Linux, typing `getconf -a`, you can find the corresponding data in `LEVEL2_CACHE_SIZE`, for example. Also, check whether a certain level of cache is shared between cores or not. 
 3. Evaluate the cache size per core. Also, set `NSIZE` parameter. Please read the comment on the top of `main.F90` or `main.c`. 
 4. Check the access pattern of arrays in `mykernel.F90` or `mykernel.c`.  
-5. Examine the elapsed time in each of kernels (`mmp_simple`, `mmp_simple_blk`, and `mmp_lex_tp_blk`), varying the size of blocks. Your compiler may generate better code even in the case of `mmp_simple`. This is a good news if so; It means that you do not need to take care of by-hand optimization. 
+5. Examine the elapsed time in each of kernels (`mmp_simple`, `mmp_simple_blk`, and `mmp_lex_tp_blk`), varying the size of blocks. Your compiler may generate better code even in the case of `mmp_simple`. This is good news if so; it means that manual optimization is unnecessary. 
 
 ## Advanced topics
 1. Use a matrix-matrix product routine in a well-tuned library, e.g., DGEMM in BLAS (such as OpenBLAS). Compare the results to those in the hand-made kernels.  
