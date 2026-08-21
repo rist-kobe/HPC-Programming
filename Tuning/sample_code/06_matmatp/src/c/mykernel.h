@@ -4,22 +4,21 @@
 
 #define MIN(a, b) ( (a) < (b) ? (a) : (b) )
 
-void mmp_simple(const int ns, double mc[restrict][ns],
-   double ma[restrict][ns], double mb[restrict][ns]);
+void mmp_simple(const int, double mc[restrict][*], 
+   double ma[restrict][*], double mb[restrict][*]);
 
-void mmp_simple_blk(const int ns, const int nbk1, const int nbk2,
-  double mc[restrict][ns], double ma[restrict][ns], double mb[restrict][ns]);
+void mmp_simple_blk(const int, const int, const int, 
+  double mc[restrict][*], double ma[restrict][*], double mb[restrict][*]);
 
-void mmp_lex_tp_blk(const int ns, const int nbk1, const int nbk2,
-  const int nbkr, const int nbkc,
-  double mc[restrict][ns], double ma[restrict][ns], double mb[restrict][ns],
-  double work[restrict][ns]);
+void mmp_lex_tp_blk(const int, const int, const int, const int, const int, 
+  double mc[restrict][*], double ma[restrict][*], double mb[restrict][*],
+  double work[restrict][*]);
 
-void trans(const int nraw, const int ncol, double tm[restrict][nraw],
-  double m[restrict][ncol]);
+void trans(const int, const int, double tm[restrict][*], 
+  double m[restrict][*]);
 
-void trans_blk(const int nraw, const int ncol, const int nbkr, const int nbkc,
-  double tm[restrict][nraw], double m[restrict][ncol]);
+void trans_blk(const int, const int, const int, const int , 
+  double tm[restrict][*], double m[restrict][*]);
 
-int dummy(const int ns, double mat[restrict][ns]);
+int dummy(const int, double mat[restrict][*]);
 #endif /* __MYKERNEL_H_ */

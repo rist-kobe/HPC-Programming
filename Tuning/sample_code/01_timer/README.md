@@ -40,15 +40,20 @@ You can choose C, Fortran (pure), Fortran with C timer, or C++. Select the varia
 
 ## Building and Running
 
-All language variants use the same `MODE` variable to select the timer mode, both at build time (`make MODE=...`) and at run time (`bash run.sh MODE=...`):
+All language variants use the same `MODE` variable to select the **build configuration** with `make MODE=...`:
 
-| Mode | Meaning | Default |
+| Mode | Build-time effect | Default |
 |---|---|---|
-| `MODE=elp` | Elapsed time (wall clock) | yes |
-| `MODE=cpu` | CPU time | |
-| `MODE=gprof` | gprof profiling (`-pg`) | |
+| `MODE=elp` | Build the elapsed-time (wall-clock) timer version | yes |
+| `MODE=cpu` | Build the CPU-time timer version | |
+| `MODE=gprof` | Build with `-pg` for `gprof` profiling | |
 
-Internally, `MODE=elp` and `MODE=cpu` define `-DUSE_ELP_TIMER` and `-DUSE_CPU_TIMER` (C/C++) or select the corresponding Fortran timer, and `MODE=gprof` adds the `-pg` compiler flag. The `MODE` argument to `run.sh` is optional; the default is `MODE=elp`.
+Internally, `MODE=elp` and `MODE=cpu` define `-DUSE_ELP_TIMER` and `-DUSE_CPU_TIMER` (C/C++) or select the corresponding Fortran timer, and `MODE=gprof` adds the `-pg` compiler flag. `bash run.sh` does **not** switch timer implementations at run time; its optional `MODE=gprof` argument only controls the post-processing step that sleeps briefly and runs `gprof` on `gmon.out` after a `-pg` build.
+
+To switch between `elp`, `cpu`, and `gprof`, rebuild from scratch each time:
+```text
+$ make veryclean && make MODE=...
+```
 
 The code has been verified with GNU compilers (11.4.0) on x86-64 systems.
 
@@ -59,10 +64,8 @@ The procedure is identical for all languages (`<lang>` = `c`, `cpp`, `fortran`, 
 $ cd src/<lang>
 $ make [MODE=elp|cpu|gprof]         # Default: MODE=elp
 $ cd ../../tests/<lang>
-$ bash run.sh [MODE=elp|cpu|gprof]  # Mode parameter optional for run.sh
+$ bash run.sh [MODE=elp|cpu|gprof]  # Optional; only MODE=gprof triggers gprof post-processing
 ```
-
-When switching modes, always rebuild from scratch with `make veryclean` first.
 
 If linking fails with C or C++, try adding `LIB=-lm -lrt` in the Makefile.
 

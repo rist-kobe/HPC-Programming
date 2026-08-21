@@ -26,9 +26,6 @@ CC=gcc
 SRC = \
 	main.f90
 
-CSRC= \
-	../c/timer.c
-
 OBJS = $(SRC:.f90=.o)
 COBJS= timer.o
 
