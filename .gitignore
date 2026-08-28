@@ -1,18 +1,37 @@
 # Build artifacts
 *.o
 *.mod
+*.smod
 *.a
+*.so
 *.x
+*.lst
 optinfo.all
 gmon.out
+prof.out
+perf.data
+perf.data.*
+core
+core.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor temporary files
+*~
+*.swp
+*.swo
+
+# macOS
+.DS_Store
 
 # Generated run artifacts
 run.err
+*.stdout
+*.stderr
+*.machinefile
 Tuning/sample_code/**/tests/**/outfile
 Tuning/sample_code/**/tests/**/outfile.*
 Tuning/sample_code/**/tests/**/outlist
 Tuning/sample_code/**/tests/**/output
 Tuning/sample_code/**/tests/**/*.out
-
-# macOS
-.DS_Store
