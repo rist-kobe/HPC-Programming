@@ -92,7 +92,7 @@ By submitting, you **represent and warrant** that:
 
    投稿はあなた自身のオリジナル、または正当な権限に基づき提出できる内容です。
 
-   Your submission is your own original work. Or you have sufficient rights to submit it.
+Your submission is your own original work, or you have sufficient rights to submit it.
 
 2. **第三者権利の不侵害 / No Infringement**
 
