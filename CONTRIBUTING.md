@@ -24,21 +24,21 @@ Please see README.md and LICENSE for details.
 
 ## 所有権の範囲 / Scope of Ownership
 
-**既存資料の著作権 / Copyright in Existing Materials** 
+**既存資料の著作権 / Copyright in Existing Materials**
 
-本リポジトリに含まれる講義資料・サンプルコードの著作権は、 RISTに帰属します。これらは日本国法上の **職務著作** として作成されるものであり、第三者に著作権は移転しません。法令に基づき承継人が指定された場合には、その承継人に著作権が承継されます。承継人として日本国政府が指定された場合には、日本国政府に承継されます。  
+本リポジトリに含まれる講義資料・サンプルコードの著作権は、RISTに帰属します。これらは日本国法上の **職務著作** として作成されるものであり、第三者に著作権は移転しません。法令に基づき承継人が指定された場合には、その承継人に著作権が承継されます。承継人として日本国政府が指定された場合には、日本国政府に承継されます。  
 
 All lecture materials and sample code included in this repository are owned by RIST. These materials are created by RIST employees in the course of their duties ("Shokumu Chosaku"). Under the Copyright Act of Japan, the copyright is vested in RIST. No copyright is transferred to any third party. If a successor organization is designated pursuant to applicable law, copyright shall be transferred to such successor. If the Government of Japan is designated as such successor, the copyright is transferred to the Government of Japan.
 
-**Issue 投稿の著作権 / Copyright in Issue Submissions** 
+**Issue 投稿の著作権 / Copyright in Issue Submissions**
 
 RISTの担当者以外の皆様による **Issue 投稿（テキスト、図、コード、提案等）** の著作権は、投稿者に留保されます。ただし、以下「投稿に関するライセンス許諾」に従い、RISTは当該投稿の広範な利用権を取得します。  
 
 For **Issue submissions** (text, diagrams, code, proposals, and any other content) made by external contributors other than RIST employees, copyright remains with the submitter. However, RIST obtains broad usage rights as described in the "License Grant for Submissions" section below.
 
-**重要な明確化 / Important Clarification** 
+**重要な明確化 / Important Clarification**
 
-Issue 投稿を参考にして（参考には、基にすること、または取り込むことを含みます）RIST職員が作成する資料はRISTの職務著作であり、投稿者に当該資料への著作権その他の権利（著作権、共同著作者としての権利、二次的著作物に対する権利等）が発生することはありません。  
+Issue 投稿を参考にして（参考には、基にすること、または取り込むことを含みます）RIST職員が作成する資料はRISTの職務著作であり、投稿者に当該資料への著作権その他の権利（著作権、共同著作者としての権利、二次的著作物に対する権利等）が発生することはありません。
 
 Any materials created by RIST employees based on or incorporating Issue submissions shall be **the exclusive property of RIST**. **The submitter shall not acquire any rights therein, including, without limitation, any right of co-authorship, rights in derivative works, or any other copyright interests**.
 
@@ -50,7 +50,7 @@ Any materials created by RIST employees based on or incorporating Issue submissi
 
 **By submitting content to the Issues, you are deemed to agree to all of the following terms:**
 
-1. **著作権ライセンス / Copyright License** 
+1. **著作権ライセンス / Copyright License**
 
    あなたは RIST（その承継人を含む）に対し、あなたの投稿内容について、**取消不能・永続的・世界的・ロイヤリティ無償・非独占的** なライセンスを付与します。ライセンスは、複製、改変、翻案、組み合わせ、頒布（公衆送信を含む）、公衆への提示・表示、サブライセンス、二次的著作物の作成その他一切の利用形態を含みます。
 
@@ -64,9 +64,9 @@ Any materials created by RIST employees based on or incorporating Issue submissi
 
 3. **著作者人格権の不行使 / Non‑Assertion of Moral Rights**
 
-      法令で許される範囲で、あなたは当該投稿に関する**著作者人格権（氏名表示権・同一性保持権等）の不行使**に同意します。
+   法令で許される範囲で、あなたは当該投稿に関する**著作者人格権（氏名表示権・同一性保持権等）の不行使**に同意します。
    
-      To the extent permitted by law, you agree **not to assert moral rights** (including rights of attribution and integrity) in relation to your submission.
+   To the extent permitted by law, you agree **not to assert moral rights** (including rights of attribution and integrity) in relation to your submission.
 
 4. **対価請求の不行使 / No Compensation**
 
@@ -74,7 +74,7 @@ Any materials created by RIST employees based on or incorporating Issue submissi
    
    You shall not claim any fees or compensation, or royalties for any use under this license.
 
-5. **採用保証なし / No Obligation to Use** 
+5. **採用保証なし / No Obligation to Use**
 
    RIST（その承継人を含む）は、投稿内容の採用・反映を保証しません。
 
@@ -88,7 +88,7 @@ Any materials created by RIST employees based on or incorporating Issue submissi
 
 By submitting, you **represent and warrant** that:
 
-1. **オリジナリティ / Originality** 
+1. **オリジナリティ / Originality**
 
    投稿はあなた自身のオリジナル、または正当な権限に基づき提出できる内容です。
 
@@ -106,34 +106,38 @@ By submitting, you **represent and warrant** that:
    
    If submitting as part of your employment or on behalf of your employer, you have obtained necessary permissions.
 
-> **同意の確認 / Confirmation of Agreement** > **Issues** に投稿した時点で、上記全ての条件（ライセンス付与、表明保証を含む）に同意したものとみなされます。  
-By submitting to the **Issues**, you are deemed to agree with all the terms above, including license grants and representations.
+> [!NOTE]
+> **同意の確認 / Confirmation of Agreement**
+> 
+> **Issues** に投稿した時点で、上記全ての条件（ライセンス付与、表明保証を含む）に同意したものとみなされます。
+> 
+> By submitting to the **Issues**, you are deemed to agree with all the terms above, including license grants and representations.
 
 ---
 
 ## 禁止事項と第三者コードの方針 / Prohibited Content & Third‑Party Code Policy
 
-1. **禁止事項 / Prohibited Content** 
+1. **禁止事項 / Prohibited Content**
 
    以下の投稿は禁止です：違法・差別・中傷・機密情報・個人情報・機微情報・機密契約情報・マルウェア・セキュリティ脆弱性の悪用情報・輸出規制違反の可能性がある技術情報など。
    
    The following types of content are prohibited: illegal, discriminatory, defamatory, confidential information, personal or sensitive information, proprietary or contractually restricted information, malware or malicious code, exploit details of security vulnerabilities, and technical information that may violate export controls regulations (including non-public regulated technologies).
 
-2. **第三者コード / Third‑Party Code** 
+2. **第三者コード / Third‑Party Code**
 
    他のOSS プロジェクト、書籍、ブログ等からの **コード断片のコピペ投稿は原則不可** です。例外的に受け付けるには、(a) 本リポジトリのライセンスと **明確に互換** であり、(b) **適切な帰属表示** があり、(c) **ライセンス全文へのリンク** が投稿内容に明記されていることが必要です。なお、GPLやCC BY-SAなど、成果物に対して同一のライセンス継承を義務付ける（コピーレフト）ライセンスのコードは受け付けません。
 
    **Copy-pasting code snippets from other OSS projects, books, blogs, or similar sources is generally not accepted**. Exceptions require the submission to clearly demonstrate all of the following: (a) **clear license compatibility** with this repository, (b) **proper attribution**, and (c) **a link to the full license text**. Note that code under licenses that mandate the inheritance of the same license to derivative works (i.e., “Copyleft” or “ShareAlike” clauses), such as GPL or CC BY-SA, is strictly not accepted.
    
-3. **機密保持 / Confidentiality** 
+3. **機密保持 / Confidentiality**
 
-   秘密情報、契約上の守秘義務に拘束される情報、公共に公開すべきでない情報は投稿しないでください。  
+   秘密情報、契約上の守秘義務に拘束される情報、公共に公開すべきでない情報は投稿しないでください。
    
    Do not submit confidential information, contractually restricted information, or information not intended for public disclosure.
 
-4. **輸出管理 / Export Controls** 
+4. **輸出管理 / Export Controls**
 
-   本リポジトリは一般公開されており、投稿内容は全世界から閲覧可能です。輸出管理法令等に違反する恐れのある技術情報（公知化されていない規制対象技術など）は投稿しないでください。  
+   本リポジトリは一般公開されており、投稿内容は全世界から閲覧可能です。輸出管理法令等に違反する恐れのある技術情報（公知化されていない規制対象技術など）は投稿しないでください。
    
    This repository is public and accessible worldwide. Do not submit technical information that may violate export control regulations (e.g., restricted technologies that constitute a non-public export).
 
@@ -145,9 +149,9 @@ By submitting to the **Issues**, you are deemed to agree with all the terms abov
 To preserve integrity and ensure proper license management, **we do not accept Pull Requests**. Please use the **Issues** for all proposals, corrections, and bug reports.
 
 **Issue 作成時の注意 / Notes for Issues**
-- **バグ報告:** 明確な説明、再現手順、環境情報を記載してください。
+- **誤記・不具合報告:** 明確な説明、再現手順、環境情報を記載してください。
 
-  **Bug Reports**: Provide clear descriptions, reproduction steps, and environment details. 
+  **Corrections and Bug Reports**: Provide clear descriptions, reproduction steps, and environment details. 
 
 - **改良提案:** 問題点・提案内容・期待効果を具体的に記載してください。公共性を考慮してください。
 
@@ -165,9 +169,9 @@ To the extent permitted by applicable law, RIST (including its successors) shall
 
 ## 準拠法 / Governing Law
 
-本条件は日本国法を準拠法とします。  
+本条件は日本国法を準拠法とします。
 
-These terms are governed by Japanese law. 
+These terms are governed by Japanese law.
 
 ---
 
@@ -181,7 +185,7 @@ In the event of any inconsistency between the Japanese and English versions of t
 
 ## 改定 / Changes to These Terms
 
-RIST（その承継人を含む）は、合理的な方法で通知の上、本条件を改定することがあります。改定後の条件は、改定後に行われた投稿にのみ適用されます。  
+RIST（その承継人を含む）は、合理的な方法で通知の上、本条件を改定することがあります。改定後の条件は、改定後に行われた投稿にのみ適用されます。
 
 RIST (including its successors) may update these terms with reasonable notice. Updated terms apply only to submissions made after the date on which the updated terms take effect.
 
@@ -193,4 +197,4 @@ RIST (including its successors) may update these terms with reasonable notice. U
 
 For questions or matters containing confidential information that cannot be posted on the **Issues** , please contact the Secretariat [ hpc-seminar[-at-]rist.or.jp (Please replace "[-at-]" with "@") ].
 
-**最終更新日 / Last Updated**: 2026‑01‑15
+**最終更新日 / Last Updated**: 2026‑08‑31
