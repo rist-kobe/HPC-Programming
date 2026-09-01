@@ -11,7 +11,7 @@ EXE=$(echo "../../src/c/diffuse.x")
 rm -f gmon.out flat.out call.out
 
 # Run
-${EXE} 0 > diffuse.out
+"${EXE}" 0 &> diffuse.out
 
 # Get profiler data
 if [ ! -f gmon.out ]; then
