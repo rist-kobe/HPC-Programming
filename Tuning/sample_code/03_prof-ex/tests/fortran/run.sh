@@ -21,6 +21,5 @@ else
     gprof -p ${EXE} gmon.out > flat.out
     gprof -q ${EXE} gmon.out > call.out
 fi
-
 echo -n "END: " 
 date
