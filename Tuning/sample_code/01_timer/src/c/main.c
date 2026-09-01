@@ -1,6 +1,6 @@
 /* Copyright 2024 Research Organization for Information Science and Technology */
 /*----------------------------------------------------------------------
- *  By-hand timer and Use of gprof 
+ *  Hand-coded timer and Use of gprof 
  *  Author:      Yukihiro Ota (yota@rist.or.jp)
  *--------------------------------------------------------------------*/
 #include <stdio.h>
@@ -52,11 +52,11 @@ int main ( int argc, char* argv[] )
 
 #if defined(USE_CPU_TIMER)
   cpu2 = get_cpu_time () ; // cpu time
-  printf ( "CPU time (sec)     = %17.6f\n", cpu2 - cpu1 ) ;
+  printf ( "sub1: CPU time (sec)     = %17.6f\n", cpu2 - cpu1 ) ;
 #endif
 #if defined(USE_ELP_TIMER)
   elp2 = get_elp_time () ; // wall clock
-  printf ( "Elapsed time (sec) = %17.6f\n", elp2 - elp1 ) ;
+  printf ( "sub1: Elapsed time (sec) = %17.6f\n", elp2 - elp1 ) ;
 #endif 
 
   printf ("a[0] = %13.6f\n", a[0] ) ;
@@ -73,11 +73,11 @@ int main ( int argc, char* argv[] )
 
 #if defined(USE_CPU_TIMER)
   cpu2 = get_cpu_time () ; // cpu time
-  printf ( "CPU time (sec)     = %17.6f\n", cpu2 - cpu1 ) ;
+  printf ( "sub2: CPU time (sec)     = %17.6f\n", cpu2 - cpu1 ) ;
 #endif
 #if defined(USE_ELP_TIMER)
   elp2 = get_elp_time () ; // wall clock
-  printf ( "Elapsed time (sec) = %17.6f\n", elp2 - elp1 ) ;
+  printf ( "sub2: Elapsed time (sec) = %17.6f\n", elp2 - elp1 ) ;
 #endif
 
   printf ("a[0] = %13.6f\n", a[0] ) ;
@@ -100,8 +100,6 @@ void sub1 ( double *a, const int nn ) {
 /*  sub2                                                              */
 /*--------------------------------------------------------------------*/
 void sub2 ( double *a, const int nn ) {
-
-  a[0] = sin(a[0]) ;
 
   for ( int i=0; i<nn; ++i ) a[i] += 1.0 ;
 
