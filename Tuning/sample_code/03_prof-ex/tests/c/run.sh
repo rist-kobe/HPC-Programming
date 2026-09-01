@@ -17,8 +17,8 @@ rm -f gmon.out flat.out call.out
 if [ ! -f gmon.out ]; then
     echo "gmon.out not found. Rebuild with 'make MODE=gprof' and re-run." >&2
 else
-    gprof -p ${EXE} gmon.out > flat.out
-    gprof -q ${EXE} gmon.out > call.out
+    gprof -p "${EXE}" gmon.out > flat.out
+    gprof -q "${EXE}" gmon.out > call.out
 fi
 echo -n "END: " 
 date

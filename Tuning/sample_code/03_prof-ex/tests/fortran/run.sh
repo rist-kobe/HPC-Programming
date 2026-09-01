@@ -12,14 +12,14 @@ EXE=$(echo "../../src/fortran/diffuse.x")
 rm -f gmon.out flat.out call.out
 
 # Run
-${EXE} 0 &> diffuse.out
+"${EXE}" 0 &> diffuse.out
 
 # Get profiler data
 if [ ! -f gmon.out ]; then
     echo "gmon.out not found. Rebuild with 'make MODE=gprof' and re-run." >&2
 else
-    gprof -p ${EXE} gmon.out > flat.out
-    gprof -q ${EXE} gmon.out > call.out
+    gprof -p "${EXE}" gmon.out > flat.out
+    gprof -q "${EXE}" gmon.out > call.out
 fi
 echo -n "END: " 
 date
