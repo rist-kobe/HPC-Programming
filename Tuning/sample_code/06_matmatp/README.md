@@ -33,7 +33,7 @@ $ bash run.sh
 $ chmod 755 run.sh
 $ ./run.sh
 ```
-4. The results will be summarized in files, `output.40x2` and `output.60x2`. The suffixes, e.g., `40x2`, indicate the setting of the two input parameters, `NA` and `NB`; `40x2` means that `NA*NB ~ 40x2=1600`. 
+4. The results will be summarized in files, `outfile.40x2` and `outfile.60x2`. The suffix `ix2` (e.g., `40x2` for `i = 40`) indicates the block-size parameter `i` used by `run.sh`: each run keeps the product of the two block-size parameters fixed at `NA*NB = i*i` and executes the program with three `(NA, NB)` combinations, `(2*i, i/2)`, `(i, i)`, and `(i/2, 2*i)` (e.g., `(80, 20)`, `(40, 40)`, and `(20, 80)` for `i = 40`).
 
 ## Exercise 
 1. Check your CPU, about the number of processor cores and the number of sockets. The following Linux commands would be helpful.  
@@ -44,7 +44,7 @@ $ numactl -H
 2. Check the size of cache with different levels, such as L1, L2, and last-level cache (e.g., L3), in your machine. On Linux, typing `getconf -a`, you can find the corresponding data in `LEVEL2_CACHE_SIZE`, for example. Also, check whether a certain level of cache is shared between cores or not. 
 3. Evaluate the cache size per core. Also, set `NSIZE` parameter. Please read the comment on the top of `main.F90` or `main.c`. 
 4. Check the access pattern of arrays in `mykernel.F90` or `mykernel.c`.  
-5. Examine the elapsed time in each of kernels (`mmp_simple`, `mmp_simple_blk`, and `mmp_lex_tp_blk`), varying the size of blocks. Your compiler may generate better code even in the case of `mmp_simple`. This is a good news if so; It means that you do not need to take care of by-hand optimization. 
+5. Examine the elapsed time in each of kernels (`mmp_simple`, `mmp_simple_blk`, and `mmp_lex_tp_blk`), varying the size of blocks. Your compiler may generate better code even in the case of `mmp_simple`. This is good news if so; it means that manual optimization is unnecessary. 
 
 ## Advanced topics
 1. Use a matrix-matrix product routine in a well-tuned library, e.g., DGEMM in BLAS (such as OpenBLAS). Compare the results to those in the hand-made kernels.  

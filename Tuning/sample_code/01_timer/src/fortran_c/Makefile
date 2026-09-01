@@ -1,23 +1,33 @@
 FC=gfortran
 
-## Please choose one of the following flag settings
-## Use of timer (elapsed time)
-FFLAGS=-g -Wall -cpp -O0 -DUSE_ELP_TIMER
-## Use of timer for CPU time
-#FFLAGS=-g -Wall -cpp -O0 -DUSE_CPU_TIMER
+## Select timer mode: make [MODE=elp|cpu|gprof]  (default: elp)
+MODE ?= elp
+
+BASE_FFLAGS=-g -Wall -cpp -O0 -std=f2008
+BASE_CFLAGS=-g -Wall -O0 -std=gnu11 -I../c
+
+ifeq ($(MODE),elp)
+  ## Use of timer for Elapsed time
+  FFLAGS=$(BASE_FFLAGS) -DUSE_ELP_TIMER
+  CFLAGS=$(BASE_CFLAGS)
+else ifeq ($(MODE),cpu)
+  ## Use of timer for CPU time
+  FFLAGS=$(BASE_FFLAGS) -DUSE_CPU_TIMER
+  CFLAGS=$(BASE_CFLAGS)
+else ifeq ($(MODE),gprof)
+  ## Use of gprof
+  FFLAGS=-pg $(BASE_FFLAGS)
+  CFLAGS=-pg $(BASE_CFLAGS)
+else
+  $(error Unknown MODE '$(MODE)'. Use MODE=elp, MODE=cpu, or MODE=gprof)
+endif
 
 CC=gcc
-CFLAGS=-g -Wall -O0 -std=gnu11 
-
-
 SRC = \
 	main.f90
 
-CSRC= \
-	timer.c
-
 OBJS = $(SRC:.f90=.o)
-COBJS= $(CSRC:.c=.o)
+COBJS= timer.o
 
 
 .SUFFIXES: .f90 .c .o
@@ -33,7 +43,8 @@ run.x: $(OBJS) $(COBJS)
 
 main.o: main.f90
 
-timer.o: timer.h timer.c
+timer.o: ../c/timer.h ../c/timer.c
+	$(CC) $(CFLAGS) -c ../c/timer.c -o $@
 
 .PHONY: clean
 clean:
