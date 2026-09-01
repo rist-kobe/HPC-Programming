@@ -7,10 +7,21 @@
 # GNU (8.5.0)
 #
 FC=gfortran
-## standard 
-FFLAGS=-g -Wall -cpp -O2 -fopt-info -D_DIFFUSE
-## for using gprof
-#FFLAGS=-g -Wall -cpp -pg -O2 -D_DIFFUSE
+
+## Select build mode: make [MODE=std|gprof]  (default: gprof)
+MODE ?= gprof
+
+BASE_FFLAGS=-g -Wall -cpp -O2 -D_DIFFUSE
+
+ifeq ($(MODE),std)
+  ## standard
+  FFLAGS=$(BASE_FFLAGS) -fopt-info
+else ifeq ($(MODE),gprof)
+  ## for using gprof
+  FFLAGS=-pg $(BASE_FFLAGS)
+else
+  $(error Unknown MODE '$(MODE)'. Use MODE=std or MODE=gprof)
+endif
 
 
 COMSRC = \
@@ -67,7 +78,7 @@ main: common
 
 .PHONY: clean
 clean:
-	rm -f *.o *.mod *.f90~ *__genmod.f90
+	rm -f *.o *.mod *.f90~ *__genmod.f90 gmon.out
 
 .PHONY: veryclean
 veryclean: clean
