@@ -248,7 +248,7 @@ For a **multi-threaded program** (e.g., with OpenMP):
    $ cd ../../tests/c
    $ bash run.sh MODE=gprof
    ```
-   - In `MODE=gprof`, `run.sh` automatically sleeps and runs `gprof` after the execution.
+   - In `MODE=gprof`, `run.sh` runs `gprof` after the execution.
 3. In profiling mode, the output includes:
    - `outfile`: program output (`a[0] = ...` lines)
    - `gmon.out`: raw profiling data
