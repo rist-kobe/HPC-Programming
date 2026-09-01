@@ -145,7 +145,7 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    Section name: Elapsed time (sec)   = ...
    ```
    - Uses `std::chrono::steady_clock` for precise, portable timing without external dependencies.
-4. The C++ version uses modern C++11 standard library features.
+   - The C++ version uses modern C++11 standard library features.
 
 ### Step 2: Measure CPU time
 
