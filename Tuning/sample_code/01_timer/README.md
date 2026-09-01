@@ -90,8 +90,8 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    ```
    Section name: Elapsed time (sec) = ...
    ```
-   - Uses POSIX `clock_gettime` for wall-clock timing.
-4. Compare the elapsed times of the two timed loops and consider which is more expensive and why.
+   - Uses POSIX `clock_gettime()` for wall-clock timing.
+4. Compare the elapsed times of the two timed loops and consider which is more expensive.
 
 #### Fortran version
 1. Move to the source directory and build in elapsed-time mode (the default):
@@ -147,7 +147,6 @@ For the C version, the `01_timer` section of `Tuning/sample_code/sample_code.ipy
    Section name: Elapsed time (sec)   = ...
    ```
    - Uses `std::chrono::steady_clock` for precise, portable timing without external dependencies.
-   - The C++ version uses modern C++11 standard library features.
 4. Compare the elapsed times and consider which routine is more expensive.
 
 ### Step 2: Measure CPU time
