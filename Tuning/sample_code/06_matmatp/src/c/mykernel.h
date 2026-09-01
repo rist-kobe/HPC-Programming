@@ -15,11 +15,11 @@ void mmp_lex_tp_blk(const int ns, const int nbk1, const int nbk2,
   double mc[restrict][ns], double ma[restrict][ns], double mb[restrict][ns],
   double work[restrict][ns]);
 
-void trans(const int nraw, const int ncol, double tm[restrict][nraw],
+void trans(const int nrow, const int ncol, double tm[restrict][nrow],
   double m[restrict][ncol]);
 
-void trans_blk(const int nraw, const int ncol, const int nbkr, const int nbkc,
-  double tm[restrict][nraw], double m[restrict][ncol]);
+void trans_blk(const int nrow, const int ncol, const int nbkr, const int nbkc,
+  double tm[restrict][nrow], double m[restrict][ncol]);
 
 int dummy(const int ns, double mat[restrict][ns]);
 #endif /* __MYKERNEL_H__ */
