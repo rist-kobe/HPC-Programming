@@ -17,7 +17,6 @@ ${EXE} 0 > diffuse.out
 if [ ! -f gmon.out ]; then
     echo "gmon.out not found. Rebuild with 'make MODE=gprof' and re-run." >&2
 else
-    sleep 10s
     gprof -p ${EXE} gmon.out > flat.out
     gprof -q ${EXE} gmon.out > call.out
 fi
