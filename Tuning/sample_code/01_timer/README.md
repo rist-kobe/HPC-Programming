@@ -294,7 +294,7 @@ For a **multi-threaded program** (e.g., with OpenMP):
    $ cd ../../tests/cpp
    $ bash run.sh MODE=gprof
    ```
-3. `run.sh` automatically handles profiling: execution, sleep, and `gprof` report generation (`gmon.out` and `prof.out`).
+3. `run.sh` automatically handles profiling: execution and `gprof` report generation (`gmon.out` and `prof.out`).
 4. Examine `prof.out` to identify hotspots.
 
 ### Cleaning Up Profiling Data
