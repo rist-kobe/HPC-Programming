@@ -266,7 +266,7 @@ For a **multi-threaded program** (e.g., with OpenMP):
    $ cd ../../tests/fortran
    $ bash run.sh MODE=gprof
    ```
-3. `run.sh` automatically handles profiling: execution, sleep, and `gprof` report generation.
+3. `run.sh` automatically handles profiling: execution and `gprof` report generation.
 4. Examine `prof.out` for the flat profile and call graph to identify hotspots.
 
 #### Fortran with C timer version
